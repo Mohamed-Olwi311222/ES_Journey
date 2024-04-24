@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "ecu_led_cfg.h": "c",
+        "hal_gpio.h": "c",
+        "app.h": "c"
+    }
+}
