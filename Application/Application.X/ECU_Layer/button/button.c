@@ -95,7 +95,7 @@ Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state)
  * @brief Make a button be a magic button
  * @param btn pointer to the button configurations @ref button_t
  * @param led the led to turn on and off
- * @param btn_high_status the current status of the buttom
+ * @param btn_high_status the current status of the button
  * @return E_OK if status success otherwise E_NOT_OK
  */
 Std_ReturnType btn_high_magic_button(const button_t *btn, led_t *led,const button_state_t *btn_high_status)

@@ -34,6 +34,12 @@ led_t led2 = {
     .pin = 1,
     .led_status = LED_OFF,
 };
+pin_config_t transistor = {
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW,
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN1
+};
 void program_1();
 void program_2();
 void program_3();
@@ -42,10 +48,10 @@ int main(void)
     Std_ReturnType ret = application_initialize();
     button_state_t btn_high_status = BUTTON_RELEASED;
     button_state_t btn_low_status = BUTTON_RELEASED;
-   button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
+    button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
 
-    
 
+    gpio_pin_initialize(&transistor);
    uint8 program_selected = 0;
 
     if (E_NOT_OK == ret)
@@ -54,24 +60,28 @@ int main(void)
     }
     while (1)
     {
-        button_read_state(&btn_high, &btn_high_status);
-        button_read_state(&btn_low, &btn_low_status);
-        // btn_high_magic_button(&btn_high, &led1, &btn_high_status);
-       if (btn_high_status != btn_high_last_valid_status)
-       {
-           btn_high_last_valid_status = btn_high_status;
-           if (BUTTON_PRESSED == btn_high_status)
-           {
-               program_selected++;
-               switch (program_selected)
-               {
-                    case 1: program_1(); break;
-                    case 2: program_2(); break;
-                    case 3: program_3(); break;
-                    default: program_selected = 0;
-               }
-           }
-       }
+    //     button_read_state(&btn_high, &btn_high_status);
+    //     button_read_state(&btn_low, &btn_low_status);
+    //     // btn_high_magic_button(&btn_high, &led1, &btn_high_status);
+    //    if (btn_high_status != btn_high_last_valid_status)
+    //    {
+    //        btn_high_last_valid_status = btn_high_status;
+    //        if (BUTTON_PRESSED == btn_high_status)
+    //        {
+    //            program_selected++;
+    //            switch (program_selected)
+    //            {
+    //                 case 1: program_1(); break;
+    //                 case 2: program_2(); break;
+    //                 case 3: program_3(); break;
+    //                 default: program_selected = 0;
+    //            }
+    //        }
+    //     }
+
+    __delay_ms(250);
+    gpio_pin_toggle_logic(&transistor);
+    __delay_ms(250);
     }
     return (0);
 }

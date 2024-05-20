@@ -1,4 +1,4 @@
-# 1 "app.c"
+# 1 "ECU_Layer/Relay/ecu_relay.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,20 +6,20 @@
 # 1 "<built-in>" 2
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "app.c" 2
+# 1 "ECU_Layer/Relay/ecu_relay.c" 2
 
 
 
 
 
 
+# 1 "ECU_Layer/Relay/ecu_relay.h" 1
+# 11 "ECU_Layer/Relay/ecu_relay.h"
+# 1 "ECU_Layer/Relay/ecu_relay_cfg.h" 1
+# 11 "ECU_Layer/Relay/ecu_relay.h" 2
 
-# 1 "./app.h" 1
-# 11 "./app.h"
-# 1 "./ECU_Layer/led/ecu_led.h" 1
-# 12 "./ECU_Layer/led/ecu_led.h"
-# 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 1 3
 # 18 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4951,12 +4951,12 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 2 3
-# 12 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 13 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 1
-# 11 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h"
+# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 13 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../../std_types.h" 1
+# 11 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../../std_types.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 3
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -5109,11 +5109,11 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 11 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 2
-# 13 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 11 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../../std_types.h" 2
+# 13 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../../compiler.h" 1
-# 14 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../../compiler.h" 1
+# 14 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -5126,14 +5126,14 @@ typedef short sint16;
 typedef int sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/../../device_config.h" 1
-# 14 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../../device_config.h" 1
+# 14 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 53 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 53 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef union
 {
     struct
@@ -5192,7 +5192,7 @@ typedef struct
     uint8 direction : 1;
     uint8 logic : 1;
 }pin_config_t;
-# 119 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 119 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
 
 
@@ -5270,66 +5270,41 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 
 
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 12 "./ECU_Layer/led/ecu_led.h" 2
-
-# 1 "./ECU_Layer/led/ecu_led_cfg.h" 1
-# 20 "./ECU_Layer/led/ecu_led_cfg.h"
-Std_ReturnType turn_on_leds(void);
-# 13 "./ECU_Layer/led/ecu_led.h" 2
+# 12 "ECU_Layer/Relay/ecu_relay.h" 2
 
 
 
 
 
 
-typedef enum
-{
-    LED_OFF,
-    LED_ON
-}led_status;
+
 
 typedef struct
 {
-    uint8 port_name : 4;
-    uint8 pin : 3;
-    uint8 led_status : 1;
-}led_t;
-
-Std_ReturnType turn_on_leds(void);
+    uint8 relay_port : 4;
+    uint8 relay_pin : 3;
+    uint8 relay_status : 1;
+}relay_t;
 
 
 
 
 
 
-Std_ReturnType led_intitialize(const led_t *led);
+Std_ReturnType relay_initialize(const relay_t *relay);
 
 
 
 
 
-
-Std_ReturnType led_turn_on(const led_t *led);
-
+Std_ReturnType relay_turn_on(relay_t *relay);
 
 
 
 
 
-Std_ReturnType led_turn_off(const led_t *led);
-
-
-
-
-
-
-Std_ReturnType led_toggle(const led_t *led);
-# 11 "./app.h" 2
-
-# 1 "./ECU_Layer/button/ecu_button.h" 1
-# 11 "./ECU_Layer/button/ecu_button.h"
-# 1 "./ECU_Layer/button/ecu_button_cfg.h" 1
-# 11 "./ECU_Layer/button/ecu_button.h" 2
+Std_ReturnType relay_turn_off(relay_t *relay);
+# 7 "ECU_Layer/Relay/ecu_relay.c" 2
 
 
 
@@ -5337,137 +5312,57 @@ Std_ReturnType led_toggle(const led_t *led);
 
 
 
-
-typedef enum
-{
-    BUTTON_RELEASED,
-    BUTTON_PRESSED
-} button_state_t;
-
-typedef enum
-{
-    BUTTON_ACTIVE_HIGH,
-    BUTTON_ACTIVE_LOW
-} button_active_t;
-
-typedef struct
-{
-    pin_config_t button_pin;
-    button_state_t button_state_t;
-    button_active_t button_connection;
-} button_t;
-
-
-
-
-
-
-
-Std_ReturnType button_initialize(const button_t *btn);
-
-
-
-
-
-
-
-Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
-
-Std_ReturnType btn_high_magic_button(const button_t *btn, led_t *led, const button_state_t *btn_high_status);
-# 12 "./app.h" 2
-# 8 "app.c" 2
-
-Std_ReturnType application_initialize(void);
-button_t btn_low = {
-    .button_connection = BUTTON_ACTIVE_LOW,
-    .button_pin.port = PORTD_INDEX,
-    .button_pin.pin = GPIO_PIN0,
-    .button_pin.direction = GPIO_DIRECTION_INPUT,
-    .button_pin.logic = GPIO_HIGH,
-    .button_state_t = BUTTON_RELEASED
-};
-
-button_t btn_high = {
-    .button_connection = BUTTON_ACTIVE_HIGH,
-    .button_pin.port = PORTC_INDEX,
-    .button_pin.pin = GPIO_PIN2,
-    .button_pin.direction = GPIO_DIRECTION_INPUT,
-    .button_pin.logic = GPIO_LOW,
-    .button_state_t = BUTTON_RELEASED
-};
-led_t led1 = {
-    .port_name = PORTC_INDEX,
-    .pin = 0,
-    .led_status = LED_OFF,
-};
-led_t led2 = {
-    .port_name = PORTC_INDEX,
-    .pin = 1,
-    .led_status = LED_OFF,
-};
-pin_config_t transistor = {
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW,
-    .port = PORTD_INDEX,
-    .pin = GPIO_PIN1
-};
-void program_1();
-void program_2();
-void program_3();
-int main(void)
-{
-    Std_ReturnType ret = application_initialize();
-    button_state_t btn_high_status = BUTTON_RELEASED;
-    button_state_t btn_low_status = BUTTON_RELEASED;
-    button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
-
-
-    gpio_pin_initialize(&transistor);
-   uint8 program_selected = 0;
-
-    if ((Std_ReturnType)0x01u == ret)
-    {
-        exit((Std_ReturnType)0x01u);
-    }
-    while (1)
-    {
-# 82 "app.c"
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    gpio_pin_toggle_logic(&transistor);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    }
-    return (0);
-}
-Std_ReturnType application_initialize(void)
+Std_ReturnType relay_initialize(const relay_t *relay)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
-    ret = button_initialize(&btn_high);
-    ret = button_initialize(&btn_low);
-    ret = led_intitialize(&led1);
-    ret = led_intitialize(&led2);
 
+    if (((void*)0) == relay)
+    {
+        ret = (Std_ReturnType)0x01u;
+    }
+    else
+    {
+
+    }
     return (ret);
 }
-void program_1()
+
+
+
+
+
+
+Std_ReturnType relay_turn_on(relay_t *relay)
 {
-    led_turn_on(&led1);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led1);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
+    Std_ReturnType ret = (Std_ReturnType)0x00u;
+
+    if (((void*)0) == relay)
+    {
+        ret = (Std_ReturnType)0x01u;
+    }
+    else
+    {
+
+    }
+    return (ret);
 }
-void program_2()
+
+
+
+
+
+
+Std_ReturnType relay_turn_off(relay_t *relay)
 {
-    led_turn_on(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-}
-void program_3()
-{
-    led_turn_on(&led1);
-    led_turn_on(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led1);
-    led_turn_off(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
+    Std_ReturnType ret = (Std_ReturnType)0x00u;
+
+    if (((void*)0) == relay)
+    {
+        ret = (Std_ReturnType)0x01u;
+    }
+    else
+    {
+
+    }
+    return (ret);
 }

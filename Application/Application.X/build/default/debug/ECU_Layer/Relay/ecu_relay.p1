@@ -1,58 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"105 ./ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h
-[s S307 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S307 . port pin direction logic ]
-"10 app.c
-[; ;app.c: 10: button_t btn_low = {
-[c E3155 0 1 .. ]
-[n E3155 . BUTTON_RELEASED BUTTON_PRESSED  ]
-[c E3159 0 1 .. ]
-[n E3159 . BUTTON_ACTIVE_HIGH BUTTON_ACTIVE_LOW  ]
-"32 ./ECU_Layer/button/ecu_button.h
-[; ;./ECU_Layer/button/ecu_button.h: 32: {
-[s S309 `S307 1 `E3155 1 `E3159 1 ]
-[n S309 . button_pin button_state_t button_connection ]
-"10 app.c
-[; ;app.c: 10: button_t btn_low = {
-[c E3094 0 1 2 3 4 .. ]
-[n E3094 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
-[c E3084 0 1 2 3 4 5 6 7 .. ]
-[n E3084 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
-[c E3080 0 1 .. ]
-[n E3080 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
-[c E3076 0 1 .. ]
-[n E3076 . GPIO_LOW GPIO_HIGH  ]
-"26 ./ECU_Layer/button/../led/ecu_led.h
+"21 ECU_Layer/Relay/ecu_relay.h
+[; ;ECU_Layer/Relay/ecu_relay.h: 21: {
 [s S308 :4 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S308 . port_name pin led_status ]
-"27 app.c
-[; ;app.c: 27: led_t led1 = {
-[c E3137 0 1 .. ]
-[n E3137 . LED_OFF LED_ON  ]
-[p mainexit ]
-"9
-[; ;app.c: 9: Std_ReturnType application_initialize(void);
-[v _application_initialize `(uc ~T0 @X0 0 ef ]
-"119 ./ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h
-[v _gpio_pin_initialize `(uc ~T0 @X0 0 ef1`*S307 ]
-"65 D:\Programming\Microchip\xc8\v2.46\pic\include\c99\stdlib.h
-[; ;D:\Programming\Microchip\xc8\v2.46\pic\include\c99\stdlib.h: 65:           void exit (int);
-[v _exit `(v ~T0 @X0 0 ef1`i ]
-[v F205 `(v ~T0 @X0 1 tf1`ul ]
-"20 D:\Programming\Microchip\xc8\v2.46\pic\include\builtins.h
-[v __delay `JF205 ~T0 @X0 0 e ]
-[p i __delay ]
-"157 ./ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h
-[v _gpio_pin_toggle_logic `(uc ~T0 @X0 0 ef1`*S307 ]
-"44 ./ECU_Layer/button/ecu_button.h
-[; ;./ECU_Layer/button/ecu_button.h: 44: Std_ReturnType button_initialize(const button_t *btn);
-[v _button_initialize `(uc ~T0 @X0 0 ef1`*CS309 ]
-"39 ./ECU_Layer/button/../led/ecu_led.h
-[v _led_intitialize `(uc ~T0 @X0 0 ef1`*CS308 ]
-"46
-[v _led_turn_on `(uc ~T0 @X0 0 ef1`*CS308 ]
-"53
-[v _led_turn_off `(uc ~T0 @X0 0 ef1`*CS308 ]
+[n S308 . relay_port relay_pin relay_status ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -494,262 +444,147 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7352
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 7352: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 app.c
-[; ;app.c: 10: button_t btn_low = {
-[v _btn_low `S309 ~T0 @X0 1 e ]
-[i _btn_low
-:U ..
-:U ..
-:U ..
-:U ..
--> . `E3094 3 `uc
--> . `E3084 0 `uc
--> . `E3080 1 `uc
--> . `E3076 1 `uc
-..
-..
-. `E3155 0
-. `E3159 1
-..
-..
-]
-"19
-[; ;app.c: 19: button_t btn_high = {
-[v _btn_high `S309 ~T0 @X0 1 e ]
-[i _btn_high
-:U ..
-:U ..
-:U ..
-:U ..
--> . `E3094 2 `uc
--> . `E3084 2 `uc
--> . `E3080 1 `uc
--> . `E3076 0 `uc
-..
-..
-. `E3155 0
-. `E3159 0
-..
-..
-]
-"27
-[; ;app.c: 27: led_t led1 = {
-[v _led1 `S308 ~T0 @X0 1 e ]
-[i _led1
-:U ..
-:U ..
--> . `E3094 2 `uc
--> -> 0 `i `uc
--> . `E3137 0 `uc
-..
-..
-]
-"32
-[; ;app.c: 32: led_t led2 = {
-[v _led2 `S308 ~T0 @X0 1 e ]
-[i _led2
-:U ..
-:U ..
--> . `E3094 2 `uc
--> -> 1 `i `uc
--> . `E3137 0 `uc
-..
-..
-]
-"37
-[; ;app.c: 37: pin_config_t transistor = {
-[v _transistor `S307 ~T0 @X0 1 e ]
-[i _transistor
-:U ..
-:U ..
--> . `E3094 3 `uc
--> . `E3084 1 `uc
--> . `E3080 0 `uc
--> . `E3076 0 `uc
-..
-..
-]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"46
-[; ;app.c: 46: int main(void)
-[v _main `(i ~T0 @X0 1 ef ]
-"47
-[; ;app.c: 47: {
+"14 ECU_Layer/Relay/ecu_relay.c
+[; ;ECU_Layer/Relay/ecu_relay.c: 14: Std_ReturnType relay_initialize(const relay_t *relay)
+[v _relay_initialize `(uc ~T0 @X0 1 ef1`*CS308 ]
+"15
+[; ;ECU_Layer/Relay/ecu_relay.c: 15: {
 {
-[e :U _main ]
+[e :U _relay_initialize ]
+"14
+[; ;ECU_Layer/Relay/ecu_relay.c: 14: Std_ReturnType relay_initialize(const relay_t *relay)
+[v _relay `*CS308 ~T0 @X0 1 r1 ]
+"15
+[; ;ECU_Layer/Relay/ecu_relay.c: 15: {
 [f ]
-"48
-[; ;app.c: 48:     Std_ReturnType ret = application_initialize();
-[v _ret `uc ~T0 @X0 1 a ]
-[e = _ret ( _application_initialize ..  ]
-"49
-[; ;app.c: 49:     button_state_t btn_high_status = BUTTON_RELEASED;
-[v _btn_high_status `E3155 ~T0 @X0 1 a ]
-[e = _btn_high_status . `E3155 0 ]
-"50
-[; ;app.c: 50:     button_state_t btn_low_status = BUTTON_RELEASED;
-[v _btn_low_status `E3155 ~T0 @X0 1 a ]
-[e = _btn_low_status . `E3155 0 ]
-"51
-[; ;app.c: 51:     button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
-[v _btn_high_last_valid_status `E3155 ~T0 @X0 1 a ]
-[e = _btn_high_last_valid_status . `E3155 0 ]
-"54
-[; ;app.c: 54:     gpio_pin_initialize(&transistor);
-[e ( _gpio_pin_initialize (1 &U _transistor ]
-"55
-[; ;app.c: 55:    uint8 program_selected = 0;
-[v _program_selected `uc ~T0 @X0 1 a ]
-[e = _program_selected -> -> 0 `i `uc ]
-"57
-[; ;app.c: 57:     if ((Std_ReturnType)0x01u == ret)
-[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 311  ]
-"58
-[; ;app.c: 58:     {
-{
-"59
-[; ;app.c: 59:         exit((Std_ReturnType)0x01u);
-[e ( _exit (1 -> -> -> 1 `ui `uc `i ]
-"60
-[; ;app.c: 60:     }
-}
-[e :U 311 ]
-"61
-[; ;app.c: 61:     while (1)
-[e :U 313 ]
-"62
-[; ;app.c: 62:     {
-{
-"82
-[; ;app.c: 82:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"83
-[; ;app.c: 83:     gpio_pin_toggle_logic(&transistor);
-[e ( _gpio_pin_toggle_logic (1 &U _transistor ]
-"84
-[; ;app.c: 84:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"85
-[; ;app.c: 85:     }
-}
-[e :U 312 ]
-[e $U 313  ]
-[e :U 314 ]
-"86
-[; ;app.c: 86:     return (0);
-[e ) -> 0 `i ]
-[e $UE 310  ]
-"87
-[; ;app.c: 87: }
-[e :UE 310 ]
-}
-"88
-[; ;app.c: 88: Std_ReturnType application_initialize(void)
-[v _application_initialize `(uc ~T0 @X0 1 ef ]
-"89
-[; ;app.c: 89: {
-{
-[e :U _application_initialize ]
-[f ]
-"90
-[; ;app.c: 90:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+"16
+[; ;ECU_Layer/Relay/ecu_relay.c: 16:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `ui `uc ]
-"91
-[; ;app.c: 91:     ret = button_initialize(&btn_high);
-[e = _ret ( _button_initialize (1 -> &U _btn_high `*CS309 ]
-"92
-[; ;app.c: 92:     ret = button_initialize(&btn_low);
-[e = _ret ( _button_initialize (1 -> &U _btn_low `*CS309 ]
-"93
-[; ;app.c: 93:     ret = led_intitialize(&led1);
-[e = _ret ( _led_intitialize (1 -> &U _led1 `*CS308 ]
-"94
-[; ;app.c: 94:     ret = led_intitialize(&led2);
-[e = _ret ( _led_intitialize (1 -> &U _led2 `*CS308 ]
-"96
-[; ;app.c: 96:     return (ret);
+"18
+[; ;ECU_Layer/Relay/ecu_relay.c: 18:     if (((void*)0) == relay)
+[e $ ! == -> -> -> 0 `i `*v `*CS308 _relay 310  ]
+"19
+[; ;ECU_Layer/Relay/ecu_relay.c: 19:     {
+{
+"20
+[; ;ECU_Layer/Relay/ecu_relay.c: 20:         ret = (Std_ReturnType)0x01u;
+[e = _ret -> -> 1 `ui `uc ]
+"21
+[; ;ECU_Layer/Relay/ecu_relay.c: 21:     }
+}
+[e $U 311  ]
+"22
+[; ;ECU_Layer/Relay/ecu_relay.c: 22:     else
+[e :U 310 ]
+"23
+[; ;ECU_Layer/Relay/ecu_relay.c: 23:     {
+{
+"25
+[; ;ECU_Layer/Relay/ecu_relay.c: 25:     }
+}
+[e :U 311 ]
+"26
+[; ;ECU_Layer/Relay/ecu_relay.c: 26:     return (ret);
+[e ) _ret ]
+[e $UE 309  ]
+"27
+[; ;ECU_Layer/Relay/ecu_relay.c: 27: }
+[e :UE 309 ]
+}
+"34
+[; ;ECU_Layer/Relay/ecu_relay.c: 34: Std_ReturnType relay_turn_on(relay_t *relay)
+[v _relay_turn_on `(uc ~T0 @X0 1 ef1`*S308 ]
+"35
+[; ;ECU_Layer/Relay/ecu_relay.c: 35: {
+{
+[e :U _relay_turn_on ]
+"34
+[; ;ECU_Layer/Relay/ecu_relay.c: 34: Std_ReturnType relay_turn_on(relay_t *relay)
+[v _relay `*S308 ~T0 @X0 1 r1 ]
+"35
+[; ;ECU_Layer/Relay/ecu_relay.c: 35: {
+[f ]
+"36
+[; ;ECU_Layer/Relay/ecu_relay.c: 36:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `ui `uc ]
+"38
+[; ;ECU_Layer/Relay/ecu_relay.c: 38:     if (((void*)0) == relay)
+[e $ ! == -> -> -> 0 `i `*v `*S308 _relay 313  ]
+"39
+[; ;ECU_Layer/Relay/ecu_relay.c: 39:     {
+{
+"40
+[; ;ECU_Layer/Relay/ecu_relay.c: 40:         ret = (Std_ReturnType)0x01u;
+[e = _ret -> -> 1 `ui `uc ]
+"41
+[; ;ECU_Layer/Relay/ecu_relay.c: 41:     }
+}
+[e $U 314  ]
+"42
+[; ;ECU_Layer/Relay/ecu_relay.c: 42:     else
+[e :U 313 ]
+"43
+[; ;ECU_Layer/Relay/ecu_relay.c: 43:     {
+{
+"45
+[; ;ECU_Layer/Relay/ecu_relay.c: 45:     }
+}
+[e :U 314 ]
+"46
+[; ;ECU_Layer/Relay/ecu_relay.c: 46:     return (ret);
+[e ) _ret ]
+[e $UE 312  ]
+"47
+[; ;ECU_Layer/Relay/ecu_relay.c: 47: }
+[e :UE 312 ]
+}
+"54
+[; ;ECU_Layer/Relay/ecu_relay.c: 54: Std_ReturnType relay_turn_off(relay_t *relay)
+[v _relay_turn_off `(uc ~T0 @X0 1 ef1`*S308 ]
+"55
+[; ;ECU_Layer/Relay/ecu_relay.c: 55: {
+{
+[e :U _relay_turn_off ]
+"54
+[; ;ECU_Layer/Relay/ecu_relay.c: 54: Std_ReturnType relay_turn_off(relay_t *relay)
+[v _relay `*S308 ~T0 @X0 1 r1 ]
+"55
+[; ;ECU_Layer/Relay/ecu_relay.c: 55: {
+[f ]
+"56
+[; ;ECU_Layer/Relay/ecu_relay.c: 56:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `ui `uc ]
+"58
+[; ;ECU_Layer/Relay/ecu_relay.c: 58:     if (((void*)0) == relay)
+[e $ ! == -> -> -> 0 `i `*v `*S308 _relay 316  ]
+"59
+[; ;ECU_Layer/Relay/ecu_relay.c: 59:     {
+{
+"60
+[; ;ECU_Layer/Relay/ecu_relay.c: 60:         ret = (Std_ReturnType)0x01u;
+[e = _ret -> -> 1 `ui `uc ]
+"61
+[; ;ECU_Layer/Relay/ecu_relay.c: 61:     }
+}
+[e $U 317  ]
+"62
+[; ;ECU_Layer/Relay/ecu_relay.c: 62:     else
+[e :U 316 ]
+"63
+[; ;ECU_Layer/Relay/ecu_relay.c: 63:     {
+{
+"65
+[; ;ECU_Layer/Relay/ecu_relay.c: 65:     }
+}
+[e :U 317 ]
+"66
+[; ;ECU_Layer/Relay/ecu_relay.c: 66:     return (ret);
 [e ) _ret ]
 [e $UE 315  ]
-"97
-[; ;app.c: 97: }
+"67
+[; ;ECU_Layer/Relay/ecu_relay.c: 67: }
 [e :UE 315 ]
-}
-"98
-[; ;app.c: 98: void program_1()
-[v _program_1 `(v ~T0 @X0 1 ef ]
-"99
-[; ;app.c: 99: {
-{
-[e :U _program_1 ]
-[f ]
-"100
-[; ;app.c: 100:     led_turn_on(&led1);
-[e ( _led_turn_on (1 -> &U _led1 `*CS308 ]
-"101
-[; ;app.c: 101:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"102
-[; ;app.c: 102:     led_turn_off(&led1);
-[e ( _led_turn_off (1 -> &U _led1 `*CS308 ]
-"103
-[; ;app.c: 103:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"104
-[; ;app.c: 104: }
-[e :UE 316 ]
-}
-"105
-[; ;app.c: 105: void program_2()
-[v _program_2 `(v ~T0 @X0 1 ef ]
-"106
-[; ;app.c: 106: {
-{
-[e :U _program_2 ]
-[f ]
-"107
-[; ;app.c: 107:     led_turn_on(&led2);
-[e ( _led_turn_on (1 -> &U _led2 `*CS308 ]
-"108
-[; ;app.c: 108:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"109
-[; ;app.c: 109:     led_turn_off(&led2);
-[e ( _led_turn_off (1 -> &U _led2 `*CS308 ]
-"110
-[; ;app.c: 110:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"111
-[; ;app.c: 111: }
-[e :UE 317 ]
-}
-"112
-[; ;app.c: 112: void program_3()
-[v _program_3 `(v ~T0 @X0 1 ef ]
-"113
-[; ;app.c: 113: {
-{
-[e :U _program_3 ]
-[f ]
-"114
-[; ;app.c: 114:     led_turn_on(&led1);
-[e ( _led_turn_on (1 -> &U _led1 `*CS308 ]
-"115
-[; ;app.c: 115:     led_turn_on(&led2);
-[e ( _led_turn_on (1 -> &U _led2 `*CS308 ]
-"116
-[; ;app.c: 116:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"117
-[; ;app.c: 117:     led_turn_off(&led1);
-[e ( _led_turn_off (1 -> &U _led1 `*CS308 ]
-"118
-[; ;app.c: 118:     led_turn_off(&led2);
-[e ( _led_turn_off (1 -> &U _led2 `*CS308 ]
-"119
-[; ;app.c: 119:     _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
-"120
-[; ;app.c: 120: }
-[e :UE 318 ]
 }
