@@ -1,8 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"21 ECU_Layer/Relay/ecu_relay.h
-[; ;ECU_Layer/Relay/ecu_relay.h: 21: {
+"27 ECU_Layer/Relay/ecu_relay.h
+[; ;ECU_Layer/Relay/ecu_relay.h: 27: {
 [s S308 :4 `uc 1 :3 `uc 1 :1 `uc 1 ]
 [n S308 . relay_port relay_pin relay_status ]
+"105 ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h
+[; ;ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h: 105: {
+[s S307 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S307 . port pin direction logic ]
+"24 ECU_Layer/Relay/ecu_relay.c
+[; ;ECU_Layer/Relay/ecu_relay.c: 24:         pin_config_t pin_obj = {
+[c E3080 0 1 .. ]
+[n E3080 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
+"119 ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h
+[; ;ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h: 119: Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
+[v _gpio_pin_initialize `(uc ~T0 @X0 0 ef1`*S307 ]
+"56 ECU_Layer/Relay/ecu_relay.c
+[; ;ECU_Layer/Relay/ecu_relay.c: 56:         gpio_pin_write_logic(&pin_obj, GPIO_HIGH);
+[c E3076 0 1 .. ]
+[n E3076 . GPIO_LOW GPIO_HIGH  ]
+"142 ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h
+[; ;ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h: 142: Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic);
+[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*S307`E3076 ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -480,111 +498,168 @@ Version 4.0 HI-TECH Software Intermediate Code
 "23
 [; ;ECU_Layer/Relay/ecu_relay.c: 23:     {
 {
-"25
-[; ;ECU_Layer/Relay/ecu_relay.c: 25:     }
+[v F3150 `S307 ~T0 @X0 1 s ]
+[i F3150
+:U ..
+:U ..
+"24
+[; ;ECU_Layer/Relay/ecu_relay.c: 24:         pin_config_t pin_obj = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pin_obj `S307 ~T0 @X0 1 a ]
+[e = _pin_obj F3150 ]
+[e ; = . _pin_obj 0 . *U _relay 0 ; = . _pin_obj 1 . *U _relay 1 ; = . _pin_obj 2 -> . `E3080 0 `uc = . _pin_obj 3 . *U _relay 2 ]
+"30
+[; ;ECU_Layer/Relay/ecu_relay.c: 30:         gpio_pin_initialize(&pin_obj);
+[e ( _gpio_pin_initialize (1 &U _pin_obj ]
+"31
+[; ;ECU_Layer/Relay/ecu_relay.c: 31:     }
 }
 [e :U 311 ]
-"26
-[; ;ECU_Layer/Relay/ecu_relay.c: 26:     return (ret);
+"32
+[; ;ECU_Layer/Relay/ecu_relay.c: 32:     return (ret);
 [e ) _ret ]
 [e $UE 309  ]
-"27
-[; ;ECU_Layer/Relay/ecu_relay.c: 27: }
+"33
+[; ;ECU_Layer/Relay/ecu_relay.c: 33: }
 [e :UE 309 ]
 }
-"34
-[; ;ECU_Layer/Relay/ecu_relay.c: 34: Std_ReturnType relay_turn_on(relay_t *relay)
+"40
+[; ;ECU_Layer/Relay/ecu_relay.c: 40: Std_ReturnType relay_turn_on(relay_t *relay)
 [v _relay_turn_on `(uc ~T0 @X0 1 ef1`*S308 ]
-"35
-[; ;ECU_Layer/Relay/ecu_relay.c: 35: {
+"41
+[; ;ECU_Layer/Relay/ecu_relay.c: 41: {
 {
 [e :U _relay_turn_on ]
-"34
-[; ;ECU_Layer/Relay/ecu_relay.c: 34: Std_ReturnType relay_turn_on(relay_t *relay)
+"40
+[; ;ECU_Layer/Relay/ecu_relay.c: 40: Std_ReturnType relay_turn_on(relay_t *relay)
 [v _relay `*S308 ~T0 @X0 1 r1 ]
-"35
-[; ;ECU_Layer/Relay/ecu_relay.c: 35: {
+"41
+[; ;ECU_Layer/Relay/ecu_relay.c: 41: {
 [f ]
-"36
-[; ;ECU_Layer/Relay/ecu_relay.c: 36:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+"42
+[; ;ECU_Layer/Relay/ecu_relay.c: 42:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `ui `uc ]
-"38
-[; ;ECU_Layer/Relay/ecu_relay.c: 38:     if (((void*)0) == relay)
+"44
+[; ;ECU_Layer/Relay/ecu_relay.c: 44:     if (((void*)0) == relay)
 [e $ ! == -> -> -> 0 `i `*v `*S308 _relay 313  ]
-"39
-[; ;ECU_Layer/Relay/ecu_relay.c: 39:     {
+"45
+[; ;ECU_Layer/Relay/ecu_relay.c: 45:     {
 {
-"40
-[; ;ECU_Layer/Relay/ecu_relay.c: 40:         ret = (Std_ReturnType)0x01u;
+"46
+[; ;ECU_Layer/Relay/ecu_relay.c: 46:         ret = (Std_ReturnType)0x01u;
 [e = _ret -> -> 1 `ui `uc ]
-"41
-[; ;ECU_Layer/Relay/ecu_relay.c: 41:     }
+"47
+[; ;ECU_Layer/Relay/ecu_relay.c: 47:     }
 }
 [e $U 314  ]
-"42
-[; ;ECU_Layer/Relay/ecu_relay.c: 42:     else
+"48
+[; ;ECU_Layer/Relay/ecu_relay.c: 48:     else
 [e :U 313 ]
-"43
-[; ;ECU_Layer/Relay/ecu_relay.c: 43:     {
+"49
+[; ;ECU_Layer/Relay/ecu_relay.c: 49:     {
 {
-"45
-[; ;ECU_Layer/Relay/ecu_relay.c: 45:     }
+[v F3155 `S307 ~T0 @X0 1 s ]
+[i F3155
+:U ..
+:U ..
+"50
+[; ;ECU_Layer/Relay/ecu_relay.c: 50:         pin_config_t pin_obj = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pin_obj `S307 ~T0 @X0 1 a ]
+[e = _pin_obj F3155 ]
+[e ; = . _pin_obj 0 . *U _relay 0 ; = . _pin_obj 1 . *U _relay 1 ; = . _pin_obj 2 -> . `E3080 0 `uc = . _pin_obj 3 . *U _relay 2 ]
+"56
+[; ;ECU_Layer/Relay/ecu_relay.c: 56:         gpio_pin_write_logic(&pin_obj, GPIO_HIGH);
+[e ( _gpio_pin_write_logic (2 , &U _pin_obj . `E3076 1 ]
+"57
+[; ;ECU_Layer/Relay/ecu_relay.c: 57:     }
 }
 [e :U 314 ]
-"46
-[; ;ECU_Layer/Relay/ecu_relay.c: 46:     return (ret);
+"58
+[; ;ECU_Layer/Relay/ecu_relay.c: 58:     return (ret);
 [e ) _ret ]
 [e $UE 312  ]
-"47
-[; ;ECU_Layer/Relay/ecu_relay.c: 47: }
+"59
+[; ;ECU_Layer/Relay/ecu_relay.c: 59: }
 [e :UE 312 ]
 }
-"54
-[; ;ECU_Layer/Relay/ecu_relay.c: 54: Std_ReturnType relay_turn_off(relay_t *relay)
+"66
+[; ;ECU_Layer/Relay/ecu_relay.c: 66: Std_ReturnType relay_turn_off(relay_t *relay)
 [v _relay_turn_off `(uc ~T0 @X0 1 ef1`*S308 ]
-"55
-[; ;ECU_Layer/Relay/ecu_relay.c: 55: {
+"67
+[; ;ECU_Layer/Relay/ecu_relay.c: 67: {
 {
 [e :U _relay_turn_off ]
-"54
-[; ;ECU_Layer/Relay/ecu_relay.c: 54: Std_ReturnType relay_turn_off(relay_t *relay)
+"66
+[; ;ECU_Layer/Relay/ecu_relay.c: 66: Std_ReturnType relay_turn_off(relay_t *relay)
 [v _relay `*S308 ~T0 @X0 1 r1 ]
-"55
-[; ;ECU_Layer/Relay/ecu_relay.c: 55: {
+"67
+[; ;ECU_Layer/Relay/ecu_relay.c: 67: {
 [f ]
-"56
-[; ;ECU_Layer/Relay/ecu_relay.c: 56:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+"68
+[; ;ECU_Layer/Relay/ecu_relay.c: 68:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `ui `uc ]
-"58
-[; ;ECU_Layer/Relay/ecu_relay.c: 58:     if (((void*)0) == relay)
+"70
+[; ;ECU_Layer/Relay/ecu_relay.c: 70:     if (((void*)0) == relay)
 [e $ ! == -> -> -> 0 `i `*v `*S308 _relay 316  ]
-"59
-[; ;ECU_Layer/Relay/ecu_relay.c: 59:     {
+"71
+[; ;ECU_Layer/Relay/ecu_relay.c: 71:     {
 {
-"60
-[; ;ECU_Layer/Relay/ecu_relay.c: 60:         ret = (Std_ReturnType)0x01u;
+"72
+[; ;ECU_Layer/Relay/ecu_relay.c: 72:         ret = (Std_ReturnType)0x01u;
 [e = _ret -> -> 1 `ui `uc ]
-"61
-[; ;ECU_Layer/Relay/ecu_relay.c: 61:     }
+"73
+[; ;ECU_Layer/Relay/ecu_relay.c: 73:     }
 }
 [e $U 317  ]
-"62
-[; ;ECU_Layer/Relay/ecu_relay.c: 62:     else
+"74
+[; ;ECU_Layer/Relay/ecu_relay.c: 74:     else
 [e :U 316 ]
-"63
-[; ;ECU_Layer/Relay/ecu_relay.c: 63:     {
+"75
+[; ;ECU_Layer/Relay/ecu_relay.c: 75:     {
 {
-"65
-[; ;ECU_Layer/Relay/ecu_relay.c: 65:     }
+[v F3160 `S307 ~T0 @X0 1 s ]
+[i F3160
+:U ..
+:U ..
+"76
+[; ;ECU_Layer/Relay/ecu_relay.c: 76:         pin_config_t pin_obj = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pin_obj `S307 ~T0 @X0 1 a ]
+[e = _pin_obj F3160 ]
+[e ; = . _pin_obj 0 . *U _relay 0 ; = . _pin_obj 1 . *U _relay 1 ; = . _pin_obj 2 -> . `E3080 0 `uc = . _pin_obj 3 . *U _relay 2 ]
+"82
+[; ;ECU_Layer/Relay/ecu_relay.c: 82:         gpio_pin_write_logic(&pin_obj, GPIO_LOW);
+[e ( _gpio_pin_write_logic (2 , &U _pin_obj . `E3076 0 ]
+"83
+[; ;ECU_Layer/Relay/ecu_relay.c: 83:     }
 }
 [e :U 317 ]
-"66
-[; ;ECU_Layer/Relay/ecu_relay.c: 66:     return (ret);
+"84
+[; ;ECU_Layer/Relay/ecu_relay.c: 84:     return (ret);
 [e ) _ret ]
 [e $UE 315  ]
-"67
-[; ;ECU_Layer/Relay/ecu_relay.c: 67: }
+"85
+[; ;ECU_Layer/Relay/ecu_relay.c: 85: }
 [e :UE 315 ]
 }

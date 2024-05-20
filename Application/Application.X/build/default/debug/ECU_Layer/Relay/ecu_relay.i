@@ -5271,14 +5271,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 12 "ECU_Layer/Relay/ecu_relay.h" 2
-
-
-
-
-
-
-
-
+# 26 "ECU_Layer/Relay/ecu_relay.h"
 typedef struct
 {
     uint8 relay_port : 4;
@@ -5291,13 +5284,16 @@ typedef struct
 
 
 
+
 Std_ReturnType relay_initialize(const relay_t *relay);
 
 
 
 
 
+
 Std_ReturnType relay_turn_on(relay_t *relay);
+
 
 
 
@@ -5322,7 +5318,13 @@ Std_ReturnType relay_initialize(const relay_t *relay)
     }
     else
     {
-
+        pin_config_t pin_obj = {
+            .port = relay->relay_port,
+            .pin = relay->relay_pin,
+            .direction = GPIO_DIRECTION_OUTPUT,
+            .logic = relay->relay_status
+        };
+        gpio_pin_initialize(&pin_obj);
     }
     return (ret);
 }
@@ -5342,7 +5344,13 @@ Std_ReturnType relay_turn_on(relay_t *relay)
     }
     else
     {
-
+        pin_config_t pin_obj = {
+            .port = relay->relay_port,
+            .pin = relay->relay_pin,
+            .direction = GPIO_DIRECTION_OUTPUT,
+            .logic = relay->relay_status
+        };
+        gpio_pin_write_logic(&pin_obj, GPIO_HIGH);
     }
     return (ret);
 }
@@ -5362,7 +5370,13 @@ Std_ReturnType relay_turn_off(relay_t *relay)
     }
     else
     {
-
+        pin_config_t pin_obj = {
+            .port = relay->relay_port,
+            .pin = relay->relay_pin,
+            .direction = GPIO_DIRECTION_OUTPUT,
+            .logic = relay->relay_status
+        };
+        gpio_pin_write_logic(&pin_obj, GPIO_LOW);
     }
     return (ret);
 }

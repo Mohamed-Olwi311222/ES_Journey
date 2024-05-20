@@ -5375,99 +5375,62 @@ Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state)
 
 Std_ReturnType btn_high_magic_button(const button_t *btn, led_t *led, const button_state_t *btn_high_status);
 # 12 "./app.h" 2
+
+# 1 "./ECU_Layer/Relay/ecu_relay.h" 1
+# 11 "./ECU_Layer/Relay/ecu_relay.h"
+# 1 "./ECU_Layer/Relay/ecu_relay_cfg.h" 1
+# 11 "./ECU_Layer/Relay/ecu_relay.h" 2
+# 26 "./ECU_Layer/Relay/ecu_relay.h"
+typedef struct
+{
+    uint8 relay_port : 4;
+    uint8 relay_pin : 3;
+    uint8 relay_status : 1;
+}relay_t;
+
+
+
+
+
+
+
+Std_ReturnType relay_initialize(const relay_t *relay);
+
+
+
+
+
+
+Std_ReturnType relay_turn_on(relay_t *relay);
+
+
+
+
+
+
+Std_ReturnType relay_turn_off(relay_t *relay);
+# 13 "./app.h" 2
 # 8 "app.c" 2
 
+
 Std_ReturnType application_initialize(void);
-button_t btn_low = {
-    .button_connection = BUTTON_ACTIVE_LOW,
-    .button_pin.port = PORTD_INDEX,
-    .button_pin.pin = GPIO_PIN0,
-    .button_pin.direction = GPIO_DIRECTION_INPUT,
-    .button_pin.logic = GPIO_HIGH,
-    .button_state_t = BUTTON_RELEASED
+relay_t relay = {
+    .relay_port = PORTC_INDEX,
+    .relay_pin = GPIO_PIN0,
+    .relay_status = 0x00U
 };
 
-button_t btn_high = {
-    .button_connection = BUTTON_ACTIVE_HIGH,
-    .button_pin.port = PORTC_INDEX,
-    .button_pin.pin = GPIO_PIN2,
-    .button_pin.direction = GPIO_DIRECTION_INPUT,
-    .button_pin.logic = GPIO_LOW,
-    .button_state_t = BUTTON_RELEASED
-};
-led_t led1 = {
-    .port_name = PORTC_INDEX,
-    .pin = 0,
-    .led_status = LED_OFF,
-};
-led_t led2 = {
-    .port_name = PORTC_INDEX,
-    .pin = 1,
-    .led_status = LED_OFF,
-};
-pin_config_t transistor = {
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW,
-    .port = PORTD_INDEX,
-    .pin = GPIO_PIN1
-};
-void program_1();
-void program_2();
-void program_3();
 int main(void)
 {
     Std_ReturnType ret = application_initialize();
-    button_state_t btn_high_status = BUTTON_RELEASED;
-    button_state_t btn_low_status = BUTTON_RELEASED;
-    button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
 
 
-    gpio_pin_initialize(&transistor);
-   uint8 program_selected = 0;
 
-    if ((Std_ReturnType)0x01u == ret)
-    {
-        exit((Std_ReturnType)0x01u);
-    }
-    while (1)
-    {
-# 82 "app.c"
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    gpio_pin_toggle_logic(&transistor);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    }
     return (0);
 }
 Std_ReturnType application_initialize(void)
 {
-    Std_ReturnType ret = (Std_ReturnType)0x00u;
-    ret = button_initialize(&btn_high);
-    ret = button_initialize(&btn_low);
-    ret = led_intitialize(&led1);
-    ret = led_intitialize(&led2);
-
+    Std_ReturnType ret = (Std_ReturnType)0x01u;
+    ret = relay_initialize(&relay);
     return (ret);
-}
-void program_1()
-{
-    led_turn_on(&led1);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led1);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-}
-void program_2()
-{
-    led_turn_on(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-}
-void program_3()
-{
-    led_turn_on(&led1);
-    led_turn_on(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led1);
-    led_turn_off(&led2);
-    _delay((unsigned long)((250)*((1 *1000UL *1000UL)/4000.0)));
 }
