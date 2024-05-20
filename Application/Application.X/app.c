@@ -8,16 +8,35 @@
 #include "app.h"
 
 Std_ReturnType application_initialize(void);
-relay_t relay = {
+relay_t relay1 = {
     .relay_port = PORTC_INDEX,
     .relay_pin = GPIO_PIN0,
     .relay_status = RELAY_OFF_STATUS
 };
-
+relay_t relay2 = {
+    .relay_port = PORTC_INDEX,
+    .relay_pin = GPIO_PIN1,
+    .relay_status = RELAY_OFF_STATUS
+};
 int main(void)
 {
     Std_ReturnType ret = application_initialize();
+    if (E_NOT_OK == ret)
+    {
+        return (-1);
+    }
+    while (1)
+    {
+        relay_turn_on(&relay1);
+        relay_turn_off(&relay2);
+        __delay_ms(5000);
 
+        relay_turn_off(&relay1);
+        relay_turn_on(&relay2);
+        __delay_ms(5000);
+
+    }
+    
    
 
     return (0);
@@ -25,6 +44,8 @@ int main(void)
 Std_ReturnType application_initialize(void)
 {
     Std_ReturnType ret = E_NOT_OK;
-    ret = relay_initialize(&relay);
+    ret = relay_initialize(&relay1);
+    ret = relay_initialize(&relay2);
+
     return (ret);
 }

@@ -490,8 +490,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ECU_Layer/led/ecu_led.c: 19:         (((*(volatile uint8 *)((0xF8B)))) ^= ((uint8)1 << _POS));
 [e =^ *U -> -> 3979 `i `*Vuc -> << -> -> -> 1 `i `uc `i -> F3156 `i `uc ]
 "20
-[; ;ECU_Layer/led/ecu_led.c: 20:         _delay((unsigned long)((500)*((1 *1000UL *1000UL)/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> * * -> -> -> 1 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+[; ;ECU_Layer/led/ecu_led.c: 20:         _delay((unsigned long)((500)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "21
 [; ;ECU_Layer/led/ecu_led.c: 21:         if (_POS < 8)
 [e $ ! < -> F3156 `i -> 8 `i 310  ]

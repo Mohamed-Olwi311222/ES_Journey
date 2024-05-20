@@ -27,7 +27,7 @@
 /*---------------------------Macros Declarations-------------------------------*/
 #define KHz *1000UL
 #define MHz KHz KHz
-#define _XTAL_FREQ (1 MHz)
+#define _XTAL_FREQ (8 MHz)
 #define PORT_PIN_MAX_SIZE               8
 #define PORT_MAX_LENGTH                 5
 #define DIRECTION_MAX_LENGTH            2

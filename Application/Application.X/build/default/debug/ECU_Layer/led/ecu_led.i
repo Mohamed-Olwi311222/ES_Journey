@@ -5327,7 +5327,7 @@ Std_ReturnType turn_on_leds(void)
 
 
         (((*(volatile uint8 *)((0xF8B)))) ^= ((uint8)1 << _POS));
-        _delay((unsigned long)((500)*((1 *1000UL *1000UL)/4000.0)));
+        _delay((unsigned long)((500)*((8 *1000UL *1000UL)/4000.0)));
         if (_POS < 8)
         {
             _POS++;
