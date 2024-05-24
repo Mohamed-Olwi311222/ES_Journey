@@ -5410,19 +5410,78 @@ Std_ReturnType relay_turn_on(relay_t *relay);
 
 Std_ReturnType relay_turn_off(relay_t *relay);
 # 13 "./app.h" 2
+
+# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
+# 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
+# 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+# 30 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+typedef struct
+{
+    uint8 dc_motor_port : 4;
+    uint8 dc_motor_pin : 3;
+    uint8 dc_motor_status : 1;
+
+}dc_motor_pin_t;
+
+
+
+
+
+typedef struct
+{
+    dc_motor_pin_t dc_motor[0x02U];
+}dc_motor_t;
+
+
+
+
+
+
+
+Std_ReturnType dc_motor_initialize(const dc_motor_t *dc_motor);
+
+
+
+
+
+
+Std_ReturnType dc_motor_move_forward(const dc_motor_t *dc_motor);
+
+
+
+
+
+
+Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
+
+
+
+
+
+
+Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
+# 14 "./app.h" 2
 # 8 "app.c" 2
 
 
 Std_ReturnType application_initialize(void);
-relay_t relay1 = {
-    .relay_port = PORTC_INDEX,
-    .relay_pin = GPIO_PIN0,
-    .relay_status = 0x00U
+dc_motor_t dc_motor_1 = {
+    .dc_motor[0x00U].dc_motor_port = PORTC_INDEX,
+    .dc_motor[0x00U].dc_motor_pin = GPIO_PIN0,
+    .dc_motor[0x00U].dc_motor_status = 0x00U,
+    .dc_motor[0x01U].dc_motor_port = PORTC_INDEX,
+    .dc_motor[0x01U].dc_motor_pin = GPIO_PIN1,
+    .dc_motor[0x01U].dc_motor_status = 0x00U
 };
-relay_t relay2 = {
-    .relay_port = PORTC_INDEX,
-    .relay_pin = GPIO_PIN1,
-    .relay_status = 0x00U
+
+dc_motor_t dc_motor_2 = {
+    .dc_motor[0x00U].dc_motor_port = PORTC_INDEX,
+    .dc_motor[0x00U].dc_motor_pin = GPIO_PIN2,
+    .dc_motor[0x00U].dc_motor_status = 0x00U,
+    .dc_motor[0x01U].dc_motor_port = PORTC_INDEX,
+    .dc_motor[0x01U].dc_motor_pin = GPIO_PIN3,
+    .dc_motor[0x01U].dc_motor_status = 0x00U
 };
 int main(void)
 {
@@ -5433,25 +5492,33 @@ int main(void)
     }
     while (1)
     {
-        relay_turn_on(&relay1);
-        relay_turn_off(&relay2);
-        _delay((unsigned long)((5000)*((8 *1000UL *1000UL)/4000.0)));
-
-        relay_turn_off(&relay1);
-        relay_turn_on(&relay2);
-        _delay((unsigned long)((5000)*((8 *1000UL *1000UL)/4000.0)));
-
+        ret = dc_motor_move_forward(&dc_motor_1);
+        ret = dc_motor_move_forward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_move_backward(&dc_motor_1);
+        ret = dc_motor_move_backward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_stop(&dc_motor_1);
+        ret = dc_motor_stop(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_move_forward(&dc_motor_1);
+        ret = dc_motor_move_backward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_stop(&dc_motor_1);
+        ret = dc_motor_stop(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_move_backward(&dc_motor_1);
+        ret = dc_motor_move_forward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
     }
-
-
-
     return (0);
 }
 Std_ReturnType application_initialize(void)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01u;
-    ret = relay_initialize(&relay1);
-    ret = relay_initialize(&relay2);
+    ret = dc_motor_initialize(&dc_motor_1);
+    ret = dc_motor_initialize(&dc_motor_2);
+
 
     return (ret);
 }

@@ -7,6 +7,13 @@
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
+
+
+
+
+
+
+
 # 1 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
 # 11 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 # 1 "ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
@@ -5265,7 +5272,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 12 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 27 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 30 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef struct
 {
     uint8 dc_motor_port : 4;
@@ -5280,17 +5287,47 @@ typedef struct
 
 typedef struct
 {
-    dc_motor_pin_t dc_motor[2];
+    dc_motor_pin_t dc_motor[0x02U];
 }dc_motor_t;
 
-Std_ReturnType dc_motor_initialize(const dc_motor_pin_t *dc_motor);
-Std_ReturnType dc_motor_move_forward(const dc_motor_pin_t *dc_motor);
-Std_ReturnType dc_motor_move_backward(const dc_motor_pin_t *dc_motor);
-Std_ReturnType dc_motor_stop(const dc_motor_pin_t *dc_motor);
-# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
 
 
-Std_ReturnType dc_motor_initialize(const dc_motor_pin_t *dc_motor)
+
+
+
+
+Std_ReturnType dc_motor_initialize(const dc_motor_t *dc_motor);
+
+
+
+
+
+
+Std_ReturnType dc_motor_move_forward(const dc_motor_t *dc_motor);
+
+
+
+
+
+
+Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
+
+
+
+
+
+
+Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
+# 8 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
+
+static pin_config_t motor_pin1;
+static pin_config_t motor_pin2;
+
+
+
+
+
+Std_ReturnType dc_motor_initialize(const dc_motor_t *dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
 
@@ -5301,10 +5338,29 @@ Std_ReturnType dc_motor_initialize(const dc_motor_pin_t *dc_motor)
     else
     {
 
+        motor_pin1.port = dc_motor->dc_motor[0x00U].dc_motor_port;
+        motor_pin1.pin = dc_motor->dc_motor[0x00U].dc_motor_pin;
+        motor_pin1.logic = dc_motor->dc_motor[0x00U].dc_motor_status;
+        motor_pin1.direction = GPIO_DIRECTION_OUTPUT;
+
+
+        motor_pin2.port = dc_motor->dc_motor[0x01U].dc_motor_port;
+        motor_pin2.pin = dc_motor->dc_motor[0x01U].dc_motor_pin;
+        motor_pin2.logic = dc_motor->dc_motor[0x01U].dc_motor_status;
+        motor_pin2.direction = GPIO_DIRECTION_OUTPUT;
+
+        gpio_pin_initialize(&motor_pin1);
+        gpio_pin_initialize(&motor_pin2);
     }
     return (ret);
 }
-Std_ReturnType dc_motor_move_forward(const dc_motor_pin_t *dc_motor)
+
+
+
+
+
+
+Std_ReturnType dc_motor_move_forward(const dc_motor_t *dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
 
@@ -5314,11 +5370,18 @@ Std_ReturnType dc_motor_move_forward(const dc_motor_pin_t *dc_motor)
     }
     else
     {
-
+        gpio_pin_write_logic(&motor_pin1, GPIO_HIGH);
+        gpio_pin_write_logic(&motor_pin2, GPIO_LOW);
     }
     return (ret);
 }
-Std_ReturnType dc_motor_move_backward(const dc_motor_pin_t *dc_motor)
+
+
+
+
+
+
+Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
 
@@ -5329,10 +5392,18 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_pin_t *dc_motor)
     else
     {
 
+        gpio_pin_write_logic(&motor_pin1, GPIO_LOW);
+        gpio_pin_write_logic(&motor_pin2, GPIO_HIGH);
     }
     return (ret);
 }
-Std_ReturnType dc_motor_stop(const dc_motor_pin_t *dc_motor)
+
+
+
+
+
+
+Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
 
@@ -5342,7 +5413,8 @@ Std_ReturnType dc_motor_stop(const dc_motor_pin_t *dc_motor)
     }
     else
     {
-
+        gpio_pin_write_logic(&motor_pin1, GPIO_LOW);
+        gpio_pin_write_logic(&motor_pin2, GPIO_LOW);
     }
     return (ret);
 }

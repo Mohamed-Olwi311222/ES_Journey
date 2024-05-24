@@ -11,23 +11,24 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+$C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 init CODE 0 0 0 4 1 2
 $dist/default/debug\Application.X.debug.o
-cinit CODE 0 14A4 14A4 36 1 2
-text0 CODE 0 12FE 12FE 6E 1 2
-text1 CODE 0 136C 136C 6A 1 2
-text2 CODE 0 13D6 13D6 6A 1 2
-text3 CODE 0 14FA 14FA 16 1 2
-text4 CODE 0 128E 128E 70 1 2
-text5 CODE 0 1440 1440 64 1 2
-text6 CODE 0 1002 1002 17A 1 2
-text7 CODE 0 117C 117C 112 1 2
-idataCOMRAM CODE 0 14DA 14DA 20 1 1
-cstackCOMRAM COMRAM 1 21 21 12 1 1
+cinit CODE 0 1588 1588 36 1 2
+text0 CODE 0 117C 117C 12A 1 2
+text1 CODE 0 14E0 14E0 38 1 2
+text2 CODE 0 1518 1518 38 1 2
+text3 CODE 0 1550 1550 38 1 2
+text4 CODE 0 15E0 15E0 16 1 2
+text5 CODE 0 13B8 13B8 C4 1 2
+text6 CODE 0 147C 147C 64 1 2
+text7 CODE 0 1002 1002 17A 1 2
+text8 CODE 0 12A6 12A6 112 1 2
+idataCOMRAM CODE 0 15BE 15BE 22 1 1
+cstackCOMRAM COMRAM 1 23 23 11 1 1
 smallconst SMALLCONST 0 1000 1000 2 1 2
-dataCOMRAM COMRAM 1 1 1 20 1 1
-bssCOMRAM COMRAM 1 33 33 E 1 1
+dataCOMRAM COMRAM 1 1 1 22 1 1
+bssCOMRAM COMRAM 1 34 34 10 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -47,23 +48,23 @@ BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
 CONST 4-FFF 1
-CONST 1510-FFFF 1
+CONST 15F6-FFFF 1
 IDLOC 200000-200007 1
-SMALLCONST 1510-FFFF 1
+SMALLCONST 15F6-FFFF 1
 CODE 4-FFF 1
-CODE 1510-FFFF 1
+CODE 15F6-FFFF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DFF 1
 BANK14 E00-EFF 1
 BANK15 F00-F5F 1
-BIGRAM 41-F5F 1
+BIGRAM 44-F5F 1
 BIGSFR F60-FFF 1
-COMRAM 41-5F 1
+COMRAM 44-5F 1
 CONFIG 300000-30000D 1
 EEDATA F00000-F003FF 1
-MEDIUMCONST 1510-FFFF 1
+MEDIUMCONST 15F6-FFFF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -78,118 +79,146 @@ MEDIUMCONST 1510-FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/debug\Application.X.debug.o
-117C text7 CODE >39:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-117C text7 CODE >41:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1180 text7 CODE >43:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-11B0 text7 CODE >45:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-11B4 text7 CODE >46:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-11B8 text7 CODE >52:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1204 text7 CODE >53:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1208 text7 CODE >55:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-125A text7 CODE >56:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-125E text7 CODE >60:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1278 text7 CODE >60:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1280 text7 CODE >60:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-128A text7 CODE >62:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-128C text7 CODE >63:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1002 text6 CODE >96:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1002 text6 CODE >98:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1006 text6 CODE >99:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1036 text6 CODE >101:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-103A text6 CODE >102:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-103E text6 CODE >105:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-104E text6 CODE >106:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1052 text6 CODE >109:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-109E text6 CODE >110:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-10A2 text6 CODE >112:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-10F4 text6 CODE >113:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-10F8 text6 CODE >115:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-114E text6 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1158 text6 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1166 text6 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-116E text6 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1178 text6 CODE >120:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-117A text6 CODE >121:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1440 text5 CODE >17:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1440 text5 CODE >19:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1440 text5 CODE >20:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1470 text5 CODE >22:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1470 text5 CODE >23:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-1474 text5 CODE >26:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-148C text5 CODE >27:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-14A2 text5 CODE >30:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
-128E text4 CODE >14:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-128E text4 CODE >16:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-1292 text4 CODE >18:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12A2 text4 CODE >20:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12A6 text4 CODE >21:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12AA text4 CODE >22:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12AA text4 CODE >24:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12F2 text4 CODE >30:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12FA text4 CODE >32:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12FC text4 CODE >33:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-14FA text3 CODE >44:D:\Programming\ES_Journey\Application\Application.X\app.c
-14FA text3 CODE >46:D:\Programming\ES_Journey\Application\Application.X\app.c
-14FA text3 CODE >47:D:\Programming\ES_Journey\Application\Application.X\app.c
-1502 text3 CODE >48:D:\Programming\ES_Journey\Application\Application.X\app.c
-150C text3 CODE >50:D:\Programming\ES_Journey\Application\Application.X\app.c
-150E text3 CODE >51:D:\Programming\ES_Journey\Application\Application.X\app.c
-13D6 text2 CODE >66:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13D6 text2 CODE >68:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13D6 text2 CODE >70:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13E6 text2 CODE >72:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13E6 text2 CODE >73:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13EA text2 CODE >74:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13EA text2 CODE >76:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-1432 text2 CODE >82:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-143E text2 CODE >85:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-136C text1 CODE >40:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-136C text1 CODE >42:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-136C text1 CODE >44:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-137C text1 CODE >46:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-137C text1 CODE >47:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-1380 text1 CODE >48:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-1380 text1 CODE >50:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13C8 text1 CODE >56:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-13D4 text1 CODE >59:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-12FE text0 CODE >21:D:\Programming\ES_Journey\Application\Application.X\app.c
-12FE text0 CODE >23:D:\Programming\ES_Journey\Application\Application.X\app.c
-1304 text0 CODE >24:D:\Programming\ES_Journey\Application\Application.X\app.c
-1318 text0 CODE >30:D:\Programming\ES_Journey\Application\Application.X\app.c
-1320 text0 CODE >31:D:\Programming\ES_Journey\Application\Application.X\app.c
-1328 text0 CODE >32:D:\Programming\ES_Journey\Application\Application.X\app.c
-133E text0 CODE >34:D:\Programming\ES_Journey\Application\Application.X\app.c
-1346 text0 CODE >35:D:\Programming\ES_Journey\Application\Application.X\app.c
-134E text0 CODE >36:D:\Programming\ES_Journey\Application\Application.X\app.c
-1368 text0 CODE >43:D:\Programming\ES_Journey\Application\Application.X\app.c
-14A4 cinit CODE >2007:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14A4 cinit CODE >2009:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14A4 cinit CODE >2012:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14A4 cinit CODE >2075:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14A6 cinit CODE >2076:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14A8 cinit CODE >2077:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14AA cinit CODE >2078:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14AC cinit CODE >2079:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14AE cinit CODE >2080:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14B0 cinit CODE >2081:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14B4 cinit CODE >2082:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14B8 cinit CODE >2083:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14B8 cinit CODE >2084:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14BA cinit CODE >2085:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14BE cinit CODE >2086:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14C0 cinit CODE >2087:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14C2 cinit CODE >2088:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14C4 cinit CODE >2092:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14C8 cinit CODE >2093:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14CA cinit CODE >2094:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14CA cinit CODE >2095:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14CC cinit CODE >2096:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14CE cinit CODE >2097:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14D0 cinit CODE >2103:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14D0 cinit CODE >2106:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14D2 cinit CODE >2107:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14D4 cinit CODE >2108:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
-14D6 cinit CODE >2109:C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_1.s
+12A6 text8 CODE >39:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+12A6 text8 CODE >41:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+12AA text8 CODE >43:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+12DA text8 CODE >45:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+12DE text8 CODE >46:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+12E2 text8 CODE >52:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+132E text8 CODE >53:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1332 text8 CODE >55:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1384 text8 CODE >56:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1388 text8 CODE >60:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+13A2 text8 CODE >60:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+13AA text8 CODE >60:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+13B4 text8 CODE >62:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+13B6 text8 CODE >63:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1002 text7 CODE >96:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1002 text7 CODE >98:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1006 text7 CODE >99:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1036 text7 CODE >101:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+103A text7 CODE >102:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+103E text7 CODE >105:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+104E text7 CODE >106:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1052 text7 CODE >109:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+109E text7 CODE >110:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+10A2 text7 CODE >112:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+10F4 text7 CODE >113:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+10F8 text7 CODE >115:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+114E text7 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1158 text7 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1166 text7 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+116E text7 CODE >118:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+1178 text7 CODE >120:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+117A text7 CODE >121:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+147C text6 CODE >17:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+147C text6 CODE >19:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+147C text6 CODE >20:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+14AC text6 CODE >22:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+14AC text6 CODE >23:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+14B0 text6 CODE >26:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+14C8 text6 CODE >27:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+14DE text6 CODE >30:D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
+13B8 text5 CODE >16:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+13B8 text5 CODE >18:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+13BC text5 CODE >20:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+13CC text5 CODE >22:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+13D0 text5 CODE >23:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+13D4 text5 CODE >27:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+13EA text5 CODE >28:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1406 text5 CODE >29:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1416 text5 CODE >30:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1418 text5 CODE >33:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1432 text5 CODE >34:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1452 text5 CODE >35:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1466 text5 CODE >36:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1468 text5 CODE >38:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1470 text5 CODE >39:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1478 text5 CODE >41:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+147A text5 CODE >42:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+15E0 text4 CODE >58:D:\Programming\ES_Journey\Application\Application.X\app.c
+15E0 text4 CODE >60:D:\Programming\ES_Journey\Application\Application.X\app.c
+15E0 text4 CODE >61:D:\Programming\ES_Journey\Application\Application.X\app.c
+15E8 text4 CODE >62:D:\Programming\ES_Journey\Application\Application.X\app.c
+15F2 text4 CODE >65:D:\Programming\ES_Journey\Application\Application.X\app.c
+15F4 text4 CODE >66:D:\Programming\ES_Journey\Application\Application.X\app.c
+1550 text3 CODE >70:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1550 text3 CODE >72:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1554 text3 CODE >74:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1564 text3 CODE >76:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1568 text3 CODE >77:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+156C text3 CODE >81:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1578 text3 CODE >82:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1584 text3 CODE >84:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1586 text3 CODE >85:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1518 text2 CODE >49:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1518 text2 CODE >51:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+151C text2 CODE >53:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+152C text2 CODE >55:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1530 text2 CODE >56:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1534 text2 CODE >59:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1540 text2 CODE >60:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+154C text2 CODE >62:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+154E text2 CODE >63:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+14E0 text1 CODE >92:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+14E0 text1 CODE >94:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+14E4 text1 CODE >96:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+14F4 text1 CODE >98:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+14F8 text1 CODE >99:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+14FC text1 CODE >102:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1508 text1 CODE >103:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1514 text1 CODE >105:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+1516 text1 CODE >106:D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+117C text0 CODE >28:D:\Programming\ES_Journey\Application\Application.X\app.c
+117C text0 CODE >30:D:\Programming\ES_Journey\Application\Application.X\app.c
+1182 text0 CODE >31:D:\Programming\ES_Journey\Application\Application.X\app.c
+1196 text0 CODE >37:D:\Programming\ES_Journey\Application\Application.X\app.c
+11A0 text0 CODE >38:D:\Programming\ES_Journey\Application\Application.X\app.c
+11AA text0 CODE >39:D:\Programming\ES_Journey\Application\Application.X\app.c
+11C4 text0 CODE >40:D:\Programming\ES_Journey\Application\Application.X\app.c
+11CC text0 CODE >41:D:\Programming\ES_Journey\Application\Application.X\app.c
+11D4 text0 CODE >42:D:\Programming\ES_Journey\Application\Application.X\app.c
+11EE text0 CODE >43:D:\Programming\ES_Journey\Application\Application.X\app.c
+11F8 text0 CODE >44:D:\Programming\ES_Journey\Application\Application.X\app.c
+1202 text0 CODE >45:D:\Programming\ES_Journey\Application\Application.X\app.c
+121C text0 CODE >46:D:\Programming\ES_Journey\Application\Application.X\app.c
+1224 text0 CODE >47:D:\Programming\ES_Journey\Application\Application.X\app.c
+122C text0 CODE >48:D:\Programming\ES_Journey\Application\Application.X\app.c
+1246 text0 CODE >49:D:\Programming\ES_Journey\Application\Application.X\app.c
+1250 text0 CODE >50:D:\Programming\ES_Journey\Application\Application.X\app.c
+125A text0 CODE >51:D:\Programming\ES_Journey\Application\Application.X\app.c
+1274 text0 CODE >52:D:\Programming\ES_Journey\Application\Application.X\app.c
+127C text0 CODE >53:D:\Programming\ES_Journey\Application\Application.X\app.c
+1284 text0 CODE >54:D:\Programming\ES_Journey\Application\Application.X\app.c
+12A2 text0 CODE >57:D:\Programming\ES_Journey\Application\Application.X\app.c
+1588 cinit CODE >2013:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1588 cinit CODE >2015:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1588 cinit CODE >2018:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1588 cinit CODE >2085:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+158A cinit CODE >2086:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+158C cinit CODE >2087:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+158E cinit CODE >2088:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1590 cinit CODE >2089:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1592 cinit CODE >2090:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1594 cinit CODE >2091:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+1598 cinit CODE >2092:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+159C cinit CODE >2093:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+159C cinit CODE >2094:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+159E cinit CODE >2095:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15A2 cinit CODE >2096:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15A4 cinit CODE >2097:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15A6 cinit CODE >2098:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15A8 cinit CODE >2102:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15AC cinit CODE >2103:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15AE cinit CODE >2104:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15AE cinit CODE >2105:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15B0 cinit CODE >2106:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15B2 cinit CODE >2107:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15B4 cinit CODE >2113:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15B4 cinit CODE >2116:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15B6 cinit CODE >2117:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15B8 cinit CODE >2118:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
+15BA cinit CODE >2119:C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_1.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -203,64 +232,71 @@ $dist/default/debug\Application.X.debug.o
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/debug\Application.X.debug.o
-__Hspace_0 1510 0 ABS 0 - dist/default/debug\Application.X.debug.o
-__Hspace_1 41 0 ABS 0 - dist/default/debug\Application.X.debug.o
+__Hspace_0 15F6 0 ABS 0 - dist/default/debug\Application.X.debug.o
+__Hspace_1 44 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Hspace_2 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Hspace_4 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/debug\Application.X.debug.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug\Application.X.debug.o
 _lat_registers 15 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
 __L__absolute__ 0 0 ABS 0 __absolute__ dist/default/debug\Application.X.debug.o
-gpio_pin_initialize@_pin_config_t 29 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-led_toggle@F3175 3A 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+gpio_pin_initialize@_pin_config_t 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+led_toggle@F3175 3B 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+dc_motor_move_forward@dc_motor 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
 __Lsmallconst 1000 0 SMALLCONST 0 smallconst dist/default/debug\Application.X.debug.o
 _LATA F89 0 ABS 0 - dist/default/debug\Application.X.debug.o
 _LATB F8A 0 ABS 0 - dist/default/debug\Application.X.debug.o
 _LATC F8B 0 ABS 0 - dist/default/debug\Application.X.debug.o
 _LATD F8C 0 ABS 0 - dist/default/debug\Application.X.debug.o
 _LATE F8D 0 ABS 0 - dist/default/debug\Application.X.debug.o
-___sp 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-_main 12FE 0 CODE 0 text0 dist/default/debug\Application.X.debug.o
-___stack_hi 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-___stack_lo 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-start 0 0 CODE 0 init C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+___sp 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+_main 117C 0 CODE 0 text0 dist/default/debug\Application.X.debug.o
+___stack_hi 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+___stack_lo 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+start 0 0 CODE 0 init C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug\Application.X.debug.o
-_application_initialize 14FA 0 CODE 0 text3 dist/default/debug\Application.X.debug.o
+_dc_motor_initialize 13B8 0 CODE 0 text5 dist/default/debug\Application.X.debug.o
+_application_initialize 15E0 0 CODE 0 text4 dist/default/debug\Application.X.debug.o
 __Hpowerup 0 0 CODE 0 powerup dist/default/debug\Application.X.debug.o
+dc_motor_initialize@ret 2F 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/debug\Application.X.debug.o
-__accesstop 60 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-intlevel0 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-intlevel1 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-intlevel2 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-intlevel3 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+__accesstop 60 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+intlevel0 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+intlevel1 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+intlevel2 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+intlevel3 0 0 CODE 0 text C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+_motor_pin1 43 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+_motor_pin2 42 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug\Application.X.debug.o
+__end_of_dc_motor_move_forward 1550 0 CODE 0 text2 dist/default/debug\Application.X.debug.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug\Application.X.debug.o
 __Hifardata 0 0 CODE 0 ifardata dist/default/debug\Application.X.debug.o
-__end_of_relay_initialize 12FE 0 CODE 0 text4 dist/default/debug\Application.X.debug.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/debug\Application.X.debug.o
-__pidataCOMRAM 14DA 0 CODE 0 idataCOMRAM dist/default/debug\Application.X.debug.o
-_relay_turn_on 136C 0 CODE 0 text1 dist/default/debug\Application.X.debug.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+__pidataCOMRAM 15BE 0 CODE 0 idataCOMRAM dist/default/debug\Application.X.debug.o
+_dc_motor_stop 14E0 0 CODE 0 text1 dist/default/debug\Application.X.debug.o
+_dc_motor_move_forward 1518 0 CODE 0 text2 dist/default/debug\Application.X.debug.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/debug\Application.X.debug.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/debug\Application.X.debug.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug\Application.X.debug.o
-main@ret 32 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-relay_turn_on@pin_obj 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+main@ret 33 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/debug\Application.X.debug.o
 __Hintcodelo 0 0 CODE 0 intcodelo dist/default/debug\Application.X.debug.o
-__end_of_gpio_pin_write_logic 117C 0 CODE 0 text6 dist/default/debug\Application.X.debug.o
+__end_of_dc_motor_initialize 147C 0 CODE 0 text5 dist/default/debug\Application.X.debug.o
+__end_of_gpio_pin_write_logic 117C 0 CODE 0 text7 dist/default/debug\Application.X.debug.o
 __LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/debug\Application.X.debug.o
 _port_registers 1 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
+_dc_motor_move_backward 1550 0 CODE 0 text3 dist/default/debug\Application.X.debug.o
 __Lintcodelo 0 0 CODE 0 intcodelo dist/default/debug\Application.X.debug.o
-start_initialization 14A4 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
-_gpio_pin_initialize 1440 0 CODE 0 text5 dist/default/debug\Application.X.debug.o
+start_initialization 1588 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
+_gpio_pin_initialize 147C 0 CODE 0 text6 dist/default/debug\Application.X.debug.o
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug\Application.X.debug.o
 ___rparam_used 1 0 ABS 0 - dist/default/debug\Application.X.debug.o
-_gpio_pin_direction_initialize 117C 0 CODE 0 text7 dist/default/debug\Application.X.debug.o
-isa$xinst 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-__end_of_application_initialize 1510 0 CODE 0 text3 dist/default/debug\Application.X.debug.o
+_gpio_pin_direction_initialize 12A6 0 CODE 0 text8 dist/default/debug\Application.X.debug.o
+isa$xinst 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+__end_of_application_initialize 15F6 0 CODE 0 text4 dist/default/debug\Application.X.debug.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/debug\Application.X.debug.o
 __Hbank1 0 0 ABS 0 bank1 dist/default/debug\Application.X.debug.o
 __Hbank2 0 0 ABS 0 bank2 dist/default/debug\Application.X.debug.o
@@ -287,6 +323,7 @@ __Htext4 0 0 ABS 0 text4 dist/default/debug\Application.X.debug.o
 __Htext5 0 0 ABS 0 text5 dist/default/debug\Application.X.debug.o
 __Htext6 0 0 ABS 0 text6 dist/default/debug\Application.X.debug.o
 __Htext7 0 0 ABS 0 text7 dist/default/debug\Application.X.debug.o
+__Htext8 0 0 ABS 0 text8 dist/default/debug\Application.X.debug.o
 __Hbank10 0 0 ABS 0 bank10 dist/default/debug\Application.X.debug.o
 __Hbank11 0 0 ABS 0 bank11 dist/default/debug\Application.X.debug.o
 __Hbank12 0 0 ABS 0 bank12 dist/default/debug\Application.X.debug.o
@@ -296,12 +333,11 @@ __Hbank15 0 0 ABS 0 bank15 dist/default/debug\Application.X.debug.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/debug\Application.X.debug.o
 __Hbigram 0 0 ABS 0 bigram dist/default/debug\Application.X.debug.o
 __Hbigsfr 0 0 ABS 0 bigsfr dist/default/debug\Application.X.debug.o
-__smallconst 1000 0 SMALLCONST 0 smallconst C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-relay_turn_off@F3160 37 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+__smallconst 1000 0 SMALLCONST 0 smallconst C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+relay_turn_off@F3160 38 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __Hcomram 0 0 ABS 0 comram dist/default/debug\Application.X.debug.o
 __Hconfig 0 0 ABS 0 config dist/default/debug\Application.X.debug.o
-relay_turn_off@relay 29 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-relay_turn_on@F3155 38 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+relay_turn_on@F3155 39 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __Lbank0 0 0 ABS 0 bank0 dist/default/debug\Application.X.debug.o
 __Lbank1 0 0 ABS 0 bank1 dist/default/debug\Application.X.debug.o
 __Lbank2 0 0 ABS 0 bank2 dist/default/debug\Application.X.debug.o
@@ -328,12 +364,13 @@ __Ltext4 0 0 ABS 0 text4 dist/default/debug\Application.X.debug.o
 __Ltext5 0 0 ABS 0 text5 dist/default/debug\Application.X.debug.o
 __Ltext6 0 0 ABS 0 text6 dist/default/debug\Application.X.debug.o
 __Ltext7 0 0 ABS 0 text7 dist/default/debug\Application.X.debug.o
-relay_turn_on@relay 29 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+__Ltext8 0 0 ABS 0 text8 dist/default/debug\Application.X.debug.o
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/debug\Application.X.debug.o
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/debug\Application.X.debug.o
-gpio_pin_write_logic@ret 28 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-button_read_state@btn_high_valid 35 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
-btn_high_magic_button@led_status 3F 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+__end_of_dc_motor_stop 1518 0 CODE 0 text1 dist/default/debug\Application.X.debug.o
+gpio_pin_write_logic@ret 2A 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+button_read_state@btn_high_valid 36 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+btn_high_magic_button@led_status 40 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __Habs1 0 0 ABS 0 abs1 dist/default/debug\Application.X.debug.o
 __Hdata 0 0 ABS 0 data dist/default/debug\Application.X.debug.o
 __Hheap 0 0 HEAP 7 heap dist/default/debug\Application.X.debug.o
@@ -350,20 +387,21 @@ __Lrbit 0 0 COMRAM 1 rbit dist/default/debug\Application.X.debug.o
 __Lrbss 0 0 COMRAM 1 rbss dist/default/debug\Application.X.debug.o
 __Ltemp 0 0 COMRAM 1 temp dist/default/debug\Application.X.debug.o
 __Ltext 0 0 ABS 0 text dist/default/debug\Application.X.debug.o
-button_read_state@btn_low_valid 33 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
-__end_of_relay_turn_on 13D6 0 CODE 0 text1 dist/default/debug\Application.X.debug.o
+button_read_state@btn_low_valid 34 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug\Application.X.debug.o
 __Hintret 0 0 ABS 0 intret dist/default/debug\Application.X.debug.o
 __Hirdata 0 0 CODE 0 irdata dist/default/debug\Application.X.debug.o
-__S0 1510 0 ABS 0 - dist/default/debug\Application.X.debug.o
-__S1 41 0 ABS 0 - dist/default/debug\Application.X.debug.o
+__S0 15F6 0 ABS 0 - dist/default/debug\Application.X.debug.o
+__S1 44 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __S4 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __S5 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
-gpio_pin_direction_initialize@_pin_config_t 21 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-gpio_pin_write_logic@logic 22 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-_relay_turn_off 13D6 0 CODE 0 text2 dist/default/debug\Application.X.debug.o
-__end_of_gpio_pin_initialize 14A4 0 CODE 0 text5 dist/default/debug\Application.X.debug.o
+gpio_pin_direction_initialize@_pin_config_t 23 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+dc_motor_move_backward@dc_motor 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+gpio_pin_write_logic@logic 24 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+__end_of_gpio_pin_initialize 14E0 0 CODE 0 text6 dist/default/debug\Application.X.debug.o
 __HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/debug\Application.X.debug.o
+_dc_motor_1 21 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
+_dc_motor_2 1F 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/debug\Application.X.debug.o
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/debug\Application.X.debug.o
 __Lintentry 0 0 ABS 0 intentry dist/default/debug\Application.X.debug.o
@@ -371,9 +409,11 @@ __Hramtop 1000 0 RAM 0 ramtop dist/default/debug\Application.X.debug.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/debug\Application.X.debug.o
 __activetblptr 2 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Hstruct 0 0 COMRAM 1 struct dist/default/debug\Application.X.debug.o
-application_initialize@ret 2F 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-relay_initialize@F3150 39 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
-relay_initialize@relay 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+application_initialize@ret 30 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+dc_motor_move_forward@ret 2C 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+relay_initialize@F3150 3A 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+dc_motor_initialize@dc_motor 2D 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+__end_of_dc_motor_move_backward 1588 0 CODE 0 text3 dist/default/debug\Application.X.debug.o
 __Lbank10 0 0 ABS 0 bank10 dist/default/debug\Application.X.debug.o
 __Lbank11 0 0 ABS 0 bank11 dist/default/debug\Application.X.debug.o
 __Lbank12 0 0 ABS 0 bank12 dist/default/debug\Application.X.debug.o
@@ -383,21 +423,18 @@ __Lbank15 0 0 ABS 0 bank15 dist/default/debug\Application.X.debug.o
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/debug\Application.X.debug.o
 __Lbigram 0 0 ABS 0 bigram dist/default/debug\Application.X.debug.o
 __Lbigsfr 0 0 ABS 0 bigsfr dist/default/debug\Application.X.debug.o
-gpio_pin_write_logic@_pin_config_t 21 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-__end_of_relay_turn_off 1440 0 CODE 0 text2 dist/default/debug\Application.X.debug.o
+gpio_pin_write_logic@_pin_config_t 23 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
 __Lcomram 0 0 ABS 0 comram dist/default/debug\Application.X.debug.o
 __Lconfig 0 0 ABS 0 config dist/default/debug\Application.X.debug.o
 __Lsivt_hi 0 0 CODE 0 sivt_hi dist/default/debug\Application.X.debug.o
 __Lsivt_lo 0 0 CODE 0 sivt_lo dist/default/debug\Application.X.debug.o
-_relay1 20 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
-_relay2 1F 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/debug\Application.X.debug.o
-___inthi_stack_hi 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-___inthi_stack_lo 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+___inthi_stack_hi 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+___inthi_stack_lo 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/debug\Application.X.debug.o
-isa$std 1 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-stackhi 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-stacklo 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+isa$std 1 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+stackhi 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+stacklo 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __Lintcode 0 0 CODE 0 intcode dist/default/debug\Application.X.debug.o
 __Lintret 0 0 ABS 0 intret dist/default/debug\Application.X.debug.o
 __Lirdata 0 0 CODE 0 irdata dist/default/debug\Application.X.debug.o
@@ -405,50 +442,51 @@ __Lspace_0 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Lspace_1 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Lspace_2 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Lspace_4 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
-__pbssCOMRAM 33 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
-_gpio_pin_write_logic 1002 0 CODE 0 text6 dist/default/debug\Application.X.debug.o
+__pbssCOMRAM 34 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+_gpio_pin_write_logic 1002 0 CODE 0 text7 dist/default/debug\Application.X.debug.o
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug\Application.X.debug.o
-turn_on_leds@_POS 3E 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
-end_of_initialization 14D0 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
+turn_on_leds@_POS 3F 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+end_of_initialization 15B4 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/debug\Application.X.debug.o
 __Hintentry 0 0 ABS 0 intentry dist/default/debug\Application.X.debug.o
-__end_of_gpio_pin_direction_initialize 128E 0 CODE 0 text7 dist/default/debug\Application.X.debug.o
-led_turn_off@F3170 3B 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+__end_of_gpio_pin_direction_initialize 13B8 0 CODE 0 text8 dist/default/debug\Application.X.debug.o
+led_turn_off@F3170 3C 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __Hreset_vec 0 0 CODE 0 reset_vec dist/default/debug\Application.X.debug.o
 __Lramtop 1000 0 RAM 0 ramtop dist/default/debug\Application.X.debug.o
 __Lrparam 0 0 COMRAM 1 rparam dist/default/debug\Application.X.debug.o
-__pcinit 14A4 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
-__ptext0 12FE 0 CODE 0 text0 dist/default/debug\Application.X.debug.o
-__ptext1 136C 0 CODE 0 text1 dist/default/debug\Application.X.debug.o
-__ptext2 13D6 0 CODE 0 text2 dist/default/debug\Application.X.debug.o
-__ptext3 14FA 0 CODE 0 text3 dist/default/debug\Application.X.debug.o
-__ptext4 128E 0 CODE 0 text4 dist/default/debug\Application.X.debug.o
-__ptext5 1440 0 CODE 0 text5 dist/default/debug\Application.X.debug.o
-__ptext6 1002 0 CODE 0 text6 dist/default/debug\Application.X.debug.o
-__ptext7 117C 0 CODE 0 text7 dist/default/debug\Application.X.debug.o
-btn_high_magic_button@btn_high_last_valid_status 40 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+__pcinit 1588 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
+__ptext0 117C 0 CODE 0 text0 dist/default/debug\Application.X.debug.o
+__ptext1 14E0 0 CODE 0 text1 dist/default/debug\Application.X.debug.o
+__ptext2 1518 0 CODE 0 text2 dist/default/debug\Application.X.debug.o
+__ptext3 1550 0 CODE 0 text3 dist/default/debug\Application.X.debug.o
+__ptext4 15E0 0 CODE 0 text4 dist/default/debug\Application.X.debug.o
+__ptext5 13B8 0 CODE 0 text5 dist/default/debug\Application.X.debug.o
+__ptext6 147C 0 CODE 0 text6 dist/default/debug\Application.X.debug.o
+__ptext7 1002 0 CODE 0 text7 dist/default/debug\Application.X.debug.o
+__ptext8 12A6 0 CODE 0 text8 dist/default/debug\Application.X.debug.o
+dc_motor_stop@dc_motor 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+btn_high_magic_button@btn_high_last_valid_status 41 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __Lstruct 0 0 COMRAM 1 struct dist/default/debug\Application.X.debug.o
-relay_initialize@pin_obj 2E 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-__ramtop 1000 0 RAM 0 ramtop C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+__ramtop 1000 0 RAM 0 ramtop C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __Lpowerup 0 0 CODE 0 powerup dist/default/debug\Application.X.debug.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug\Application.X.debug.o
 __H__absolute__ 0 0 ABS 0 __absolute__ dist/default/debug\Application.X.debug.o
 __psmallconst 1000 0 SMALLCONST 0 smallconst dist/default/debug\Application.X.debug.o
-led_turn_on@F3165 3C 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+led_turn_on@F3165 3D 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/debug\Application.X.debug.o
-___heap_hi 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-___heap_lo 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+___heap_hi 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+___heap_lo 0 0 ABS 0 - C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 ___param_bank 0 0 ABS 0 - dist/default/debug\Application.X.debug.o
-___intlo_stack_hi 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
-___intlo_stack_lo 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsnic.\driver_tmp_9.o
+___intlo_stack_hi 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
+___intlo_stack_lo 0 0 STACK 2 stack C:\Users\elsae\AppData\Local\Temp\xcAsc9o.\driver_tmp_9.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/debug\Application.X.debug.o
-__end_of__initialization 14D0 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
+__end_of__initialization 15B4 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
 __Libigdata 0 0 CODE 0 ibigdata dist/default/debug\Application.X.debug.o
 __Lclrtext 0 0 ABS 0 clrtext dist/default/debug\Application.X.debug.o
-relay_initialize@ret 2D 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-__pcstackCOMRAM 21 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-relay_turn_off@pin_obj 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
-__end_of_main 136C 0 CODE 0 text0 dist/default/debug\Application.X.debug.o
+dc_motor_move_backward@ret 2C 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+dc_motor_stop@ret 2C 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+__pcstackCOMRAM 23 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+__end_of_main 12A6 0 CODE 0 text0 dist/default/debug\Application.X.debug.o
 _tris_registers B 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
 _PORTA F80 0 ABS 0 - dist/default/debug\Application.X.debug.o
 _PORTB F81 0 ABS 0 - dist/default/debug\Application.X.debug.o
@@ -468,17 +506,16 @@ __LRAM 1 0 ABS 0 - dist/default/debug\Application.X.debug.o
 __Lbss 0 0 RAM 1 bss dist/default/debug\Application.X.debug.o
 __Lram 0 0 ABS 0 ram dist/default/debug\Application.X.debug.o
 __Lsfr 0 0 ABS 0 sfr dist/default/debug\Application.X.debug.o
-led_intitialize@F3160 3D 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
-gpio_pin_direction_initialize@ret 27 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
+led_intitialize@F3160 3E 0 COMRAM 1 bssCOMRAM dist/default/debug\Application.X.debug.o
+gpio_pin_direction_initialize@ret 29 0 COMRAM 1 cstackCOMRAM dist/default/debug\Application.X.debug.o
 __Hsivt_hi 0 0 CODE 0 sivt_hi dist/default/debug\Application.X.debug.o
 __Hsivt_lo 0 0 CODE 0 sivt_lo dist/default/debug\Application.X.debug.o
-__initialization 14A4 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
+__initialization 1588 0 CODE 0 cinit dist/default/debug\Application.X.debug.o
 __pdataCOMRAM 1 0 COMRAM 1 dataCOMRAM dist/default/debug\Application.X.debug.o
 __Hfardata 0 0 FARRAM 0 fardata dist/default/debug\Application.X.debug.o
 __Hsmallconst 1002 0 SMALLCONST 0 smallconst dist/default/debug\Application.X.debug.o
 __Lifardata 0 0 CODE 0 ifardata dist/default/debug\Application.X.debug.o
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug\Application.X.debug.o
-_relay_initialize 128E 0 CODE 0 text4 dist/default/debug\Application.X.debug.o
 __Hintcode 0 0 CODE 0 intcode dist/default/debug\Application.X.debug.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
@@ -504,10 +541,10 @@ __Hintcode 0 0 CODE 0 intcode dist/default/debug\Application.X.debug.o
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text6 0 1002 1002 50E 1
+text7 0 1002 1002 5F4 1
 reset_vec 0 0 0 4 1
 smallconst 0 1000 1000 2 1
-dataCOMRAM 1 1 1 40 1
+dataCOMRAM 1 1 1 43 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

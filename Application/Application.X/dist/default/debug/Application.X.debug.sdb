@@ -78,9 +78,19 @@ GPIO_PIN5 5
 GPIO_PIN6 6
 GPIO_PIN7 7
 ]
-"21
+"30 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[e E3080 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"59
+[e E3076 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"28 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _main main `(i  1 e 2 0 ]
-"44
+"58
 [v _application_initialize application_initialize `(uc  1 e 1 0 ]
 "4 D:\Programming\Microchip\xc8\v2.46\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -106,16 +116,18 @@ GPIO_PIN7 7
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 D:\Programming\Microchip\xc8\v2.46\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
+"16 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
+"49
+[v _dc_motor_move_forward dc_motor_move_forward `(uc  1 e 1 0 ]
+"70
+[v _dc_motor_move_backward dc_motor_move_backward `(uc  1 e 1 0 ]
+"92
+[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
 "59 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/led/ecu_led.c
 [v _led_turn_on led_turn_on `(uc  1 e 1 0 ]
 "83
 [v _led_turn_off led_turn_off `(uc  1 e 1 0 ]
-"14 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-[v _relay_initialize relay_initialize `(uc  1 e 1 0 ]
-"40
-[v _relay_turn_on relay_turn_on `(uc  1 e 1 0 ]
-"66
-[v _relay_turn_off relay_turn_off `(uc  1 e 1 0 ]
 "17 D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
 "39
@@ -126,14 +138,15 @@ GPIO_PIN7 7
 [v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
 "152
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
-[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
-`uc 1 relay_pin 1 0 :3:4 
-`uc 1 relay_status 1 0 :1:7 
+[s S374 . 1 `uc 1 dc_motor_port 1 0 :4:0 
+`uc 1 dc_motor_pin 1 0 :3:4 
+`uc 1 dc_motor_status 1 0 :1:7 
 ]
 "11 D:\Programming\ES_Journey\Application\Application.X\app.c
-[v _relay1 relay1 `S208  1 e 1 0 ]
-"16
-[v _relay2 relay2 `S208  1 e 1 0 ]
+[s S378 . 2 `[2]S374 1 dc_motor 2 0 ]
+[v _dc_motor_1 dc_motor_1 `S378  1 e 2 0 ]
+"20
+[v _dc_motor_2 dc_motor_2 `S378  1 e 2 0 ]
 "552 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "788
@@ -164,87 +177,90 @@ GPIO_PIN7 7
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2920
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"9 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _motor_pin1 motor_pin1 `S24  1 s 1 motor_pin1 ]
+"10
+[v _motor_pin2 motor_pin2 `S24  1 s 1 motor_pin2 ]
 "4 D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _lat_registers lat_registers `[5]*.39VEuc  1 s 10 lat_registers ]
 "6
 [v _tris_registers tris_registers `[5]*.39VEuc  1 s 10 tris_registers ]
 "8
 [v _port_registers port_registers `[5]*.39VEuc  1 s 10 port_registers ]
-"21 D:\Programming\ES_Journey\Application\Application.X\app.c
+"28 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
-"23
-[v main@ret ret `uc  1 a 1 17 ]
-"43
+"30
+[v main@ret ret `uc  1 a 1 16 ]
+"57
 } 0
-"40 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-[v _relay_turn_on relay_turn_on `(uc  1 e 1 0 ]
+"92 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
 {
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+"94
+[v dc_motor_stop@ret ret `uc  1 a 1 9 ]
+[s S374 . 1 `uc 1 dc_motor_port 1 0 :4:0 
+`uc 1 dc_motor_pin 1 0 :3:4 
+`uc 1 dc_motor_status 1 0 :1:7 
 ]
-"50
-[v relay_turn_on@pin_obj pin_obj `S24  1 a 1 10 ]
-[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
-`uc 1 relay_pin 1 0 :3:4 
-`uc 1 relay_status 1 0 :1:7 
-]
-"40
-[v relay_turn_on@relay relay `*.30S208  1 p 1 8 ]
+"92
+[s S378 . 2 `[2]S374 1 dc_motor 2 0 ]
+[v dc_motor_stop@dc_motor dc_motor `*.30CS378  1 p 1 8 ]
+"106
+} 0
 "49
-[v relay_turn_on@F3155 F3155 `S24  1 s 1 F3155 ]
-"59
-} 0
-"66
-[v _relay_turn_off relay_turn_off `(uc  1 e 1 0 ]
+[v _dc_motor_move_forward dc_motor_move_forward `(uc  1 e 1 0 ]
 {
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+"51
+[v dc_motor_move_forward@ret ret `uc  1 a 1 9 ]
+[s S374 . 1 `uc 1 dc_motor_port 1 0 :4:0 
+`uc 1 dc_motor_pin 1 0 :3:4 
+`uc 1 dc_motor_status 1 0 :1:7 
 ]
-"76
-[v relay_turn_off@pin_obj pin_obj `S24  1 a 1 10 ]
-[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
-`uc 1 relay_pin 1 0 :3:4 
-`uc 1 relay_status 1 0 :1:7 
+"49
+[s S378 . 2 `[2]S374 1 dc_motor 2 0 ]
+[v dc_motor_move_forward@dc_motor dc_motor `*.30CS378  1 p 1 8 ]
+"63
+} 0
+"70
+[v _dc_motor_move_backward dc_motor_move_backward `(uc  1 e 1 0 ]
+{
+"72
+[v dc_motor_move_backward@ret ret `uc  1 a 1 9 ]
+[s S374 . 1 `uc 1 dc_motor_port 1 0 :4:0 
+`uc 1 dc_motor_pin 1 0 :3:4 
+`uc 1 dc_motor_status 1 0 :1:7 
 ]
-"66
-[v relay_turn_off@relay relay `*.30S208  1 p 1 8 ]
-"75
-[v relay_turn_off@F3160 F3160 `S24  1 s 1 F3160 ]
+"70
+[s S378 . 2 `[2]S374 1 dc_motor 2 0 ]
+[v dc_motor_move_backward@dc_motor dc_motor `*.30CS378  1 p 1 8 ]
 "85
 } 0
-"44 D:\Programming\ES_Journey\Application\Application.X\app.c
+"58 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _application_initialize application_initialize `(uc  1 e 1 0 ]
 {
-"46
-[v application_initialize@ret ret `uc  1 a 1 14 ]
-"51
+"60
+[v application_initialize@ret ret `uc  1 a 1 13 ]
+"66
 } 0
-"14 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-[v _relay_initialize relay_initialize `(uc  1 e 1 0 ]
+"16 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
 {
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
+"18
+[v dc_motor_initialize@ret ret `uc  1 a 1 12 ]
+[s S374 . 1 `uc 1 dc_motor_port 1 0 :4:0 
+`uc 1 dc_motor_pin 1 0 :3:4 
+`uc 1 dc_motor_status 1 0 :1:7 
 ]
-"24
-[v relay_initialize@pin_obj pin_obj `S24  1 a 1 13 ]
 "16
-[v relay_initialize@ret ret `uc  1 a 1 12 ]
-[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
-`uc 1 relay_pin 1 0 :3:4 
-`uc 1 relay_status 1 0 :1:7 
-]
-"14
-[v relay_initialize@relay relay `*.30CS208  1 p 1 10 ]
-"23
-[v relay_initialize@F3150 F3150 `S24  1 s 1 F3150 ]
-"33
+[s S378 . 2 `[2]S374 1 dc_motor 2 0 ]
+[v dc_motor_initialize@dc_motor dc_motor `*.30CS378  1 p 1 10 ]
+"42
 } 0
 "17 D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]

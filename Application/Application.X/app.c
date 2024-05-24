@@ -8,15 +8,22 @@
 #include "app.h"
 
 Std_ReturnType application_initialize(void);
-relay_t relay1 = {
-    .relay_port = PORTC_INDEX,
-    .relay_pin = GPIO_PIN0,
-    .relay_status = RELAY_OFF_STATUS
+dc_motor_t  dc_motor_1 = {
+    .dc_motor[DC_MOTOR_PIN1].dc_motor_port = PORTC_INDEX,
+    .dc_motor[DC_MOTOR_PIN1].dc_motor_pin = GPIO_PIN0,
+    .dc_motor[DC_MOTOR_PIN1].dc_motor_status = DC_MOTOR_OFF_STATUS,
+    .dc_motor[DC_MOTOR_PIN2].dc_motor_port = PORTC_INDEX,
+    .dc_motor[DC_MOTOR_PIN2].dc_motor_pin = GPIO_PIN1,
+    .dc_motor[DC_MOTOR_PIN2].dc_motor_status = DC_MOTOR_OFF_STATUS
 };
-relay_t relay2 = {
-    .relay_port = PORTC_INDEX,
-    .relay_pin = GPIO_PIN1,
-    .relay_status = RELAY_OFF_STATUS
+
+dc_motor_t  dc_motor_2 = {
+    .dc_motor[DC_MOTOR_PIN1].dc_motor_port = PORTC_INDEX,
+    .dc_motor[DC_MOTOR_PIN1].dc_motor_pin = GPIO_PIN2,
+    .dc_motor[DC_MOTOR_PIN1].dc_motor_status = DC_MOTOR_OFF_STATUS,
+    .dc_motor[DC_MOTOR_PIN2].dc_motor_port = PORTC_INDEX,
+    .dc_motor[DC_MOTOR_PIN2].dc_motor_pin = GPIO_PIN3,
+    .dc_motor[DC_MOTOR_PIN2].dc_motor_status = DC_MOTOR_OFF_STATUS
 };
 int main(void)
 {
@@ -27,25 +34,33 @@ int main(void)
     }
     while (1)
     {
-        relay_turn_on(&relay1);
-        relay_turn_off(&relay2);
-        __delay_ms(5000);
-
-        relay_turn_off(&relay1);
-        relay_turn_on(&relay2);
-        __delay_ms(5000);
-
+        ret = dc_motor_move_forward(&dc_motor_1);
+        ret = dc_motor_move_forward(&dc_motor_2);
+        __delay_ms(3000);
+        ret = dc_motor_move_backward(&dc_motor_1);
+        ret = dc_motor_move_backward(&dc_motor_2);
+        __delay_ms(3000);
+        ret = dc_motor_stop(&dc_motor_1);
+        ret = dc_motor_stop(&dc_motor_2);
+        __delay_ms(3000);
+        ret = dc_motor_move_forward(&dc_motor_1);
+        ret = dc_motor_move_backward(&dc_motor_2);
+        __delay_ms(3000);
+        ret = dc_motor_stop(&dc_motor_1);
+        ret = dc_motor_stop(&dc_motor_2);
+        __delay_ms(3000);
+        ret = dc_motor_move_backward(&dc_motor_1);
+        ret = dc_motor_move_forward(&dc_motor_2);
+        __delay_ms(3000);
     }
-    
-   
-
     return (0);
 }
 Std_ReturnType application_initialize(void)
 {
     Std_ReturnType ret = E_NOT_OK;
-    ret = relay_initialize(&relay1);
-    ret = relay_initialize(&relay2);
+    ret = dc_motor_initialize(&dc_motor_1);
+    ret = dc_motor_initialize(&dc_motor_2);
+
 
     return (ret);
 }
