@@ -32,6 +32,16 @@ GPIO_DIRECTION_INPUT 1
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
+"24 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
+[e E3080 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"56
+[e E3076 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
 "27 D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
 [e E3076 . `uc
 GPIO_LOW 0
@@ -68,17 +78,7 @@ GPIO_PIN5 5
 GPIO_PIN6 6
 GPIO_PIN7 7
 ]
-"24 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/Relay/ecu_relay.c
-[e E3080 . `uc
-GPIO_DIRECTION_OUTPUT 0
-GPIO_DIRECTION_INPUT 1
-]
-"56
-[e E3076 . `uc
-GPIO_LOW 0
-GPIO_HIGH 1
-]
-"21 D:\Programming\ES_Journey\Application\Application.X\app.c
+"21
 [v _main main `(i  1 e 2 0 ]
 "44
 [v _application_initialize application_initialize `(uc  1 e 1 0 ]
@@ -126,14 +126,14 @@ GPIO_HIGH 1
 [v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
 "152
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
-[s S309 . 1 `uc 1 relay_port 1 0 :4:0 
+[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
 `uc 1 relay_pin 1 0 :3:4 
 `uc 1 relay_status 1 0 :1:7 
 ]
 "11 D:\Programming\ES_Journey\Application\Application.X\app.c
-[v _relay1 relay1 `S309  1 e 1 0 ]
+[v _relay1 relay1 `S208  1 e 1 0 ]
 "16
-[v _relay2 relay2 `S309  1 e 1 0 ]
+[v _relay2 relay2 `S208  1 e 1 0 ]
 "552 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "788
@@ -187,12 +187,12 @@ GPIO_HIGH 1
 ]
 "50
 [v relay_turn_on@pin_obj pin_obj `S24  1 a 1 10 ]
-[s S309 . 1 `uc 1 relay_port 1 0 :4:0 
+[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
 `uc 1 relay_pin 1 0 :3:4 
 `uc 1 relay_status 1 0 :1:7 
 ]
 "40
-[v relay_turn_on@relay relay `*.30S309  1 p 1 8 ]
+[v relay_turn_on@relay relay `*.30S208  1 p 1 8 ]
 "49
 [v relay_turn_on@F3155 F3155 `S24  1 s 1 F3155 ]
 "59
@@ -207,12 +207,12 @@ GPIO_HIGH 1
 ]
 "76
 [v relay_turn_off@pin_obj pin_obj `S24  1 a 1 10 ]
-[s S309 . 1 `uc 1 relay_port 1 0 :4:0 
+[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
 `uc 1 relay_pin 1 0 :3:4 
 `uc 1 relay_status 1 0 :1:7 
 ]
 "66
-[v relay_turn_off@relay relay `*.30S309  1 p 1 8 ]
+[v relay_turn_off@relay relay `*.30S208  1 p 1 8 ]
 "75
 [v relay_turn_off@F3160 F3160 `S24  1 s 1 F3160 ]
 "85
@@ -236,12 +236,12 @@ GPIO_HIGH 1
 [v relay_initialize@pin_obj pin_obj `S24  1 a 1 13 ]
 "16
 [v relay_initialize@ret ret `uc  1 a 1 12 ]
-[s S309 . 1 `uc 1 relay_port 1 0 :4:0 
+[s S208 . 1 `uc 1 relay_port 1 0 :4:0 
 `uc 1 relay_pin 1 0 :3:4 
 `uc 1 relay_status 1 0 :1:7 
 ]
 "14
-[v relay_initialize@relay relay `*.30CS309  1 p 1 10 ]
+[v relay_initialize@relay relay `*.30CS208  1 p 1 10 ]
 "23
 [v relay_initialize@F3150 F3150 `S24  1 s 1 F3150 ]
 "33
