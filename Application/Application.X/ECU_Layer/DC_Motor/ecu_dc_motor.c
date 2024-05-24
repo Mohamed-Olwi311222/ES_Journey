@@ -1,3 +1,10 @@
+/* 
+ * File:   ecu_dc_motor.c
+ * Author: Mohamed olwi
+ *
+ * Created on May 24, 2024, 2:00 AM
+ */
+
 #include "ecu_dc_motor.h"
 
 /**
