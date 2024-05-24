@@ -12,6 +12,7 @@
                 <sourceRootElem>MCAL_Layer</sourceRootElem>
                 <sourceRootElem>GPIO</sourceRootElem>
                 <sourceRootElem>ECU_Layer</sourceRootElem>
+                <sourceRootElem>TESTS</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

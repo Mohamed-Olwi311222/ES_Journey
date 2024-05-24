@@ -65,6 +65,11 @@
           <itemPath>MCAL_Layer/GPIO/hal_gpio.c</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="TESTS" displayName="TESTS" projectFiles="true">
+        <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
+          <itemPath>TESTS/relay_test/relay_test.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>device_config.c</itemPath>
       <itemPath>app.c</itemPath>
     </logicalFolder>
@@ -73,6 +78,7 @@
     <Elem>MCAL_Layer</Elem>
     <Elem>GPIO</Elem>
     <Elem>ECU_Layer</Elem>
+    <Elem>TESTS</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
