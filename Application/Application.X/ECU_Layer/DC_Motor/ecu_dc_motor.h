@@ -21,27 +21,14 @@
 
 /*----------------------------DataTypes---------------------------------------*/
 
-/**
- * struct dc_motor_pin_t - a struct defining a pin for the dc motor
- * @dc_motor_port: the port which the pin is connected to
- * @dc_motor_pin: the pin that the pin of the dc motor is connected to
- * @dc_motor_status: the status of the pin of the dc motor
- */
-typedef struct
-{
-    uint8 dc_motor_port     : 4;
-    uint8 dc_motor_pin      : 3;
-    uint8 dc_motor_status   : 1;
-
-}dc_motor_pin_t;
 
 /**
  * struct dc_motor_t - a struct defining the 2 motor pins
- * @dc_motor: the pins of the dc_motor
+ * @dc_motor_pins: the pins of the dc_motor
  */
 typedef struct
 {
-    dc_motor_pin_t dc_motor[DC_MOTOR_MAX_PINS];
+    pin_config_t dc_motor_pins[DC_MOTOR_MAX_PINS];
 }dc_motor_t;
 /*----------------------------Function Prototypes-----------------------------*/
 

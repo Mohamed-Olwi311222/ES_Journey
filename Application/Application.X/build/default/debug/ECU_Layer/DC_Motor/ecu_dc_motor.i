@@ -5272,22 +5272,10 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 12 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 30 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 29 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef struct
 {
-    uint8 dc_motor_port : 4;
-    uint8 dc_motor_pin : 3;
-    uint8 dc_motor_status : 1;
-
-}dc_motor_pin_t;
-
-
-
-
-
-typedef struct
-{
-    dc_motor_pin_t dc_motor[0x02U];
+    pin_config_t dc_motor_pins[0x02U];
 }dc_motor_t;
 
 
@@ -5320,8 +5308,7 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
 Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
 # 8 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
 
-static pin_config_t motor_pin1;
-static pin_config_t motor_pin2;
+
 
 
 
@@ -5337,20 +5324,8 @@ Std_ReturnType dc_motor_initialize(const dc_motor_t *dc_motor)
     }
     else
     {
-
-        motor_pin1.port = dc_motor->dc_motor[0x00U].dc_motor_port;
-        motor_pin1.pin = dc_motor->dc_motor[0x00U].dc_motor_pin;
-        motor_pin1.logic = dc_motor->dc_motor[0x00U].dc_motor_status;
-        motor_pin1.direction = GPIO_DIRECTION_OUTPUT;
-
-
-        motor_pin2.port = dc_motor->dc_motor[0x01U].dc_motor_port;
-        motor_pin2.pin = dc_motor->dc_motor[0x01U].dc_motor_pin;
-        motor_pin2.logic = dc_motor->dc_motor[0x01U].dc_motor_status;
-        motor_pin2.direction = GPIO_DIRECTION_OUTPUT;
-
-        gpio_pin_initialize(&motor_pin1);
-        gpio_pin_initialize(&motor_pin2);
+        gpio_pin_initialize(&(dc_motor->dc_motor_pins[0x00U]));
+        gpio_pin_initialize(&(dc_motor->dc_motor_pins[0x01U]));
     }
     return (ret);
 }
@@ -5370,8 +5345,8 @@ Std_ReturnType dc_motor_move_forward(const dc_motor_t *dc_motor)
     }
     else
     {
-        gpio_pin_write_logic(&motor_pin1, GPIO_HIGH);
-        gpio_pin_write_logic(&motor_pin2, GPIO_LOW);
+        gpio_pin_write_logic(&(dc_motor->dc_motor_pins[0x00U]), GPIO_HIGH);
+        gpio_pin_write_logic(&(dc_motor->dc_motor_pins[0x01U]), GPIO_LOW);
     }
     return (ret);
 }
@@ -5392,8 +5367,8 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor)
     else
     {
 
-        gpio_pin_write_logic(&motor_pin1, GPIO_LOW);
-        gpio_pin_write_logic(&motor_pin2, GPIO_HIGH);
+        gpio_pin_write_logic(&(dc_motor->dc_motor_pins[0x00U]), GPIO_LOW);
+        gpio_pin_write_logic(&(dc_motor->dc_motor_pins[0x01U]), GPIO_HIGH);
     }
     return (ret);
 }
@@ -5413,8 +5388,8 @@ Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor)
     }
     else
     {
-        gpio_pin_write_logic(&motor_pin1, GPIO_LOW);
-        gpio_pin_write_logic(&motor_pin2, GPIO_LOW);
+        gpio_pin_write_logic(&(dc_motor->dc_motor_pins[0x00U]), GPIO_LOW);
+        gpio_pin_write_logic(&(dc_motor->dc_motor_pins[0x01U]), GPIO_LOW);
     }
     return (ret);
 }

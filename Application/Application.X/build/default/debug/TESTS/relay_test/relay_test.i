@@ -5415,22 +5415,10 @@ Std_ReturnType relay_turn_off(relay_t *relay);
 # 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 # 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
 # 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 30 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 29 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef struct
 {
-    uint8 dc_motor_port : 4;
-    uint8 dc_motor_pin : 3;
-    uint8 dc_motor_status : 1;
-
-}dc_motor_pin_t;
-
-
-
-
-
-typedef struct
-{
-    dc_motor_pin_t dc_motor[0x02U];
+    pin_config_t dc_motor_pins[0x02U];
 }dc_motor_t;
 
 

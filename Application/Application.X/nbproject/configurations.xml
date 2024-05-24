@@ -69,6 +69,11 @@
         <logicalFolder name="button_test" displayName="button_test" projectFiles="true">
           <itemPath>TESTS/button_test/button_test.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="dc_motor_test"
+                       displayName="dc_motor_test"
+                       projectFiles="true">
+          <itemPath>TESTS/dc_motor_test/dc_motor_test.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
           <itemPath>TESTS/relay_test/relay_test.c</itemPath>
         </logicalFolder>

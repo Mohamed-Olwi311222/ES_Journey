@@ -593,7 +593,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _program_selected -> -> 0 `i `uc ]
 "48
 [; ;TESTS/button_test/button_test.c: 48:     if ((Std_ReturnType)0x01u == ret)
-[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 314  ]
+[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 313  ]
 "49
 [; ;TESTS/button_test/button_test.c: 49:     {
 {
@@ -603,10 +603,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "51
 [; ;TESTS/button_test/button_test.c: 51:     }
 }
-[e :U 314 ]
+[e :U 313 ]
 "52
 [; ;TESTS/button_test/button_test.c: 52:     while (1)
-[e :U 316 ]
+[e :U 315 ]
 "53
 [; ;TESTS/button_test/button_test.c: 53:     {
 {
@@ -618,7 +618,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _button_read_state (2 , -> &U _btn_low `*CS309 &U _btn_low_status ]
 "57
 [; ;TESTS/button_test/button_test.c: 57:        if (btn_high_status != btn_high_last_valid_status)
-[e $ ! != -> _btn_high_status `ui -> _btn_high_last_valid_status `ui 318  ]
+[e $ ! != -> _btn_high_status `ui -> _btn_high_last_valid_status `ui 317  ]
 "58
 [; ;TESTS/button_test/button_test.c: 58:        {
 {
@@ -627,7 +627,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _btn_high_last_valid_status _btn_high_status ]
 "60
 [; ;TESTS/button_test/button_test.c: 60:            if (BUTTON_PRESSED == btn_high_status)
-[e $ ! == -> . `E3155 1 `ui -> _btn_high_status `ui 319  ]
+[e $ ! == -> . `E3155 1 `ui -> _btn_high_status `ui 318  ]
 "61
 [; ;TESTS/button_test/button_test.c: 61:            {
 {
@@ -636,60 +636,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _program_selected -> -> 1 `i `uc ]
 "63
 [; ;TESTS/button_test/button_test.c: 63:                switch (program_selected)
-[e $U 321  ]
+[e $U 320  ]
 "64
 [; ;TESTS/button_test/button_test.c: 64:                {
 {
 "65
 [; ;TESTS/button_test/button_test.c: 65:                     case 1: program_1(); break;
-[e :U 322 ]
+[e :U 321 ]
 [e ( _program_1 ..  ]
-[e $U 320  ]
+[e $U 319  ]
 "66
 [; ;TESTS/button_test/button_test.c: 66:                     case 2: program_2(); break;
-[e :U 323 ]
+[e :U 322 ]
 [e ( _program_2 ..  ]
-[e $U 320  ]
+[e $U 319  ]
 "67
 [; ;TESTS/button_test/button_test.c: 67:                     case 3: program_3(); break;
-[e :U 324 ]
+[e :U 323 ]
 [e ( _program_3 ..  ]
-[e $U 320  ]
+[e $U 319  ]
 "68
 [; ;TESTS/button_test/button_test.c: 68:                     default: program_selected = 0;
-[e :U 325 ]
+[e :U 324 ]
 [e = _program_selected -> -> 0 `i `uc ]
 "69
 [; ;TESTS/button_test/button_test.c: 69:                }
 }
-[e $U 320  ]
-[e :U 321 ]
-[e [\ _program_selected , $ -> 1 `i 322
- , $ -> 2 `i 323
- , $ -> 3 `i 324
- 325 ]
+[e $U 319  ]
 [e :U 320 ]
+[e [\ _program_selected , $ -> 1 `i 321
+ , $ -> 2 `i 322
+ , $ -> 3 `i 323
+ 324 ]
+[e :U 319 ]
 "70
 [; ;TESTS/button_test/button_test.c: 70:            }
 }
-[e :U 319 ]
+[e :U 318 ]
 "71
 [; ;TESTS/button_test/button_test.c: 71:        }
 }
-[e :U 318 ]
+[e :U 317 ]
 "72
 [; ;TESTS/button_test/button_test.c: 72:     }
 }
-[e :U 315 ]
-[e $U 316  ]
-[e :U 317 ]
+[e :U 314 ]
+[e $U 315  ]
+[e :U 316 ]
 "73
 [; ;TESTS/button_test/button_test.c: 73:     return (0);
 [e ) -> 0 `i ]
-[e $UE 313  ]
+[e $UE 312  ]
 "74
 [; ;TESTS/button_test/button_test.c: 74: }
-[e :UE 313 ]
+[e :UE 312 ]
 }
 "75
 [; ;TESTS/button_test/button_test.c: 75: Std_ReturnType button_application_initialize(void)
@@ -718,10 +718,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "83
 [; ;TESTS/button_test/button_test.c: 83:     return (ret);
 [e ) _ret ]
-[e $UE 326  ]
+[e $UE 325  ]
 "84
 [; ;TESTS/button_test/button_test.c: 84: }
-[e :UE 326 ]
+[e :UE 325 ]
 }
 "85
 [; ;TESTS/button_test/button_test.c: 85: void program_1()
@@ -745,7 +745,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "91
 [; ;TESTS/button_test/button_test.c: 91: }
-[e :UE 327 ]
+[e :UE 326 ]
 }
 "92
 [; ;TESTS/button_test/button_test.c: 92: void program_2()
@@ -769,7 +769,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "98
 [; ;TESTS/button_test/button_test.c: 98: }
-[e :UE 328 ]
+[e :UE 327 ]
 }
 "99
 [; ;TESTS/button_test/button_test.c: 99: void program_3()
@@ -799,5 +799,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "107
 [; ;TESTS/button_test/button_test.c: 107: }
-[e :UE 329 ]
+[e :UE 328 ]
 }

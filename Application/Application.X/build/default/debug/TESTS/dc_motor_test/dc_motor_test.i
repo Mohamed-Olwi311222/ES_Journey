@@ -1,4 +1,4 @@
-# 1 "TESTS/button_test/button_test.c"
+# 1 "TESTS/dc_motor_test/dc_motor_test.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "TESTS/button_test/button_test.c" 2
+# 1 "TESTS/dc_motor_test/dc_motor_test.c" 2
 
 
 
@@ -14,8 +14,8 @@
 
 
 
-# 1 "TESTS/button_test/../../app.h" 1
-# 11 "TESTS/button_test/../../app.h"
+# 1 "TESTS/dc_motor_test/../../app.h" 1
+# 11 "TESTS/dc_motor_test/../../app.h"
 # 1 "./ECU_Layer/led/ecu_led.h" 1
 # 12 "./ECU_Layer/led/ecu_led.h"
 # 1 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 1
@@ -5324,7 +5324,7 @@ Std_ReturnType led_turn_off(const led_t *led);
 
 
 Std_ReturnType led_toggle(const led_t *led);
-# 11 "TESTS/button_test/../../app.h" 2
+# 11 "TESTS/dc_motor_test/../../app.h" 2
 
 # 1 "./ECU_Layer/button/ecu_button.h" 1
 # 11 "./ECU_Layer/button/ecu_button.h"
@@ -5374,7 +5374,7 @@ Std_ReturnType button_initialize(const button_t *btn);
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
 
 Std_ReturnType btn_high_magic_button(const button_t *btn, led_t *led, const button_state_t *btn_high_status);
-# 12 "TESTS/button_test/../../app.h" 2
+# 12 "TESTS/dc_motor_test/../../app.h" 2
 
 # 1 "./ECU_Layer/Relay/ecu_relay.h" 1
 # 11 "./ECU_Layer/Relay/ecu_relay.h"
@@ -5409,7 +5409,7 @@ Std_ReturnType relay_turn_on(relay_t *relay);
 
 
 Std_ReturnType relay_turn_off(relay_t *relay);
-# 13 "TESTS/button_test/../../app.h" 2
+# 13 "TESTS/dc_motor_test/../../app.h" 2
 
 # 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
 # 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
@@ -5449,105 +5449,71 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
 
 
 Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
-# 14 "TESTS/button_test/../../app.h" 2
-# 8 "TESTS/button_test/button_test.c" 2
+# 14 "TESTS/dc_motor_test/../../app.h" 2
+# 8 "TESTS/dc_motor_test/dc_motor_test.c" 2
 
-Std_ReturnType button_application_initialize(void);
-button_t btn_low = {
-    .button_connection = BUTTON_ACTIVE_LOW,
-    .button_pin.port = PORTD_INDEX,
-    .button_pin.pin = GPIO_PIN0,
-    .button_pin.direction = GPIO_DIRECTION_INPUT,
-    .button_pin.logic = GPIO_HIGH,
-    .button_state_t = BUTTON_RELEASED
+
+Std_ReturnType application_initialize(void);
+dc_motor_t dc_motor_1 = {
+    .dc_motor_pins[0x00U].port = PORTC_INDEX,
+    .dc_motor_pins[0x00U].pin = GPIO_PIN0,
+    .dc_motor_pins[0x00U].logic = 0x00U,
+    .dc_motor_pins[0x00U].direction = GPIO_DIRECTION_OUTPUT,
+
+    .dc_motor_pins[0x01U].port = PORTC_INDEX,
+    .dc_motor_pins[0x01U].pin = GPIO_PIN1,
+    .dc_motor_pins[0x01U].logic = 0x00U,
+    .dc_motor_pins[0x01U].direction = GPIO_DIRECTION_OUTPUT
 };
 
-button_t btn_high = {
-    .button_connection = BUTTON_ACTIVE_HIGH,
-    .button_pin.port = PORTC_INDEX,
-    .button_pin.pin = GPIO_PIN2,
-    .button_pin.direction = GPIO_DIRECTION_INPUT,
-    .button_pin.logic = GPIO_LOW,
-    .button_state_t = BUTTON_RELEASED
+dc_motor_t dc_motor_2 = {
+    .dc_motor_pins[0x00U].port = PORTC_INDEX,
+    .dc_motor_pins[0x00U].pin = GPIO_PIN2,
+    .dc_motor_pins[0x00U].logic = 0x00U,
+    .dc_motor_pins[0x00U].direction = GPIO_DIRECTION_OUTPUT,
+
+    .dc_motor_pins[0x01U].port = PORTC_INDEX,
+    .dc_motor_pins[0x01U].pin = GPIO_PIN3,
+    .dc_motor_pins[0x01U].logic = 0x00U,
+    .dc_motor_pins[0x01U].direction = GPIO_DIRECTION_OUTPUT
+
 };
-led_t led1 = {
-    .port_name = PORTC_INDEX,
-    .pin = 0,
-    .led_status = LED_OFF,
-};
-led_t led2 = {
-    .port_name = PORTC_INDEX,
-    .pin = 1,
-    .led_status = LED_OFF,
-};
-void program_1();
-void program_2();
-void program_3();
-int button_test(void)
+int dc_motor_test(void)
 {
-    Std_ReturnType ret = button_application_initialize();
-    button_state_t btn_high_status = BUTTON_RELEASED;
-    button_state_t btn_low_status = BUTTON_RELEASED;
-    button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
-    uint8 program_selected = 0;
-
+    Std_ReturnType ret = application_initialize();
     if ((Std_ReturnType)0x01u == ret)
     {
-        exit((Std_ReturnType)0x01u);
+        return (-1);
     }
     while (1)
     {
-        button_read_state(&btn_high, &btn_high_status);
-        button_read_state(&btn_low, &btn_low_status);
-
-       if (btn_high_status != btn_high_last_valid_status)
-       {
-           btn_high_last_valid_status = btn_high_status;
-           if (BUTTON_PRESSED == btn_high_status)
-           {
-               program_selected++;
-               switch (program_selected)
-               {
-                    case 1: program_1(); break;
-                    case 2: program_2(); break;
-                    case 3: program_3(); break;
-                    default: program_selected = 0;
-               }
-           }
-       }
+        ret = dc_motor_move_forward(&dc_motor_1);
+        ret = dc_motor_move_forward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_move_backward(&dc_motor_1);
+        ret = dc_motor_move_backward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_stop(&dc_motor_1);
+        ret = dc_motor_stop(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_move_forward(&dc_motor_1);
+        ret = dc_motor_move_backward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_stop(&dc_motor_1);
+        ret = dc_motor_stop(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        ret = dc_motor_move_backward(&dc_motor_1);
+        ret = dc_motor_move_forward(&dc_motor_2);
+        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
     }
     return (0);
 }
-Std_ReturnType button_application_initialize(void)
+Std_ReturnType dc_motorapplication_initialize(void)
 {
-    Std_ReturnType ret = (Std_ReturnType)0x00u;
-    ret = button_initialize(&btn_high);
-    ret = button_initialize(&btn_low);
-    ret = led_intitialize(&led1);
-    ret = led_intitialize(&led2);
+    Std_ReturnType ret = (Std_ReturnType)0x01u;
+    ret = dc_motor_initialize(&dc_motor_1);
+    ret = dc_motor_initialize(&dc_motor_2);
+
 
     return (ret);
-}
-void program_1()
-{
-    led_turn_on(&led1);
-    _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led1);
-    _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
-}
-void program_2()
-{
-    led_turn_on(&led2);
-    _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led2);
-    _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
-}
-void program_3()
-{
-    led_turn_on(&led1);
-    led_turn_on(&led2);
-    _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
-    led_turn_off(&led1);
-    led_turn_off(&led2);
-    _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
 }

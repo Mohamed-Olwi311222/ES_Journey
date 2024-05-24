@@ -6,17 +6,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ECU_Layer/DC_Motor/ecu_dc_motor.h: 30: {
 [s S311 `S307 -> 2 `i ]
 [n S311 . dc_motor_pins ]
-"11 app.c
-[; ;app.c: 11: dc_motor_t dc_motor_1 = {
+"11 TESTS/dc_motor_test/dc_motor_test.c
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 11: dc_motor_t dc_motor_1 = {
 [c E3094 0 1 2 3 4 .. ]
 [n E3094 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
 [c E3084 0 1 2 3 4 5 6 7 .. ]
 [n E3084 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
 [c E3080 0 1 .. ]
 [n E3080 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
-[p mainexit ]
 "10
-[; ;app.c: 10: Std_ReturnType application_initialize(void);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 10: Std_ReturnType application_initialize(void);
 [v _application_initialize `(uc ~T0 @X0 0 ef ]
 "47 ./ECU_Layer/DC_Motor/ecu_dc_motor.h
 [; ;./ECU_Layer/DC_Motor/ecu_dc_motor.h: 47: Std_ReturnType dc_motor_move_forward(const dc_motor_t *dc_motor);
@@ -475,8 +474,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7352
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 7352: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"11 app.c
-[; ;app.c: 11: dc_motor_t dc_motor_1 = {
+"11 TESTS/dc_motor_test/dc_motor_test.c
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 11: dc_motor_t dc_motor_1 = {
 [v _dc_motor_1 `S311 ~T0 @X0 1 e ]
 [i _dc_motor_1
 :U ..
@@ -499,7 +498,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "23
-[; ;app.c: 23: dc_motor_t dc_motor_2 = {
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 23: dc_motor_t dc_motor_2 = {
 [v _dc_motor_2 `S311 ~T0 @X0 1 e ]
 [i _dc_motor_2
 :U ..
@@ -521,130 +520,129 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "35
-[; ;app.c: 35: int main(void)
-[v _main `(i ~T0 @X0 1 ef ]
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 35: int dc_motor_test(void)
+[v _dc_motor_test `(i ~T0 @X0 1 ef ]
 "36
-[; ;app.c: 36: {
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 36: {
 {
-[e :U _main ]
+[e :U _dc_motor_test ]
 [f ]
 "37
-[; ;app.c: 37:     Std_ReturnType ret = application_initialize();
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 37:     Std_ReturnType ret = application_initialize();
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret ( _application_initialize ..  ]
 "38
-[; ;app.c: 38:     if ((Std_ReturnType)0x01u == ret)
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 38:     if ((Std_ReturnType)0x01u == ret)
 [e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 313  ]
 "39
-[; ;app.c: 39:     {
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 39:     {
 {
 "40
-[; ;app.c: 40:         return (-1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 40:         return (-1);
 [e ) -U -> 1 `i ]
 [e $UE 312  ]
 "41
-[; ;app.c: 41:     }
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 41:     }
 }
 [e :U 313 ]
 "42
-[; ;app.c: 42:     while (1)
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 42:     while (1)
 [e :U 315 ]
 "43
-[; ;app.c: 43:     {
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 43:     {
 {
 "44
-[; ;app.c: 44:         ret = dc_motor_move_forward(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 44:         ret = dc_motor_move_forward(&dc_motor_1);
 [e = _ret ( _dc_motor_move_forward (1 -> &U _dc_motor_1 `*CS311 ]
 "45
-[; ;app.c: 45:         ret = dc_motor_move_forward(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 45:         ret = dc_motor_move_forward(&dc_motor_2);
 [e = _ret ( _dc_motor_move_forward (1 -> &U _dc_motor_2 `*CS311 ]
 "46
-[; ;app.c: 46:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 46:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "47
-[; ;app.c: 47:         ret = dc_motor_move_backward(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 47:         ret = dc_motor_move_backward(&dc_motor_1);
 [e = _ret ( _dc_motor_move_backward (1 -> &U _dc_motor_1 `*CS311 ]
 "48
-[; ;app.c: 48:         ret = dc_motor_move_backward(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 48:         ret = dc_motor_move_backward(&dc_motor_2);
 [e = _ret ( _dc_motor_move_backward (1 -> &U _dc_motor_2 `*CS311 ]
 "49
-[; ;app.c: 49:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 49:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "50
-[; ;app.c: 50:         ret = dc_motor_stop(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 50:         ret = dc_motor_stop(&dc_motor_1);
 [e = _ret ( _dc_motor_stop (1 -> &U _dc_motor_1 `*CS311 ]
 "51
-[; ;app.c: 51:         ret = dc_motor_stop(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 51:         ret = dc_motor_stop(&dc_motor_2);
 [e = _ret ( _dc_motor_stop (1 -> &U _dc_motor_2 `*CS311 ]
 "52
-[; ;app.c: 52:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 52:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "53
-[; ;app.c: 53:         ret = dc_motor_move_forward(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 53:         ret = dc_motor_move_forward(&dc_motor_1);
 [e = _ret ( _dc_motor_move_forward (1 -> &U _dc_motor_1 `*CS311 ]
 "54
-[; ;app.c: 54:         ret = dc_motor_move_backward(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 54:         ret = dc_motor_move_backward(&dc_motor_2);
 [e = _ret ( _dc_motor_move_backward (1 -> &U _dc_motor_2 `*CS311 ]
 "55
-[; ;app.c: 55:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 55:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "56
-[; ;app.c: 56:         ret = dc_motor_stop(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 56:         ret = dc_motor_stop(&dc_motor_1);
 [e = _ret ( _dc_motor_stop (1 -> &U _dc_motor_1 `*CS311 ]
 "57
-[; ;app.c: 57:         ret = dc_motor_stop(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 57:         ret = dc_motor_stop(&dc_motor_2);
 [e = _ret ( _dc_motor_stop (1 -> &U _dc_motor_2 `*CS311 ]
 "58
-[; ;app.c: 58:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 58:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "59
-[; ;app.c: 59:         ret = dc_motor_move_backward(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 59:         ret = dc_motor_move_backward(&dc_motor_1);
 [e = _ret ( _dc_motor_move_backward (1 -> &U _dc_motor_1 `*CS311 ]
 "60
-[; ;app.c: 60:         ret = dc_motor_move_forward(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 60:         ret = dc_motor_move_forward(&dc_motor_2);
 [e = _ret ( _dc_motor_move_forward (1 -> &U _dc_motor_2 `*CS311 ]
 "61
-[; ;app.c: 61:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 61:         _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
 [e ( __delay (1 -> * -> -> 3000 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
 "62
-[; ;app.c: 62:     }
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 62:     }
 }
 [e :U 314 ]
 [e $U 315  ]
 [e :U 316 ]
 "63
-[; ;app.c: 63:     return (0);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 63:     return (0);
 [e ) -> 0 `i ]
 [e $UE 312  ]
 "64
-[; ;app.c: 64: }
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 64: }
 [e :UE 312 ]
 }
 "65
-[; ;app.c: 65: Std_ReturnType application_initialize(void)
-[v _application_initialize `(uc ~T0 @X0 1 ef ]
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 65: Std_ReturnType dc_motorapplication_initialize(void)
+[v _dc_motorapplication_initialize `(uc ~T0 @X0 1 ef ]
 "66
-[; ;app.c: 66: {
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 66: {
 {
-[e :U _application_initialize ]
+[e :U _dc_motorapplication_initialize ]
 [f ]
 "67
-[; ;app.c: 67:     Std_ReturnType ret = (Std_ReturnType)0x01u;
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 67:     Std_ReturnType ret = (Std_ReturnType)0x01u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `ui `uc ]
 "68
-[; ;app.c: 68:     ret = dc_motor_initialize(&dc_motor_1);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 68:     ret = dc_motor_initialize(&dc_motor_1);
 [e = _ret ( _dc_motor_initialize (1 -> &U _dc_motor_1 `*CS311 ]
 "69
-[; ;app.c: 69:     ret = dc_motor_initialize(&dc_motor_2);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 69:     ret = dc_motor_initialize(&dc_motor_2);
 [e = _ret ( _dc_motor_initialize (1 -> &U _dc_motor_2 `*CS311 ]
 "72
-[; ;app.c: 72:     return (ret);
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 72:     return (ret);
 [e ) _ret ]
 [e $UE 317  ]
 "73
-[; ;app.c: 73: }
+[; ;TESTS/dc_motor_test/dc_motor_test.c: 73: }
 [e :UE 317 ]
 }

@@ -5415,22 +5415,10 @@ Std_ReturnType relay_turn_off(relay_t *relay);
 # 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 # 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
 # 11 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 30 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 29 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef struct
 {
-    uint8 dc_motor_port : 4;
-    uint8 dc_motor_pin : 3;
-    uint8 dc_motor_status : 1;
-
-}dc_motor_pin_t;
-
-
-
-
-
-typedef struct
-{
-    dc_motor_pin_t dc_motor[0x02U];
+    pin_config_t dc_motor_pins[0x02U];
 }dc_motor_t;
 
 
@@ -5467,21 +5455,28 @@ Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
 
 Std_ReturnType application_initialize(void);
 dc_motor_t dc_motor_1 = {
-    .dc_motor[0x00U].dc_motor_port = PORTC_INDEX,
-    .dc_motor[0x00U].dc_motor_pin = GPIO_PIN0,
-    .dc_motor[0x00U].dc_motor_status = 0x00U,
-    .dc_motor[0x01U].dc_motor_port = PORTC_INDEX,
-    .dc_motor[0x01U].dc_motor_pin = GPIO_PIN1,
-    .dc_motor[0x01U].dc_motor_status = 0x00U
+    .dc_motor_pins[0x00U].port = PORTC_INDEX,
+    .dc_motor_pins[0x00U].pin = GPIO_PIN0,
+    .dc_motor_pins[0x00U].logic = 0x00U,
+    .dc_motor_pins[0x00U].direction = GPIO_DIRECTION_OUTPUT,
+
+    .dc_motor_pins[0x01U].port = PORTC_INDEX,
+    .dc_motor_pins[0x01U].pin = GPIO_PIN1,
+    .dc_motor_pins[0x01U].logic = 0x00U,
+    .dc_motor_pins[0x01U].direction = GPIO_DIRECTION_OUTPUT
 };
 
 dc_motor_t dc_motor_2 = {
-    .dc_motor[0x00U].dc_motor_port = PORTC_INDEX,
-    .dc_motor[0x00U].dc_motor_pin = GPIO_PIN2,
-    .dc_motor[0x00U].dc_motor_status = 0x00U,
-    .dc_motor[0x01U].dc_motor_port = PORTC_INDEX,
-    .dc_motor[0x01U].dc_motor_pin = GPIO_PIN3,
-    .dc_motor[0x01U].dc_motor_status = 0x00U
+    .dc_motor_pins[0x00U].port = PORTC_INDEX,
+    .dc_motor_pins[0x00U].pin = GPIO_PIN2,
+    .dc_motor_pins[0x00U].logic = 0x00U,
+    .dc_motor_pins[0x00U].direction = GPIO_DIRECTION_OUTPUT,
+
+    .dc_motor_pins[0x01U].port = PORTC_INDEX,
+    .dc_motor_pins[0x01U].pin = GPIO_PIN3,
+    .dc_motor_pins[0x01U].logic = 0x00U,
+    .dc_motor_pins[0x01U].direction = GPIO_DIRECTION_OUTPUT
+
 };
 int main(void)
 {
