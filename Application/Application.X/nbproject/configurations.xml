@@ -66,6 +66,9 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="TESTS" displayName="TESTS" projectFiles="true">
+        <logicalFolder name="button_test" displayName="button_test" projectFiles="true">
+          <itemPath>TESTS/button_test/button_test.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
           <itemPath>TESTS/relay_test/relay_test.c</itemPath>
         </logicalFolder>
