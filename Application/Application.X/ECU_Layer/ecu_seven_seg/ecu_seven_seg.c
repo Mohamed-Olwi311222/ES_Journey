@@ -5,6 +5,12 @@
  * Created on 31 May 2024, 10:47
  */
 #include "ecu_seven_seg.h"
+
+/**
+ * @brief initialize the connected seven segments
+ * @param seg a pointer to segment_t datatype @ref segment_t
+ * @return E_OK if success otherwise E_NOT_OK
+ */
 Std_ReturnType seven_segment_initialize(const segment_t *seg)
 {
     Std_ReturnType ret = E_OK;
@@ -26,6 +32,13 @@ Std_ReturnType seven_segment_initialize(const segment_t *seg)
     }
     return (ret);
 }
+
+/**
+ * @brief used to write the required number on the seven segments
+ * @param seg a pointer to segment_t datatype @ref segment_t
+ * @param number the number to write on the seven segments
+ * @return E_OK if success otherwise E_NOT_OK 
+ */
 Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number)
 {
     Std_ReturnType ret = E_OK;
