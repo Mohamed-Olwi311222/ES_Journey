@@ -88,6 +88,11 @@
         <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
           <itemPath>TESTS/relay_test/relay_test.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="seven_segment_test"
+                       displayName="seven_segments_test"
+                       projectFiles="true">
+          <itemPath>TESTS/seven_segment_test/seven_segments_test.c</itemPath>
+        </logicalFolder>
       </logicalFolder>
       <itemPath>device_config.c</itemPath>
       <itemPath>app.c</itemPath>
@@ -223,6 +228,9 @@
         <property key="program-the-device-with-default-config-words" value="false"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
+      <Simulator>
+        <property key="periphADC1.minTacq" value="5"/>
+      </Simulator>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="Freeze Peripherals" value="true"/>

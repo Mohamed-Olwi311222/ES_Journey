@@ -5475,6 +5475,47 @@ Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
 
 Std_ReturnType application_initialize(void);
 
+pin_config_t seg1_enable = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN0,
+    .logic = GPIO_LOW,
+    .direction = GPIO_DIRECTION_OUTPUT
+};
+
+pin_config_t seg2_enable = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN1,
+    .logic = GPIO_LOW,
+    .direction = GPIO_DIRECTION_OUTPUT
+};
+
+pin_config_t seg3_enable = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN2,
+    .logic = GPIO_LOW,
+    .direction = GPIO_DIRECTION_OUTPUT
+};
+
+pin_config_t seg4_enable = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN3,
+    .logic = GPIO_LOW,
+    .direction = GPIO_DIRECTION_OUTPUT
+};
+
+pin_config_t seg5_enable = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN4,
+    .logic = GPIO_LOW,
+    .direction = GPIO_DIRECTION_OUTPUT
+};
+
+pin_config_t seg6_enable = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN5,
+    .logic = GPIO_LOW,
+    .direction = GPIO_DIRECTION_OUTPUT
+};
 
 segment_t seg1 = {
     .segment_pins[0].direction = GPIO_DIRECTION_OUTPUT,
@@ -5495,34 +5536,85 @@ segment_t seg1 = {
     .segment_pins[3].direction = GPIO_DIRECTION_OUTPUT,
     .segment_pins[3].logic = GPIO_LOW,
     .segment_pins[3].pin = GPIO_PIN3,
-    .segment_pins[3].port = PORTC_INDEX
+    .segment_pins[3].port = PORTC_INDEX,
+
+    .segment_type = SEGMENT_COMMON_CATHODE
     };
+
+uint8 hours = 23, minutes = 59, seconds = 45;
+uint8 counter = 0;
 int main(void)
 {
     Std_ReturnType ret = application_initialize();
-    uint8 num = 0;
     if ((Std_ReturnType)0x01u == ret)
     {
         return (-1);
     }
-    while (1)
-    {
-        if (num > 9)
-            num = 0;
-        ret = seven_segment_write_number(&seg1, num);
-        num++;
-        _delay((unsigned long)((200)*((8 *1000UL *1000UL)/4000.0)));
-    }
-# 90 "app.c"
+   while (1)
+   {
+       for (counter = 0; counter < 50; counter++)
+       {
+
+           ret = seven_segment_write_number(&seg1, (uint8)(hours / 10));
+           ret = gpio_pin_write_logic(&seg1_enable, GPIO_HIGH);
+           _delay((unsigned long)((3333)*((8 *1000UL *1000UL)/4000000.0)));
+           ret = gpio_pin_write_logic(&seg1_enable, GPIO_LOW);
+
+           ret = seven_segment_write_number(&seg1, (uint8)(hours % 10));
+           ret = gpio_pin_write_logic(&seg2_enable, GPIO_HIGH);
+           _delay((unsigned long)((3333)*((8 *1000UL *1000UL)/4000000.0)));
+           ret = gpio_pin_write_logic(&seg2_enable, GPIO_LOW);
+
+
+           ret = seven_segment_write_number(&seg1, (uint8)(minutes / 10));
+           ret = gpio_pin_write_logic(&seg3_enable, GPIO_HIGH);
+           _delay((unsigned long)((3333)*((8 *1000UL *1000UL)/4000000.0)));
+           ret = gpio_pin_write_logic(&seg3_enable, GPIO_LOW);
+
+           ret = seven_segment_write_number(&seg1, (uint8)(minutes % 10));
+           ret = gpio_pin_write_logic(&seg4_enable, GPIO_HIGH);
+           _delay((unsigned long)((3333)*((8 *1000UL *1000UL)/4000000.0)));
+           ret = gpio_pin_write_logic(&seg4_enable, GPIO_LOW);
+
+
+           ret = seven_segment_write_number(&seg1, (uint8)(seconds / 10));
+           ret = gpio_pin_write_logic(&seg5_enable, GPIO_HIGH);
+           _delay((unsigned long)((3333)*((8 *1000UL *1000UL)/4000000.0)));
+           ret = gpio_pin_write_logic(&seg5_enable, GPIO_LOW);
+
+           ret = seven_segment_write_number(&seg1, (uint8)(seconds % 10));
+           ret = gpio_pin_write_logic(&seg6_enable, GPIO_HIGH);
+           _delay((unsigned long)((3333)*((8 *1000UL *1000UL)/4000000.0)));
+           ret = gpio_pin_write_logic(&seg6_enable, GPIO_LOW);
+       }
+       seconds++;
+       if (60 == seconds)
+       {
+           minutes++;
+           seconds = 0;
+       }
+       if (60 == minutes)
+       {
+           hours++;
+           minutes = 0;
+       }
+       if (24 == hours)
+       {
+           hours = 0;
+       }
+   }
+   return (0);
 }
 Std_ReturnType application_initialize(void)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01u;
-
-
-
-
-
     ret = seven_segment_initialize(&seg1);
+    ret = gpio_pin_direction_initialize(&seg1_enable);
+    ret = gpio_pin_direction_initialize(&seg2_enable);
+    ret = gpio_pin_direction_initialize(&seg3_enable);
+    ret = gpio_pin_direction_initialize(&seg4_enable);
+    ret = gpio_pin_direction_initialize(&seg5_enable);
+    ret = gpio_pin_direction_initialize(&seg6_enable);
+
     return (ret);
 }
