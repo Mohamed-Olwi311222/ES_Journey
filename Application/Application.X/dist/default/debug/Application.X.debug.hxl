@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\elsae\AppData\Local\Temp\xcAsp54.\driver_tmp_3.o
+ C:\Users\elsae\AppData\Local\Temp\xcAs11os.\driver_tmp_3.o
  -Odist/default/debug\Application.X.debug.hex
  -logfile=dist/default/debug\Application.X.debug.hxl
  -addressing=1
@@ -9,15 +9,17 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\elsae\AppData\Local\Temp\xcAsp54.\driver_tmp_3.o)
-  1000h - 156Bh		(C:\Users\elsae\AppData\Local\Temp\xcAsp54.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\elsae\AppData\Local\Temp\xcAs11os.\driver_tmp_3.o)
+  1000h - 14B4h		(C:\Users\elsae\AppData\Local\Temp\xcAs11os.\driver_tmp_3.o)
+  14B6h - 14C3h		(C:\Users\elsae\AppData\Local\Temp\xcAs11os.\driver_tmp_3.o)
  Unused ranges:
   4h - FFFh
+  14B5h - 14B5h
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\elsae\AppData\Local\Temp\xcAsp54.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\elsae\AppData\Local\Temp\xcAs11os.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -98,16 +100,6 @@
 00001480 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001490 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000014A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000014B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000014C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000014D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000014E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000014F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001500 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001510 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001520 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001530 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001540 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001550 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001560 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- --
-00001570 | --
+000014B0 | H1 H1 H1 H1 H1 -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000014C0 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
+000014D0 | --

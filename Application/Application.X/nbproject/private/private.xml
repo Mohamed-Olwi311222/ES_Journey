@@ -5,9 +5,8 @@
         <group>
             <file>file:/D:/Programming/ES_Journey/Application/Application.X/app.c</file>
             <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/DC_Motor/ecu_dc_motor.c</file>
+            <file>file:/D:/Programming/ES_Journey/Application/Application.X/TESTS/dc_motor_test/dc_motor_test.c</file>
             <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/DC_Motor/ecu_dc_motor.h</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/app.h</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h</file>
         </group>
     </open-files>
 </project-private>

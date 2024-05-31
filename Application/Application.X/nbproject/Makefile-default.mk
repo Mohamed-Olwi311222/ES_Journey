@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=ECU_Layer/button/button.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/led/ecu_led.c ECU_Layer/Relay/ecu_relay.c MCAL_Layer/GPIO/hal_gpio.c device_config.c app.c TESTS/relay_test/relay_test.c TESTS/button_test/button_test.c TESTS/dc_motor_test/dc_motor_test.c
+SOURCEFILES_QUOTED_IF_SPACED=ECU_Layer/button/button.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/led/ecu_led.c ECU_Layer/Relay/ecu_relay.c MCAL_Layer/GPIO/hal_gpio.c TESTS/button_test/button_test.c TESTS/dc_motor_test/dc_motor_test.c TESTS/relay_test/relay_test.c device_config.c app.c ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ECU_Layer/button/button.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/led/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Relay/ecu_relay.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/device_config.p1 ${OBJECTDIR}/app.p1 ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 ${OBJECTDIR}/TESTS/button_test/button_test.p1 ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/ECU_Layer/button/button.p1.d ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1.d ${OBJECTDIR}/ECU_Layer/led/ecu_led.p1.d ${OBJECTDIR}/ECU_Layer/Relay/ecu_relay.p1.d ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d ${OBJECTDIR}/device_config.p1.d ${OBJECTDIR}/app.p1.d ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d ${OBJECTDIR}/TESTS/button_test/button_test.p1.d ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ECU_Layer/button/button.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/led/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Relay/ecu_relay.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/TESTS/button_test/button_test.p1 ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 ${OBJECTDIR}/device_config.p1 ${OBJECTDIR}/app.p1 ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/ECU_Layer/button/button.p1.d ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1.d ${OBJECTDIR}/ECU_Layer/led/ecu_led.p1.d ${OBJECTDIR}/ECU_Layer/Relay/ecu_relay.p1.d ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d ${OBJECTDIR}/TESTS/button_test/button_test.p1.d ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d ${OBJECTDIR}/device_config.p1.d ${OBJECTDIR}/app.p1.d ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/ECU_Layer/button/button.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/led/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Relay/ecu_relay.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/device_config.p1 ${OBJECTDIR}/app.p1 ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 ${OBJECTDIR}/TESTS/button_test/button_test.p1 ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1
+OBJECTFILES=${OBJECTDIR}/ECU_Layer/button/button.p1 ${OBJECTDIR}/ECU_Layer/DC_Motor/ecu_dc_motor.p1 ${OBJECTDIR}/ECU_Layer/led/ecu_led.p1 ${OBJECTDIR}/ECU_Layer/Relay/ecu_relay.p1 ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1 ${OBJECTDIR}/TESTS/button_test/button_test.p1 ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 ${OBJECTDIR}/device_config.p1 ${OBJECTDIR}/app.p1 ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1
 
 # Source Files
-SOURCEFILES=ECU_Layer/button/button.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/led/ecu_led.c ECU_Layer/Relay/ecu_relay.c MCAL_Layer/GPIO/hal_gpio.c device_config.c app.c TESTS/relay_test/relay_test.c TESTS/button_test/button_test.c TESTS/dc_motor_test/dc_motor_test.c
+SOURCEFILES=ECU_Layer/button/button.c ECU_Layer/DC_Motor/ecu_dc_motor.c ECU_Layer/led/ecu_led.c ECU_Layer/Relay/ecu_relay.c MCAL_Layer/GPIO/hal_gpio.c TESTS/button_test/button_test.c TESTS/dc_motor_test/dc_motor_test.c TESTS/relay_test/relay_test.c device_config.c app.c ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
 
 
 
@@ -128,6 +128,30 @@ ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1: MCAL_Layer/GPIO/hal_gpio.c  nbproject/
 	@-${MV} ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.d ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/TESTS/button_test/button_test.p1: TESTS/button_test/button_test.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/TESTS/button_test" 
+	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
+	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/button_test/button_test.p1 TESTS/button_test/button_test.c 
+	@-${MV} ${OBJECTDIR}/TESTS/button_test/button_test.d ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1: TESTS/dc_motor_test/dc_motor_test.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/TESTS/dc_motor_test" 
+	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
+	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 TESTS/dc_motor_test/dc_motor_test.c 
+	@-${MV} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.d ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/TESTS/relay_test/relay_test.p1: TESTS/relay_test/relay_test.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/TESTS/relay_test" 
+	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
+	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 TESTS/relay_test/relay_test.c 
+	@-${MV} ${OBJECTDIR}/TESTS/relay_test/relay_test.d ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/device_config.p1: device_config.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/device_config.p1.d 
@@ -144,29 +168,13 @@ ${OBJECTDIR}/app.p1: app.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/app.d ${OBJECTDIR}/app.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/app.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/TESTS/relay_test/relay_test.p1: TESTS/relay_test/relay_test.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/TESTS/relay_test" 
-	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
-	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 TESTS/relay_test/relay_test.c 
-	@-${MV} ${OBJECTDIR}/TESTS/relay_test/relay_test.d ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/TESTS/button_test/button_test.p1: TESTS/button_test/button_test.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/TESTS/button_test" 
-	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
-	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/button_test/button_test.p1 TESTS/button_test/button_test.c 
-	@-${MV} ${OBJECTDIR}/TESTS/button_test/button_test.d ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1: TESTS/dc_motor_test/dc_motor_test.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/TESTS/dc_motor_test" 
-	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
-	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 TESTS/dc_motor_test/dc_motor_test.c 
-	@-${MV} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.d ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1: ECU_Layer/ecu_seven_seg/ecu_seven_seg.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/ECU_Layer/ecu_seven_seg" 
+	@${RM} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d 
+	@${RM} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1 ECU_Layer/ecu_seven_seg/ecu_seven_seg.c 
+	@-${MV} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.d ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/ECU_Layer/button/button.p1: ECU_Layer/button/button.c  nbproject/Makefile-${CND_CONF}.mk 
@@ -209,6 +217,30 @@ ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1: MCAL_Layer/GPIO/hal_gpio.c  nbproject/
 	@-${MV} ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.d ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/MCAL_Layer/GPIO/hal_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/TESTS/button_test/button_test.p1: TESTS/button_test/button_test.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/TESTS/button_test" 
+	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
+	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/button_test/button_test.p1 TESTS/button_test/button_test.c 
+	@-${MV} ${OBJECTDIR}/TESTS/button_test/button_test.d ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1: TESTS/dc_motor_test/dc_motor_test.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/TESTS/dc_motor_test" 
+	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
+	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 TESTS/dc_motor_test/dc_motor_test.c 
+	@-${MV} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.d ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/TESTS/relay_test/relay_test.p1: TESTS/relay_test/relay_test.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/TESTS/relay_test" 
+	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
+	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 TESTS/relay_test/relay_test.c 
+	@-${MV} ${OBJECTDIR}/TESTS/relay_test/relay_test.d ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/device_config.p1: device_config.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/device_config.p1.d 
@@ -225,29 +257,13 @@ ${OBJECTDIR}/app.p1: app.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/app.d ${OBJECTDIR}/app.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/app.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/TESTS/relay_test/relay_test.p1: TESTS/relay_test/relay_test.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/TESTS/relay_test" 
-	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
-	@${RM} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/relay_test/relay_test.p1 TESTS/relay_test/relay_test.c 
-	@-${MV} ${OBJECTDIR}/TESTS/relay_test/relay_test.d ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/TESTS/relay_test/relay_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/TESTS/button_test/button_test.p1: TESTS/button_test/button_test.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/TESTS/button_test" 
-	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
-	@${RM} ${OBJECTDIR}/TESTS/button_test/button_test.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/button_test/button_test.p1 TESTS/button_test/button_test.c 
-	@-${MV} ${OBJECTDIR}/TESTS/button_test/button_test.d ${OBJECTDIR}/TESTS/button_test/button_test.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/TESTS/button_test/button_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1: TESTS/dc_motor_test/dc_motor_test.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/TESTS/dc_motor_test" 
-	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
-	@${RM} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1 TESTS/dc_motor_test/dc_motor_test.c 
-	@-${MV} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.d ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/TESTS/dc_motor_test/dc_motor_test.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1: ECU_Layer/ecu_seven_seg/ecu_seven_seg.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/ECU_Layer/ecu_seven_seg" 
+	@${RM} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d 
+	@${RM} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1 ECU_Layer/ecu_seven_seg/ecu_seven_seg.c 
+	@-${MV} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.d ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ECU_Layer/ecu_seven_seg/ecu_seven_seg.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

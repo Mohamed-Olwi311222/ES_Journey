@@ -65,46 +65,6 @@ PORTC_INDEX 2
 PORTD_INDEX 3
 PORTE_INDEX 4
 ]
-"11 D:\Programming\ES_Journey\Application\Application.X\app.c
-[e E3094 . `uc
-PORTA_INDEX 0
-PORTB_INDEX 1
-PORTC_INDEX 2
-PORTD_INDEX 3
-PORTE_INDEX 4
-]
-[e E3084 . `uc
-GPIO_PIN0 0
-GPIO_PIN1 1
-GPIO_PIN2 2
-GPIO_PIN3 3
-GPIO_PIN4 4
-GPIO_PIN5 5
-GPIO_PIN6 6
-GPIO_PIN7 7
-]
-[e E3080 . `uc
-GPIO_DIRECTION_OUTPUT 0
-GPIO_DIRECTION_INPUT 1
-]
-"11 D:\Programming\ES_Journey\Application\Application.X\TESTS/relay_test/relay_test.c
-[e E3094 . `uc
-PORTA_INDEX 0
-PORTB_INDEX 1
-PORTC_INDEX 2
-PORTD_INDEX 3
-PORTE_INDEX 4
-]
-[e E3084 . `uc
-GPIO_PIN0 0
-GPIO_PIN1 1
-GPIO_PIN2 2
-GPIO_PIN3 3
-GPIO_PIN4 4
-GPIO_PIN5 5
-GPIO_PIN6 6
-GPIO_PIN7 7
-]
 "10 D:\Programming\ES_Journey\Application\Application.X\TESTS/button_test/button_test.c
 [e E3155 . `uc
 BUTTON_RELEASED 0
@@ -166,9 +126,67 @@ GPIO_PIN7 7
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
-"35 D:\Programming\ES_Journey\Application\Application.X\app.c
+"11 D:\Programming\ES_Journey\Application\Application.X\TESTS/relay_test/relay_test.c
+[e E3094 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+[e E3084 . `uc
+GPIO_PIN0 0
+GPIO_PIN1 1
+GPIO_PIN2 2
+GPIO_PIN3 3
+GPIO_PIN4 4
+GPIO_PIN5 5
+GPIO_PIN6 6
+GPIO_PIN7 7
+]
+"12 D:\Programming\ES_Journey\Application\Application.X\app.c
+[e E3199 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
+[e E3094 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+[e E3084 . `uc
+GPIO_PIN0 0
+GPIO_PIN1 1
+GPIO_PIN2 2
+GPIO_PIN3 3
+GPIO_PIN4 4
+GPIO_PIN5 5
+GPIO_PIN6 6
+GPIO_PIN7 7
+]
+[e E3080 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+[e E3076 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"8 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[e E3136 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
+"42
+[e E3076 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"33 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _main main `(i  1 e 2 0 ]
-"65
+"91
 [v _application_initialize application_initialize `(uc  1 e 1 0 ]
 "3 D:\Programming\Microchip\xc8\v2.46\pic\sources\c99\common\_Exit.c
 [v __Exit _Exit `(v  1 e 1 0 ]
@@ -212,6 +230,10 @@ GPIO_DIRECTION_INPUT 1
 [v _dc_motor_move_backward dc_motor_move_backward `(uc  1 e 1 0 ]
 "79
 [v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
+"8 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[v _seven_segment_initialize seven_segment_initialize `(uc  1 e 1 0 ]
+"29
+[v _seven_segment_write_number seven_segment_write_number `(uc  1 e 1 0 ]
 "35 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/led/ecu_led.c
 [v _led_intitialize led_intitialize `(uc  1 e 1 0 ]
 "59
@@ -244,6 +266,14 @@ GPIO_DIRECTION_INPUT 1
 [v _program_3 program_3 `(v  1 e 1 0 ]
 "44 D:\Programming\ES_Journey\Application\Application.X\TESTS/relay_test/relay_test.c
 [v _relay_application_initialize relay_application_initialize `(uc  1 e 1 0 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"12 D:\Programming\ES_Journey\Application\Application.X\app.c
+[s S609 . 5 `[4]S24 1 segment_pins 4 0 `E3199 1 segment_type 1 4 ]
+[v _seg1 seg1 `S609  1 e 5 0 ]
 "552 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "788
@@ -280,11 +310,6 @@ GPIO_DIRECTION_INPUT 1
 [v _tris_registers tris_registers `[5]*.39VEuc  1 s 10 tris_registers ]
 "8
 [v _port_registers port_registers `[5]*.39VEuc  1 s 10 port_registers ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
 "10 D:\Programming\ES_Journey\Application\Application.X\TESTS/button_test/button_test.c
 [s S35 . 3 `S24 1 button_pin 1 0 `E3155 1 button_state_t 1 1 `E3159 1 button_connection 1 2 ]
 [v _btn_low btn_low `S35  1 e 3 0 ]
@@ -311,88 +336,70 @@ GPIO_DIRECTION_INPUT 1
 [v _relay1 relay1 `S236  1 e 1 0 ]
 "16
 [v _relay2 relay2 `S236  1 e 1 0 ]
-"35 D:\Programming\ES_Journey\Application\Application.X\app.c
+"33 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _main main `(i  1 e 2 0 ]
 {
-"37
-[v main@ret ret `uc  1 a 1 15 ]
-"64
-} 0
-"79 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
-[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
-{
-"81
-[v dc_motor_stop@ret ret `uc  1 a 1 9 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"79
-[s S109 . 2 `[2]S24 1 dc_motor_pins 2 0 ]
-[v dc_motor_stop@dc_motor dc_motor `*.30CS109  1 p 1 8 ]
-"93
-} 0
 "36
-[v _dc_motor_move_forward dc_motor_move_forward `(uc  1 e 1 0 ]
+[v main@num num `uc  1 a 1 20 ]
+"35
+[v main@ret ret `uc  1 a 1 19 ]
+"90
+} 0
+"29 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[v _seven_segment_write_number seven_segment_write_number `(uc  1 e 1 0 ]
 {
 "38
-[v dc_motor_move_forward@ret ret `uc  1 a 1 9 ]
+[v seven_segment_write_number@curr_bit curr_bit `uc  1 a 1 16 ]
+"39
+[v seven_segment_write_number@pin_num pin_num `uc  1 a 1 14 ]
+"31
+[v seven_segment_write_number@ret ret `uc  1 a 1 15 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"36
-[s S109 . 2 `[2]S24 1 dc_motor_pins 2 0 ]
-[v dc_motor_move_forward@dc_motor dc_motor `*.30CS109  1 p 1 8 ]
+"29
+[s S609 . 5 `[4]S24 1 segment_pins 4 0 `E3199 1 segment_type 1 4 ]
+[v seven_segment_write_number@seg seg `*.30CS609  1 p 1 8 ]
+[v seven_segment_write_number@number number `uc  1 p 1 9 ]
 "50
 } 0
-"57
-[v _dc_motor_move_backward dc_motor_move_backward `(uc  1 e 1 0 ]
-{
-"59
-[v dc_motor_move_backward@ret ret `uc  1 a 1 9 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"57
-[s S109 . 2 `[2]S24 1 dc_motor_pins 2 0 ]
-[v dc_motor_move_backward@dc_motor dc_motor `*.30CS109  1 p 1 8 ]
-"72
-} 0
-"65 D:\Programming\ES_Journey\Application\Application.X\app.c
+"91 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _application_initialize application_initialize `(uc  1 e 1 0 ]
 {
-"67
-[v application_initialize@ret ret `uc  1 a 1 12 ]
-"73
+"93
+[v application_initialize@ret ret `uc  1 a 1 14 ]
+"101
 } 0
-"15 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
-[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
+"8 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[v _seven_segment_initialize seven_segment_initialize `(uc  1 e 1 0 ]
 {
 "17
-[v dc_motor_initialize@ret ret `uc  1 a 1 11 ]
+[v seven_segment_initialize@pin_num pin_num `uc  1 a 1 13 ]
+"10
+[v seven_segment_initialize@ret ret `uc  1 a 1 12 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"15
-[s S109 . 2 `[2]S24 1 dc_motor_pins 2 0 ]
-[v dc_motor_initialize@dc_motor dc_motor `*.30CS109  1 p 1 10 ]
-"29
+"8
+[s S609 . 5 `[4]S24 1 segment_pins 4 0 `E3199 1 segment_type 1 4 ]
+[v seven_segment_initialize@seg seg `*.30CS609  1 p 1 11 ]
+"28
 } 0
 "17 D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
 {
+"19
+[v gpio_pin_initialize@ret ret `uc  1 a 1 10 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
+"17
 [v gpio_pin_initialize@_pin_config_t _pin_config_t `*.30S24  1 p 1 8 ]
 "30
 } 0

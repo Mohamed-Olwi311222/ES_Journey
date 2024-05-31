@@ -5450,6 +5450,27 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
 
 Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
 # 14 "TESTS/dc_motor_test/../../app.h" 2
+
+# 1 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 1
+# 11 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+# 1 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg_cfg.h" 1
+# 11 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 2
+# 24 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+typedef enum
+{
+    SEGMENT_COMMON_ANODE,
+    SEGMENT_COMMON_CATHODE
+}segment_type_t;
+
+typedef struct
+{
+    pin_config_t segment_pins[4];
+    segment_type_t segment_type;
+}segment_t;
+
+Std_ReturnType seven_segment_initialize(const segment_t *seg);
+Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
+# 15 "TESTS/dc_motor_test/../../app.h" 2
 # 8 "TESTS/dc_motor_test/dc_motor_test.c" 2
 
 

@@ -1,18 +1,13 @@
 /* 
- * File:   app.h
+ * File:   ecu_seven_seg_cfg.h
  * Author: Mohamed olwi
  *
- * Created on April 1, 2024, 4:42 PM
+ * Created on 31 May 2024, 10:47
  */
 
-#ifndef APP_H
-#define	APP_H
+#ifndef ECU_SEVEN_SEG_CFG_H
+#define	ECU_SEVEN_SEG_CFG_H
 /*----------------------------Header Files------------------------------------*/
-#include "ECU_Layer/led/ecu_led.h"
-#include "ECU_Layer/button/ecu_button.h"
-#include "ECU_Layer/Relay/ecu_relay.h"
-#include "ECU_Layer/DC_Motor/ecu_dc_motor.h"
-#include "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
@@ -21,5 +16,5 @@
 
 /*----------------------------Function Prototypes-----------------------------*/
 
-#endif	/* APP_H */
+#endif	/* ECU_SEVEN_SEG_CFG_H */
 

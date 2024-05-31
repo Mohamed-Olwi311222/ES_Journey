@@ -5450,70 +5450,79 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
 
 Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
 # 14 "./app.h" 2
+
+# 1 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 1
+# 11 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+# 1 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg_cfg.h" 1
+# 11 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 2
+# 24 "./ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+typedef enum
+{
+    SEGMENT_COMMON_ANODE,
+    SEGMENT_COMMON_CATHODE
+}segment_type_t;
+
+typedef struct
+{
+    pin_config_t segment_pins[4];
+    segment_type_t segment_type;
+}segment_t;
+
+Std_ReturnType seven_segment_initialize(const segment_t *seg);
+Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
+# 15 "./app.h" 2
 # 8 "app.c" 2
 
-
 Std_ReturnType application_initialize(void);
-dc_motor_t dc_motor_1 = {
-    .dc_motor_pins[0x00U].port = PORTC_INDEX,
-    .dc_motor_pins[0x00U].pin = GPIO_PIN0,
-    .dc_motor_pins[0x00U].logic = 0x00U,
-    .dc_motor_pins[0x00U].direction = GPIO_DIRECTION_OUTPUT,
 
-    .dc_motor_pins[0x01U].port = PORTC_INDEX,
-    .dc_motor_pins[0x01U].pin = GPIO_PIN1,
-    .dc_motor_pins[0x01U].logic = 0x00U,
-    .dc_motor_pins[0x01U].direction = GPIO_DIRECTION_OUTPUT
-};
 
-dc_motor_t dc_motor_2 = {
-    .dc_motor_pins[0x00U].port = PORTC_INDEX,
-    .dc_motor_pins[0x00U].pin = GPIO_PIN2,
-    .dc_motor_pins[0x00U].logic = 0x00U,
-    .dc_motor_pins[0x00U].direction = GPIO_DIRECTION_OUTPUT,
+segment_t seg1 = {
+    .segment_pins[0].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[0].logic = GPIO_LOW,
+    .segment_pins[0].pin = GPIO_PIN0,
+    .segment_pins[0].port = PORTC_INDEX,
 
-    .dc_motor_pins[0x01U].port = PORTC_INDEX,
-    .dc_motor_pins[0x01U].pin = GPIO_PIN3,
-    .dc_motor_pins[0x01U].logic = 0x00U,
-    .dc_motor_pins[0x01U].direction = GPIO_DIRECTION_OUTPUT
+    .segment_pins[1].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[1].logic = GPIO_LOW,
+    .segment_pins[1].pin = GPIO_PIN1,
+    .segment_pins[1].port = PORTC_INDEX,
 
-};
+    .segment_pins[2].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[2].logic = GPIO_LOW,
+    .segment_pins[2].pin = GPIO_PIN2,
+    .segment_pins[2].port = PORTC_INDEX,
+
+    .segment_pins[3].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[3].logic = GPIO_LOW,
+    .segment_pins[3].pin = GPIO_PIN3,
+    .segment_pins[3].port = PORTC_INDEX
+    };
 int main(void)
 {
     Std_ReturnType ret = application_initialize();
+    uint8 num = 0;
     if ((Std_ReturnType)0x01u == ret)
     {
         return (-1);
     }
     while (1)
     {
-        ret = dc_motor_move_forward(&dc_motor_1);
-        ret = dc_motor_move_forward(&dc_motor_2);
-        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
-        ret = dc_motor_move_backward(&dc_motor_1);
-        ret = dc_motor_move_backward(&dc_motor_2);
-        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
-        ret = dc_motor_stop(&dc_motor_1);
-        ret = dc_motor_stop(&dc_motor_2);
-        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
-        ret = dc_motor_move_forward(&dc_motor_1);
-        ret = dc_motor_move_backward(&dc_motor_2);
-        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
-        ret = dc_motor_stop(&dc_motor_1);
-        ret = dc_motor_stop(&dc_motor_2);
-        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
-        ret = dc_motor_move_backward(&dc_motor_1);
-        ret = dc_motor_move_forward(&dc_motor_2);
-        _delay((unsigned long)((3000)*((8 *1000UL *1000UL)/4000.0)));
+        if (num > 9)
+            num = 0;
+        ret = seven_segment_write_number(&seg1, num);
+        num++;
+        _delay((unsigned long)((200)*((8 *1000UL *1000UL)/4000.0)));
     }
-    return (0);
+# 90 "app.c"
 }
 Std_ReturnType application_initialize(void)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01u;
-    ret = dc_motor_initialize(&dc_motor_1);
-    ret = dc_motor_initialize(&dc_motor_2);
 
 
+
+
+
+    ret = seven_segment_initialize(&seg1);
     return (ret);
 }

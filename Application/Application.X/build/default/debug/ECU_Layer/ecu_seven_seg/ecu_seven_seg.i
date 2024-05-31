@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/button/button.c"
+# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,20 +6,20 @@
 # 1 "<built-in>" 2
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/button/button.c" 2
+# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.c" 2
 
 
 
 
 
 
-# 1 "ECU_Layer/button/ecu_button.h" 1
-# 11 "ECU_Layer/button/ecu_button.h"
-# 1 "ECU_Layer/button/ecu_button_cfg.h" 1
-# 11 "ECU_Layer/button/ecu_button.h" 2
+# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 1
+# 11 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg_cfg.h" 1
+# 11 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 2
 
-# 1 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 1 3
 # 18 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4951,12 +4951,12 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/button/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 13 "ECU_Layer/button/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/button/../../MCAL_Layer/GPIO/../../std_types.h" 1
-# 11 "ECU_Layer/button/../../MCAL_Layer/GPIO/../../std_types.h"
+# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 13 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../std_types.h" 1
+# 11 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../std_types.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 3
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -5109,11 +5109,11 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 11 "ECU_Layer/button/../../MCAL_Layer/GPIO/../../std_types.h" 2
-# 13 "ECU_Layer/button/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 11 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../std_types.h" 2
+# 13 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/button/../../MCAL_Layer/GPIO/../../compiler.h" 1
-# 14 "ECU_Layer/button/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../compiler.h" 1
+# 14 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -5126,14 +5126,14 @@ typedef short sint16;
 typedef int sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/button/../../MCAL_Layer/GPIO/../../device_config.h" 1
-# 14 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../device_config.h" 1
+# 14 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 53 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 53 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef union
 {
     struct
@@ -5192,7 +5192,7 @@ typedef struct
     uint8 direction : 1;
     uint8 logic : 1;
 }pin_config_t;
-# 119 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 119 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
 
 
@@ -5270,107 +5270,62 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
 
 
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 12 "ECU_Layer/button/ecu_button.h" 2
-
-
-
-
-
-
-
+# 12 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 2
+# 24 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
 typedef enum
 {
-    BUTTON_PRESSED,
-    BUTTON_RELEASED
-} button_state_t;
-
-typedef enum
-{
-    BUTTON_ACTIVE_HIGH,
-    BUTTON_ACTIVE_LOW
-} button_active_t;
+    SEGMENT_COMMON_ANODE,
+    SEGMENT_COMMON_CATHODE
+}segment_type_t;
 
 typedef struct
 {
-    pin_config_t button_pin;
-    button_state_t button_state_t;
-    button_active_t button_connection;
-} button_t;
+    pin_config_t segment_pins[4];
+    segment_type_t segment_type;
+}segment_t;
 
+Std_ReturnType seven_segment_initialize(const segment_t *seg);
+Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
+# 7 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.c" 2
 
-
-
-
-
-
-Std_ReturnType button_initialize(const button_t *btn);
-
-
-
-
-
-
-
-Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
-# 7 "ECU_Layer/button/button.c" 2
-
-
-
-
-
-
-Std_ReturnType button_initialize(const button_t *btn)
+Std_ReturnType seven_segment_initialize(const segment_t *seg)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
-    if (((void*)0) == btn)
+    if (((void*)0) == seg)
     {
         ret = (Std_ReturnType)0x01u;
     }
     else
     {
-        ret = gpio_pin_direction_initialize(&(btn->button_pin));
+        uint8 pin_num = 0;
+        for (; pin_num < 4; pin_num++)
+        {
+            ret = gpio_pin_initialize(&(seg->segment_pins[pin_num]));
+            if ((Std_ReturnType)0x01u == ret)
+            {
+                break;
+            }
+        }
     }
     return (ret);
 }
-
-
-
-
-
-
-Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state)
+Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
-    logic_t pin_logic_status = GPIO_LOW;
-
-    if (((void*)0) == btn || ((void*)0) == btn_state)
+    if (((void*)0) == seg || number > 9)
     {
         ret = (Std_ReturnType)0x01u;
     }
     else
     {
-        gpio_pin_read_logic(&(btn->button_pin), &pin_logic_status);
-        if (BUTTON_ACTIVE_HIGH == btn->button_connection)
+        uint8 curr_bit = 0;
+        uint8 pin_num = 0;
+        for (; curr_bit < 4; curr_bit++, pin_num++)
         {
-            if (GPIO_HIGH == pin_logic_status)
+            ret = gpio_pin_write_logic(&(seg->segment_pins[pin_num]), ((number & ((uint8)1 << curr_bit)) >> curr_bit));
+            if ((Std_ReturnType)0x01u == ret)
             {
-                *btn_state = BUTTON_PRESSED;
-            }
-            else
-            {
-                *btn_state = BUTTON_RELEASED;
-            }
-        }
-        else
-        {
-            if (GPIO_HIGH == pin_logic_status)
-            {
-                *btn_state = BUTTON_RELEASED;
-            }
-            else
-            {
-
-                *btn_state = BUTTON_PRESSED;
+                break;
             }
         }
     }

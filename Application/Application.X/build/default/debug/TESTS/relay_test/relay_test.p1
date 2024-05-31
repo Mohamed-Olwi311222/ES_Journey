@@ -504,21 +504,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret ( _relay_application_initialize ..  ]
 "24
 [; ;TESTS/relay_test/relay_test.c: 24:     if ((Std_ReturnType)0x01u == ret)
-[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 313  ]
+[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 314  ]
 "25
 [; ;TESTS/relay_test/relay_test.c: 25:     {
 {
 "26
 [; ;TESTS/relay_test/relay_test.c: 26:         return (-1);
 [e ) -U -> 1 `i ]
-[e $UE 312  ]
+[e $UE 313  ]
 "27
 [; ;TESTS/relay_test/relay_test.c: 27:     }
 }
-[e :U 313 ]
+[e :U 314 ]
 "28
 [; ;TESTS/relay_test/relay_test.c: 28:     while (1)
-[e :U 315 ]
+[e :U 316 ]
 "29
 [; ;TESTS/relay_test/relay_test.c: 29:     {
 {
@@ -543,16 +543,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;TESTS/relay_test/relay_test.c: 38:     }
 }
-[e :U 314 ]
-[e $U 315  ]
-[e :U 316 ]
+[e :U 315 ]
+[e $U 316  ]
+[e :U 317 ]
 "42
 [; ;TESTS/relay_test/relay_test.c: 42:     return (0);
 [e ) -> 0 `i ]
-[e $UE 312  ]
+[e $UE 313  ]
 "43
 [; ;TESTS/relay_test/relay_test.c: 43: }
-[e :UE 312 ]
+[e :UE 313 ]
 }
 "44
 [; ;TESTS/relay_test/relay_test.c: 44: Std_ReturnType relay_application_initialize(void)
@@ -575,8 +575,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "50
 [; ;TESTS/relay_test/relay_test.c: 50:     return (ret);
 [e ) _ret ]
-[e $UE 317  ]
+[e $UE 318  ]
 "51
 [; ;TESTS/relay_test/relay_test.c: 51: }
-[e :UE 317 ]
+[e :UE 318 ]
 }

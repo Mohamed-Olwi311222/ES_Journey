@@ -1,28 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"105 ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h: 105: {
+"105 ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h
+[; ;ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h: 105: {
 [s S307 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S307 . port pin direction logic ]
-"13 ECU_Layer/button/button.c
-[; ;ECU_Layer/button/button.c: 13: Std_ReturnType button_initialize(const button_t *btn)
+"8 ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 8: Std_ReturnType seven_segment_initialize(const segment_t *seg)
 [c E3136 0 1 .. ]
-[n E3136 . BUTTON_PRESSED BUTTON_RELEASED  ]
-[c E3140 0 1 .. ]
-[n E3140 . BUTTON_ACTIVE_HIGH BUTTON_ACTIVE_LOW  ]
-"32 ECU_Layer/button/ecu_button.h
-[; ;ECU_Layer/button/ecu_button.h: 32: {
-[s S308 `S307 1 `E3136 1 `E3140 1 ]
-[n S308 . button_pin button_state_t button_connection ]
-"126 ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h: 126: Std_ReturnType gpio_pin_direction_initialize(const pin_config_t *_pin_config_t);
-[v _gpio_pin_direction_initialize `(uc ~T0 @X0 0 ef1`*CS307 ]
-"35 ECU_Layer/button/button.c
-[; ;ECU_Layer/button/button.c: 35:     logic_t pin_logic_status = GPIO_LOW;
+[n E3136 . SEGMENT_COMMON_ANODE SEGMENT_COMMON_CATHODE  ]
+"31 ECU_Layer/ecu_seven_seg/ecu_seven_seg.h
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.h: 31: {
+[s S308 `S307 -> 4 `i `E3136 1 ]
+[n S308 . segment_pins segment_type ]
+"119 ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h
+[; ;ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h: 119: Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
+[v _gpio_pin_initialize `(uc ~T0 @X0 0 ef1`*S307 ]
+"42 ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 42:             ret = gpio_pin_write_logic(&(seg->segment_pins[pin_num]), ((number & ((uint8)1 << curr_bit)) >> curr_bit));
 [c E3076 0 1 .. ]
 [n E3076 . GPIO_LOW GPIO_HIGH  ]
-"150 ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h: 150: Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config_t, logic_t *logic);
-[v _gpio_pin_read_logic `(uc ~T0 @X0 0 ef2`*CS307`*E3076 ]
+"142 ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h
+[; ;ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h: 142: Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic);
+[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*S307`E3076 ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -464,182 +462,176 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7352
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 7352: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"13 ECU_Layer/button/button.c
-[; ;ECU_Layer/button/button.c: 13: Std_ReturnType button_initialize(const button_t *btn)
-[v _button_initialize `(uc ~T0 @X0 1 ef1`*CS308 ]
-"14
-[; ;ECU_Layer/button/button.c: 14: {
+"8 ECU_Layer/ecu_seven_seg/ecu_seven_seg.c
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 8: Std_ReturnType seven_segment_initialize(const segment_t *seg)
+[v _seven_segment_initialize `(uc ~T0 @X0 1 ef1`*CS308 ]
+"9
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 9: {
 {
-[e :U _button_initialize ]
-"13
-[; ;ECU_Layer/button/button.c: 13: Std_ReturnType button_initialize(const button_t *btn)
-[v _btn `*CS308 ~T0 @X0 1 r1 ]
-"14
-[; ;ECU_Layer/button/button.c: 14: {
+[e :U _seven_segment_initialize ]
+"8
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 8: Std_ReturnType seven_segment_initialize(const segment_t *seg)
+[v _seg `*CS308 ~T0 @X0 1 r1 ]
+"9
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 9: {
 [f ]
-"15
-[; ;ECU_Layer/button/button.c: 15:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+"10
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 10:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `ui `uc ]
-"16
-[; ;ECU_Layer/button/button.c: 16:     if (((void*)0) == btn)
-[e $ ! == -> -> -> 0 `i `*v `*CS308 _btn 310  ]
-"17
-[; ;ECU_Layer/button/button.c: 17:     {
+"11
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 11:     if (((void*)0) == seg)
+[e $ ! == -> -> -> 0 `i `*v `*CS308 _seg 310  ]
+"12
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 12:     {
 {
-"18
-[; ;ECU_Layer/button/button.c: 18:         ret = (Std_ReturnType)0x01u;
+"13
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 13:         ret = (Std_ReturnType)0x01u;
 [e = _ret -> -> 1 `ui `uc ]
-"19
-[; ;ECU_Layer/button/button.c: 19:     }
+"14
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 14:     }
 }
 [e $U 311  ]
-"20
-[; ;ECU_Layer/button/button.c: 20:     else
+"15
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 15:     else
 [e :U 310 ]
-"21
-[; ;ECU_Layer/button/button.c: 21:     {
+"16
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 16:     {
 {
+"17
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 17:         uint8 pin_num = 0;
+[v _pin_num `uc ~T0 @X0 1 a ]
+[e = _pin_num -> -> 0 `i `uc ]
+"18
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 18:         for (; pin_num < 4; pin_num++)
+{
+[e $ < -> _pin_num `i -> 4 `i 312  ]
+[e $U 313  ]
+[e :U 312 ]
+"19
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 19:         {
+{
+"20
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 20:             ret = gpio_pin_initialize(&(seg->segment_pins[pin_num]));
+[e = _ret ( _gpio_pin_initialize (1 -> &U *U + &U . *U _seg 0 * -> _pin_num `ux -> -> # *U &U . *U _seg 0 `ui `ux `*S307 ]
+"21
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 21:             if ((Std_ReturnType)0x01u == ret)
+[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 315  ]
 "22
-[; ;ECU_Layer/button/button.c: 22:         ret = gpio_pin_direction_initialize(&(btn->button_pin));
-[e = _ret ( _gpio_pin_direction_initialize (1 &U . *U _btn 0 ]
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 22:             {
+{
 "23
-[; ;ECU_Layer/button/button.c: 23:     }
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 23:                 break;
+[e $U 313  ]
+"24
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 24:             }
+}
+[e :U 315 ]
+"25
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 25:         }
+}
+[e ++ _pin_num -> -> 1 `i `uc ]
+[e $ < -> _pin_num `i -> 4 `i 312  ]
+[e :U 313 ]
+}
+"26
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 26:     }
 }
 [e :U 311 ]
-"24
-[; ;ECU_Layer/button/button.c: 24:     return (ret);
+"27
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 27:     return (ret);
 [e ) _ret ]
 [e $UE 309  ]
-"25
-[; ;ECU_Layer/button/button.c: 25: }
+"28
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 28: }
 [e :UE 309 ]
 }
-"32
-[; ;ECU_Layer/button/button.c: 32: Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state)
-[v _button_read_state `(uc ~T0 @X0 1 ef2`*CS308`*E3136 ]
-"33
-[; ;ECU_Layer/button/button.c: 33: {
+"29
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 29: Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number)
+[v _seven_segment_write_number `(uc ~T0 @X0 1 ef2`*CS308`uc ]
+"30
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 30: {
 {
-[e :U _button_read_state ]
-"32
-[; ;ECU_Layer/button/button.c: 32: Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state)
-[v _btn `*CS308 ~T0 @X0 1 r1 ]
-[v _btn_state `*E3136 ~T0 @X0 1 r2 ]
-"33
-[; ;ECU_Layer/button/button.c: 33: {
+[e :U _seven_segment_write_number ]
+"29
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 29: Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number)
+[v _seg `*CS308 ~T0 @X0 1 r1 ]
+[v _number `uc ~T0 @X0 1 r2 ]
+"30
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 30: {
 [f ]
-"34
-[; ;ECU_Layer/button/button.c: 34:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+"31
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 31:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `ui `uc ]
-"35
-[; ;ECU_Layer/button/button.c: 35:     logic_t pin_logic_status = GPIO_LOW;
-[v _pin_logic_status `E3076 ~T0 @X0 1 a ]
-[e = _pin_logic_status . `E3076 0 ]
-"37
-[; ;ECU_Layer/button/button.c: 37:     if (((void*)0) == btn || ((void*)0) == btn_state)
-[e $ ! || == -> -> -> 0 `i `*v `*CS308 _btn == -> -> -> 0 `i `*v `*E3136 _btn_state 313  ]
-"38
-[; ;ECU_Layer/button/button.c: 38:     {
+"32
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 32:     if (((void*)0) == seg || number > 9)
+[e $ ! || == -> -> -> 0 `i `*v `*CS308 _seg > -> _number `i -> 9 `i 317  ]
+"33
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 33:     {
 {
-"39
-[; ;ECU_Layer/button/button.c: 39:         ret = (Std_ReturnType)0x01u;
+"34
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 34:         ret = (Std_ReturnType)0x01u;
 [e = _ret -> -> 1 `ui `uc ]
-"40
-[; ;ECU_Layer/button/button.c: 40:     }
-}
-[e $U 314  ]
-"41
-[; ;ECU_Layer/button/button.c: 41:     else
-[e :U 313 ]
-"42
-[; ;ECU_Layer/button/button.c: 42:     {
-{
-"43
-[; ;ECU_Layer/button/button.c: 43:         gpio_pin_read_logic(&(btn->button_pin), &pin_logic_status);
-[e ( _gpio_pin_read_logic (2 , &U . *U _btn 0 &U _pin_logic_status ]
-"44
-[; ;ECU_Layer/button/button.c: 44:         if (BUTTON_ACTIVE_HIGH == btn->button_connection)
-[e $ ! == -> . `E3140 0 `ui -> . *U _btn 2 `ui 315  ]
-"45
-[; ;ECU_Layer/button/button.c: 45:         {
-{
-"46
-[; ;ECU_Layer/button/button.c: 46:             if (GPIO_HIGH == pin_logic_status)
-[e $ ! == -> . `E3076 1 `ui -> _pin_logic_status `ui 316  ]
-"47
-[; ;ECU_Layer/button/button.c: 47:             {
-{
-"48
-[; ;ECU_Layer/button/button.c: 48:                 *btn_state = BUTTON_PRESSED;
-[e = *U _btn_state . `E3136 0 ]
-"49
-[; ;ECU_Layer/button/button.c: 49:             }
-}
-[e $U 317  ]
-"50
-[; ;ECU_Layer/button/button.c: 50:             else
-[e :U 316 ]
-"51
-[; ;ECU_Layer/button/button.c: 51:             {
-{
-"52
-[; ;ECU_Layer/button/button.c: 52:                 *btn_state = BUTTON_RELEASED;
-[e = *U _btn_state . `E3136 1 ]
-"53
-[; ;ECU_Layer/button/button.c: 53:             }
-}
-[e :U 317 ]
-"54
-[; ;ECU_Layer/button/button.c: 54:         }
+"35
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 35:     }
 }
 [e $U 318  ]
-"55
-[; ;ECU_Layer/button/button.c: 55:         else
-[e :U 315 ]
-"56
-[; ;ECU_Layer/button/button.c: 56:         {
+"36
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 36:     else
+[e :U 317 ]
+"37
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 37:     {
 {
-"57
-[; ;ECU_Layer/button/button.c: 57:             if (GPIO_HIGH == pin_logic_status)
-[e $ ! == -> . `E3076 1 `ui -> _pin_logic_status `ui 319  ]
-"58
-[; ;ECU_Layer/button/button.c: 58:             {
+"38
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 38:         uint8 curr_bit = 0;
+[v _curr_bit `uc ~T0 @X0 1 a ]
+[e = _curr_bit -> -> 0 `i `uc ]
+"39
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 39:         uint8 pin_num = 0;
+[v _pin_num `uc ~T0 @X0 1 a ]
+[e = _pin_num -> -> 0 `i `uc ]
+"40
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 40:         for (; curr_bit < 4; curr_bit++, pin_num++)
 {
-"59
-[; ;ECU_Layer/button/button.c: 59:                 *btn_state = BUTTON_RELEASED;
-[e = *U _btn_state . `E3136 1 ]
-"60
-[; ;ECU_Layer/button/button.c: 60:             }
-}
+[e $ < -> _curr_bit `i -> 4 `i 319  ]
 [e $U 320  ]
-"61
-[; ;ECU_Layer/button/button.c: 61:             else
 [e :U 319 ]
-"62
-[; ;ECU_Layer/button/button.c: 62:             {
+"41
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 41:         {
 {
-"64
-[; ;ECU_Layer/button/button.c: 64:                 *btn_state = BUTTON_PRESSED;
-[e = *U _btn_state . `E3136 0 ]
-"65
-[; ;ECU_Layer/button/button.c: 65:             }
+"42
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 42:             ret = gpio_pin_write_logic(&(seg->segment_pins[pin_num]), ((number & ((uint8)1 << curr_bit)) >> curr_bit));
+[e = _ret ( _gpio_pin_write_logic (2 , -> &U *U + &U . *U _seg 0 * -> _pin_num `ux -> -> # *U &U . *U _seg 0 `ui `ux `*S307 -> >> & -> _number `i << -> -> -> 1 `i `uc `i -> _curr_bit `i -> _curr_bit `i `E3076 ]
+"43
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 43:             if ((Std_ReturnType)0x01u == ret)
+[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 322  ]
+"44
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 44:             {
+{
+"45
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 45:                 break;
+[e $U 320  ]
+"46
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 46:             }
 }
+[e :U 322 ]
+"47
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 47:         }
+}
+[e ; ++ _curr_bit -> -> 1 `i `uc ++ _pin_num -> -> 1 `i `uc ]
+[e $ < -> _curr_bit `i -> 4 `i 319  ]
 [e :U 320 ]
-"66
-[; ;ECU_Layer/button/button.c: 66:         }
+}
+"48
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 48:     }
 }
 [e :U 318 ]
-"67
-[; ;ECU_Layer/button/button.c: 67:     }
-}
-[e :U 314 ]
-"68
-[; ;ECU_Layer/button/button.c: 68:     return (ret);
+"49
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 49:     return (ret);
 [e ) _ret ]
-[e $UE 312  ]
-"69
-[; ;ECU_Layer/button/button.c: 69: }
-[e :UE 312 ]
+[e $UE 316  ]
+"50
+[; ;ECU_Layer/ecu_seven_seg/ecu_seven_seg.c: 50: }
+[e :UE 316 ]
 }
