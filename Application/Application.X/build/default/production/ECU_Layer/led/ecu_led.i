@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.c"
+# 1 "ECU_Layer/led/ecu_led.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,20 +6,11 @@
 # 1 "<built-in>" 2
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.c" 2
-
-
-
-
-
-
-# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 1
-# 11 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
-# 1 "ECU_Layer/ecu_seven_seg/ecu_seven_seg_cfg.h" 1
-# 11 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 2
-
-# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/led/ecu_led.c" 2
+# 1 "ECU_Layer/led/ecu_led.h" 1
+# 12 "ECU_Layer/led/ecu_led.h"
+# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 1 3
 # 18 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4951,12 +4942,12 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 13 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../std_types.h" 1
-# 11 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../std_types.h"
+# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 13 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 1
+# 11 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 3
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -5109,11 +5100,11 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 11 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../std_types.h" 2
-# 13 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 11 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 2
+# 13 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../compiler.h" 1
-# 14 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../compiler.h" 1
+# 14 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -5126,14 +5117,14 @@ typedef short sint16;
 typedef int sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/../../device_config.h" 1
-# 14 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../device_config.h" 1
+# 14 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 53 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 53 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef union
 {
     struct
@@ -5192,8 +5183,8 @@ typedef struct
     uint8 direction : 1;
     uint8 logic : 1;
 }pin_config_t;
-# 119 "ECU_Layer/ecu_seven_seg/../../MCAL_Layer/GPIO/hal_gpio.h"
-Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
+# 119 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t);
 
 
 
@@ -5216,7 +5207,7 @@ Std_ReturnType gpio_pin_direction_status(const pin_config_t *_pin_config_t, dire
 
 
 
-Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic);
+Std_ReturnType gpio_pin_write_logic(const pin_config_t *_pin_config_t, logic_t logic);
 
 
 
@@ -5231,7 +5222,7 @@ Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config_t, logic_t *l
 
 
 
-Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t);
+Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config_t);
 
 
 
@@ -5239,22 +5230,14 @@ Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t);
 
 
 
-Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction);
+Std_ReturnType gpio_port_direction_initialize(const port_index_t port, const uint8 direction);
 
 
 
 
 
 
-Std_ReturnType gpio_port_direction_status(port_index_t port, uint8 *direction_status);
-
-
-
-
-
-
-
-Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
+Std_ReturnType gpio_port_direction_status(const port_index_t port, uint8 *direction_status);
 
 
 
@@ -5262,72 +5245,191 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
 
 
 
-Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
+Std_ReturnType gpio_port_write_logic(const port_index_t port, uint8 logic);
 
 
 
 
 
 
-Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 12 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h" 2
-# 24 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+
+Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic);
+
+
+
+
+
+
+Std_ReturnType gpio_port_toggle_logic(const port_index_t port);
+# 12 "ECU_Layer/led/ecu_led.h" 2
+
+# 1 "ECU_Layer/led/ecu_led_cfg.h" 1
+# 20 "ECU_Layer/led/ecu_led_cfg.h"
+Std_ReturnType turn_on_leds(void);
+# 13 "ECU_Layer/led/ecu_led.h" 2
+
+
+
+
+
+
 typedef enum
 {
-    SEGMENT_COMMON_ANODE,
-    SEGMENT_COMMON_CATHODE
-}segment_type_t;
+    LED_OFF,
+    LED_ON
+}led_status;
 
 typedef struct
 {
-    pin_config_t segment_pins[4];
-    segment_type_t segment_type;
-}segment_t;
+    uint8 port_name : 4;
+    uint8 pin : 3;
+    uint8 led_status : 1;
+}led_t;
 
-Std_ReturnType seven_segment_initialize(const segment_t *seg);
-Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
-# 7 "ECU_Layer/ecu_seven_seg/ecu_seven_seg.c" 2
+Std_ReturnType turn_on_leds(void);
 
-Std_ReturnType seven_segment_initialize(const segment_t *seg)
+
+
+
+
+
+Std_ReturnType led_intitialize(const led_t *led);
+
+
+
+
+
+
+Std_ReturnType led_turn_on(const led_t *led);
+
+
+
+
+
+
+Std_ReturnType led_turn_off(const led_t *led);
+
+
+
+
+
+
+Std_ReturnType led_toggle(const led_t *led);
+# 1 "ECU_Layer/led/ecu_led.c" 2
+
+
+Std_ReturnType turn_on_leds(void)
+{
+# 14 "ECU_Layer/led/ecu_led.c"
+    ((*(volatile uint8 *)((0xF94)))) = 0x00;
+    static uint8 _POS = 0x00;
+
+
+
+        (((*(volatile uint8 *)((0xF8B)))) ^= ((uint8)1 << _POS));
+        _delay((unsigned long)((500)*((8 *1000UL *1000UL)/4000.0)));
+        if (_POS < 8)
+        {
+            _POS++;
+        }
+        else
+            _POS = 0;
+
+    return ((Std_ReturnType)0x00u);
+}
+
+
+
+
+
+Std_ReturnType led_intitialize(const led_t *led)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
-    if (((void*)0) == seg)
+    if (((void*)0) == led)
     {
         ret = (Std_ReturnType)0x01u;
     }
     else
     {
-        uint8 pin_num = 0;
-        for (; pin_num < 4; pin_num++)
-        {
-            ret = gpio_pin_initialize(&(seg->segment_pins[pin_num]));
-            if ((Std_ReturnType)0x01u == ret)
-            {
-                break;
-            }
-        }
+        pin_config_t pin = {
+                            .port = led->port_name,
+                            .pin = led->pin ,
+                            .direction = GPIO_DIRECTION_OUTPUT,
+                            .logic = led->led_status
+                           };
+        gpio_pin_initialize(&pin);
     }
     return (ret);
 }
-Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number)
+
+
+
+
+
+Std_ReturnType led_turn_on(const led_t *led)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00u;
-    if (((void*)0) == seg || number > 9)
+    if (((void*)0) == led)
     {
         ret = (Std_ReturnType)0x01u;
     }
     else
     {
-        uint8 curr_bit = 0;
-        uint8 pin_num = 0;
-        for (; curr_bit < 4; curr_bit++, pin_num++)
-        {
-            ret = gpio_pin_write_logic(&(seg->segment_pins[pin_num]), ((number & ((uint8)1 << curr_bit)) >> curr_bit));
-            if ((Std_ReturnType)0x01u == ret)
-            {
-                break;
-            }
-        }
+        pin_config_t pin = {
+                            .port = led->port_name,
+                            .pin = led->pin ,
+                            .direction = GPIO_DIRECTION_OUTPUT,
+                            .logic = led->led_status
+                           };
+        gpio_pin_write_logic(&pin, GPIO_HIGH);
+    }
+    return (ret);
+}
+
+
+
+
+
+Std_ReturnType led_turn_off(const led_t *led)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x00u;
+    if (((void*)0) == led)
+    {
+        ret = (Std_ReturnType)0x01u;
+    }
+    else
+    {
+        pin_config_t pin = {
+                            .port = led->port_name,
+                            .pin = led->pin ,
+                            .direction = GPIO_DIRECTION_OUTPUT,
+                            .logic = led->led_status
+                           };
+        gpio_pin_write_logic(&pin, GPIO_LOW);
+    }
+    return (ret);
+}
+
+
+
+
+
+Std_ReturnType led_toggle(const led_t *led)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x00u;
+    if (((void*)0) == led)
+    {
+        ret = (Std_ReturnType)0x01u;
+    }
+    else
+    {
+        pin_config_t pin = {
+                            .port = led->port_name,
+                            .pin = led->pin ,
+                            .direction = GPIO_DIRECTION_OUTPUT,
+                            .logic = led->led_status
+                           };
+        gpio_pin_toggle_logic(&pin);
     }
     return (ret);
 }

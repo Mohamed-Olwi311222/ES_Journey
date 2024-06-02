@@ -5,8 +5,8 @@
  * Created on April 1, 2024, 4:43 PM
  */
 
-#include "app.h"
-Std_ReturnType application_initialize(void);
+#include "../../app.h"
+Std_ReturnType seven_segment_application_initialize(void);
 
 pin_config_t seg1_enable = {
     .port = PORTD_INDEX,
@@ -78,7 +78,7 @@ uint8 hours = 23, minutes = 59, seconds = 45;
 uint8 counter = 0;
 int seven_segment_test(void)
 {
-    Std_ReturnType ret = application_initialize();
+    Std_ReturnType ret = seven_segment_application_initialize();
     if (E_NOT_OK == ret)
     {
         return (-1);

@@ -5184,7 +5184,7 @@ typedef struct
     uint8 logic : 1;
 }pin_config_t;
 # 119 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
-Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
+Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t);
 
 
 
@@ -5207,7 +5207,7 @@ Std_ReturnType gpio_pin_direction_status(const pin_config_t *_pin_config_t, dire
 
 
 
-Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic);
+Std_ReturnType gpio_pin_write_logic(const pin_config_t *_pin_config_t, logic_t logic);
 
 
 
@@ -5222,7 +5222,7 @@ Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config_t, logic_t *l
 
 
 
-Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t);
+Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config_t);
 
 
 
@@ -5230,22 +5230,14 @@ Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t);
 
 
 
-Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction);
+Std_ReturnType gpio_port_direction_initialize(const port_index_t port, const uint8 direction);
 
 
 
 
 
 
-Std_ReturnType gpio_port_direction_status(port_index_t port, uint8 *direction_status);
-
-
-
-
-
-
-
-Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
+Std_ReturnType gpio_port_direction_status(const port_index_t port, uint8 *direction_status);
 
 
 
@@ -5253,14 +5245,22 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
 
 
 
-Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
+Std_ReturnType gpio_port_write_logic(const port_index_t port, uint8 logic);
 
 
 
 
 
 
-Std_ReturnType gpio_port_toggle_logic(port_index_t port);
+
+Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic);
+
+
+
+
+
+
+Std_ReturnType gpio_port_toggle_logic(const port_index_t port);
 # 12 "ECU_Layer/led/ecu_led.h" 2
 
 # 1 "ECU_Layer/led/ecu_led_cfg.h" 1

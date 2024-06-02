@@ -6,25 +6,19 @@
  */
 
 #include "app.h"
-Std_ReturnType application_initialize(void);
 
-
+uint8 value = 0;
 int main(void)
 {
-    Std_ReturnType ret = application_initialize();
+    Std_ReturnType ret = ecu_layer_initialize();
     if (E_NOT_OK == ret)
     {
         return (-1);
     }
    while (1)
    {
+       ret = keypad_get_value(&keypad1, &value);
    }
    return (0);
 }
-Std_ReturnType application_initialize(void)
-{
-    Std_ReturnType ret = E_NOT_OK;
 
-
-    return (ret);
-}

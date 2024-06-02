@@ -14,7 +14,7 @@ static volatile uint8 *port_registers[] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORT
  * @param _pin_config_t the configration given (i.e led, motor, etc..)
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t)
+Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t)
 {
     Std_ReturnType ret = E_OK;
     if (NULL == _pin_config_t || _pin_config_t->pin > PORT_PIN_MAX_SIZE - 1)
@@ -23,8 +23,7 @@ Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t)
     }
     else
     {
-        if (ret == gpio_pin_direction_initialize(_pin_config_t))
-                ret = gpio_pin_write_logic(_pin_config_t, _pin_config_t->logic); 
+        ret = gpio_pin_direction_initialize(_pin_config_t);
     }
     return (ret);
 }
@@ -93,7 +92,7 @@ Std_ReturnType gpio_pin_direction_status(const pin_config_t *_pin_config_t, dire
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_PIN_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic)
+Std_ReturnType gpio_pin_write_logic(const pin_config_t *_pin_config_t, logic_t logic)
 {
     Std_ReturnType ret = E_OK;
     if (NULL == _pin_config_t || _pin_config_t->pin > PORT_PIN_MAX_SIZE - 1)
@@ -102,7 +101,6 @@ Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic)
     }
     else
     {
-        _pin_config_t->logic = logic;
         switch (logic)
         {
             case GPIO_HIGH :
@@ -149,7 +147,7 @@ Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config_t, logic_t *l
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_PIN_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t)
+Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config_t)
 {
     Std_ReturnType ret = E_OK;
     if (NULL == _pin_config_t || _pin_config_t->pin > PORT_PIN_MAX_SIZE - 1)
@@ -159,8 +157,6 @@ Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t)
     else
     {
         TOGGLE_BIT(*lat_registers[_pin_config_t->port], _pin_config_t->pin);
-        _pin_config_t->logic = READ_BIT(*port_registers[_pin_config_t->port], _pin_config_t->pin);
-
     }
     return (ret);
 }
@@ -173,7 +169,7 @@ Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t)
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction)
+Std_ReturnType gpio_port_direction_initialize(const port_index_t port, uint8 direction)
 {
     Std_ReturnType ret = E_OK;
     if (port > PORT_MAX_LENGTH - 1)
@@ -193,7 +189,7 @@ Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_port_direction_status(port_index_t port, uint8 *direction_status)
+Std_ReturnType gpio_port_direction_status(const port_index_t port, uint8 *direction_status)
 {
     Std_ReturnType ret = E_OK;
     if ((NULL == direction_status) || (port > PORT_MAX_LENGTH - 1))
@@ -215,7 +211,7 @@ Std_ReturnType gpio_port_direction_status(port_index_t port, uint8 *direction_st
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic)
+Std_ReturnType gpio_port_write_logic(const port_index_t port, uint8 logic)
 {
     Std_ReturnType ret = E_OK;
     if (port > PORT_MAX_LENGTH - 1)
@@ -233,7 +229,7 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic)
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic)
+Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic)
 {
     Std_ReturnType ret = E_OK;
     if ((NULL == logic) || (port > PORT_MAX_LENGTH - 1))
@@ -254,7 +250,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic)
  * @return E_OK if success otherwise E_NOT_OK
  */
 #if GPIO_PORT_CONFIGRATIONS == CONFIG_ENABLE
-Std_ReturnType gpio_port_toggle_logic(port_index_t port)
+Std_ReturnType gpio_port_toggle_logic(const port_index_t port)
 {
     Std_ReturnType ret = E_OK;
     if (port > PORT_MAX_LENGTH - 1)

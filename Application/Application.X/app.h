@@ -8,17 +8,13 @@
 #ifndef APP_H
 #define	APP_H
 /*----------------------------Header Files------------------------------------*/
-#include "ECU_Layer/led/ecu_led.h"
-#include "ECU_Layer/button/ecu_button.h"
-#include "ECU_Layer/Relay/ecu_relay.h"
-#include "ECU_Layer/DC_Motor/ecu_dc_motor.h"
-#include "ECU_Layer/ecu_seven_seg/ecu_seven_seg.h"
+#include "ECU_Layer/ecu_layer_init.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
 
 /*----------------------------DataTypes---------------------------------------*/
-
+extern keypad_t keypad1;
 /*----------------------------Function Prototypes-----------------------------*/
 
 #endif	/* APP_H */

@@ -116,7 +116,7 @@ typedef struct
  * @param _pin_config_t the configration given (i.e led, motor, etc..)
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config_t);
+Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t);
 
 /**
  * @brief initialize the direction of a given pin
@@ -139,7 +139,7 @@ Std_ReturnType gpio_pin_direction_status(const pin_config_t *_pin_config_t, dire
  * @param logic the logic to write @ref logic_t
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config_t, logic_t logic);
+Std_ReturnType gpio_pin_write_logic(const pin_config_t *_pin_config_t, logic_t logic);
 
 /**
  * @brief read logic of a given pin
@@ -154,7 +154,7 @@ Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config_t, logic_t *l
  * @param _pin_config_t the configration given (i.e led, motor, etc..)
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t);
+Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config_t);
 
 /**
  * @brief initialize the given port
@@ -162,14 +162,14 @@ Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config_t);
  * @param direction the direction to write
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction);
+Std_ReturnType gpio_port_direction_initialize(const port_index_t port, const uint8 direction);
 /**
  * @brief read the direction of a given port
  * @param port the port index given @ref port_index_t
  * @param direction_status the address to store the direction read
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_port_direction_status(port_index_t port, uint8 *direction_status);
+Std_ReturnType gpio_port_direction_status(const port_index_t port, uint8 *direction_status);
 
 /**
  * @brief write logic to all pins of the port
@@ -177,7 +177,7 @@ Std_ReturnType gpio_port_direction_status(port_index_t port, uint8 *direction_st
  * @param logic the logic to write on the port
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
+Std_ReturnType gpio_port_write_logic(const port_index_t port, uint8 logic);
 
 /**
  * @brief read the logic on the pins of the port
@@ -185,13 +185,13 @@ Std_ReturnType gpio_port_write_logic(port_index_t port, uint8 logic);
  * @param logic the address to store the read logic
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_port_read_logic(port_index_t port, uint8 *logic);
+Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic);
 
 /**
  * @brief toggle the logic of the given port
  * @param port the port index given @ref port_index_t
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType gpio_port_toggle_logic(port_index_t port);
+Std_ReturnType gpio_port_toggle_logic(const port_index_t port);
 #endif	/* HAL_GPIO_H */
 

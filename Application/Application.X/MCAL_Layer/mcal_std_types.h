@@ -35,6 +35,8 @@ typedef uint8 Std_ReturnType;
 #define STD_ACTIVE      0x01    /* Logical state active */
 #define STD_IDLE        0x01    /* Logical state idle */
 
+#define ZERO_INIT       0x00
+
 #ifndef STATUSTYPEDEFINED
 #define STATUSTYPEDEFINED
 #define E_OK            (Std_ReturnType)0x00u

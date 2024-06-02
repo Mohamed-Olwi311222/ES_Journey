@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Programming/ES_Journey/Application/Application.X/app.c</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/DC_Motor/ecu_dc_motor.c</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/TESTS/dc_motor_test/dc_motor_test.c</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/DC_Motor/ecu_dc_motor.h</file>
+            <file>file:/D:/Programming/ES_Journey/Application/Application.X/TESTS/seven_segment_test/seven_segments_test.c</file>
+            <file>file:/D:/Programming/ES_Journey/Application/Application.X/app.h</file>
+            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/ecu_seven_seg/ecu_seven_seg.c</file>
         </group>
     </open-files>
 </project-private>
