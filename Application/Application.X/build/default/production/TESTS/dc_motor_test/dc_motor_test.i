@@ -5536,6 +5536,7 @@ Std_ReturnType ecu_layer_initialize(void);
 
 
 extern keypad_t keypad1;
+extern segment_t seg1;
 # 8 "TESTS/dc_motor_test/dc_motor_test.c" 2
 
 

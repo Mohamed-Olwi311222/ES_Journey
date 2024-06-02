@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\elsae\AppData\Local\Temp\xcAsee0.\driver_tmp_3.o
+ C:\Users\elsae\AppData\Local\Temp\xcAsojs.\driver_tmp_3.o
  -Odist/default/production\Application.X.production.hex
  -logfile=dist/default/production\Application.X.production.hxl
  -addressing=1
@@ -9,15 +9,15 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\elsae\AppData\Local\Temp\xcAsee0.\driver_tmp_3.o)
-  1000h - 1635h		(C:\Users\elsae\AppData\Local\Temp\xcAsee0.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\elsae\AppData\Local\Temp\xcAsojs.\driver_tmp_3.o)
+  1000h - 1731h		(C:\Users\elsae\AppData\Local\Temp\xcAsojs.\driver_tmp_3.o)
  Unused ranges:
   4h - FFFh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\elsae\AppData\Local\Temp\xcAsee0.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\elsae\AppData\Local\Temp\xcAsojs.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -122,5 +122,21 @@
 00001600 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001610 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001620 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001630 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
-00001640 | --
+00001630 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001640 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001650 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001660 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001670 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001680 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001690 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001700 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001710 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001720 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001730 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
+00001740 | --

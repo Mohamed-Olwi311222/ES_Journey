@@ -16,9 +16,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E3080 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
 [c E3076 0 1 .. ]
 [n E3076 . GPIO_LOW GPIO_HIGH  ]
+"45
+[; ;ECU_Layer/ecu_layer_init.c: 45: segment_t seg1 = {
+[c E3199 0 1 .. ]
+[n E3199 . SEGMENT_COMMON_ANODE SEGMENT_COMMON_CATHODE  ]
+"42 ECU_Layer/seven_seg/ecu_seven_seg.h
+[; ;ECU_Layer/seven_seg/ecu_seven_seg.h: 42: {
+[s S312 `S307 -> 4 `i `E3199 1 ]
+[n S312 . segment_pins segment_type ]
 "38 ECU_Layer/keypad/ecu_keypad.h
 [; ;ECU_Layer/keypad/ecu_keypad.h: 38: Std_ReturnType keypad_initialize(const keypad_t *keypad_obj);
 [v _keypad_initialize `(uc ~T0 @X0 0 ef1`*CS313 ]
+"53 ECU_Layer/seven_seg/ecu_seven_seg.h
+[; ;ECU_Layer/seven_seg/ecu_seven_seg.h: 53: Std_ReturnType seven_segment_initialize(const segment_t *seg);
+[v _seven_segment_initialize `(uc ~T0 @X0 0 ef1`*CS312 ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -522,25 +533,64 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "45
-[; ;ECU_Layer/ecu_layer_init.c: 45: Std_ReturnType ecu_layer_initialize(void)
+[; ;ECU_Layer/ecu_layer_init.c: 45: segment_t seg1 = {
+[v _seg1 `S312 ~T0 @X0 1 e ]
+[i _seg1
+:U ..
+:U ..
+:U ..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 0 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 1 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 2 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 3 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+..
+. `E3199 0
+..
+..
+]
+"68
+[; ;ECU_Layer/ecu_layer_init.c: 68: Std_ReturnType ecu_layer_initialize(void)
 [v _ecu_layer_initialize `(uc ~T0 @X0 1 ef ]
-"46
-[; ;ECU_Layer/ecu_layer_init.c: 46: {
+"69
+[; ;ECU_Layer/ecu_layer_init.c: 69: {
 {
 [e :U _ecu_layer_initialize ]
 [f ]
-"47
-[; ;ECU_Layer/ecu_layer_init.c: 47:     Std_ReturnType ret = (Std_ReturnType)0x01u;
+"70
+[; ;ECU_Layer/ecu_layer_init.c: 70:     Std_ReturnType ret = (Std_ReturnType)0x01u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `ui `uc ]
-"48
-[; ;ECU_Layer/ecu_layer_init.c: 48:     ret = keypad_initialize(&keypad1);
+"71
+[; ;ECU_Layer/ecu_layer_init.c: 71:     ret = keypad_initialize(&keypad1);
 [e = _ret ( _keypad_initialize (1 -> &U _keypad1 `*CS313 ]
-"50
-[; ;ECU_Layer/ecu_layer_init.c: 50:     return (ret);
+"72
+[; ;ECU_Layer/ecu_layer_init.c: 72:     ret = seven_segment_initialize(&seg1);
+[e = _ret ( _seven_segment_initialize (1 -> &U _seg1 `*CS312 ]
+"73
+[; ;ECU_Layer/ecu_layer_init.c: 73:     return (ret);
 [e ) _ret ]
 [e $UE 314  ]
-"51
-[; ;ECU_Layer/ecu_layer_init.c: 51: }
+"74
+[; ;ECU_Layer/ecu_layer_init.c: 74: }
 [e :UE 314 ]
 }

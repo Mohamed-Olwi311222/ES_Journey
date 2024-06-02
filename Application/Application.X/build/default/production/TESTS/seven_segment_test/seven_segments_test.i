@@ -5536,6 +5536,7 @@ Std_ReturnType ecu_layer_initialize(void);
 
 
 extern keypad_t keypad1;
+extern segment_t seg1;
 # 8 "TESTS/seven_segment_test/seven_segments_test.c" 2
 
 Std_ReturnType seven_segment_application_initialize(void);

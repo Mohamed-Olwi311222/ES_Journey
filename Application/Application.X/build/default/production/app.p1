@@ -16,6 +16,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./app.h
 [; ;./app.h: 17: extern keypad_t keypad1;
 [v _keypad1 `S313 ~T0 @X0 0 e ]
+"23 app.c
+[; ;app.c: 23:        ret = seven_segment_write_number(&seg1, seg_val);
+[c E3199 0 1 .. ]
+[n E3199 . SEGMENT_COMMON_ANODE SEGMENT_COMMON_CATHODE  ]
+"42 ./ECU_Layer/seven_seg/ecu_seven_seg.h
+[; ;./ECU_Layer/seven_seg/ecu_seven_seg.h: 42: {
+[s S312 `S307 -> 4 `i `E3199 1 ]
+[n S312 . segment_pins segment_type ]
+"61
+[; ;./ECU_Layer/seven_seg/ecu_seven_seg.h: 61: Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
+[v _seven_segment_write_number `(uc ~T0 @X0 0 ef2`*CS312`uc ]
+"18 ./app.h
+[; ;./app.h: 18: extern segment_t seg1;
+[v _seg1 `S312 ~T0 @X0 0 e ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -463,53 +477,65 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _value
 -> -> 0 `i `uc
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "11
-[; ;app.c: 11: int main(void)
-[v _main `(i ~T0 @X0 1 ef ]
+[; ;app.c: 11: uint8 seg_val = 0;
+[v _seg_val `uc ~T0 @X0 1 e ]
+[i _seg_val
+-> -> 0 `i `uc
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
 "12
-[; ;app.c: 12: {
+[; ;app.c: 12: int main(void)
+[v _main `(i ~T0 @X0 1 ef ]
+"13
+[; ;app.c: 13: {
 {
 [e :U _main ]
 [f ]
-"13
-[; ;app.c: 13:     Std_ReturnType ret = ecu_layer_initialize();
+"14
+[; ;app.c: 14:     Std_ReturnType ret = ecu_layer_initialize();
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret ( _ecu_layer_initialize ..  ]
-"14
-[; ;app.c: 14:     if ((Std_ReturnType)0x01u == ret)
-[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 315  ]
 "15
-[; ;app.c: 15:     {
-{
+[; ;app.c: 15:     if ((Std_ReturnType)0x01u == ret)
+[e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 315  ]
 "16
-[; ;app.c: 16:         return (-1);
+[; ;app.c: 16:     {
+{
+"17
+[; ;app.c: 17:         return (-1);
 [e ) -U -> 1 `i ]
 [e $UE 314  ]
-"17
-[; ;app.c: 17:     }
+"18
+[; ;app.c: 18:     }
 }
 [e :U 315 ]
-"18
-[; ;app.c: 18:    while (1)
-[e :U 317 ]
 "19
-[; ;app.c: 19:    {
-{
+[; ;app.c: 19:    while (1)
+[e :U 317 ]
 "20
-[; ;app.c: 20:        ret = keypad_get_value(&keypad1, &value);
-[e = _ret ( _keypad_get_value (2 , -> &U _keypad1 `*CS313 &U _value ]
+[; ;app.c: 20:    {
+{
 "21
-[; ;app.c: 21:    }
+[; ;app.c: 21:        ret = keypad_get_value(&keypad1, &value);
+[e = _ret ( _keypad_get_value (2 , -> &U _keypad1 `*CS313 &U _value ]
+"22
+[; ;app.c: 22:        seg_val = (uint8) value - '0';
+[e = _seg_val -> - -> _value `ui -> 48 `ui `uc ]
+"23
+[; ;app.c: 23:        ret = seven_segment_write_number(&seg1, seg_val);
+[e = _ret ( _seven_segment_write_number (2 , -> &U _seg1 `*CS312 _seg_val ]
+"24
+[; ;app.c: 24:    }
 }
 [e :U 316 ]
 [e $U 317  ]
 [e :U 318 ]
-"22
-[; ;app.c: 22:    return (0);
+"25
+[; ;app.c: 25:    return (0);
 [e ) -> 0 `i ]
 [e $UE 314  ]
-"23
-[; ;app.c: 23: }
+"26
+[; ;app.c: 26: }
 [e :UE 314 ]
 }

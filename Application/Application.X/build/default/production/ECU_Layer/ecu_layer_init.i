@@ -5564,10 +5564,33 @@ keypad_t keypad1 = {
     .keypad_cols_pins[3].logic = GPIO_LOW,
     .keypad_cols_pins[3].pin = GPIO_PIN7,
 };
+segment_t seg1 = {
+    .segment_pins[0].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[0].logic = GPIO_LOW,
+    .segment_pins[0].pin = GPIO_PIN0,
+    .segment_pins[0].port = PORTD_INDEX,
+
+    .segment_pins[1].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[1].logic = GPIO_LOW,
+    .segment_pins[1].pin = GPIO_PIN1,
+    .segment_pins[1].port = PORTD_INDEX,
+
+    .segment_pins[2].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[2].logic = GPIO_LOW,
+    .segment_pins[2].pin = GPIO_PIN2,
+    .segment_pins[2].port = PORTD_INDEX,
+
+    .segment_pins[3].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[3].logic = GPIO_LOW,
+    .segment_pins[3].pin = GPIO_PIN3,
+    .segment_pins[3].port = PORTD_INDEX,
+
+    .segment_type = SEGMENT_COMMON_ANODE
+    };
 Std_ReturnType ecu_layer_initialize(void)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01u;
     ret = keypad_initialize(&keypad1);
-
+    ret = seven_segment_initialize(&seg1);
     return (ret);
 }
