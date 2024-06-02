@@ -7,8 +7,7 @@
 
 #include "app.h"
 
-uint8 value = 0;
-uint8 seg_val = 0;
+
 int main(void)
 {
     Std_ReturnType ret = ecu_layer_initialize();
@@ -18,9 +17,7 @@ int main(void)
     }
    while (1)
    {
-       ret = keypad_get_value(&keypad1, &value);
-       seg_val = (uint8) value - '0';
-       ret = seven_segment_write_number(&seg1, seg_val);
+
    }
    return (0);
 }

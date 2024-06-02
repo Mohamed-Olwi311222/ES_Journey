@@ -90,6 +90,9 @@
                        projectFiles="true">
           <itemPath>TESTS/dc_motor_test/dc_motor_test.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="keypad_test" displayName="keypad_test" projectFiles="true">
+          <itemPath>TESTS/keypad_test/keypad_test.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
           <itemPath>TESTS/relay_test/relay_test.c</itemPath>
         </logicalFolder>

@@ -14,8 +14,7 @@
 /*----------------------------Macros Functions Declarations-------------------*/
 
 /*----------------------------DataTypes---------------------------------------*/
-extern keypad_t keypad1;
-extern segment_t seg1;
+
 /*----------------------------Function Prototypes-----------------------------*/
 
 #endif	/* APP_H */

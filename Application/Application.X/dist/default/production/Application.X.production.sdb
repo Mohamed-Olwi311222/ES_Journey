@@ -226,6 +226,37 @@ GPIO_HIGH 1
 SEGMENT_COMMON_ANODE 0
 SEGMENT_COMMON_CATHODE 1
 ]
+"3 D:\Programming\ES_Journey\Application\Application.X\TESTS/keypad_test/keypad_test.c
+[e E3094 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+[e E3084 . `uc
+GPIO_PIN0 0
+GPIO_PIN1 1
+GPIO_PIN2 2
+GPIO_PIN3 3
+GPIO_PIN4 4
+GPIO_PIN5 5
+GPIO_PIN6 6
+GPIO_PIN7 7
+]
+[e E3080 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+[e E3076 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"39
+[e E3199 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
 "12 D:\Programming\ES_Journey\Application\Application.X\app.c
 [v _main main `(i  1 e 2 0 ]
 "3 D:\Programming\Microchip\xc8\v2.46\pic\sources\c99\common\_Exit.c
@@ -314,14 +345,12 @@ SEGMENT_COMMON_CATHODE 1
 [v _program_2 program_2 `(v  1 e 1 0 ]
 "99
 [v _program_3 program_3 `(v  1 e 1 0 ]
+"80 D:\Programming\ES_Journey\Application\Application.X\TESTS/keypad_test/keypad_test.c
+[v _keypad_application_initialize keypad_application_initialize `(uc  1 e 1 0 ]
 "44 D:\Programming\ES_Journey\Application\Application.X\TESTS/relay_test/relay_test.c
 [v _relay_application_initialize relay_application_initialize `(uc  1 e 1 0 ]
 "141 D:\Programming\ES_Journey\Application\Application.X\TESTS/seven_segment_test/seven_segments_test.c
 [v _seven_segment_application_initialize seven_segment_application_initialize `(uc  1 e 1 0 ]
-"10 D:\Programming\ES_Journey\Application\Application.X\app.c
-[v _value value `uc  1 e 1 0 ]
-"11
-[v _seg_val seg_val `uc  1 e 1 0 ]
 "552 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "788
@@ -352,17 +381,6 @@ SEGMENT_COMMON_CATHODE 1
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2920
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"9 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/ecu_layer_init.c
-[s S701 . 8 `[4]S24 1 keypad_rows_pins 4 0 `[4]S24 1 keypad_cols_pins 4 4 ]
-[v _keypad1 keypad1 `S701  1 e 8 0 ]
-"45
-[s S629 . 5 `[4]S24 1 segment_pins 4 0 `E3199 1 segment_type 1 4 ]
-[v _seg1 seg1 `S629  1 e 5 0 ]
 "8 D:\Programming\ES_Journey\Application\Application.X\ECU_Layer/keypad/ecu_keypad.c
 [v _btn_values btn_values `C[4][4]uc  1 s 16 btn_values ]
 "4 D:\Programming\ES_Journey\Application\Application.X\MCAL_Layer/GPIO/hal_gpio.c
@@ -371,6 +389,11 @@ SEGMENT_COMMON_CATHODE 1
 [v _tris_registers tris_registers `[5]*.39VEuc  1 s 10 tris_registers ]
 "8
 [v _port_registers port_registers `[5]*.39VEuc  1 s 10 port_registers ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
 "10 D:\Programming\ES_Journey\Application\Application.X\TESTS/button_test/button_test.c
 [s S35 . 3 `S24 1 button_pin 1 0 `E3155 1 button_state_t 1 1 `E3159 1 button_connection 1 2 ]
 [v _btn_low btn_low `S35  1 e 3 0 ]
@@ -389,6 +412,16 @@ SEGMENT_COMMON_CATHODE 1
 [v _dc_motor_1 dc_motor_1 `S109  1 e 2 0 ]
 "23
 [v _dc_motor_2 dc_motor_2 `S109  1 e 2 0 ]
+"3 D:\Programming\ES_Journey\Application\Application.X\TESTS/keypad_test/keypad_test.c
+[s S701 . 8 `[4]S24 1 keypad_rows_pins 4 0 `[4]S24 1 keypad_cols_pins 4 4 ]
+[v _keypad1 keypad1 `S701  1 e 8 0 ]
+"39
+[s S629 . 5 `[4]S24 1 segment_pins 4 0 `E3199 1 segment_type 1 4 ]
+[v _seg1 seg1 `S629  1 e 5 0 ]
+"63
+[v _value value `uc  1 e 1 0 ]
+"64
+[v _seg_val seg_val `uc  1 e 1 0 ]
 [s S236 . 1 `uc 1 relay_port 1 0 :4:0 
 `uc 1 relay_pin 1 0 :3:4 
 `uc 1 relay_status 1 0 :1:7 
