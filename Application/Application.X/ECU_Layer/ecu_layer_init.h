@@ -14,12 +14,14 @@
 #include "DC_Motor/ecu_dc_motor.h"
 #include "seven_seg/ecu_seven_seg.h"
 #include "keypad/ecu_keypad.h"
+#include "Char_LCD/ecu_char_lcd.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
 
 /*----------------------------DataTypes---------------------------------------*/
-
+extern char_lcd_4bit_t lcd_1;
+extern char_lcd_8bit_t lcd_2;
 /*----------------------------Function Prototypes-----------------------------*/
 Std_ReturnType ecu_layer_initialize(void);
 

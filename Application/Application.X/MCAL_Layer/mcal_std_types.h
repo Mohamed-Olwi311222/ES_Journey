@@ -35,6 +35,10 @@ typedef uint8 Std_ReturnType;
 #define STD_ACTIVE      0x01    /* Logical state active */
 #define STD_IDLE        0x01    /* Logical state idle */
 
+
+#define BYTE_STR_SIZE   4  // 3 digits + null terminator
+#define SHORT_STR_SIZE  6 // 5 digits + null terminator
+#define INT_STR_SIZE    11  // 10 digits + null terminator
 #define ZERO_INIT       0x00
 
 #ifndef STATUSTYPEDEFINED

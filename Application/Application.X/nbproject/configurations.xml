@@ -9,6 +9,10 @@
           <itemPath>ECU_Layer/button/ecu_button.h</itemPath>
           <itemPath>ECU_Layer/button/ecu_button_cfg.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="Char_LCD" displayName="Char_LCD" projectFiles="true">
+          <itemPath>ECU_Layer/Char_LCD/ecu_char_lcd.h</itemPath>
+          <itemPath>ECU_Layer/Char_LCD/ecu_char_lcd_cfg.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="DC_Motor" displayName="DC_Motor" projectFiles="true">
           <itemPath>ECU_Layer/DC_Motor/ecu_dc_motor.h</itemPath>
           <itemPath>ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h</itemPath>
@@ -58,6 +62,9 @@
       <logicalFolder name="ECU_Layer" displayName="ECU_Layer" projectFiles="true">
         <logicalFolder name="button" displayName="button" projectFiles="true">
           <itemPath>ECU_Layer/button/button.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Char_LCD" displayName="Char_LCD" projectFiles="true">
+          <itemPath>ECU_Layer/Char_LCD/ecu_char_lcd.c</itemPath>
         </logicalFolder>
         <logicalFolder name="DC_Motor" displayName="DC_Motor" projectFiles="true">
           <itemPath>ECU_Layer/DC_Motor/ecu_dc_motor.c</itemPath>

@@ -5133,7 +5133,7 @@ typedef uint8 Std_ReturnType;
 
 # 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
 # 15 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 53 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 54 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef union
 {
     struct
@@ -5192,7 +5192,7 @@ typedef struct
     uint8 direction : 1;
     uint8 logic : 1;
 }pin_config_t;
-# 119 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 120 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t);
 
 

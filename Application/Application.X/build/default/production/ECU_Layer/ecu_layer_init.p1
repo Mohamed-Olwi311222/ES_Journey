@@ -1,13 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"105 ECU_Layer/keypad/../../MCAL_Layer/GPIO/hal_gpio.h
+"106 ECU_Layer/Char_LCD/../../MCAL_Layer/GPIO/hal_gpio.h
 [s S307 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S307 . port pin direction logic ]
-"27 ECU_Layer/keypad/ecu_keypad.h
-[; ;ECU_Layer/keypad/ecu_keypad.h: 27: {
-[s S313 `S307 -> 4 `i `S307 -> 4 `i ]
-[n S313 . keypad_rows_pins keypad_cols_pins ]
+"37 ECU_Layer/Char_LCD/ecu_char_lcd.h
+[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 37: {
+[s S315 `S307 1 `S307 1 `S307 -> 4 `i ]
+[n S315 . lcd_rs lcd_en lcd_data ]
 "9 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 9: keypad_t keypad1 = {
+[; ;ECU_Layer/ecu_layer_init.c: 9: char_lcd_4bit_t lcd_1 = {
 [c E3094 0 1 2 3 4 .. ]
 [n E3094 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
 [c E3084 0 1 2 3 4 5 6 7 .. ]
@@ -16,20 +16,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E3080 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
 [c E3076 0 1 .. ]
 [n E3076 . GPIO_LOW GPIO_HIGH  ]
-"45
-[; ;ECU_Layer/ecu_layer_init.c: 45: segment_t seg1 = {
-[c E3199 0 1 .. ]
-[n E3199 . SEGMENT_COMMON_ANODE SEGMENT_COMMON_CATHODE  ]
-"42 ECU_Layer/seven_seg/ecu_seven_seg.h
-[; ;ECU_Layer/seven_seg/ecu_seven_seg.h: 42: {
-[s S312 `S307 -> 4 `i `E3199 1 ]
-[n S312 . segment_pins segment_type ]
-"38 ECU_Layer/keypad/ecu_keypad.h
-[; ;ECU_Layer/keypad/ecu_keypad.h: 38: Std_ReturnType keypad_initialize(const keypad_t *keypad_obj);
-[v _keypad_initialize `(uc ~T0 @X0 0 ef1`*CS313 ]
-"53 ECU_Layer/seven_seg/ecu_seven_seg.h
-[; ;ECU_Layer/seven_seg/ecu_seven_seg.h: 53: Std_ReturnType seven_segment_initialize(const segment_t *seg);
-[v _seven_segment_initialize `(uc ~T0 @X0 0 ef1`*CS312 ]
+"44 ECU_Layer/Char_LCD/ecu_char_lcd.h
+[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 44: {
+[s S316 `S307 1 `S307 1 `S307 -> 8 `i ]
+[n S316 . lcd_rs lcd_en lcd_data ]
+"50
+[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 50: Std_ReturnType lcd_4bit_initialize(const char_lcd_4bit_t *lcd);
+[v _lcd_4bit_initialize `(uc ~T0 @X0 0 ef1`*CS315 ]
+"59
+[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 59: Std_ReturnType lcd_8bit_initialize(const char_lcd_8bit_t *lcd);
+[v _lcd_8bit_initialize `(uc ~T0 @X0 0 ef1`*CS316 ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -472,9 +468,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 7352: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "9 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 9: keypad_t keypad1 = {
-[v _keypad1 `S313 ~T0 @X0 1 e ]
-[i _keypad1
+[; ;ECU_Layer/ecu_layer_init.c: 9: char_lcd_4bit_t lcd_1 = {
+[v _lcd_1 `S315 ~T0 @X0 1 e ]
+[i _lcd_1
 :U ..
 :U ..
 :U ..
@@ -482,62 +478,68 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> . `E3094 2 `uc
 -> . `E3084 0 `uc
 -> . `E3080 0 `uc
--> . `E3076 1 `uc
+-> . `E3076 0 `uc
 ..
+..
+:U ..
 :U ..
 -> . `E3094 2 `uc
 -> . `E3084 1 `uc
 -> . `E3080 0 `uc
--> . `E3076 1 `uc
+-> . `E3076 0 `uc
 ..
+..
+:U ..
 :U ..
 -> . `E3094 2 `uc
 -> . `E3084 2 `uc
 -> . `E3080 0 `uc
--> . `E3076 1 `uc
+-> . `E3076 0 `uc
 ..
 :U ..
 -> . `E3094 2 `uc
 -> . `E3084 3 `uc
 -> . `E3080 0 `uc
--> . `E3076 1 `uc
+-> . `E3076 0 `uc
 ..
-..
-:U ..
 :U ..
 -> . `E3094 2 `uc
 -> . `E3084 4 `uc
--> . `E3080 1 `uc
+-> . `E3080 0 `uc
 -> . `E3076 0 `uc
 ..
 :U ..
 -> . `E3094 2 `uc
 -> . `E3084 5 `uc
--> . `E3080 1 `uc
--> . `E3076 0 `uc
-..
-:U ..
--> . `E3094 2 `uc
--> . `E3084 6 `uc
--> . `E3080 1 `uc
--> . `E3076 0 `uc
-..
-:U ..
--> . `E3094 2 `uc
--> . `E3084 7 `uc
--> . `E3080 1 `uc
+-> . `E3080 0 `uc
 -> . `E3076 0 `uc
 ..
 ..
 ..
 ..
 ]
-"45
-[; ;ECU_Layer/ecu_layer_init.c: 45: segment_t seg1 = {
-[v _seg1 `S312 ~T0 @X0 1 e ]
-[i _seg1
+"36
+[; ;ECU_Layer/ecu_layer_init.c: 36: char_lcd_8bit_t lcd_2 = {
+[v _lcd_2 `S316 ~T0 @X0 1 e ]
+[i _lcd_2
 :U ..
 :U ..
+:U ..
+:U ..
+-> . `E3094 2 `uc
+-> . `E3084 6 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+..
+:U ..
+:U ..
+-> . `E3094 2 `uc
+-> . `E3084 7 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+..
 :U ..
 :U ..
 -> . `E3094 3 `uc
@@ -563,34 +565,67 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> . `E3080 0 `uc
 -> . `E3076 0 `uc
 ..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 4 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
 ..
-. `E3199 0
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 5 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 6 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+:U ..
+-> . `E3094 3 `uc
+-> . `E3084 7 `uc
+-> . `E3080 0 `uc
+-> . `E3076 0 `uc
+..
+..
 ..
 ..
 ]
-"68
-[; ;ECU_Layer/ecu_layer_init.c: 68: Std_ReturnType ecu_layer_initialize(void)
+"78
+[; ;ECU_Layer/ecu_layer_init.c: 78: Std_ReturnType ecu_layer_initialize(void)
 [v _ecu_layer_initialize `(uc ~T0 @X0 1 ef ]
-"69
-[; ;ECU_Layer/ecu_layer_init.c: 69: {
+"79
+[; ;ECU_Layer/ecu_layer_init.c: 79: {
 {
 [e :U _ecu_layer_initialize ]
 [f ]
-"70
-[; ;ECU_Layer/ecu_layer_init.c: 70:     Std_ReturnType ret = (Std_ReturnType)0x01u;
+"80
+[; ;ECU_Layer/ecu_layer_init.c: 80:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
-[e = _ret -> -> 1 `ui `uc ]
-"71
-[; ;ECU_Layer/ecu_layer_init.c: 71:     ret = keypad_initialize(&keypad1);
-[e = _ret ( _keypad_initialize (1 -> &U _keypad1 `*CS313 ]
-"72
-[; ;ECU_Layer/ecu_layer_init.c: 72:     ret = seven_segment_initialize(&seg1);
-[e = _ret ( _seven_segment_initialize (1 -> &U _seg1 `*CS312 ]
-"73
-[; ;ECU_Layer/ecu_layer_init.c: 73:     return (ret);
+[e = _ret -> -> 0 `ui `uc ]
+"82
+[; ;ECU_Layer/ecu_layer_init.c: 82:     ret = lcd_4bit_initialize(&lcd_1);
+[e = _ret ( _lcd_4bit_initialize (1 -> &U _lcd_1 `*CS315 ]
+"83
+[; ;ECU_Layer/ecu_layer_init.c: 83:     if ((Std_ReturnType)0x00u == ret)
+[e $ ! == -> -> -> 0 `ui `uc `i -> _ret `i 318  ]
+"84
+[; ;ECU_Layer/ecu_layer_init.c: 84:     {
+{
+"85
+[; ;ECU_Layer/ecu_layer_init.c: 85:         ret = lcd_8bit_initialize(&lcd_2);
+[e = _ret ( _lcd_8bit_initialize (1 -> &U _lcd_2 `*CS316 ]
+"86
+[; ;ECU_Layer/ecu_layer_init.c: 86:     }
+}
+[e :U 318 ]
+"88
+[; ;ECU_Layer/ecu_layer_init.c: 88:     return (ret);
 [e ) _ret ]
-[e $UE 314  ]
-"74
-[; ;ECU_Layer/ecu_layer_init.c: 74: }
-[e :UE 314 ]
+[e $UE 317  ]
+"89
+[; ;ECU_Layer/ecu_layer_init.c: 89: }
+[e :UE 317 ]
 }
