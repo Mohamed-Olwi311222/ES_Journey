@@ -5116,11 +5116,11 @@ char *tempnam(const char *, const char *);
 
 typedef unsigned char uint8;
 typedef unsigned short uint16;
-typedef unsigned int uint32;
+
 
 typedef char sint8;
 typedef short sint16;
-typedef int sint32;
+
 
 typedef uint8 Std_ReturnType;
 # 13 "ECU_Layer/keypad/../../MCAL_Layer/GPIO/hal_gpio.h" 2

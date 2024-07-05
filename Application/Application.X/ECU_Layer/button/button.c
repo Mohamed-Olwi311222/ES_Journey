@@ -36,8 +36,8 @@ Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state)
     logic_t pin_logic_status = GPIO_LOW;
     button_state_t btn_high_valid_state = BUTTON_RELEASED;
     button_state_t btn_low_valid_status = BUTTON_RELEASED;
-    static uint32 btn_high_valid = 0;
-    static uint32 btn_low_valid = 0;
+    static uint16 btn_high_valid = 0;
+    static uint16 btn_low_valid = 0;
  
     if (NULL == btn || NULL == btn_state)
     {

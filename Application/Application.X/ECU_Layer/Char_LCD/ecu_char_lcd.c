@@ -504,7 +504,7 @@ static Std_ReturnType lcd_8bit_set_cursor(const char_lcd_8bit_t *lcd, uint8 row,
 	return (ret);
 }
 
-Std_ReturnType convert_byte_to_string(uint8 value, uint8 *str)
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str)
 {
 	Std_ReturnType  ret = E_OK; 
 	if (NULL == str)
@@ -522,7 +522,7 @@ Std_ReturnType convert_byte_to_string(uint8 value, uint8 *str)
 	return (ret);
 }
 
-Std_ReturnType convert_short_to_string(uint16 value, uint8 *str)
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str)
 {
 	Std_ReturnType  ret = E_OK; 
 	if (NULL == str)
@@ -533,24 +533,6 @@ Std_ReturnType convert_short_to_string(uint16 value, uint8 *str)
 	{
 		memset(str, '\0', SHORT_STR_SIZE);
 		if (snprintf((char *)str, SHORT_STR_SIZE, "%u", value) < 0)
-		{
-			ret = E_NOT_OK;
-		}
-    }
-	return (ret);
-}
-
-Std_ReturnType convert_int_to_string(uint32 value, uint8 *str)
-{
-	Std_ReturnType  ret = E_OK; 
-	if (NULL == str)
-	{
-	    ret = E_NOT_OK;
-	}
-	else
-	{
-		memset(str, '\0', INT_STR_SIZE);
-		if (snprintf((char *)str, INT_STR_SIZE, "%u", value) < 0)
 		{
 			ret = E_NOT_OK;
 		}

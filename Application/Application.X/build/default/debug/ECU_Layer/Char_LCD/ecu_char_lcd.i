@@ -5118,11 +5118,11 @@ char *tempnam(const char *, const char *);
 
 typedef unsigned char uint8;
 typedef unsigned short uint16;
-typedef unsigned int uint32;
+
 
 typedef char sint8;
 typedef short sint16;
-typedef int sint32;
+
 
 typedef uint8 Std_ReturnType;
 # 13 "ECU_Layer/Char_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
@@ -5360,9 +5360,8 @@ Std_ReturnType lcd_8bit_send_string(const char_lcd_8bit_t *lcd, uint8 *str);
 Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
-Std_ReturnType convert_byte_to_string(uint8 value, uint8 *str);
-Std_ReturnType convert_short_to_string(uint16 value, uint8 *str);
-Std_ReturnType convert_int_to_string(uint32 value, uint8 *str);
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 # 8 "ECU_Layer/Char_LCD/ecu_char_lcd.c" 2
 static Std_ReturnType lcd_send_4bits(const char_lcd_4bit_t *lcd, uint8 data_command);
 static Std_ReturnType lcd_4bit_send_enable_signal(const char_lcd_4bit_t *lcd);
@@ -5863,7 +5862,7 @@ static Std_ReturnType lcd_8bit_set_cursor(const char_lcd_8bit_t *lcd, uint8 row,
  return (ret);
 }
 
-Std_ReturnType convert_byte_to_string(uint8 value, uint8 *str)
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str)
 {
  Std_ReturnType ret = (Std_ReturnType)0x00u;
  if (((void*)0) == str)
@@ -5881,7 +5880,7 @@ Std_ReturnType convert_byte_to_string(uint8 value, uint8 *str)
  return (ret);
 }
 
-Std_ReturnType convert_short_to_string(uint16 value, uint8 *str)
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str)
 {
  Std_ReturnType ret = (Std_ReturnType)0x00u;
  if (((void*)0) == str)
@@ -5892,24 +5891,6 @@ Std_ReturnType convert_short_to_string(uint16 value, uint8 *str)
  {
   memset(str, '\0', 6);
   if (snprintf((char *)str, 6, "%u", value) < 0)
-  {
-   ret = (Std_ReturnType)0x01u;
-  }
-    }
- return (ret);
-}
-
-Std_ReturnType convert_int_to_string(uint32 value, uint8 *str)
-{
- Std_ReturnType ret = (Std_ReturnType)0x00u;
- if (((void*)0) == str)
- {
-     ret = (Std_ReturnType)0x01u;
- }
- else
- {
-  memset(str, '\0', 11);
-  if (snprintf((char *)str, 11, "%u", value) < 0)
   {
    ret = (Std_ReturnType)0x01u;
   }

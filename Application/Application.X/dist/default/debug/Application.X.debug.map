@@ -6,10 +6,10 @@ Linker command line:
   --edf=D:\Programming\Microchip\xc8\v2.46\pic\dat\20240104201356_en.msgs \
   -cn -h+dist/default/debug\Application.X.debug.sym \
   --cmf=dist/default/debug\Application.X.debug.cmf -z -Q18F46K20 \
-  -oC:\Users\elsae\AppData\Local\Temp\xcAsgls.\driver_tmp_3.o \
+  -oC:\Users\elsae\AppData\Local\Temp\xcAsmec.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/debug/Application.X.debug.map \
-  --md=C:\Users\elsae\AppData\Local\Temp\xcAsgls.\driver_tmp_0.dat -E1 \
+  --md=C:\Users\elsae\AppData\Local\Temp\xcAsmec.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
   -ACOMRAM=01h-05Fh -AABS1=00h-0F5Fh -ABIGRAM=01h-0F5Fh \
@@ -28,7 +28,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\elsae\AppData\Local\Temp\xcAsgls.\driver_tmp_14.o \
+  C:\Users\elsae\AppData\Local\Temp\xcAsmec.\driver_tmp_14.o \
   dist/default/debug\Application.X.debug.o 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Machine type is 18F46K20
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\elsae\AppData\Local\Temp\xcAsgls.\driver_tmp_14.o
+C:\Users\elsae\AppData\Local\Temp\xcAsmec.\driver_tmp_14.o
                 init                                  0        0        4        0       0
 dist/default/debug\Application.X.debug.o
                 smallconst                         1000     1000       16      800       0
@@ -497,7 +497,7 @@ __end_of___lwmod                                 text11       1D14
 __end_of__initialization                         cinit        1DCC
 __end_of_application_init                        text14       2010
 __end_of_btn_values                              smallconst   1011
-__end_of_convert_short_to_string                 text5        1CB0
+__end_of_convert_uint16_to_string                text5        1CB0
 __end_of_ecu_layer_initialize                    text15       1FF2
 __end_of_fputc                                   text9        1A58
 __end_of_gpio_pin_direction_initialize           text25       16AE
@@ -563,7 +563,7 @@ _application_init                                text14       2006
 _btn_high                                        dataBANK0    009B
 _btn_low                                         dataBANK0    009E
 _btn_values                                      smallconst   1001
-_convert_short_to_string                         text5        1C4A
+_convert_uint16_to_string                        text5        1C4A
 _count                                           bssCOMRAM    003D
 _counter                                         bssCOMRAM    003F
 _dbuf                                            bssBANK0     00A1
@@ -618,7 +618,7 @@ _seg5_enable                                     dataCOMRAM   0056
 _seg6_enable                                     dataCOMRAM   0055
 _seg_val                                         bssCOMRAM    0040
 _snprintf                                        text6        16AE
-_snprintf$1691                                   cstackCOMRAM 0022
+_snprintf$1686                                   cstackCOMRAM 0022
 _tris_registers                                  dataBANK0    006A
 _value                                           bssCOMRAM    004B
 _vfpfcnvrt                                       text8        1016
@@ -629,9 +629,9 @@ btn_high_magic_button@btn_high_last_valid_status bssCOMRAM    004A
 btn_high_magic_button@led_status                 bssCOMRAM    0049
 button_read_state@btn_high_valid                 bssCOMRAM    003A
 button_read_state@btn_low_valid                  bssCOMRAM    0038
-convert_short_to_string@ret                      cstackCOMRAM 0036
-convert_short_to_string@str                      cstackCOMRAM 0035
-convert_short_to_string@value                    cstackCOMRAM 0033
+convert_uint16_to_string@ret                     cstackCOMRAM 0036
+convert_uint16_to_string@str                     cstackCOMRAM 0035
+convert_uint16_to_string@value                   cstackCOMRAM 0033
 ecu_layer_initialize@ret                         cstackCOMRAM 0016
 end_of_initialization                            cinit        1DCC
 fputc@c                                          cstackCOMRAM 0001
@@ -686,18 +686,18 @@ lcd_send_4bits@counter                           cstackCOMRAM 000E
 lcd_send_4bits@data_command                      cstackCOMRAM 000A
 lcd_send_4bits@lcd                               cstackCOMRAM 0009
 lcd_send_4bits@ret                               cstackCOMRAM 000D
-led_intitialize@F3160                            bssCOMRAM    0047
-led_toggle@F3175                                 bssCOMRAM    0044
-led_turn_off@F3170                               bssCOMRAM    0045
-led_turn_on@F3165                                bssCOMRAM    0046
+led_intitialize@F3158                            bssCOMRAM    0047
+led_toggle@F3173                                 bssCOMRAM    0044
+led_turn_off@F3168                               bssCOMRAM    0045
+led_turn_on@F3163                                bssCOMRAM    0046
 main@ret                                         cstackCOMRAM 0037
 memset@c                                         cstackCOMRAM 0002
 memset@dest                                      cstackCOMRAM 0001
 memset@n                                         cstackCOMRAM 0004
 memset@p                                         cstackCOMRAM 0006
-relay_initialize@F3150                           bssCOMRAM    0043
-relay_turn_off@F3160                             bssCOMRAM    0041
-relay_turn_on@F3155                              bssCOMRAM    0042
+relay_initialize@F3148                           bssCOMRAM    0043
+relay_turn_off@F3158                             bssCOMRAM    0041
+relay_turn_on@F3153                              bssCOMRAM    0042
 snprintf@ap                                      cstackCOMRAM 0024
 snprintf@cnt                                     cstackCOMRAM 0025
 snprintf@f                                       cstackCOMRAM 0027
@@ -741,11 +741,11 @@ D:\Programming\Microchip\xc8\v2.46\pic\sources\c99\common\putch.c
 D:\Programming\Microchip\xc8\v2.46\pic\sources\c99\common\putch.c estimated size: 2
 
 ECU_Layer/Char_LCD/ecu_char_lcd.c
-		_convert_short_to_string		CODE           	1C4A	0000	102
 		_lcd_8bit_set_cursor		CODE           	1902	0000	172
 		_lcd_8bit_send_enable_signal		CODE           	1F5A	0000	64
 		_lcd_4bit_send_command		CODE           	1A58	0000	160
 		_lcd_send_4bits		CODE           	1AF8	0000	118
+		_convert_uint16_to_string		CODE           	1C4A	0000	102
 		_lcd_4bit_send_enable_signal		CODE           	1E82	0000	80
 		_lcd_8bit_initialize		CODE           	1464	0000	312
 		_lcd_8bit_send_string		CODE           	1D14	0000	96

@@ -20,7 +20,7 @@ typedef unsigned short uint16;
 
 typedef char sint8;
 typedef short sint16;
-typedef int sint32;
+/*typedef int sint32; No sint32 in PIC18f46k20*/
 
 typedef uint8 Std_ReturnType;
 

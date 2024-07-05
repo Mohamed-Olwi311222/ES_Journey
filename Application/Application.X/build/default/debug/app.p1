@@ -17,8 +17,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ECU_Layer/ecu_layer_init.h: 24: extern char_lcd_8bit_t lcd_2;
 [v _lcd_2 `S316 ~T0 @X0 0 e ]
 "68 ./ECU_Layer/Char_LCD/ecu_char_lcd.h
-[; ;./ECU_Layer/Char_LCD/ecu_char_lcd.h: 68: Std_ReturnType convert_short_to_string(uint16 value, uint8 *str);
-[v _convert_short_to_string `(uc ~T0 @X0 0 ef2`us`*uc ]
+[; ;./ECU_Layer/Char_LCD/ecu_char_lcd.h: 68: Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
+[v _convert_uint16_to_string `(uc ~T0 @X0 0 ef2`us`*uc ]
 "64
 [; ;./ECU_Layer/Char_LCD/ecu_char_lcd.h: 64: Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
 [v _lcd_8bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS316`uc`uc`*uc ]
@@ -525,8 +525,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 322 ]
 "25
-[; ;app.c: 25:         ret = convert_short_to_string(number2, lcd_counter_txt2);
-[e = _ret ( _convert_short_to_string (2 , _number2 &U _lcd_counter_txt2 ]
+[; ;app.c: 25:         ret = convert_uint16_to_string(number2, lcd_counter_txt2);
+[e = _ret ( _convert_uint16_to_string (2 , _number2 &U _lcd_counter_txt2 ]
 "26
 [; ;app.c: 26:         ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, lcd_counter_txt2);
 [e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 1 `i `uc &U _lcd_counter_txt2 ]

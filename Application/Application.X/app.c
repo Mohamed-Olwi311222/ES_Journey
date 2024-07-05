@@ -22,7 +22,7 @@ int main(void)
     while (1)
     {
         if (0 == number2) {ret = lcd_8bit_send_command(&lcd_2, _LCD_CLEAR);}
-        ret = convert_short_to_string(number2, lcd_counter_txt2);
+        ret = convert_uint16_to_string(number2, lcd_counter_txt2);
         ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, lcd_counter_txt2);
         number2++;
     }

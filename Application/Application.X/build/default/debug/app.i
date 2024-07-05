@@ -5120,11 +5120,11 @@ char *tempnam(const char *, const char *);
 
 typedef unsigned char uint8;
 typedef unsigned short uint16;
-typedef unsigned int uint32;
+
 
 typedef char sint8;
 typedef short sint16;
-typedef int sint32;
+
 
 typedef uint8 Std_ReturnType;
 # 13 "./ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
@@ -5614,9 +5614,8 @@ Std_ReturnType lcd_8bit_send_string(const char_lcd_8bit_t *lcd, uint8 *str);
 Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
-Std_ReturnType convert_byte_to_string(uint8 value, uint8 *str);
-Std_ReturnType convert_short_to_string(uint16 value, uint8 *str);
-Std_ReturnType convert_int_to_string(uint32 value, uint8 *str);
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 # 17 "./ECU_Layer/ecu_layer_init.h" 2
 
 
@@ -5648,7 +5647,7 @@ int main(void)
     while (1)
     {
         if (0 == number2) {ret = lcd_8bit_send_command(&lcd_2, 0x01);}
-        ret = convert_short_to_string(number2, lcd_counter_txt2);
+        ret = convert_uint16_to_string(number2, lcd_counter_txt2);
         ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, lcd_counter_txt2);
         number2++;
     }

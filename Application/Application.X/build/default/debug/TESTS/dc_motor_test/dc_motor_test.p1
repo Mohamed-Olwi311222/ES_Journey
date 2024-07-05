@@ -8,12 +8,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S311 . dc_motor_pins ]
 "11 TESTS/dc_motor_test/dc_motor_test.c
 [; ;TESTS/dc_motor_test/dc_motor_test.c: 11: dc_motor_t dc_motor_1 = {
-[c E3094 0 1 2 3 4 .. ]
-[n E3094 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
-[c E3084 0 1 2 3 4 5 6 7 .. ]
-[n E3084 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
-[c E3080 0 1 .. ]
-[n E3080 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
+[c E3092 0 1 2 3 4 .. ]
+[n E3092 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
+[c E3082 0 1 2 3 4 5 6 7 .. ]
+[n E3082 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
+[c E3078 0 1 .. ]
+[n E3078 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
 "10
 [; ;TESTS/dc_motor_test/dc_motor_test.c: 10: Std_ReturnType application_initialize(void);
 [v _application_initialize `(uc ~T0 @X0 0 ef ]
@@ -482,15 +482,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 :U ..
--> . `E3094 2 `uc
--> . `E3084 0 `uc
--> . `E3080 0 `uc
+-> . `E3092 2 `uc
+-> . `E3082 0 `uc
+-> . `E3078 0 `uc
 -> -> 0 `ui `uc
 ..
 :U ..
--> . `E3094 2 `uc
--> . `E3084 1 `uc
--> . `E3080 0 `uc
+-> . `E3092 2 `uc
+-> . `E3082 1 `uc
+-> . `E3078 0 `uc
 -> -> 0 `ui `uc
 ..
 ..
@@ -505,15 +505,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 :U ..
--> . `E3094 2 `uc
--> . `E3084 2 `uc
--> . `E3080 0 `uc
+-> . `E3092 2 `uc
+-> . `E3082 2 `uc
+-> . `E3078 0 `uc
 -> -> 0 `ui `uc
 ..
 :U ..
--> . `E3094 2 `uc
--> . `E3084 3 `uc
--> . `E3080 0 `uc
+-> . `E3092 2 `uc
+-> . `E3082 3 `uc
+-> . `E3078 0 `uc
 -> -> 0 `ui `uc
 ..
 ..

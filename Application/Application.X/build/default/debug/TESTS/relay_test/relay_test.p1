@@ -5,10 +5,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S310 . relay_port relay_pin relay_status ]
 "11 TESTS/relay_test/relay_test.c
 [; ;TESTS/relay_test/relay_test.c: 11: relay_t relay1 = {
-[c E3094 0 1 2 3 4 .. ]
-[n E3094 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
-[c E3084 0 1 2 3 4 5 6 7 .. ]
-[n E3084 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
+[c E3092 0 1 2 3 4 .. ]
+[n E3092 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
+[c E3082 0 1 2 3 4 5 6 7 .. ]
+[n E3082 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
 "10
 [; ;TESTS/relay_test/relay_test.c: 10: Std_ReturnType relay_application_initialize(void);
 [v _relay_application_initialize `(uc ~T0 @X0 0 ef ]
@@ -472,8 +472,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _relay1
 :U ..
 :U ..
--> . `E3094 2 `uc
--> . `E3084 0 `uc
+-> . `E3092 2 `uc
+-> . `E3082 0 `uc
 -> -> 0 `ui `uc
 ..
 ..
@@ -484,8 +484,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _relay2
 :U ..
 :U ..
--> . `E3094 2 `uc
--> . `E3084 1 `uc
+-> . `E3092 2 `uc
+-> . `E3082 1 `uc
 -> -> 0 `ui `uc
 ..
 ..
