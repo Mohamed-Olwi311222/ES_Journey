@@ -16,7 +16,7 @@
 /*----------------------------DataTypes---------------------------------------*/
 typedef unsigned char uint8;
 typedef unsigned short uint16;
-typedef unsigned int uint32;
+/*typedef unsigned int uint32; No uint32 in PIC18f46k20*/
 
 typedef char sint8;
 typedef short sint16;
