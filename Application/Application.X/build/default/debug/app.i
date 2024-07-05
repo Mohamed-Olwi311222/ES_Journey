@@ -5582,13 +5582,19 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 14 "./ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
-# 36 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 43 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 typedef struct
 {
     pin_config_t lcd_rs;
     pin_config_t lcd_en;
     pin_config_t lcd_data[4];
 } char_lcd_4bit_t;
+
+
+
+
+
+
 
 typedef struct
 {
@@ -5597,24 +5603,95 @@ typedef struct
     pin_config_t lcd_data[8];
 } char_lcd_8bit_t;
 
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_initialize(const char_lcd_4bit_t *lcd);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_command(const char_lcd_4bit_t *lcd, uint8 command);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_char_data(const char_lcd_4bit_t *lcd, uint8 data);
+# 95 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 data);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_string(const char_lcd_4bit_t *lcd, uint8 *str);
+# 113 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_string_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+# 124 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
 
+
+
+
+
 Std_ReturnType lcd_8bit_initialize(const char_lcd_8bit_t *lcd);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_command(const char_lcd_8bit_t *lcd, uint8 command);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_char_data(const char_lcd_8bit_t *lcd, uint8 data);
+# 157 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 data);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_string(const char_lcd_8bit_t *lcd, uint8 *str);
+# 175 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+# 186 "./ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
+
+
+
+
+
+
 Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+
+
+
+
+
+
+
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 # 17 "./ECU_Layer/ecu_layer_init.h" 2
 
@@ -5631,10 +5708,72 @@ Std_ReturnType ecu_layer_initialize(void);
 # 7 "app.c" 2
 
 Std_ReturnType application_init(void);
-uint8 lcd_counter_txt[4];
-uint8 number = 0;
-uint8 lcd_counter_txt2[6];
-uint16 number2 = 65535;
+
+uint8 custom1[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x11,
+  0x11,
+  0x11,
+  0x1F,
+  0x00
+};
+
+uint8 custom2[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x11,
+  0x11,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom3[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x11,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom4[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom5[] = {
+  0x0E,
+  0x0A,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom6[] = {
+  0x0E,
+  0x0E,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
 int main(void)
 {
     Std_ReturnType ret = application_init();
@@ -5643,13 +5782,29 @@ int main(void)
     {
         return (-1);
     }
-
+    ret = lcd_8bit_send_string_pos(&lcd_2, 2, 5, " the World");
+    ret = lcd_4bit_send_char_data_pos(&lcd_1, 1, 5, 'I');
+    ret = lcd_4bit_send_string_pos(&lcd_1, 2, 6, "Will Conquer");
     while (1)
     {
-        if (0 == number2) {ret = lcd_8bit_send_command(&lcd_2, 0x01);}
-        ret = convert_uint16_to_string(number2, lcd_counter_txt2);
-        ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, lcd_counter_txt2);
-        number2++;
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom1, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom1, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom2, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom2, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom3, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom3, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom4, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom4, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom5, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom5, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom6, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom6, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
     }
 
    return (0);

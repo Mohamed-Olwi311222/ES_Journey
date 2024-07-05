@@ -5328,13 +5328,19 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 14 "ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
-# 36 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 43 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 typedef struct
 {
     pin_config_t lcd_rs;
     pin_config_t lcd_en;
     pin_config_t lcd_data[4];
 } char_lcd_4bit_t;
+
+
+
+
+
+
 
 typedef struct
 {
@@ -5343,30 +5349,122 @@ typedef struct
     pin_config_t lcd_data[8];
 } char_lcd_8bit_t;
 
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_initialize(const char_lcd_4bit_t *lcd);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_command(const char_lcd_4bit_t *lcd, uint8 command);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_char_data(const char_lcd_4bit_t *lcd, uint8 data);
+# 95 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 data);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_string(const char_lcd_4bit_t *lcd, uint8 *str);
+# 113 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_string_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+# 124 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
 
+
+
+
+
 Std_ReturnType lcd_8bit_initialize(const char_lcd_8bit_t *lcd);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_command(const char_lcd_8bit_t *lcd, uint8 command);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_char_data(const char_lcd_8bit_t *lcd, uint8 data);
+# 157 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 data);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_string(const char_lcd_8bit_t *lcd, uint8 *str);
+# 175 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+# 186 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
+
+
+
+
+
+
 Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+
+
+
+
+
+
+
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 # 8 "ECU_Layer/Char_LCD/ecu_char_lcd.c" 2
+
+
+
+
+
+
+
 static Std_ReturnType lcd_send_4bits(const char_lcd_4bit_t *lcd, uint8 data_command);
+
+
+
+
+
+
 static Std_ReturnType lcd_4bit_send_enable_signal(const char_lcd_4bit_t *lcd);
+# 31 "ECU_Layer/Char_LCD/ecu_char_lcd.c"
 static Std_ReturnType lcd_4bit_set_cursor(const char_lcd_4bit_t *lcd, uint8 row, uint8 col);
+
+
+
+
+
+
 static Std_ReturnType lcd_8bit_send_enable_signal(const char_lcd_8bit_t *lcd);
+# 47 "ECU_Layer/Char_LCD/ecu_char_lcd.c"
 static Std_ReturnType lcd_8bit_set_cursor(const char_lcd_8bit_t *lcd, uint8 row, uint8 col);
 
 Std_ReturnType lcd_4bit_initialize(const char_lcd_4bit_t *lcd)
@@ -5535,6 +5633,8 @@ Std_ReturnType lcd_4bit_send_string_pos(const char_lcd_4bit_t *lcd, uint8 row, u
 Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos)
 {
  Std_ReturnType ret = (Std_ReturnType)0x00u;
+    uint8 lcd_counter = 0x00;
+
  if (((void*)0) == lcd)
  {
      ret = (Std_ReturnType)0x01u;
@@ -5542,8 +5642,20 @@ Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, 
  else
  {
 
+  ret = lcd_4bit_send_command(lcd, (0x40) + (mem_pos * 8));
+  if ((Std_ReturnType)0x00u == ret)
+  {
+   for (lcd_counter = 0; lcd_counter < 7; lcd_counter++)
+   {
+    ret = lcd_4bit_send_char_data(lcd, _char[lcd_counter]);
+    if ((Std_ReturnType)0x01u == ret)
+    {
+     break;
     }
-
+   }
+   ret = lcd_4bit_send_char_data_pos(lcd, row, col, mem_pos);
+        }
+    }
 
  return (ret);
 }
@@ -5719,6 +5831,8 @@ Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, u
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos)
 {
  Std_ReturnType ret = (Std_ReturnType)0x00u;
+ uint8 lcd_counter = 0x00;
+
  if (((void*)0) == lcd)
  {
      ret = (Std_ReturnType)0x01u;
@@ -5726,9 +5840,20 @@ Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, 
  else
  {
 
+  ret = lcd_8bit_send_command(lcd, (0x40) + (mem_pos * 8));
+  if ((Std_ReturnType)0x00u == ret)
+  {
+   for (lcd_counter = 0; lcd_counter < 7; lcd_counter++)
+   {
+    ret = lcd_8bit_send_char_data(lcd, _char[lcd_counter]);
+    if ((Std_ReturnType)0x01u == ret)
+    {
+     break;
     }
-
-
+   }
+   ret = lcd_8bit_send_char_data_pos(lcd, row, col, mem_pos);
+  }
+    }
  return (ret);
 }
 

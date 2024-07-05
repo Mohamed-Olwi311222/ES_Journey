@@ -5580,13 +5580,19 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 14 "ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
-# 36 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 43 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 typedef struct
 {
     pin_config_t lcd_rs;
     pin_config_t lcd_en;
     pin_config_t lcd_data[4];
 } char_lcd_4bit_t;
+
+
+
+
+
+
 
 typedef struct
 {
@@ -5595,24 +5601,95 @@ typedef struct
     pin_config_t lcd_data[8];
 } char_lcd_8bit_t;
 
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_initialize(const char_lcd_4bit_t *lcd);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_command(const char_lcd_4bit_t *lcd, uint8 command);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_char_data(const char_lcd_4bit_t *lcd, uint8 data);
+# 95 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 data);
+
+
+
+
+
+
+
 Std_ReturnType lcd_4bit_send_string(const char_lcd_4bit_t *lcd, uint8 *str);
+# 113 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_string_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+# 124 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
 
+
+
+
+
 Std_ReturnType lcd_8bit_initialize(const char_lcd_8bit_t *lcd);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_command(const char_lcd_8bit_t *lcd, uint8 command);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_char_data(const char_lcd_8bit_t *lcd, uint8 data);
+# 157 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 data);
+
+
+
+
+
+
+
 Std_ReturnType lcd_8bit_send_string(const char_lcd_8bit_t *lcd, uint8 *str);
+# 175 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+# 186 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
+
+
+
+
+
+
 Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+
+
+
+
+
+
+
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 # 17 "ECU_Layer/ecu_layer_init.h" 2
 
