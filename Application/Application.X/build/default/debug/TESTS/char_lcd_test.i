@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/ecu_layer_init.c"
+# 1 "TESTS/char_lcd_test.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,19 +6,19 @@
 # 1 "<built-in>" 2
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/ecu_layer_init.c" 2
+# 1 "TESTS/char_lcd_test.c" 2
 
 
 
 
 
 
-# 1 "ECU_Layer/ecu_layer_init.h" 1
-# 11 "ECU_Layer/ecu_layer_init.h"
-# 1 "ECU_Layer/led/ecu_led.h" 1
-# 12 "ECU_Layer/led/ecu_led.h"
-# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "TESTS/ecu_test_init.h" 1
+# 11 "TESTS/ecu_test_init.h"
+# 1 "TESTS/../ECU_Layer/led/ecu_led.h" 1
+# 12 "TESTS/../ECU_Layer/led/ecu_led.h"
+# 1 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 1 3
 # 18 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4950,12 +4950,12 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 13 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 1
-# 11 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h"
+# 1 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 13 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 1
+# 11 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h"
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 3
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -5108,11 +5108,11 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 11 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 2
-# 13 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 11 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../../std_types.h" 2
+# 13 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../compiler.h" 1
-# 14 "ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 1 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../../compiler.h" 1
+# 14 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -5125,14 +5125,14 @@ typedef short sint16;
 
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/../../device_config.h" 1
-# 14 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/../../device_config.h" 1
+# 14 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 54 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 54 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef union
 {
     struct
@@ -5191,7 +5191,7 @@ typedef struct
     uint8 direction : 1;
     uint8 logic : 1;
 }pin_config_t;
-# 120 "ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 120 "TESTS/../ECU_Layer/led/../../MCAL_Layer/GPIO/hal_gpio.h"
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t);
 
 
@@ -5269,12 +5269,12 @@ Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic);
 
 
 Std_ReturnType gpio_port_toggle_logic(const port_index_t port);
-# 12 "ECU_Layer/led/ecu_led.h" 2
+# 12 "TESTS/../ECU_Layer/led/ecu_led.h" 2
 
-# 1 "ECU_Layer/led/ecu_led_cfg.h" 1
-# 20 "ECU_Layer/led/ecu_led_cfg.h"
+# 1 "TESTS/../ECU_Layer/led/ecu_led_cfg.h" 1
+# 20 "TESTS/../ECU_Layer/led/ecu_led_cfg.h"
 Std_ReturnType turn_on_leds(void);
-# 13 "ECU_Layer/led/ecu_led.h" 2
+# 13 "TESTS/../ECU_Layer/led/ecu_led.h" 2
 
 
 
@@ -5323,12 +5323,12 @@ Std_ReturnType led_turn_off(const led_t *led);
 
 
 Std_ReturnType led_toggle(const led_t *led);
-# 11 "ECU_Layer/ecu_layer_init.h" 2
+# 11 "TESTS/ecu_test_init.h" 2
 
-# 1 "ECU_Layer/button/ecu_button.h" 1
-# 11 "ECU_Layer/button/ecu_button.h"
-# 1 "ECU_Layer/button/ecu_button_cfg.h" 1
-# 11 "ECU_Layer/button/ecu_button.h" 2
+# 1 "TESTS/../ECU_Layer/button/ecu_button.h" 1
+# 11 "TESTS/../ECU_Layer/button/ecu_button.h"
+# 1 "TESTS/../ECU_Layer/button/ecu_button_cfg.h" 1
+# 11 "TESTS/../ECU_Layer/button/ecu_button.h" 2
 
 
 
@@ -5373,13 +5373,13 @@ Std_ReturnType button_initialize(const button_t *btn);
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
 
 Std_ReturnType btn_high_magic_button(const button_t *btn, led_t *led, const button_state_t *btn_high_status);
-# 12 "ECU_Layer/ecu_layer_init.h" 2
+# 12 "TESTS/ecu_test_init.h" 2
 
-# 1 "ECU_Layer/Relay/ecu_relay.h" 1
-# 11 "ECU_Layer/Relay/ecu_relay.h"
-# 1 "ECU_Layer/Relay/ecu_relay_cfg.h" 1
-# 11 "ECU_Layer/Relay/ecu_relay.h" 2
-# 26 "ECU_Layer/Relay/ecu_relay.h"
+# 1 "TESTS/../ECU_Layer/Relay/ecu_relay.h" 1
+# 11 "TESTS/../ECU_Layer/Relay/ecu_relay.h"
+# 1 "TESTS/../ECU_Layer/Relay/ecu_relay_cfg.h" 1
+# 11 "TESTS/../ECU_Layer/Relay/ecu_relay.h" 2
+# 26 "TESTS/../ECU_Layer/Relay/ecu_relay.h"
 typedef struct
 {
     uint8 relay_port : 4;
@@ -5408,13 +5408,13 @@ Std_ReturnType relay_turn_on(relay_t *relay);
 
 
 Std_ReturnType relay_turn_off(relay_t *relay);
-# 13 "ECU_Layer/ecu_layer_init.h" 2
+# 13 "TESTS/ecu_test_init.h" 2
 
-# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
-# 11 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
-# 1 "ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
-# 11 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 29 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "TESTS/../ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
+# 11 "TESTS/../ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "TESTS/../ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
+# 11 "TESTS/../ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+# 29 "TESTS/../ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef struct
 {
     pin_config_t dc_motor_pins[0x02U];
@@ -5448,13 +5448,13 @@ Std_ReturnType dc_motor_move_backward(const dc_motor_t *dc_motor);
 
 
 Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor);
-# 14 "ECU_Layer/ecu_layer_init.h" 2
+# 14 "TESTS/ecu_test_init.h" 2
 
-# 1 "ECU_Layer/seven_seg/ecu_seven_seg.h" 1
-# 11 "ECU_Layer/seven_seg/ecu_seven_seg.h"
-# 1 "ECU_Layer/seven_seg/ecu_seven_seg_cfg.h" 1
-# 11 "ECU_Layer/seven_seg/ecu_seven_seg.h" 2
-# 30 "ECU_Layer/seven_seg/ecu_seven_seg.h"
+# 1 "TESTS/../ECU_Layer/seven_seg/ecu_seven_seg.h" 1
+# 11 "TESTS/../ECU_Layer/seven_seg/ecu_seven_seg.h"
+# 1 "TESTS/../ECU_Layer/seven_seg/ecu_seven_seg_cfg.h" 1
+# 11 "TESTS/../ECU_Layer/seven_seg/ecu_seven_seg.h" 2
+# 30 "TESTS/../ECU_Layer/seven_seg/ecu_seven_seg.h"
 typedef enum
 {
     SEGMENT_COMMON_ANODE,
@@ -5487,13 +5487,13 @@ Std_ReturnType seven_segment_initialize(const segment_t *seg);
 
 
 Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number);
-# 15 "ECU_Layer/ecu_layer_init.h" 2
+# 15 "TESTS/ecu_test_init.h" 2
 
-# 1 "ECU_Layer/keypad/ecu_keypad.h" 1
-# 12 "ECU_Layer/keypad/ecu_keypad.h"
-# 1 "ECU_Layer/keypad/ecu_keypad_cfg.h" 1
-# 12 "ECU_Layer/keypad/ecu_keypad.h" 2
-# 26 "ECU_Layer/keypad/ecu_keypad.h"
+# 1 "TESTS/../ECU_Layer/keypad/ecu_keypad.h" 1
+# 12 "TESTS/../ECU_Layer/keypad/ecu_keypad.h"
+# 1 "TESTS/../ECU_Layer/keypad/ecu_keypad_cfg.h" 1
+# 12 "TESTS/../ECU_Layer/keypad/ecu_keypad.h" 2
+# 26 "TESTS/../ECU_Layer/keypad/ecu_keypad.h"
 typedef struct
 {
   pin_config_t keypad_rows_pins[4];
@@ -5515,12 +5515,12 @@ Std_ReturnType keypad_initialize(const keypad_t *keypad_obj);
 
 
 Std_ReturnType keypad_get_value(const keypad_t *keypad_obj, uint8 *value);
-# 16 "ECU_Layer/ecu_layer_init.h" 2
+# 16 "TESTS/ecu_test_init.h" 2
 
-# 1 "ECU_Layer/Char_LCD/ecu_char_lcd.h" 1
-# 11 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
-# 1 "ECU_Layer/Char_LCD/ecu_char_lcd_cfg.h" 1
-# 12 "ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
+# 1 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h" 1
+# 11 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 1 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd_cfg.h" 1
+# 12 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
 
 # 1 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\string.h" 1 3
 # 25 "D:\\Programming\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\string.h" 3
@@ -5579,8 +5579,8 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 14 "ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
-# 43 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 14 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h" 2
+# 43 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 typedef struct
 {
     pin_config_t lcd_rs;
@@ -5624,7 +5624,7 @@ Std_ReturnType lcd_4bit_send_command(const char_lcd_4bit_t *lcd, uint8 command);
 
 
 Std_ReturnType lcd_4bit_send_char_data(const char_lcd_4bit_t *lcd, uint8 data);
-# 95 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 95 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 data);
 
 
@@ -5634,9 +5634,9 @@ Std_ReturnType lcd_4bit_send_char_data_pos(const char_lcd_4bit_t *lcd, uint8 row
 
 
 Std_ReturnType lcd_4bit_send_string(const char_lcd_4bit_t *lcd, uint8 *str);
-# 113 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 113 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_string_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 *str);
-# 124 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 124 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
 
@@ -5661,7 +5661,7 @@ Std_ReturnType lcd_8bit_send_command(const char_lcd_8bit_t *lcd, uint8 command);
 
 
 Std_ReturnType lcd_8bit_send_char_data(const char_lcd_8bit_t *lcd, uint8 data);
-# 157 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 157 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 data);
 
 
@@ -5671,9 +5671,9 @@ Std_ReturnType lcd_8bit_send_char_data_pos(const char_lcd_8bit_t *lcd, uint8 row
 
 
 Std_ReturnType lcd_8bit_send_string(const char_lcd_8bit_t *lcd, uint8 *str);
-# 175 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 175 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
-# 186 "ECU_Layer/Char_LCD/ecu_char_lcd.h"
+# 186 "TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
 
 
@@ -5691,7 +5691,7 @@ Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
 
 
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
-# 17 "ECU_Layer/ecu_layer_init.h" 2
+# 17 "TESTS/ecu_test_init.h" 2
 
 
 
@@ -5701,18 +5701,115 @@ Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 extern char_lcd_4bit_t lcd_1;
 extern char_lcd_8bit_t lcd_2;
 
-Std_ReturnType ecu_layer_initialize(void);
-# 7 "ECU_Layer/ecu_layer_init.c" 2
+Std_ReturnType ecu_char_lcd_initialize(void);
+# 7 "TESTS/char_lcd_test.c" 2
 
+Std_ReturnType char_lcd_application_init(void);
 
+uint8 custom1[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x11,
+  0x11,
+  0x11,
+  0x1F,
+  0x00
+};
 
-Std_ReturnType ecu_layer_initialize(void)
+uint8 custom2[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x11,
+  0x11,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom3[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x11,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom4[] = {
+  0x0E,
+  0x0A,
+  0x1B,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom5[] = {
+  0x0E,
+  0x0A,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+
+uint8 custom6[] = {
+  0x0E,
+  0x0E,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x1F,
+  0x00
+};
+int char_lcd_test(void)
 {
-    Std_ReturnType ret = (Std_ReturnType)0x00u;
+    Std_ReturnType ret = char_lcdapplication_init();
 
-    if ((Std_ReturnType)0x00u == ret)
+    if ((Std_ReturnType)0x01u == ret)
     {
+        return (-1);
     }
+    ret = lcd_8bit_send_string_pos(&lcd_2, 2, 5, " the World");
+    ret = lcd_4bit_send_char_data_pos(&lcd_1, 1, 5, 'I');
+    ret = lcd_4bit_send_string_pos(&lcd_1, 2, 6, "Will Conquer");
+    while (1)
+    {
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom1, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom1, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom2, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom2, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom3, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom3, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom4, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom4, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom5, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom5, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom6, 0);
+        ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom6, 0);
+        _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+    }
+
+   return (0);
+}
+Std_ReturnType char_lcd_application_init(void)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01u;
+    ret = ecu_char_lcd_initialize();
 
     return (ret);
 }

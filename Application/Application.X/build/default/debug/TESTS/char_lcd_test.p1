@@ -1,11 +1,46 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"8 app.c
-[; ;app.c: 8: Std_ReturnType application_init(void);
-[v _application_init `(uc ~T0 @X0 0 ef ]
-"26 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 26: Std_ReturnType ecu_layer_initialize(void);
-[v _ecu_layer_initialize `(uc ~T0 @X0 0 ef ]
+"77 TESTS/char_lcd_test.c
+[; ;TESTS/char_lcd_test.c: 77:     Std_ReturnType ret = char_lcdapplication_init();
+[v _char_lcdapplication_init `(i ~T0 @X0 0 e? ]
+"106 TESTS/../ECU_Layer/Char_LCD/../../MCAL_Layer/GPIO/hal_gpio.h
+[s S307 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S307 . port pin direction logic ]
+"57 TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 57: {
+[s S316 `S307 1 `S307 1 `S307 -> 8 `i ]
+[n S316 . lcd_rs lcd_en lcd_data ]
+"175
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 175: Std_ReturnType lcd_8bit_send_string_pos(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+[v _lcd_8bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS316`uc`uc`*uc ]
+"24 TESTS/ecu_test_init.h
+[; ;TESTS/ecu_test_init.h: 24: extern char_lcd_8bit_t lcd_2;
+[v _lcd_2 `S316 ~T0 @X0 0 e ]
+"44 TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 44: {
+[s S315 `S307 1 `S307 1 `S307 -> 4 `i ]
+[n S315 . lcd_rs lcd_en lcd_data ]
+"95
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 95: Std_ReturnType lcd_4bit_send_char_data_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 data);
+[v _lcd_4bit_send_char_data_pos `(uc ~T0 @X0 0 ef4`*CS315`uc`uc`uc ]
+"23 TESTS/ecu_test_init.h
+[; ;TESTS/ecu_test_init.h: 23: extern char_lcd_4bit_t lcd_1;
+[v _lcd_1 `S315 ~T0 @X0 0 e ]
+"113 TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 113: Std_ReturnType lcd_4bit_send_string_pos(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, uint8 *str);
+[v _lcd_4bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS315`uc`uc`*uc ]
+"124
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 124: Std_ReturnType lcd_4bit_send_custom_char(const char_lcd_4bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
+[v _lcd_4bit_send_custom_char `(uc ~T0 @X0 0 ef5`*CS315`uc`uc`*Cuc`uc ]
+"186
+[; ;TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h: 186: Std_ReturnType lcd_8bit_send_custom_char(const char_lcd_8bit_t *lcd, uint8 row, uint8 col, const uint8 _char[], uint8 mem_pos);
+[v _lcd_8bit_send_custom_char `(uc ~T0 @X0 0 ef5`*CS316`uc`uc`*Cuc`uc ]
+[v F205 `(v ~T0 @X0 1 tf1`ul ]
+"20 D:\Programming\Microchip\xc8\v2.46\pic\include\builtins.h
+[v __delay `JF205 ~T0 @X0 0 e ]
+[p i __delay ]
+"26 TESTS/ecu_test_init.h
+[; ;TESTS/ecu_test_init.h: 26: Std_ReturnType ecu_char_lcd_initialize(void);
+[v _ecu_char_lcd_initialize `(uc ~T0 @X0 0 ef ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -447,73 +482,227 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7352
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 7352: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"10 app.c
-[; ;app.c: 10: int main(void)
-[v _main `(i ~T0 @X0 1 ef ]
-"11
-[; ;app.c: 11: {
+"10 TESTS/char_lcd_test.c
+[; ;TESTS/char_lcd_test.c: 10: uint8 custom1[] = {
+[v _custom1 `uc ~T0 @X0 -> 8 `i e ]
+[i _custom1
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 27 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"21
+[; ;TESTS/char_lcd_test.c: 21: uint8 custom2[] = {
+[v _custom2 `uc ~T0 @X0 -> 8 `i e ]
+[i _custom2
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 27 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"32
+[; ;TESTS/char_lcd_test.c: 32: uint8 custom3[] = {
+[v _custom3 `uc ~T0 @X0 -> 8 `i e ]
+[i _custom3
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 27 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"43
+[; ;TESTS/char_lcd_test.c: 43: uint8 custom4[] = {
+[v _custom4 `uc ~T0 @X0 -> 8 `i e ]
+[i _custom4
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 27 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"54
+[; ;TESTS/char_lcd_test.c: 54: uint8 custom5[] = {
+[v _custom5 `uc ~T0 @X0 -> 8 `i e ]
+[i _custom5
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"65
+[; ;TESTS/char_lcd_test.c: 65: uint8 custom6[] = {
+[v _custom6 `uc ~T0 @X0 -> 8 `i e ]
+[i _custom6
+:U ..
+-> -> 14 `i `uc
+-> -> 14 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"75
+[; ;TESTS/char_lcd_test.c: 75: int char_lcd_test(void)
+[v _char_lcd_test `(i ~T0 @X0 1 ef ]
+"76
+[; ;TESTS/char_lcd_test.c: 76: {
 {
-[e :U _main ]
+[e :U _char_lcd_test ]
 [f ]
-"12
-[; ;app.c: 12:     Std_ReturnType ret = application_init();
+"77
+[; ;TESTS/char_lcd_test.c: 77:     Std_ReturnType ret = char_lcdapplication_init();
 [v _ret `uc ~T0 @X0 1 a ]
-[e = _ret ( _application_init ..  ]
-"14
-[; ;app.c: 14:     if ((Std_ReturnType)0x01u == ret)
+[e = _ret -> ( _char_lcdapplication_init ..  `uc ]
+"79
+[; ;TESTS/char_lcd_test.c: 79:     if ((Std_ReturnType)0x01u == ret)
 [e $ ! == -> -> -> 1 `ui `uc `i -> _ret `i 318  ]
-"15
-[; ;app.c: 15:     {
+"80
+[; ;TESTS/char_lcd_test.c: 80:     {
 {
-"16
-[; ;app.c: 16:         return (-1);
+"81
+[; ;TESTS/char_lcd_test.c: 81:         return (-1);
 [e ) -U -> 1 `i ]
 [e $UE 317  ]
-"17
-[; ;app.c: 17:     }
+"82
+[; ;TESTS/char_lcd_test.c: 82:     }
 }
 [e :U 318 ]
-"18
-[; ;app.c: 18:     while (1)
+"83
+[; ;TESTS/char_lcd_test.c: 83:     ret = lcd_8bit_send_string_pos(&lcd_2, 2, 5, " the World");
+[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS316 -> -> 2 `i `uc -> -> 5 `i `uc :s 1C ]
+"84
+[; ;TESTS/char_lcd_test.c: 84:     ret = lcd_4bit_send_char_data_pos(&lcd_1, 1, 5, 'I');
+[e = _ret ( _lcd_4bit_send_char_data_pos (4 , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 5 `i `uc -> -> 73 `ui `uc ]
+"85
+[; ;TESTS/char_lcd_test.c: 85:     ret = lcd_4bit_send_string_pos(&lcd_1, 2, 6, "Will Conquer");
+[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd_1 `*CS315 -> -> 2 `i `uc -> -> 6 `i `uc :s 2C ]
+"86
+[; ;TESTS/char_lcd_test.c: 86:     while (1)
 [e :U 320 ]
-"19
-[; ;app.c: 19:     {
+"87
+[; ;TESTS/char_lcd_test.c: 87:     {
 {
-"20
-[; ;app.c: 20:     }
+"88
+[; ;TESTS/char_lcd_test.c: 88:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom1, 0);
+[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom1 `*Cuc -> -> 0 `i `uc ]
+"89
+[; ;TESTS/char_lcd_test.c: 89:         ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom1, 0);
+[e = _ret ( _lcd_8bit_send_custom_char (4 , , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom1 `*Cuc -> -> 0 `i `uc ]
+"90
+[; ;TESTS/char_lcd_test.c: 90:         _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+"91
+[; ;TESTS/char_lcd_test.c: 91:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom2, 0);
+[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom2 `*Cuc -> -> 0 `i `uc ]
+"92
+[; ;TESTS/char_lcd_test.c: 92:         ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom2, 0);
+[e = _ret ( _lcd_8bit_send_custom_char (4 , , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom2 `*Cuc -> -> 0 `i `uc ]
+"93
+[; ;TESTS/char_lcd_test.c: 93:         _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+"94
+[; ;TESTS/char_lcd_test.c: 94:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom3, 0);
+[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom3 `*Cuc -> -> 0 `i `uc ]
+"95
+[; ;TESTS/char_lcd_test.c: 95:         ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom3, 0);
+[e = _ret ( _lcd_8bit_send_custom_char (4 , , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom3 `*Cuc -> -> 0 `i `uc ]
+"96
+[; ;TESTS/char_lcd_test.c: 96:         _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+"97
+[; ;TESTS/char_lcd_test.c: 97:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom4, 0);
+[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom4 `*Cuc -> -> 0 `i `uc ]
+"98
+[; ;TESTS/char_lcd_test.c: 98:         ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom4, 0);
+[e = _ret ( _lcd_8bit_send_custom_char (4 , , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom4 `*Cuc -> -> 0 `i `uc ]
+"99
+[; ;TESTS/char_lcd_test.c: 99:         _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+"100
+[; ;TESTS/char_lcd_test.c: 100:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom5, 0);
+[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom5 `*Cuc -> -> 0 `i `uc ]
+"101
+[; ;TESTS/char_lcd_test.c: 101:         ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom5, 0);
+[e = _ret ( _lcd_8bit_send_custom_char (4 , , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom5 `*Cuc -> -> 0 `i `uc ]
+"102
+[; ;TESTS/char_lcd_test.c: 102:         _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+"103
+[; ;TESTS/char_lcd_test.c: 103:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 20, custom6, 0);
+[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS315 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom6 `*Cuc -> -> 0 `i `uc ]
+"104
+[; ;TESTS/char_lcd_test.c: 104:         ret = lcd_8bit_send_custom_char(&lcd_2, 1, 20, custom6, 0);
+[e = _ret ( _lcd_8bit_send_custom_char (4 , , , , -> &U _lcd_2 `*CS316 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _custom6 `*Cuc -> -> 0 `i `uc ]
+"105
+[; ;TESTS/char_lcd_test.c: 105:         _delay((unsigned long)((250)*((8 *1000UL *1000UL)/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> * * -> -> -> 8 `i `l `ul -> 1000 `ul -> 1000 `ul `d .4000.0 `ul ]
+"106
+[; ;TESTS/char_lcd_test.c: 106:     }
 }
 [e :U 319 ]
 [e $U 320  ]
 [e :U 321 ]
-"21
-[; ;app.c: 21:    return (0);
+"108
+[; ;TESTS/char_lcd_test.c: 108:    return (0);
 [e ) -> 0 `i ]
 [e $UE 317  ]
-"22
-[; ;app.c: 22: }
+"109
+[; ;TESTS/char_lcd_test.c: 109: }
 [e :UE 317 ]
 }
-"23
-[; ;app.c: 23: Std_ReturnType application_init(void)
-[v _application_init `(uc ~T0 @X0 1 ef ]
-"24
-[; ;app.c: 24: {
+"110
+[; ;TESTS/char_lcd_test.c: 110: Std_ReturnType char_lcd_application_init(void)
+[v _char_lcd_application_init `(uc ~T0 @X0 1 ef ]
+"111
+[; ;TESTS/char_lcd_test.c: 111: {
 {
-[e :U _application_init ]
+[e :U _char_lcd_application_init ]
 [f ]
-"25
-[; ;app.c: 25:     Std_ReturnType ret = (Std_ReturnType)0x01u;
+"112
+[; ;TESTS/char_lcd_test.c: 112:     Std_ReturnType ret = (Std_ReturnType)0x01u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `ui `uc ]
-"26
-[; ;app.c: 26:     ret = ecu_layer_initialize();
-[e = _ret ( _ecu_layer_initialize ..  ]
-"28
-[; ;app.c: 28:     return (ret);
+"113
+[; ;TESTS/char_lcd_test.c: 113:     ret = ecu_char_lcd_initialize();
+[e = _ret ( _ecu_char_lcd_initialize ..  ]
+"115
+[; ;TESTS/char_lcd_test.c: 115:     return (ret);
 [e ) _ret ]
 [e $UE 322  ]
-"29
-[; ;app.c: 29: }
+"116
+[; ;TESTS/char_lcd_test.c: 116: }
 [e :UE 322 ]
 }
+[a 2C 87 105 108 108 32 67 111 110 113 117 101 114 0 ]
+[a 1C 32 116 104 101 32 87 111 114 108 100 0 ]

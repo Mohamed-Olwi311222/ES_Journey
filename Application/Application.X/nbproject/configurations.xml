@@ -43,6 +43,27 @@
         <itemPath>MCAL_Layer/mcal_std_types.h</itemPath>
         <itemPath>std_types.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="TESTS" displayName="TESTS" projectFiles="true">
+        <logicalFolder name="button_test" displayName="button_test" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="Char_LCD_test"
+                       displayName="Char_LCD_test"
+                       projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="dc_motor_test"
+                       displayName="dc_motor_test"
+                       projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="keypad_test" displayName="keypad_test" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="seven_segment_test"
+                       displayName="seven_segment_test"
+                       projectFiles="true">
+        </logicalFolder>
+        <itemPath>TESTS/ecu_test_init.h</itemPath>
+      </logicalFolder>
       <itemPath>compiler.h</itemPath>
       <itemPath>device_config.h</itemPath>
       <itemPath>app.h</itemPath>
@@ -91,6 +112,12 @@
       <logicalFolder name="TESTS" displayName="TESTS" projectFiles="true">
         <logicalFolder name="button_test" displayName="button_test" projectFiles="true">
           <itemPath>TESTS/button_test/button_test.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Char_LCD_test"
+                       displayName="Char_LCD_test"
+                       projectFiles="true">
+          <itemPath>TESTS/char_lcd_test.c</itemPath>
+          <itemPath>TESTS/Char_LCD_test/ecu_char_init.c</itemPath>
         </logicalFolder>
         <logicalFolder name="dc_motor_test"
                        displayName="dc_motor_test"

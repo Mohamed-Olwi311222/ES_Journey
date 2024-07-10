@@ -1,31 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"106 ECU_Layer/Char_LCD/../../MCAL_Layer/GPIO/hal_gpio.h
-[s S307 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S307 . port pin direction logic ]
-"44 ECU_Layer/Char_LCD/ecu_char_lcd.h
-[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 44: {
-[s S315 `S307 1 `S307 1 `S307 -> 4 `i ]
-[n S315 . lcd_rs lcd_en lcd_data ]
-"9 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 9: char_lcd_4bit_t lcd_1 = {
-[c E3092 0 1 2 3 4 .. ]
-[n E3092 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
-[c E3082 0 1 2 3 4 5 6 7 .. ]
-[n E3082 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
-[c E3078 0 1 .. ]
-[n E3078 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
-[c E3074 0 1 .. ]
-[n E3074 . GPIO_LOW GPIO_HIGH  ]
-"57 ECU_Layer/Char_LCD/ecu_char_lcd.h
-[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 57: {
-[s S316 `S307 1 `S307 1 `S307 -> 8 `i ]
-[n S316 . lcd_rs lcd_en lcd_data ]
-"69
-[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 69: Std_ReturnType lcd_4bit_initialize(const char_lcd_4bit_t *lcd);
-[v _lcd_4bit_initialize `(uc ~T0 @X0 0 ef1`*CS315 ]
-"131
-[; ;ECU_Layer/Char_LCD/ecu_char_lcd.h: 131: Std_ReturnType lcd_8bit_initialize(const char_lcd_8bit_t *lcd);
-[v _lcd_8bit_initialize `(uc ~T0 @X0 0 ef1`*CS316 ]
 "54 D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 54: __asm("SSPMSK equ 0F77h");
 [; <" SSPMSK equ 0F77h ;# ">
@@ -467,165 +440,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7352
 [; ;D:/Programming/Microchip/MPLABX/v6.20/packs/Microchip/PIC18F-K_DFP/1.13.292/xc8\pic\include\proc\pic18f46k20.h: 7352: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 9: char_lcd_4bit_t lcd_1 = {
-[v _lcd_1 `S315 ~T0 @X0 1 e ]
-[i _lcd_1
-:U ..
-:U ..
-:U ..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 0 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-..
-:U ..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 1 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-..
-:U ..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 2 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 3 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 4 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 5 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-..
-..
-..
-]
-"36
-[; ;ECU_Layer/ecu_layer_init.c: 36: char_lcd_8bit_t lcd_2 = {
-[v _lcd_2 `S316 ~T0 @X0 1 e ]
-[i _lcd_2
-:U ..
-:U ..
-:U ..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 6 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-..
-:U ..
-:U ..
--> . `E3092 2 `uc
--> . `E3082 7 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-..
-:U ..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 0 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 1 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 2 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 3 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 4 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 5 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 6 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-:U ..
--> . `E3092 3 `uc
--> . `E3082 7 `uc
--> . `E3078 0 `uc
--> . `E3074 0 `uc
-..
-..
-..
-..
-]
-"78
-[; ;ECU_Layer/ecu_layer_init.c: 78: Std_ReturnType ecu_layer_initialize(void)
+"10 ECU_Layer/ecu_layer_init.c
+[; ;ECU_Layer/ecu_layer_init.c: 10: Std_ReturnType ecu_layer_initialize(void)
 [v _ecu_layer_initialize `(uc ~T0 @X0 1 ef ]
-"79
-[; ;ECU_Layer/ecu_layer_init.c: 79: {
+"11
+[; ;ECU_Layer/ecu_layer_init.c: 11: {
 {
 [e :U _ecu_layer_initialize ]
 [f ]
-"80
-[; ;ECU_Layer/ecu_layer_init.c: 80:     Std_ReturnType ret = (Std_ReturnType)0x00u;
+"12
+[; ;ECU_Layer/ecu_layer_init.c: 12:     Std_ReturnType ret = (Std_ReturnType)0x00u;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `ui `uc ]
-"82
-[; ;ECU_Layer/ecu_layer_init.c: 82:     ret = lcd_4bit_initialize(&lcd_1);
-[e = _ret ( _lcd_4bit_initialize (1 -> &U _lcd_1 `*CS315 ]
-"83
-[; ;ECU_Layer/ecu_layer_init.c: 83:     if ((Std_ReturnType)0x00u == ret)
+"14
+[; ;ECU_Layer/ecu_layer_init.c: 14:     if ((Std_ReturnType)0x00u == ret)
 [e $ ! == -> -> -> 0 `ui `uc `i -> _ret `i 318  ]
-"84
-[; ;ECU_Layer/ecu_layer_init.c: 84:     {
+"15
+[; ;ECU_Layer/ecu_layer_init.c: 15:     {
 {
-"85
-[; ;ECU_Layer/ecu_layer_init.c: 85:         ret = lcd_8bit_initialize(&lcd_2);
-[e = _ret ( _lcd_8bit_initialize (1 -> &U _lcd_2 `*CS316 ]
-"86
-[; ;ECU_Layer/ecu_layer_init.c: 86:     }
+"16
+[; ;ECU_Layer/ecu_layer_init.c: 16:     }
 }
 [e :U 318 ]
-"88
-[; ;ECU_Layer/ecu_layer_init.c: 88:     return (ret);
+"18
+[; ;ECU_Layer/ecu_layer_init.c: 18:     return (ret);
 [e ) _ret ]
 [e $UE 317  ]
-"89
-[; ;ECU_Layer/ecu_layer_init.c: 89: }
+"19
+[; ;ECU_Layer/ecu_layer_init.c: 19: }
 [e :UE 317 ]
 }

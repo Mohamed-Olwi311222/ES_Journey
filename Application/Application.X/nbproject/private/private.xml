@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Programming/ES_Journey/Application/Application.X/app.c</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/ecu_layer_init.c</file>
             <file>file:/D:/Programming/ES_Journey/Application/Application.X/app.h</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/ecu_layer_init.h</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/Char_LCD/ecu_char_lcd.c</file>
-            <file>file:/D:/Programming/ES_Journey/Application/Application.X/ECU_Layer/Char_LCD/ecu_char_lcd.h</file>
         </group>
     </open-files>
 </project-private>
