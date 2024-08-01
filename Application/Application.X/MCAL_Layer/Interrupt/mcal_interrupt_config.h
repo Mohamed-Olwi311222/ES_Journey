@@ -21,7 +21,7 @@
 
 /*----------------------------Macros Functions Declarations-------------------*/
 
-#ifdef INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * ENABLE priority levels on interrupts
  */
