@@ -10,6 +10,7 @@
 /*----------------------------Header Files------------------------------------*/
 #include "xc.h"
 #include "mcal_interrupt_gen_cfg.h"
+#include "mcal_std_types.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 #define INTERRUPT_ENABLE            1
