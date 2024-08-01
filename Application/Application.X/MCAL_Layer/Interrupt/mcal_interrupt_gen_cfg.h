@@ -11,11 +11,12 @@
 
 /*----------------------------Macros Declarations-----------------------------*/
 
-#define INTERRUPT_FEATURE_ENABLE                            1 /*Interrupt feature enable*/
-#define INTERRUPT_FEATURE_DISABLE                           0 /*Interrupt feature disable*/
-#define INTERRUPT_PRIORITY_LEVELS_ENABLE                    INTERRUPT_FEATURE_ENABLE /*Priority feature enable for preconfig*/
-#define EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE              INTERRUPT_FEATURE_ENABLE /*External interrupt enable for preconfig*/
-#define EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE          INTERRUPT_FEATURE_ENABLE /*On change interrupt enable for preconfig*/
+#define INTERRUPT_FEATURE_ENABLE                            1                           /*Interrupt feature enable*/
+#define INTERRUPT_FEATURE_DISABLE                           0                           /*Interrupt feature disable*/
+#define INTERRUPT_PRIORITY_LEVELS_ENABLE                    INTERRUPT_FEATURE_ENABLE    /*Priority feature enable for preconfig*/
+#define EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE              INTERRUPT_FEATURE_ENABLE    /*External interrupt enable for preconfig*/
+#define EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE          INTERRUPT_FEATURE_ENABLE    /*On change interrupt enable for preconfig*/
+#define EXTERNAL_INTERRUPT_ENABLE                           INTERRUPT_FEATURE_ENABLE    /*Enable all external interrupts*/
 /*----------------------------Macros Functions Declarations-------------------*/
 
 /*----------------------------DataTypes---------------------------------------*/
