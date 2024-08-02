@@ -70,6 +70,14 @@
 #endif
 /*----------------------------DataTypes---------------------------------------*/
 
+/**
+ * an enum accessible by all interrupts for controling the priority levels
+ */
+typedef enum
+{
+    INTERRUPT_LOW_PRIORITY = 0,                         /*Interrupt low priority*/
+    INTERRUPT_HIGH_PRIORITY = 1,                        /*Interrupt High priority*/
+}interrupt_priority_cfg;
 /*----------------------------Function Prototypes-----------------------------*/
 #endif	/* MCAL_INTERRUPT_CONFIG_H */
 
