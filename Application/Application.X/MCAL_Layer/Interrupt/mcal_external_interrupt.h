@@ -201,13 +201,13 @@ Std_ReturnType Interrupt_INTx_Deinit(const interrupt_INTx_t *int_obj);
  * @param int_obj the PORTB on change interrupt object
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType Interrupt_RBx_Init(const interrupt_INTx_t *int_obj);
+Std_ReturnType Interrupt_RBx_Init(const interrupt_RBYx_t *int_obj);
 /**
  * @brief: A software interface to deinitialize the PORTB on change interrupt
  * @param int_obj the PORTB on change interrupt object
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType Interrupt_RBx_Deinit(const interrupt_INTx_t *int_obj);
+Std_ReturnType Interrupt_RBx_Deinit(const interrupt_RBYx_t *int_obj);
 
 #endif	/* MCAL_EXTERNAL_INTERRUPT_H */
 
