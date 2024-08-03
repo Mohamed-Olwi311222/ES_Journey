@@ -11,6 +11,7 @@
 #include "xc.h"
 #include "mcal_interrupt_gen_cfg.h"
 #include "../mcal_std_types.h"
+#include "../GPIO/hal_gpio.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 #define INTERRUPT_ENABLE            1

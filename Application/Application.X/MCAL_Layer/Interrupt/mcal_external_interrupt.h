@@ -9,7 +9,6 @@
 #define	MCAL_EXTERNAL_INTERRUPT_H
 /*----------------------------Header Files------------------------------------*/
 #include "mcal_interrupt_config.h"
-#include "../GPIO/hal_gpio.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
