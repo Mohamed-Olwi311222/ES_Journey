@@ -48,8 +48,10 @@ Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj)
         ret |= Interrupt_INTx_Clear_Flag(int_obj);
         /*Configure the External Interrupt edge*/
         ret |= Interrupt_INTx_Edge_Init(int_obj);
+        #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
         /*Configure the External Interrupt priority*/
         ret |= Interrupt_INTx_Priority_Init(int_obj);
+        #endif
         /*Configure the External Interrupt I/O pin*/
         ret |= Interrupt_INTx_Pin_Init(int_obj);
         /*Configure the Default Interrupt Callback*/
