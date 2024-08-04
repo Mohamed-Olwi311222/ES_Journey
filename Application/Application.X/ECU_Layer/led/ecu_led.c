@@ -32,7 +32,7 @@ Std_ReturnType turn_on_leds(void)
  * @param led pointer to the led module configurations
  * @return E_OK if status success otherwise E_NOT_OK
  */
-Std_ReturnType led_intitialize(const led_t *led)
+Std_ReturnType led_initialize(const led_t *led)
 {
     Std_ReturnType ret = E_OK;
     if (NULL == led)
