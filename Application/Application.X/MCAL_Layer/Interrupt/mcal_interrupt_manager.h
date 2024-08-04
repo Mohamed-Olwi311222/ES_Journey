@@ -16,5 +16,18 @@
 /*----------------------------DataTypes---------------------------------------*/
 
 /*----------------------------Function Prototypes-----------------------------*/
+
+/**
+ * @brief: The interrupt service routine of INT0, will be called if INT0 interrupt has been raised
+ */
+void INT0_ISR(void);
+/**
+ * @brief: The interrupt service routine of INT1, will be called if INT0 interrupt has been raised
+ */
+void INT1_ISR(void);
+/**
+ * @brief: The interrupt service routine of INT2, will be called if INT0 interrupt has been raised
+ */
+void INT2_ISR(void);
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
