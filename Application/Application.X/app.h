@@ -9,6 +9,7 @@
 #define	APP_H
 /*----------------------------Header Files------------------------------------*/
 #include "ECU_Layer/ecu_layer_init.h"
+#include "MCAL_Layer/Interrupt/mcal_external_interrupt.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
