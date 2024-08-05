@@ -5303,7 +5303,7 @@ Std_ReturnType turn_on_leds(void);
 
 
 
-Std_ReturnType led_intitialize(const led_t *led);
+Std_ReturnType led_initialize(const led_t *led);
 
 
 
@@ -5705,9 +5705,101 @@ extern char_lcd_8bit_t lcd_2;
 
 Std_ReturnType ecu_layer_initialize(void);
 # 11 "./app.h" 2
+
+# 1 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h" 1
+# 11 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
+# 1 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h" 1
+# 12 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+# 1 "./MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 12 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h" 2
+# 77 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+typedef enum
+{
+    INTERRUPT_LOW_PRIORITY = 0,
+    INTERRUPT_HIGH_PRIORITY = 1,
+}interrupt_priority_cfg;
+# 11 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h" 2
+# 141 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
+typedef enum
+{
+    INTERRUPT_FALLING_EDGE = 0,
+    INTERRUPT_RISING_EDGE = 1
+}interrupt_INTx_edge;
+
+
+
+
+typedef enum
+{
+    INTERRUPT_EXTERNAL_INT0 = 0,
+    INTERRUPT_EXTERNAL_INT1 = 1,
+    INTERRUPT_EXTERNAL_INT2 = 2,
+}interrupt_INTx_src;
+# 165 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
+typedef struct
+{
+    void (*EXT_interrupt_handler)(void);
+    pin_config_t mcu_pin;
+    interrupt_INTx_edge edge;
+    interrupt_INTx_src source;
+    interrupt_priority_cfg priortiy;
+}interrupt_INTx_t;
+
+
+
+
+
+
+typedef struct
+{
+    void (* EXT_interrupt_handler)(void);
+    pin_config_t mcu_pin;
+    interrupt_priority_cfg priortiy;
+}interrupt_RBx_t;
+
+
+
+
+
+
+
+Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj);
+
+
+
+
+
+Std_ReturnType Interrupt_INTx_Deinit(const interrupt_INTx_t *int_obj);
+
+
+
+
+
+Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj);
+
+
+
+
+
+Std_ReturnType Interrupt_RBx_Deinit(const interrupt_RBx_t *int_obj);
+# 12 "./app.h" 2
 # 7 "app.c" 2
 
+led_t led1 = {.port_name = PORTC_INDEX, .pin = GPIO_PIN0, .led_status = GPIO_LOW};
 Std_ReturnType application_init(void);
+ void INT0_App_ISR(void)
+{
+    led_toggle(&led1);
+}
+interrupt_INTx_t int0_obj = {
+    .EXT_interrupt_handler = INT0_App_ISR,
+    .edge = INTERRUPT_RISING_EDGE,
+    .source = INTERRUPT_EXTERNAL_INT0,
+    .priortiy = INTERRUPT_HIGH_PRIORITY,
+    .mcu_pin.port = PORTB_INDEX,
+    .mcu_pin.pin = GPIO_PIN0,
+    .mcu_pin.direction = GPIO_DIRECTION_INPUT
+};
 
 int main(void)
 {
@@ -5717,6 +5809,8 @@ int main(void)
     {
         return (-1);
     }
+    ret |= Interrupt_INTx_Init(&int0_obj);
+    ret |= led_initialize(&led1);
     while (1)
     {
     }

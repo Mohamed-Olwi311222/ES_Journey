@@ -5295,7 +5295,7 @@ Std_ReturnType turn_on_leds(void);
 
 
 
-Std_ReturnType led_intitialize(const led_t *led);
+Std_ReturnType led_initialize(const led_t *led);
 
 
 

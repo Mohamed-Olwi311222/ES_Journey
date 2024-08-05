@@ -20,4 +20,5 @@ TESTS/../ECU_Layer/seven_seg/ecu_seven_seg_cfg.h  \
 TESTS/../ECU_Layer/keypad/ecu_keypad.h  \
 TESTS/../ECU_Layer/keypad/ecu_keypad_cfg.h  \
 TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd.h  \
-TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd_cfg.h 
+TESTS/../ECU_Layer/Char_LCD/ecu_char_lcd_cfg.h  \
+
