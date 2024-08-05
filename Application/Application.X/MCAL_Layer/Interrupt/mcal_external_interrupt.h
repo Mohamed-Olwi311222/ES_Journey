@@ -29,7 +29,7 @@
 /**
  * CLEAR INT0 flag bit
  */
-#define EXT_INT0_INTERRUPT_FLAG_BIT_CLEAR()            -(INTCONbits.INT0IF = 0)
+#define EXT_INT0_INTERRUPT_FLAG_BIT_CLEAR()             (INTCONbits.INT0IF = 0)
 /**
  * INT0 interrupt on rising edge
  */
