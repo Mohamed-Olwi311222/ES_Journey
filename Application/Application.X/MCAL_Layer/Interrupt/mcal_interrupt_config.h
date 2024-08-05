@@ -55,11 +55,11 @@
 /**
  * ENABLE Periheral interrupts
  */
-#define INTERRUPT_Peripheral_interrupt_ENABLE()         (INTCONbits.PEIE= 1)
+#define INTERRUPT_Peripheral_interrupt_ENABLE()         (INTCONbits.PEIE = 1)
 /**
  * DISABLE Periheral interrupts
  */
-#define INTERRUPT_Peripheral_interrupt_DISABLE()        (INTCONbits.PEIE= 0)
+#define INTERRUPT_Peripheral_interrupt_DISABLE()        (INTCONbits.PEIE = 0)
 /**
  * ENABLE global interrupts
  */
