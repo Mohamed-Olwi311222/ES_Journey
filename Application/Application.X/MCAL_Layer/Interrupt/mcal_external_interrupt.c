@@ -55,7 +55,7 @@ Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj)
         /*Configure the External Interrupt I/O pin*/
         ret |= Interrupt_INTx_Pin_Init(int_obj);
         /*Configure the Default Interrupt Callback*/
-        
+        ret |= Interrupt_INTx_Set_Interrupt_Handler(int_obj);
         /*Enable the External Interrupt*/
         Interrupt_INTx_Enable(int_obj);
     }
@@ -140,12 +140,18 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t * int_obj)
         switch(int_obj->source)
         {
             case INTERRUPT_EXTERNAL_INT0 : 
+                INTERRUPT_Global_interrupt_ENABLE();
+                INTERRUPT_Peripheral_interrupt_ENABLE();
                 EXT_INT0_INTERRUPT_ENABLE();
                 break;
-            case INTERRUPT_EXTERNAL_INT1 : 
+            case INTERRUPT_EXTERNAL_INT1 :
+                INTERRUPT_Global_interrupt_ENABLE();
+                INTERRUPT_Peripheral_interrupt_ENABLE();
                 EXT_INT1_INTERRUPT_ENABLE();
                 break;
-            case INTERRUPT_EXTERNAL_INT2 : 
+            case INTERRUPT_EXTERNAL_INT2 :
+                INTERRUPT_Global_interrupt_ENABLE();
+                INTERRUPT_Peripheral_interrupt_ENABLE();
                 EXT_INT2_INTERRUPT_ENABLE(); 
                 break;
             default : 
