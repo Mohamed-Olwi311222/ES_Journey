@@ -6,6 +6,7 @@
  */
 #include "ecu_relay.h"
 
+#if ECU_RELAY_ENABLED == ECU_ENABLED
 /**
  * @breif initialize the relay module
  * @param relay a pointer to relay_t datatype @ref relay_t
@@ -83,3 +84,4 @@ Std_ReturnType relay_turn_off(relay_t *relay)
     }
     return (ret);
 }
+#endif

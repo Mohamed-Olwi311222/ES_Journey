@@ -10,6 +10,7 @@
 /*----------------------------Header Files------------------------------------*/
 
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
+#include "../ecu_layer_cgf.h"
 #include "ecu_led_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 

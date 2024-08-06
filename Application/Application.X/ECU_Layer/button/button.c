@@ -5,6 +5,7 @@
  * Created on April 21, 2024, 3:11 PM
  */
 #include "ecu_button.h"
+#if ECU_BUTTON_ENABLED == ECU_ENABLED
 /**
  * @brief initialize the the assigned pin to be input
  * @param btn pointer to the button configurations @ref button_t
@@ -131,3 +132,4 @@ Std_ReturnType btn_high_magic_button(const button_t *btn, led_t *led,const butto
     }
     return (ret);
 }
+#endif

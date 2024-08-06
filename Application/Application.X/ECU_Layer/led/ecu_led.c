@@ -1,32 +1,33 @@
 #include "ecu_led.h"
 
-Std_ReturnType turn_on_leds(void)
-{
-   /* MY_TRISC = 0x00;
-    __delay_ms(2000);
-    //USING BIT_FIELDS
-    LATC_REG->LATC0 = 1;
-    LATC_REG->LATC_REGISTER = 0;
-   */
-
-    /*  USING BITWISE*/
-    
-    MY_TRISC = 0x00;
-    static uint8 _POS = 0x00;
-//    while(1)
-//    {
-        
-        TOGGLE_BIT(MY_LATC, _POS);
-        __delay_ms(500);
-        if (_POS < 8)
-        {
-            _POS++;
-        }
-        else
-            _POS = 0;
-//    }
-    return (E_OK);
-}
+#if ECU_LED_ENABLED == ECU_ENABLED
+//Std_ReturnType turn_on_leds(void)
+//{
+//   /* MY_TRISC = 0x00;
+//    __delay_ms(2000);
+//    //USING BIT_FIELDS
+//    LATC_REG->LATC0 = 1;
+//    LATC_REG->LATC_REGISTER = 0;
+//   */
+//
+//    /*  USING BITWISE*/
+//    
+//    MY_TRISC = 0x00;
+//    static uint8 _POS = 0x00;
+////    while(1)
+////    {
+//        
+//        TOGGLE_BIT(MY_LATC, _POS);
+//        __delay_ms(500);
+//        if (_POS < 8)
+//        {
+//            _POS++;
+//        }
+//        else
+//            _POS = 0;
+////    }
+//    return (E_OK);
+//}
 /**
  * @brief initialize the assigned pin to be output and turn the led off
  * @param led pointer to the led module configurations
@@ -123,3 +124,4 @@ Std_ReturnType led_toggle(const led_t *led)
     }
     return (ret);
 }
+#endif

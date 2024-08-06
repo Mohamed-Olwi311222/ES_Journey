@@ -7,6 +7,8 @@
 
 #include "ecu_dc_motor.h"
 
+#if ECU_DC_MOTOR_ENABLED == ECU_ENABLED
+
 /**
  * @brief initialize the dc_motor 
  * @param dc_motor the pointer to the dc_motor config @ref dc_motor_t
@@ -91,3 +93,4 @@ Std_ReturnType dc_motor_stop(const dc_motor_t *dc_motor)
     }
     return (ret);
 }
+#endif

@@ -6,6 +6,7 @@
  */
 #include "ecu_char_lcd.h"
 
+#if ECU_CHAR_LCD_ENABLED == ECU_ENABLED
 /**
  * @brief A helper function to send 4 bits to the lcd with 4 pins config
  * @param lcd the 4-bit lcd
@@ -601,3 +602,4 @@ Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str)
     }
 	return (ret);
 }
+#endif

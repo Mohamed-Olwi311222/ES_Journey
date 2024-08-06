@@ -5,6 +5,8 @@
  * Created on 02 June 2024, 15:59
  */
 #include "ecu_keypad.h"
+
+#if ECU_KEYPAD_ENABLED == ECU_ENABLED
 static const uint8 btn_values[ECU_KEYPAD_ROWS][ECU_KEYPAD_COLS] = {
                                                                {'7', '8', '9', '/'},
                                                                {'4', '5', '6', '*'},
@@ -104,3 +106,4 @@ Std_ReturnType keypad_get_value(const keypad_t *keypad_obj, uint8 *value)
     }
     return (ret);    
 }
+#endif

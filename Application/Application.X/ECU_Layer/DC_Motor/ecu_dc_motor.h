@@ -9,6 +9,7 @@
 #define	ECU_DC_MOTOR_H
 /*----------------------------Header Files------------------------------------*/
 #include "ecu_dc_motor_cfg.h"
+#include "../ecu_layer_cgf.h"
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #define DC_MOTOR_ON_STATUS      0x01U

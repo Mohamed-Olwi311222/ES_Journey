@@ -9,6 +9,7 @@
 #define	ECU_KEYPAD_H
 /*----------------------------Header Files------------------------------------*/
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
+#include "../ecu_layer_cgf.h"
 #include "ecu_keypad_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #define ECU_KEYPAD_ROWS  4

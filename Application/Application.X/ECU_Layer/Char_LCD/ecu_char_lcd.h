@@ -9,6 +9,7 @@
 #define	ECU_CHAR_LCD_H
 /*----------------------------Header Files------------------------------------*/
 #include "ecu_char_lcd_cfg.h"
+#include "../ecu_layer_cgf.h"
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
 #include <string.h>
 /*----------------------------Macros Declarations-----------------------------*/

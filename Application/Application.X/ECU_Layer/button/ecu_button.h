@@ -9,6 +9,7 @@
 #define	ECU_BUTTON_H
 /*----------------------------Header Files------------------------------------*/
 #include "ecu_button_cfg.h"
+#include "../ecu_layer_cgf.h"
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
 #include "../led/ecu_led.h"
 /*----------------------------Macros Declarations-----------------------------*/

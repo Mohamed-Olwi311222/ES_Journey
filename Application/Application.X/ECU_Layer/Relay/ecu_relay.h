@@ -9,6 +9,7 @@
 #define	ECU_RELAY_H
 /*----------------------------Header Files------------------------------------*/
 #include "ecu_relay_cfg.h"
+#include "../ecu_layer_cgf.h"
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #define RELAY_ON_STATUS             0x01U
