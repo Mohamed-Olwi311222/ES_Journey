@@ -168,7 +168,7 @@ typedef struct
     pin_config_t mcu_pin;
     interrupt_INTx_edge edge;
     interrupt_INTx_src source;
-    interrupt_priority_cfg priortiy;
+    interrupt_priority_cfg priority;
 }interrupt_INTx_t;
 
 /**
@@ -180,7 +180,7 @@ typedef struct
 {
     void (* EXT_interrupt_handler)(void);
     pin_config_t mcu_pin;
-    interrupt_priority_cfg priortiy;
+    interrupt_priority_cfg priority;
 }interrupt_RBx_t;
 /*----------------------------Function Prototypes-----------------------------*/
 
