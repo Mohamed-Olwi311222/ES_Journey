@@ -34,6 +34,7 @@
           <itemPath>ECU_Layer/seven_seg/ecu_seven_seg_cfg.h</itemPath>
         </logicalFolder>
         <itemPath>ECU_Layer/ecu_layer_init.h</itemPath>
+        <itemPath>ECU_Layer/ecu_layer_cgf.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCAL_Layer" displayName="MCAL_Layer" projectFiles="true">
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
@@ -119,33 +120,6 @@
           <itemPath>MCAL_Layer/Interrupt/mcal_external_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_internal_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.c</itemPath>
-        </logicalFolder>
-      </logicalFolder>
-      <logicalFolder name="TESTS" displayName="TESTS" projectFiles="true">
-        <logicalFolder name="button_test" displayName="button_test" projectFiles="true">
-          <itemPath>TESTS/button_test/button_test.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="Char_LCD_test"
-                       displayName="Char_LCD_test"
-                       projectFiles="true">
-          <itemPath>TESTS/char_lcd_test.c</itemPath>
-          <itemPath>TESTS/Char_LCD_test/ecu_char_init.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="dc_motor_test"
-                       displayName="dc_motor_test"
-                       projectFiles="true">
-          <itemPath>TESTS/dc_motor_test/dc_motor_test.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="keypad_test" displayName="keypad_test" projectFiles="true">
-          <itemPath>TESTS/keypad_test/keypad_test.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="relay_test" displayName="relay_test" projectFiles="true">
-          <itemPath>TESTS/relay_test/relay_test.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="seven_segment_test"
-                       displayName="seven_segments_test"
-                       projectFiles="true">
-          <itemPath>TESTS/seven_segment_test/seven_segments_test.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>device_config.c</itemPath>
