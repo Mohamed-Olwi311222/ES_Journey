@@ -6,6 +6,9 @@
  */
 #include "mcal_external_interrupt.h"
 
+/*----------------------Static Declerations----------------------------------------------------------------*/
+/*----------------------Intx interrupt static functions declerations---------------------------------------*/
+#if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 static void (*INT0_INTERRUPT_HANDLER) (void) = NULL;    /*Pointer to the callback function of INT0*/
 static void (*INT1_INTERRUPT_HANDLER) (void) = NULL;    /*Pointer to the callback function of INT1*/
 static void (*INT2_INTERRUPT_HANDLER) (void) = NULL;    /*Pointer to the callback function of INT2*/
@@ -22,11 +25,19 @@ static Std_ReturnType INT0_Set_Interrupt_Handler(void (*Interrupt_Handler) (void
 static Std_ReturnType INT1_Set_Interrupt_Handler(void (*Interrupt_Handler) (void));
 static Std_ReturnType INT2_Set_Interrupt_Handler(void (*Interrupt_Handler) (void));
 static Std_ReturnType Interrupt_INTx_Set_Interrupt_Handler(const interrupt_INTx_t *int_obj);
-
+#endif
+/*----------------------RBx interrupt on change static functions declerations------------------------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Enable(const interrupt_RBx_t * int_obj);
 static Std_ReturnType Interrupt_RBx_Disable(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj);
+#endif
+
+/*----------------------Functions Implementations----------------------------------------------------------*/
+
+/*----------------------Intx interrupt functions-----------------------------------------------------------*/
+#if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A software interface to initialize the given external INTx interrupt
  * @param int_obj the external INTx interrupt object
@@ -81,7 +92,10 @@ Std_ReturnType Interrupt_INTx_Deinit(const interrupt_INTx_t *int_obj)
     }
     return (ret);
 }
+#endif
 
+/*----------------------RBx interrupt on change functions--------------------------------------------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A software interface to initialize the PORTB on change interrupt
  * @param int_obj the PORTB on change interrupt object
@@ -121,7 +135,10 @@ Std_ReturnType Interrupt_RBx_Deinit(const interrupt_RBx_t *int_obj)
     }
     return (ret);
 }
+#endif
+
 /*----------------------Helper functions for INTx interrupt------------------------------------------------*/
+#if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A helper function to enable the INTx interrupt
  * @param int_obj the INTx interrupt object
@@ -418,8 +435,10 @@ static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *int_obj)
     }
     return (ret); 
 }
-/*----------------------Helper functions for RBx interrupt on change---------------------------------------*/
+#endif
 
+/*----------------------Helper functions for RBx interrupt on change---------------------------------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief A helper function to initialize the interrupt priority of RBx on change interrupt
@@ -498,8 +517,10 @@ static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj)
     }
     return (ret); 
 }
-/*----------------------Helper functions for Interrupt Handler---------------------------------------------*/
+#endif
 
+/*----------------------Helper functions for Interrupt Handler---------------------------------------------*/
+#if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief A helper function to set the interrupt handler of INT0 external interrupt
  * @param Interrupt_Handler the interrupt handler to set the INT0 handler
@@ -590,9 +611,10 @@ static Std_ReturnType Interrupt_INTx_Set_Interrupt_Handler(const interrupt_INTx_
     }
     return (ret);  
 }
+#endif
 
 /*----------------------ISRs for INTx----------------------------------------------------------------------*/
-
+#if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: The interrupt service routine of INT0, will be called if INT0 interrupt has been raised
  */
@@ -640,3 +662,4 @@ void INT2_ISR(void)
         INT2_INTERRUPT_HANDLER();
     }
 }
+#endif
