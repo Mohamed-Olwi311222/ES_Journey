@@ -163,7 +163,7 @@ typedef enum
 
 /**
  * struct interrupt_INTx_t - a struct for external interrupts
- * @EXT_interrupt_handler:
+ * @EXT_interrupt_handler: A pointer to the interrupt handler of INTx
  * @mcu_pin: the mcu pin that caused the interrupt
  * @edge: falling or rising edge
  * @source: the source of the interrupt
@@ -180,6 +180,7 @@ typedef struct
 
 /**
  * struct interrupt_RBYx_t - a struct for PORTB on change interrupt
+ * @EXT_interrupt_handler: A pointer to the interrupt handler of RBx
  * @mcu_pin: the mcu pin that caused the interrupt
  * @priortiy: the priority of the RB on change interrupt
  */
