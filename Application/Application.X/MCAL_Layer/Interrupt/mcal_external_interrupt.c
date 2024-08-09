@@ -34,11 +34,12 @@ static void (*RBx_Interrupt_Handlers[INTERRUPT_HANDLERS_LEN])(void);
 static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Set_Interrupt_Handler(const interrupt_RBx_t *int_obj);
-
+static Std_ReturnType Interrupt_RBx_Enable(const interrupt_RBx_t *int_obj);
 #endif
 
 /*----------------------Functions Implementations----------------------------------------------------------*/
 
+/*-----------------------Intx Interrupt--------------------------------------------------------------------*/
 /*----------------------Intx interrupt functions---------------------------------*/
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
@@ -92,63 +93,6 @@ Std_ReturnType Interrupt_INTx_Deinit(const interrupt_INTx_t *int_obj)
     else
     {
         ret = Interrupt_INTx_Disable(int_obj);
-    }
-    return (ret);
-}
-#endif
-
-/*----------------------RBx interrupt on change functions------------------------*/
-#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-/**
- * @brief: A software interface to initialize the PORTB on change interrupt
- * @param int_obj the PORTB on change interrupt object
- * @return E_OK if success otherwise E_NOT_OK
- */
-Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
-{
-    Std_ReturnType ret = E_OK;
-
-    if (int_obj == NULL)
-    {
-        ret |= E_NOT_OK;
-    }
-    else
-    {      
-        /*Disable the RBx Interrupt*/
-        EXT_RBx_INTERRUPT_DISABLE();
-        /*Clear Interrupt Flag*/
-        EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
-        /*Configure the External Interrupt priority*/
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-        ret |= Interrupt_RBx_Priority_Init(int_obj);
-#endif
-        /*Initialize the pin of the RB*/
-        ret |= Interrupt_RBx_Pin_Init(int_obj);
-        /*Set the handler of the RBx pin*/
-        ret |= Interrupt_RBx_Set_Interrupt_Handler(int_obj);
-        /*Enable the RBx interrupt*/
-        EXT_RBx_INTERRUPT_ENABLE();
-    }
-    return (ret);
-}
-
-/**
- * @brief: A software interface to deinitialize the PORTB on change interrupt
- * @param int_obj the PORTB on change interrupt object
- * @return E_OK if success otherwise E_NOT_OK
- */
-Std_ReturnType Interrupt_RBx_Deinit(const interrupt_RBx_t *int_obj)
-{
-    Std_ReturnType ret = E_OK;
-
-    if (int_obj == NULL)
-    {
-        ret = E_NOT_OK;
-    }
-    else
-    {
-        EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
-        EXT_RBx_INTERRUPT_DISABLE();
     }
     return (ret);
 }
@@ -456,84 +400,6 @@ static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *int_obj)
 }
 #endif
 
-/*----------------------Helper functions for RBx interrupt on change-------------*/
-#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-/**
- * @brief A helper function to initialize the interrupt priority of RBx on change interrupt
- * @param int_obj the RBx interrupt on change object
- * @return E_OK if success otherwise E_NOT_OK
- */
-static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj)
-{
-    Std_ReturnType ret = E_OK;
-
-    if (NULL == int_obj)
-    {
-        ret = E_NOT_OK;
-    }
-    else
-    {
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-        if (INTERRUPT_LOW_PRIORITY == int_obj->priority)
-        {
-            /*Enable high priority so the low priority can be enabled*/
-            INTERRUPT_Global_interrupt_HIGH_ENABLE();
-            INTERRUPT_Global_interrupt_LOW_ENABLE();
-            EXT_RBx_INTERRUPT_LOW_PRIORITY();
-        }
-        else if (INTERRUPT_HIGH_PRIORITY == int_obj->priority)
-        {
-            INTERRUPT_Global_interrupt_HIGH_ENABLE();
-            EXT_RBx_INTERRUPT_HIGH_PRIORITY();
-        }
-        else
-        {
-            ret |= E_NOT_OK;
-        }
-#endif
-    }
-    return (ret);
-}
-#endif
-/**
- * @brief A helper function to initialize the pin of RBx interrupt on change
- * @param int_obj the RBx interrupt on change object
- * @return E_OK if success otherwise E_NOT_OK 
- */
-static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj)
-{
-    Std_ReturnType ret = E_OK;
-
-    if (NULL == int_obj)
-    {
-        ret = E_NOT_OK;
-    }
-    else
-    {
-        switch(int_obj->mcu_pin.pin)
-         {
-            case GPIO_PIN4 :
-                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
-                break;
-            case GPIO_PIN5 :
-                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
-                break;
-            case GPIO_PIN6 : 
-                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
-                break;
-            case GPIO_PIN7:
-                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
-                break;
-            default : 
-                ret = E_NOT_OK;
-                break;
-         }
-    }
-    return (ret); 
-}
-#endif
-
 /*----------------------Helper functions for INTx Interrupt Handler--------------*/
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
@@ -679,7 +545,170 @@ void INT2_ISR(void)
 }
 #endif
 
+/*-----------------------RBx Interrupt On change-----------------------------------------------------------*/
+/*----------------------RBx interrupt on change functions------------------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief: A software interface to initialize the PORTB on change interrupt
+ * @param int_obj the PORTB on change interrupt object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
+{
+    Std_ReturnType ret = E_OK;
+
+    if (int_obj == NULL)
+    {
+        ret |= E_NOT_OK;
+    }
+    else
+    {      
+        /*Disable the RBx Interrupt*/
+        EXT_RBx_INTERRUPT_DISABLE();
+        /*Clear Interrupt Flag*/
+        EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
+        /*Configure the External Interrupt priority*/
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+        ret |= Interrupt_RBx_Priority_Init(int_obj);
+#endif
+        /*Initialize the pin of the RB*/
+        ret |= Interrupt_RBx_Pin_Init(int_obj);
+        /*Set the handler of the RBx pin*/
+        ret |= Interrupt_RBx_Set_Interrupt_Handler(int_obj);
+        /*Enable the RBx interrupt*/
+        Interrupt_RBx_Enable(int_obj);
+    }
+    return (ret);
+}
+
+/**
+ * @brief: A software interface to deinitialize the PORTB on change interrupt
+ * @param int_obj the PORTB on change interrupt object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType Interrupt_RBx_Deinit(const interrupt_RBx_t *int_obj)
+{
+    Std_ReturnType ret = E_OK;
+
+    if (int_obj == NULL)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
+        EXT_RBx_INTERRUPT_DISABLE();
+    }
+    return (ret);
+}
+#endif
+
+/*----------------------Helper functions for RBx interrupt on change-------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief A helper function to initialize the interrupt priority of RBx on change interrupt
+ * @param int_obj the RBx interrupt on change object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj)
+{
+    Std_ReturnType ret = E_OK;
+
+    if (NULL == int_obj)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+        if (INTERRUPT_LOW_PRIORITY == int_obj->priority)
+        {
+            /*Enable high priority so the low priority can be enabled*/
+            INTERRUPT_Global_interrupt_HIGH_ENABLE();
+            INTERRUPT_Global_interrupt_LOW_ENABLE();
+            EXT_RBx_INTERRUPT_LOW_PRIORITY();
+        }
+        else if (INTERRUPT_HIGH_PRIORITY == int_obj->priority)
+        {
+            INTERRUPT_Global_interrupt_HIGH_ENABLE();
+            EXT_RBx_INTERRUPT_HIGH_PRIORITY();
+        }
+        else
+        {
+            ret |= E_NOT_OK;
+        }
+#endif
+    }
+    return (ret);
+}
+#endif
+/**
+ * @brief A helper function to initialize the pin of RBx interrupt on change
+ * @param int_obj the RBx interrupt on change object
+ * @return E_OK if success otherwise E_NOT_OK 
+ */
+static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj)
+{
+    Std_ReturnType ret = E_OK;
+
+    if (NULL == int_obj)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        switch(int_obj->mcu_pin.pin)
+         {
+            case GPIO_PIN4 :
+                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
+                break;
+            case GPIO_PIN5 :
+                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
+                break;
+            case GPIO_PIN6 : 
+                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
+                break;
+            case GPIO_PIN7:
+                ret = gpio_pin_initialize(&(int_obj->mcu_pin));
+                break;
+            default : 
+                ret = E_NOT_OK;
+                break;
+         }
+    }
+    return (ret); 
+}
+/**
+ * @brief A helper function to enable RBx interrupt on change
+ * @param int_obj the RBx interrupt on change object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static Std_ReturnType Interrupt_RBx_Enable(const interrupt_RBx_t *int_obj)
+{
+    Std_ReturnType ret = E_OK;
+
+    if (NULL == int_obj)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+/*If interrupt priority levels is disabled, the mcu will run in compatibility mode*/
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_DISABLE
+        INTERRUPT_Peripheral_interrupt_ENABLE();
+        INTERRUPT_Global_interrupt_ENABLE();
+#else
+        INTERRUPT_PRIORITY_levels_ENABLE(); /*Enable priority feature*/
+#endif
+        EXT_RBx_INTERRUPT_ENABLE();
+    }
+    return (ret);   
+}
+#endif
+
 /*----------------------Helper functions for RBx Interrupt Handler--------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief A helper function to set each RBx its each handler depending on the value of its pin
  * @param int_obj the RBx interrupt on change object
@@ -716,3 +745,23 @@ static Std_ReturnType Interrupt_RBx_Set_Interrupt_Handler(const interrupt_RBx_t 
     }
     return (ret);  
 }
+#endif
+
+/*----------------------ISRs for INTx--------------------------------------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief: The interrupt service routine of RB4, will be called if RB4 on change interrupt has been raised
+ */
+void RB4_ISR(void)
+{
+    /*Clear Flagbit of INT0*/
+    EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
+    /*Code*/
+
+    /*Callback function*/
+    if (RBx_Interrupt_Handlers[RB4_INDEX])
+    {
+        RBx_Interrupt_Handlers[RB4_INDEX]();
+    }   
+}
+#endif
