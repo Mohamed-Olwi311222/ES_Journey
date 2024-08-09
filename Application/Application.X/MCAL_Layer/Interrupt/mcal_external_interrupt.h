@@ -10,7 +10,14 @@
 /*----------------------------Header Files------------------------------------*/
 #include "mcal_interrupt_config.h"
 /*----------------------------Macros Declarations-----------------------------*/
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
+#define INTERRUPT_HANDLERS_LEN                          4 /*The lenght of the function pointer array*/
+#define RB4_INDEX                                       0 /*RB4 index*/
+#define RB5_INDEX                                       1 /*RB5 index*/
+#define RB6_INDEX                                       2 /*RB6 index*/
+#define RB7_INDEX                                       3 /*RB7 index*/
 
+#endif
 /*----------------------------Macros Functions Declarations-------------------*/
 #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
 
