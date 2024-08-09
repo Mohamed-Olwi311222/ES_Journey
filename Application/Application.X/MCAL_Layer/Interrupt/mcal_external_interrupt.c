@@ -119,7 +119,9 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
         /*Clear Interrupt Flag*/
         EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
         /*Configure the External Interrupt priority*/
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
         ret |= Interrupt_RBx_Priority_Init(int_obj);
+#endif
         /*Initialize the pin of the RB*/
         ret |= Interrupt_RBx_Pin_Init(int_obj);
         /*Set the handler of the RBx pin*/
@@ -145,7 +147,8 @@ Std_ReturnType Interrupt_RBx_Deinit(const interrupt_RBx_t *int_obj)
     }
     else
     {
-
+        EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
+        EXT_RBx_INTERRUPT_DISABLE();
     }
     return (ret);
 }
