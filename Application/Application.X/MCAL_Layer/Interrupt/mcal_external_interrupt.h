@@ -109,25 +109,25 @@
 /**
  * ENABLE PORTB On change interrupt
  */
-#define EXT_RBx_INTERRUPT_ENABLE                        (INTCONbits.RBIE = 1)
+#define EXT_RBx_INTERRUPT_ENABLE()                      (INTCONbits.RBIE = 1)
 /**
  * DISABLE PORTB On change interrupt
  */
-#define EXT_RBx_INTERRUPT_DISABLE                       (INTCONbits.RBIE = 0)
+#define EXT_RBx_INTERRUPT_DISABLE()                     (INTCONbits.RBIE = 0)
 /**
  * Clear PORTB on change interrupt flag bit
  */
-#define EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR                (INTCONbits.RBIF = 0)
+#define EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR()              (INTCONbits.RBIF = 0)
 
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * On change interrupt HIGH priority
  */
-#define EXT_RBx_INTERRUPT_HIGH_PRIORITY                 (INTCON2.RBIP = 1)
+#define EXT_RBx_INTERRUPT_HIGH_PRIORITY()               (INTCON2bits.RBIP = 1)
 /**
  * On change interrupt LOW priority
  */
-#define EXT_RBx_INTERRUPT_LOW_PRIORITY                  (INTCON2.RBIP = 0)
+#define EXT_RBx_INTERRUPT_LOW_PRIORITY()                (INTCON2bits.RBIP = 0)
 #endif
 
 #endif
