@@ -9,7 +9,7 @@
 #define	MCAL_INTX_EXTERNAL_INTERRUPT_H
 
 #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
-
+/*----------------------------Macros Functions Declarations-------------------*/
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 
 /******INT0******/
@@ -97,21 +97,11 @@
  * INT2 LOW priority
  */
 #define EXT_INT2_LOW_PRIORITY()                         (INTCON3bits.INT2P = 0)
-/**
- * Read INT1 priority
- */
-#define EXT_INT1_READ_PRIORITY()                        (INTCON3bits_t.INT1P)
-/**
- * Read INT2 priority
- */
-#define EXT_INT2_READ_PRIORITY()                        (INTCON3bits_t.INT2P)
-
 #endif
 #endif
 
 
 /*----------------------------DataTypes---------------------------------------*/
-
 
 /**
  * an enum for external interrupts for contolling the falling and rising edges
