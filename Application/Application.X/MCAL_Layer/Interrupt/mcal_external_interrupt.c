@@ -733,16 +733,16 @@ void RB4_ISR(logic_t logic)
     /*Callback function*/
     if (GPIO_LOW == logic)
     {
-        if (RB4_ISRS[RBx_ISR_HIGH])
+        if (RB4_ISRS[RBx_ISR_LOW])
         {
-            RB4_ISRS[RBx_ISR_HIGH]();
+            RB4_ISRS[RBx_ISR_LOW]();
         }
     }
     else
     {
-        if (RB4_ISRS[RBx_ISR_LOW])
+        if (RB4_ISRS[RBx_ISR_HIGH])
         {
-            RB4_ISRS[RBx_ISR_LOW]();
+            RB4_ISRS[RBx_ISR_HIGH]();
         } 
     }
 }
@@ -761,16 +761,16 @@ void RB5_ISR(logic_t logic)
     /*Callback function*/
     if (GPIO_LOW == logic)
     {
-        if (RB5_ISRS[RBx_ISR_HIGH])
+        if (RB5_ISRS[RBx_ISR_LOW])
         {
-            RB5_ISRS[RBx_ISR_HIGH]();
+            RB5_ISRS[RBx_ISR_LOW]();
         }
     }
     else
     {
-        if (RB5_ISRS[RBx_ISR_LOW])
+        if (RB5_ISRS[RBx_ISR_HIGH])
         {
-            RB5_ISRS[RBx_ISR_LOW]();
+            RB5_ISRS[RBx_ISR_HIGH]();
         } 
     }
 }
@@ -789,16 +789,16 @@ void RB6_ISR(logic_t logic)
     /*Callback function*/
     if (GPIO_LOW == logic)
     {
-        if (RB6_ISRS[RBx_ISR_HIGH])
+        if (RB6_ISRS[RBx_ISR_LOW])
         {
-            RB6_ISRS[RBx_ISR_HIGH]();
+            RB6_ISRS[RBx_ISR_LOW]();
         }
     }
     else
     {
-        if (RB6_ISRS[RBx_ISR_LOW])
+        if (RB6_ISRS[RBx_ISR_HIGH])
         {
-            RB6_ISRS[RBx_ISR_LOW]();
+            RB6_ISRS[RBx_ISR_HIGH]();
         } 
     }
 }
@@ -817,16 +817,16 @@ void RB7_ISR(logic_t logic)
     /*Callback function*/
     if (GPIO_LOW == logic)
     {
-        if (RB7_ISRS[RBx_ISR_HIGH])
+        if (RB7_ISRS[RBx_ISR_LOW])
         {
-            RB7_ISRS[RBx_ISR_HIGH]();
+            RB7_ISRS[RBx_ISR_LOW]();
         }
     }
     else
     {
-        if (RB7_ISRS[RBx_ISR_LOW])
+        if (RB7_ISRS[RBx_ISR_HIGH])
         {
-            RB7_ISRS[RBx_ISR_LOW]();
+            RB7_ISRS[RBx_ISR_HIGH]();
         } 
     }
 }
