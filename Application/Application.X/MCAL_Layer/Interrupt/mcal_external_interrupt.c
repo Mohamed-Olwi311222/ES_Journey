@@ -118,66 +118,20 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t * int_obj)
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_DISABLE
         INTERRUPT_Peripheral_interrupt_ENABLE();
         INTERRUPT_Global_interrupt_ENABLE();
-#else
-        INTERRUPT_PRIORITY_levels_ENABLE(); /*Enable priority feature*/
 #endif
         switch(int_obj->source)
         {
             /*---------INT0------------*/
             case INTERRUPT_EXTERNAL_INT0 :
-                /*Its always high priority*/
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-                INTERRUPT_Global_interrupt_HIGH_ENABLE();
                 EXT_INT0_INTERRUPT_ENABLE();
-#else
-                EXT_INT0_INTERRUPT_ENABLE();
-#endif
                 break;
             /*---------INT1------------*/
             case INTERRUPT_EXTERNAL_INT1:
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-                if (INTERRUPT_LOW_PRIORITY == int_obj->priority)
-                {
-                    /*Enable high priority so the low priority can be enabled*/
-                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
-                    INTERRUPT_Global_interrupt_LOW_ENABLE();
-                    EXT_INT1_INTERRUPT_ENABLE();
-                }
-                else if (INTERRUPT_HIGH_PRIORITY == int_obj->priority)
-                {
-                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
-                    EXT_INT1_INTERRUPT_ENABLE();
-                }
-                else
-                {
-                    ret = E_NOT_OK;
-                }
-#else
                 EXT_INT1_INTERRUPT_ENABLE();
-#endif
                 break;
             /*---------INT2------------*/
             case INTERRUPT_EXTERNAL_INT2:
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-                if (INTERRUPT_LOW_PRIORITY == int_obj->priority)
-                {
-                    /*Enable high priority so the low priority can be enabled*/
-                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
-                    INTERRUPT_Global_interrupt_LOW_ENABLE();
-                    EXT_INT2_INTERRUPT_ENABLE();
-                }
-                else if (INTERRUPT_HIGH_PRIORITY == int_obj->priority)
-                {
-                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
-                    EXT_INT2_INTERRUPT_ENABLE();
-                }
-                else
-                {
-                    ret = E_NOT_OK;
-                }
-#else
                 EXT_INT2_INTERRUPT_ENABLE();
-#endif
                 break;
             default:
                 ret = E_NOT_OK;
@@ -236,19 +190,26 @@ static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *int_o
     }
     else
     {
+        INTERRUPT_PRIORITY_levels_ENABLE(); /*Enable priority feature*/
+
         switch(int_obj->source)
         {
             /*Its always high priority*/
             case INTERRUPT_EXTERNAL_INT0:
+                INTERRUPT_Global_interrupt_HIGH_ENABLE();
                 ret = E_OK;
                 break;
             case INTERRUPT_EXTERNAL_INT1 : 
                 if (INTERRUPT_LOW_PRIORITY == int_obj->priority)
                 {
+                    /*Enable high priority so the low priority can be enabled*/
+                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
+                    INTERRUPT_Global_interrupt_LOW_ENABLE();
                     EXT_INT1_LOW_PRIORITY();
                 }
                 else if (INTERRUPT_HIGH_PRIORITY == int_obj->priority)
                 {
+                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
                     EXT_INT1_HIGH_PRIORITY();
                 }
                 else
@@ -259,12 +220,14 @@ static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *int_o
             case INTERRUPT_EXTERNAL_INT2 : 
                 if (INTERRUPT_LOW_PRIORITY == int_obj->priority)
                 {
-
+                    /*Enable high priority so the low priority can be enabled*/
+                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
+                    INTERRUPT_Global_interrupt_LOW_ENABLE();
                     EXT_INT2_LOW_PRIORITY();
                 }
                 else if (INTERRUPT_HIGH_PRIORITY == int_obj->priority)
                 {
-
+                    INTERRUPT_Global_interrupt_HIGH_ENABLE();
                     EXT_INT2_HIGH_PRIORITY();
                 }
                 else
