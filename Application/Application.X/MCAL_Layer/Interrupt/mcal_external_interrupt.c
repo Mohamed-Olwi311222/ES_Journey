@@ -9,9 +9,9 @@
 /*----------------------Static Declerations----------------------------------------------------------------*/
 /*----------------------Intx interrupt static functions declerations-------------*/
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-static void (*INT0_INTERRUPT_HANDLER) (void) = NULL;    /*Pointer to the callback function of INT0*/
-static void (*INT1_INTERRUPT_HANDLER) (void) = NULL;    /*Pointer to the callback function of INT1*/
-static void (*INT2_INTERRUPT_HANDLER) (void) = NULL;    /*Pointer to the callback function of INT2*/
+static INTERRUPT_HANDLER INT0_INTERRUPT_HANDLER = NULL;    /*Pointer to the callback function of INT0*/
+static INTERRUPT_HANDLER INT1_INTERRUPT_HANDLER = NULL;    /*Pointer to the callback function of INT1*/
+static INTERRUPT_HANDLER INT2_INTERRUPT_HANDLER = NULL;    /*Pointer to the callback function of INT2*/
 
 static Std_ReturnType Interrupt_INTx_Pin_Init(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Edge_Init(const interrupt_INTx_t *int_obj);
@@ -29,7 +29,7 @@ static Std_ReturnType Interrupt_INTx_Set_Interrupt_Handler(const interrupt_INTx_
 /*----------------------RBx interrupt on change static functions declerations----*/
 #if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /*Pointer to the callback function of RB4 ~ RB7*/
-static void (*RBx_Interrupt_Handlers[INTERRUPT_HANDLERS_LEN])(void);
+static INTERRUPT_HANDLER RBx_Interrupt_Handlers[INTERRUPT_HANDLERS_LEN];
 
 static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj);

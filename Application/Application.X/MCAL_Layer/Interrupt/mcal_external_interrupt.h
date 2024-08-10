@@ -142,6 +142,8 @@
 #endif
 /*----------------------------DataTypes---------------------------------------*/
 
+typedef void (*INTERRUPT_HANDLER) (void); /*Interrupt handler for callback functions*/
+
 /**
  * an enum for external interrupts for contolling the falling and rising edges
  */
