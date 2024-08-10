@@ -5273,7 +5273,12 @@ Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic);
 
 Std_ReturnType gpio_port_toggle_logic(const port_index_t port);
 # 14 "MCAL_Layer/Interrupt/mcal_interrupt_config.h" 2
-# 78 "MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+# 74 "MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+typedef void (*INTERRUPT_HANDLER) (void);
+
+
+
+
 typedef enum
 {
     INTERRUPT_LOW_PRIORITY = 0,
@@ -5331,24 +5336,30 @@ static volatile uint8 RB4_Flag = 1;
 static volatile uint8 RB5_Flag = 1;
 static volatile uint8 RB6_Flag = 1;
 static volatile uint8 RB7_Flag = 1;
-# 39 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
-void __attribute__((picinterrupt(("")))) Interrupt_Manager(void)
+
+
+
+
+
+void __attribute__((picinterrupt(("")))) Interrupt_Manager_High(void)
 {
-
-
     if ((1 == INTCONbits.INT0IE) && (1 == INTCONbits.INT0IF))
     {
         INT0_ISR();
     }
-
-    if ((1 == INTCON3bits.INT1IE) && (1 == INTCON3bits.INT1IF))
-    {
-        INT1_ISR();
-    }
-
     if ((1 == INTCON3bits.INT2IE) && (1 == INTCON3bits.INT2IF))
     {
         INT2_ISR();
+    }
+}
+
+
+
+void __attribute__((picinterrupt(("low_priority")))) Interrupt_Manager_Low(void)
+{
+    if ((1 == INTCON3bits.INT1IE) && (1 == INTCON3bits.INT1IF))
+    {
+        INT1_ISR();
     }
 
 

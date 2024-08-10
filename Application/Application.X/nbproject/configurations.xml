@@ -47,6 +47,8 @@
           <itemPath>MCAL_Layer/Interrupt/mcal_external_interrupt.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h</itemPath>
+          <itemPath>MCAL_Layer/Interrupt/mcal_INTx_external_interrupt.h</itemPath>
+          <itemPath>MCAL_Layer/Interrupt/mcal_RBx_external_interrupt.h</itemPath>
         </logicalFolder>
         <itemPath>MCAL_Layer/mcal_std_types.h</itemPath>
         <itemPath>std_types.h</itemPath>
@@ -117,9 +119,10 @@
           <itemPath>MCAL_Layer/GPIO/hal_gpio.c</itemPath>
         </logicalFolder>
         <logicalFolder name="Interrupt" displayName="Interrupt" projectFiles="true">
-          <itemPath>MCAL_Layer/Interrupt/mcal_external_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_internal_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.c</itemPath>
+          <itemPath>MCAL_Layer/Interrupt/mcal_INTx_external_interrupt.c</itemPath>
+          <itemPath>MCAL_Layer/Interrupt/mcal_RBx_external_interrupt.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>device_config.c</itemPath>

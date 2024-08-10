@@ -53,7 +53,7 @@ interrupt_RBx_t RB4_obj =
 {
     .EXT_interrupt_handler_High = RB4_INT_APP_ISR_HIGH,
     .EXT_interrupt_handler_Low = RB4_INT_APP_ISR_LOW,
-    .priority = INTERRUPT_HIGH_PRIORITY,
+    .priority = INTERRUPT_LOW_PRIORITY,
     .mcu_pin.port = PORTB_INDEX,
     .mcu_pin.pin = GPIO_PIN4,
     .mcu_pin.direction = GPIO_DIRECTION_INPUT
@@ -62,7 +62,7 @@ interrupt_RBx_t RB5_obj =
 {
     .EXT_interrupt_handler_High = RB5_INT_APP_ISR_HIGH,
     .EXT_interrupt_handler_Low = RB5_INT_APP_ISR_LOW,
-    .priority = INTERRUPT_HIGH_PRIORITY,
+    .priority = INTERRUPT_LOW_PRIORITY,
     .mcu_pin.port = PORTB_INDEX,
     .mcu_pin.pin = GPIO_PIN5,
     .mcu_pin.direction = GPIO_DIRECTION_INPUT
@@ -71,7 +71,7 @@ interrupt_RBx_t RB6_obj =
 {
     .EXT_interrupt_handler_High = RB6_INT_APP_ISR_HIGH,
     .EXT_interrupt_handler_Low = RB6_INT_APP_ISR_LOW,
-    .priority = INTERRUPT_HIGH_PRIORITY,
+    .priority = INTERRUPT_LOW_PRIORITY,
     .mcu_pin.port = PORTB_INDEX,
     .mcu_pin.pin = GPIO_PIN6,
     .mcu_pin.direction = GPIO_DIRECTION_INPUT
@@ -80,7 +80,7 @@ interrupt_RBx_t RB7_obj =
 {
     .EXT_interrupt_handler_High = RB7_INT_APP_ISR_HIGH,
     .EXT_interrupt_handler_Low = RB7_INT_APP_ISR_LOW,
-    .priority = INTERRUPT_HIGH_PRIORITY,
+    .priority = INTERRUPT_LOW_PRIORITY,
     .mcu_pin.port = PORTB_INDEX,
     .mcu_pin.pin = GPIO_PIN7,
     .mcu_pin.direction = GPIO_DIRECTION_INPUT

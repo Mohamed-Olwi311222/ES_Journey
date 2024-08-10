@@ -25,4 +25,6 @@ ECU_Layer/Char_LCD/ecu_char_lcd.h  \
 ECU_Layer/Char_LCD/ecu_char_lcd_cfg.h  \
 MCAL_Layer/Interrupt/mcal_external_interrupt.h  \
 MCAL_Layer/Interrupt/mcal_interrupt_config.h  \
-MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h 
+MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h  \
+MCAL_Layer/Interrupt/mcal_INTx_external_interrupt.h  \
+MCAL_Layer/Interrupt/mcal_RBx_external_interrupt.h 
