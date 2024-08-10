@@ -71,6 +71,7 @@
 #define INTERRUPT_Global_interrupt_DISABLE()            (INTCONbits.GIE = 0)
 #endif
 /*----------------------------DataTypes---------------------------------------*/
+typedef void (*INTERRUPT_HANDLER) (void); /*Interrupt handler for callback functions*/
 
 /**
  * an enum accessible by all interrupts for controling the priority levels
