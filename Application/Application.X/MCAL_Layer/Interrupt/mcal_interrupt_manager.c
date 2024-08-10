@@ -45,5 +45,9 @@ void __interrupt() Interrupt_Manager(void)
     {
         INT2_ISR(); // Call the ISR function
     }
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF))
+    {
+        RB4_ISR(); // Call the ISR function
+    }
 }
 #endif
