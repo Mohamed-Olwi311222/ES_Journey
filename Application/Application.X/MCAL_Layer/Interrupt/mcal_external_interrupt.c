@@ -717,32 +717,32 @@ static Std_ReturnType Interrupt_RBx_Set_Interrupt_Handler(const interrupt_RBx_t 
 }
 #endif
 
-/*----------------------ISRs for INTx--------------------------------------------*/
+/*----------------------ISRs for RBx--------------------------------------------*/
 #if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief The interrupt service routine of RB4, will be called if RB4 on change interrupt has been raised depending on
  * the logic of the pin
- * @param logic the logic on the pin
+ * @param source the source of the calling from the interrupt manager
  */
-void RB4_ISR(logic_t logic)
+void RB4_ISR(uint8 source)
 {
     /*Clear Flagbit of RB4*/
     EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
     /*Code*/
 
     /*Callback function*/
-    if (GPIO_LOW == logic)
-    {
-        if (RB4_ISRS[RBx_ISR_LOW])
-        {
-            RB4_ISRS[RBx_ISR_LOW]();
-        }
-    }
-    else
+    if (0 == source)
     {
         if (RB4_ISRS[RBx_ISR_HIGH])
         {
             RB4_ISRS[RBx_ISR_HIGH]();
+        }
+    }
+    else
+    {
+        if (RB4_ISRS[RBx_ISR_LOW])
+        {
+            RB4_ISRS[RBx_ISR_LOW]();
         } 
     }
 }
@@ -750,27 +750,27 @@ void RB4_ISR(logic_t logic)
 /**
  * @brief The interrupt service routine of RB5, will be called if RB4 on change interrupt has been raised depending on
  * the logic of the pin
- * @param logic the logic on the pin
+ * @param source the source of the calling from the interrupt manager
  */
-void RB5_ISR(logic_t logic)
+void RB5_ISR(uint8 source)
 {
-    /*Clear Flagbit of RB4*/
+    /*Clear Flag bit of RB4*/
     EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
     /*Code*/
 
     /*Callback function*/
-    if (GPIO_LOW == logic)
-    {
-        if (RB5_ISRS[RBx_ISR_LOW])
-        {
-            RB5_ISRS[RBx_ISR_LOW]();
-        }
-    }
-    else
+    if (0 == source)
     {
         if (RB5_ISRS[RBx_ISR_HIGH])
         {
             RB5_ISRS[RBx_ISR_HIGH]();
+        }
+    }
+    else
+    {
+        if (RB5_ISRS[RBx_ISR_LOW])
+        {
+            RB5_ISRS[RBx_ISR_LOW]();
         } 
     }
 }
@@ -778,16 +778,16 @@ void RB5_ISR(logic_t logic)
 /**
  * @brief The interrupt service routine of RB6, will be called if RB4 on change interrupt has been raised depending on
  * the logic of the pin
- * @param logic the logic on the pin
+ * @param source the source of the calling from the interrupt manager
  */
-void RB6_ISR(logic_t logic)
+void RB6_ISR(uint8 source)
 {
-    /*Clear Flagbit of RB4*/
+    /*Clear Flag bit of RB4*/
     EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
     /*Code*/
 
     /*Callback function*/
-    if (GPIO_LOW == logic)
+    if (0 == source)
     {
         if (RB6_ISRS[RBx_ISR_LOW])
         {
@@ -806,16 +806,16 @@ void RB6_ISR(logic_t logic)
 /**
  * @brief The interrupt service routine of RB7, will be called if RB4 on change interrupt has been raised depending on
  * the logic of the pin
- * @param logic the logic on the pin
+ * @param source the source of the calling from the interrupt manager
  */
-void RB7_ISR(logic_t logic)
+void RB7_ISR(uint8 source)
 {
-    /*Clear Flagbit of RB4*/
+    /*Clear Flag bit of RB4*/
     EXT_RBx_INTERRUPT_FLAG_BIT_CLEAR();
     /*Code*/
 
     /*Callback function*/
-    if (GPIO_LOW == logic)
+    if (0 == source)
     {
         if (RB7_ISRS[RBx_ISR_LOW])
         {
@@ -830,4 +830,5 @@ void RB7_ISR(logic_t logic)
         } 
     }
 }
+
 #endif
