@@ -34,6 +34,60 @@ void  __interrupt(low_priority) Interrupt_Manager_Low(void)
     {
         INT1_ISR(); // Call the ISR function
     }  
+        /*------------------------PORTB on change interrupt------------------------*/
+    /*---------------RB4--------------------------*/
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_HIGH == PORTBbits.RB4) && (RBx_FLAG_TRUE == RB4_Flag))
+    {
+        RB4_Flag = RBx_FLAG_FALSE;
+        RB4_ISR(0); // Call the ISR function
+    }
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF)&&
+            (GPIO_LOW == PORTBbits.RB4) && (RBx_FLAG_FALSE == RB4_Flag))
+    {
+        RB4_Flag = RBx_FLAG_TRUE;
+        RB4_ISR(1); // Call the ISR function
+    }
+    
+    /*---------------RB5--------------------------*/
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_HIGH == PORTBbits.RB5) && (RBx_FLAG_TRUE == RB5_Flag))
+    {
+        RB5_Flag = RBx_FLAG_FALSE;
+        RB5_ISR(0); // Call the ISR function
+    }
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_LOW == PORTBbits.RB5 ) && (RBx_FLAG_FALSE == RB5_Flag))
+    {
+        RB5_Flag = RBx_FLAG_TRUE;
+        RB5_ISR(1); // Call the ISR function
+    }
+    /*---------------RB6--------------------------*/
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_HIGH == PORTBbits.RB6) && (RBx_FLAG_TRUE == RB6_Flag))
+    {
+        RB6_Flag = RBx_FLAG_FALSE;
+        RB6_ISR(0); // Call the ISR function
+    }
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_LOW == PORTBbits.RB6 ) && (RBx_FLAG_FALSE == RB6_Flag))
+    {
+        RB6_Flag = RBx_FLAG_TRUE;
+        RB6_ISR(1); // Call the ISR function
+    }
+    /*---------------RB7--------------------------*/
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_HIGH == PORTBbits.RB7) && (RBx_FLAG_TRUE == RB7_Flag))
+    {
+        RB7_Flag = RBx_FLAG_FALSE;
+        RB7_ISR(0); // Call the ISR function
+    }
+    if ((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) &&
+            (GPIO_LOW == PORTBbits.RB7 ) && (RBx_FLAG_FALSE == RB7_Flag))
+    {
+        RB7_Flag = RBx_FLAG_TRUE;
+        RB7_ISR(1); // Call the ISR function
+    }
 }
  #else
 void __interrupt() Interrupt_Manager(void)
