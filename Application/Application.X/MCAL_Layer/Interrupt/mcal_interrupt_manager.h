@@ -28,31 +28,31 @@ void INT2_ISR(void);
 
 /**
  * @brief The interrupt service routine of RB4, will be called if RB4 on change interrupt has been raised depending on
- * the logic of the pin
- * @param logic the logic on the pin
+ * the source of the calling
+ * @param source the source of the calling from the interrupt manager
  */
-void RB4_ISR(logic_t logic);
+void RB4_ISR(uint8 source);
 
 /**
  * @brief The interrupt service routine of RB5, will be called if RB4 on change interrupt has been raised depending on
- * the logic of the pin
- * @param logic the logic on the pin
+ * the source of the calling
+ * @param source the source of the calling from the interrupt manager
  */
-void RB5_ISR(logic_t logic);
+void RB5_ISR(uint8 source);
 
 /**
  * @brief The interrupt service routine of RB6, will be called if RB4 on change interrupt has been raised depending on
- * the logic of the pin
- * @param logic the logic on the pin
+ * the source of the calling
+ * @param source the source of the calling from the interrupt manager
  */
-void RB6_ISR(logic_t logic);
+void RB6_ISR(uint8 source);
 
 /**
  * @brief The interrupt service routine of RB7, will be called if RB4 on change interrupt has been raised depending on
- * the logic of the pin
- * @param logic the logic on the pin
+ * the source of the calling
+ * @param source the source of the calling from the interrupt manager
  */
-void RB7_ISR(logic_t logic);
+void RB7_ISR(uint8 source);
 
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
