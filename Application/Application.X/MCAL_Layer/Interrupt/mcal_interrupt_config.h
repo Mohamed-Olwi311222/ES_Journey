@@ -14,13 +14,14 @@
 #include "../GPIO/hal_gpio.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
-#define INTERRUPT_ENABLE            1
-#define INTERRUPT_DISABLE           0
-#define INTERRUPT_OCCUR             1
-#define INTERRUPT_NOT_OCCUR         0
-#define INTERRUPT_PRIORITY_ENABLE   1
-#define INTERRUPT_PRIORITY_DISABLE  1
-
+#define INTERRUPT_ENABLE                                1 /*Interrupt is enabled*/                   
+#define INTERRUPT_DISABLE                               0 /*Interrupt is disabled*/
+#define INTERRUPT_OCCUR                                 1 /*Interrupt has occured*/
+#define INTERRUPT_NOT_OCCUR                             0 /*Interrupt hasnt occured*/
+#define INTERRUPT_PRIORITY_ENABLE                       1 /*Interrupt Priority is enabled*/
+#define INTERRUPT_PRIORITY_DISABLE                      1 /*Interrupt Priority is disabled*/
+#define RBx_FLAG_TRUE                                   1 /*True Flag to the ISR*/
+#define RBx_FLAG_FALSE                                  0 /*False Flag to the ISR*/
 /*----------------------------Macros Functions Declarations-------------------*/
 
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
