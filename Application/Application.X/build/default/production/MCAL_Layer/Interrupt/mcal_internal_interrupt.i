@@ -5273,7 +5273,7 @@ Std_ReturnType gpio_port_read_logic(const port_index_t port, uint8 *logic);
 
 Std_ReturnType gpio_port_toggle_logic(const port_index_t port);
 # 14 "MCAL_Layer/Interrupt/mcal_interrupt_config.h" 2
-# 77 "MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+# 78 "MCAL_Layer/Interrupt/mcal_interrupt_config.h"
 typedef enum
 {
     INTERRUPT_LOW_PRIORITY = 0,
