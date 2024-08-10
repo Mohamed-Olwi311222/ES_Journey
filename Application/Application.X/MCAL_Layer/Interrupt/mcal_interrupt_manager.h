@@ -25,52 +25,34 @@ void INT1_ISR(void);
  */
 void INT2_ISR(void);
 /*--------------------------------RBx ISRS-------------------------------------*/
-/**
- * @brief The interrupt service routine of RB4, will be called if RB4 on change interrupt has been raised
- *  while the pin has logic high
- * @param logic the logic on the pin
- */
-void RB4_ISR_HIGH(logic_t logic);
-/**
- * @brief: The interrupt service routine of RB4, will be called if RB4 on change interrupt has been raised 
- * the pin has logic low
- */
-void RB4_ISR_LOW(logic_t logic);
 
 /**
- * @brief The interrupt service routine of RB5, will be called if RB4 on change interrupt has been raised
- *  while the pin has logic high
+ * @brief The interrupt service routine of RB4, will be called if RB4 on change interrupt has been raised depending on
+ * the logic of the pin
  * @param logic the logic on the pin
  */
-void RB5_ISR_HIGH(logic_t logic);
-/**
- * @brief: The interrupt service routine of RB5, will be called if RB4 on change interrupt has been raised 
- * the pin has logic low
- */
-void RB5_ISR_LOW(logic_t logic);
+void RB4_ISR(logic_t logic);
 
 /**
- * @brief The interrupt service routine of RB6, will be called if RB4 on change interrupt has been raised
- *  while the pin has logic high
+ * @brief The interrupt service routine of RB5, will be called if RB4 on change interrupt has been raised depending on
+ * the logic of the pin
  * @param logic the logic on the pin
  */
-void RB6_ISR_HIGH(logic_t logic);
-/**
- * @brief: The interrupt service routine of RB6, will be called if RB4 on change interrupt has been raised 
- * the pin has logic low
- */
-void RB6_ISR_LOW(logic_t logic);
+void RB5_ISR(logic_t logic);
 
 /**
- * @brief The interrupt service routine of RB7, will be called if RB4 on change interrupt has been raised
- *  while the pin has logic high
+ * @brief The interrupt service routine of RB6, will be called if RB4 on change interrupt has been raised depending on
+ * the logic of the pin
  * @param logic the logic on the pin
  */
-void RB7_ISR_HIGH(logic_t logic);
+void RB6_ISR(logic_t logic);
+
 /**
- * @brief: The interrupt service routine of RB7, will be called if RB4 on change interrupt has been raised 
- * the pin has logic low
+ * @brief The interrupt service routine of RB7, will be called if RB4 on change interrupt has been raised depending on
+ * the logic of the pin
+ * @param logic the logic on the pin
  */
-void RB7_ISR_LOW(logic_t logic);
+void RB7_ISR(logic_t logic);
+
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
