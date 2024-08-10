@@ -11,12 +11,9 @@
 #include "mcal_interrupt_config.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
-#define INTERRUPT_HANDLERS_LEN                          4 /*The lenght of the function pointer array*/
-#define RB4_INDEX                                       0 /*RB4 index*/
-#define RB5_INDEX                                       1 /*RB5 index*/
-#define RB6_INDEX                                       2 /*RB6 index*/
-#define RB7_INDEX                                       3 /*RB7 index*/
-
+#define RBx_INTERRUPT_HANDLERS_LEN                      2 /*The length of the function pointer array*/
+#define RBx_ISR_HIGH                                    0 /*The index of the function pointer to ISR_HIGH*/
+#define RBx_ISR_LOW                                     1 /*The index of the function pointer to ISR_LOW*/
 #endif
 /*----------------------------Macros Functions Declarations-------------------*/
 #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
@@ -173,7 +170,7 @@ typedef enum
  */
 typedef struct
 {
-    void (*EXT_interrupt_handler)(void);
+    INTERRUPT_HANDLER EXT_interrupt_handler;
     pin_config_t mcu_pin;
     interrupt_INTx_edge edge;
     interrupt_INTx_src source;
@@ -182,13 +179,15 @@ typedef struct
 
 /**
  * struct interrupt_RBYx_t - a struct for PORTB on change interrupt
- * @EXT_interrupt_handler: A pointer to the interrupt handler of RBx
+ * @EXT_interrupt_handler_High: A pointer to the interrupt handler of RBx if logic is high
+ * @EXT_interrupt_handler_Low: A pointer to the interrupt handler of RBx if logic is low
  * @mcu_pin: the mcu pin that caused the interrupt
  * @priortiy: the priority of the RB on change interrupt
  */
 typedef struct
 {
-    void (* EXT_interrupt_handler)(void);
+    INTERRUPT_HANDLER EXT_interrupt_handler_High;
+    INTERRUPT_HANDLER EXT_interrupt_handler_Low;
     pin_config_t mcu_pin;
     interrupt_priority_cfg priority;
 }interrupt_RBx_t;
