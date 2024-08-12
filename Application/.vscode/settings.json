@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "mcal_interrupt_config.h": "c",
-        "mcal_interrupt_gen_cfg.h": "c"
-    }
-}

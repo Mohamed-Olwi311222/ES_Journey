@@ -104,7 +104,7 @@ int main(void)
     ret |= led_initialize(&led4);
     while(1)
     {
-        
+
     }
    return (0);
 }
