@@ -30,7 +30,7 @@
 #define EEPROM_BEGIN_WRITE_ERASE()                      (EECON1bits_t.WR = 1)    /*Initiates a data EEPROM erase/write cycle or a program memory erase cycle or write cycle*/
 
 /*PIR2 EEIF flag*/
-#define CLEAR_EEIF_FLAG()                               (PIR2bits_t.EEIF = 0) 
+#define CLEAR_EEIF_FLAG()                               (PIR2bits_t.EEIF = 0)    /*Clear EEIF Flag*/
 
 /*----------------------------Function Prototypes-----------------------------*/
 
