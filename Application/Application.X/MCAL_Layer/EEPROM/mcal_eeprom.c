@@ -32,13 +32,13 @@ Std_ReturnType Data_EEPROM_Write_Byte(uint16 byte_add, uint8 byte_data)
     EECON2 = 0xAA;
     EEPROM_BEGIN_WRITE_ERASE();
     /*Wait Until the Write operation is completed*/
-    while(EECON1bits_t.WR == 1);
+    while(EECON1bits.WR == 1);
     /*Inhibits write cycles to Flash program/data EEPROM*/
     WREN_EEPROM_DISABLE_WRITE();
     /*Remove Interrupt Flag*/
     CLEAR_EEIF_FLAG();
     /*Restore Interrupt Status*/
-    INTCONbits_t.GIE = GIE_status;
+    INTCONbits.GIE = GIE_status;
   
     return (ret);   
 }
