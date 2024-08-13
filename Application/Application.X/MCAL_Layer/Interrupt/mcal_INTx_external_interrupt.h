@@ -9,6 +9,9 @@
 #define	MCAL_INTX_EXTERNAL_INTERRUPT_H
 
 #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
+/*----------------------------Header Files------------------------------------*/
+#include "mcal_interrupt_config.h"
+
 /*----------------------------Macros Functions Declarations-------------------*/
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 

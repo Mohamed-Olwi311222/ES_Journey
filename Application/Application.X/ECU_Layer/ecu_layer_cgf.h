@@ -11,7 +11,7 @@
 /*-----Enable or disable required ECU*/
 #define ECU_ENABLED                         1
 #define ECU_DISABLED                        0
-#define ECU_BUTTON_ENABLED                  ECU_DISABLED
+#define ECU_BUTTON_ENABLED                  ECU_ENABLED
 #define ECU_LED_ENABLED                     ECU_ENABLED
 #define ECU_RELAY_ENABLED                   ECU_DISABLED
 #define ECU_DC_MOTOR_ENABLED                ECU_DISABLED
