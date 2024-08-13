@@ -14,23 +14,26 @@
 /*----------------------------Macros Functions Declarations-------------------*/
 
 /*EEPGD bit*/
-#define EEPGD_ACCESS_FLASH_PROGRAM_MEM()                (EECON1bits.EEPGD = 1) /*Access Flash program memory*/
-#define EEPGD_ACCESS_DATA_EEPROM_MEM()                  (EECON1bits.EEPGD = 0) /*Access data EEPROM memory*/
+#define EEPGD_ACCESS_FLASH_PROGRAM_MEM()                (EECON1bits.EEPGD = 1)  /*Access Flash program memory*/
+#define EEPGD_ACCESS_DATA_EEPROM_MEM()                  (EECON1bits.EEPGD = 0)  /*Access data EEPROM memory*/
 
 /*CFGS bit*/
-#define CFGS_ACCESS_CONFIG_REGS()                       (EECON1bits.CFGS = 1)  /*Access Configuration registers*/
-#define CFGS_ACCESS_FLASH_PROG_MEM()                    (EECON1bits.CFGS = 0)  /*Access Flash program*/
-#define CFGS_ACCESS_DATA_EEPROM()                       (EECON1bits.CFGS = 0)  /*Access data EEPROM memory*/
+#define CFGS_ACCESS_CONFIG_REGS()                       (EECON1bits.CFGS = 1)   /*Access Configuration registers*/
+#define CFGS_ACCESS_FLASH_PROG_MEM()                    (EECON1bits.CFGS = 0)   /*Access Flash program*/
+#define CFGS_ACCESS_DATA_EEPROM()                       (EECON1bits.CFGS = 0)   /*Access data EEPROM memory*/
 
 /*WREN bit*/
-#define WREN_EEPROM_ENABLE_WRITE()                      (EECON1bits.WREN = 1)  /*1 = Allows write cycles to Flash program/data EEPROM*/
-#define WREN_EEPROM_DISABLE_WRITE()                     (EECON1bits.WREN = 0)  /*Inhibits write cycles to Flash program/data EEPROM*/
+#define WREN_EEPROM_ENABLE_WRITE()                      (EECON1bits.WREN = 1)   /*1 = Allows write cycles to Flash program/data EEPROM*/
+#define WREN_EEPROM_DISABLE_WRITE()                     (EECON1bits.WREN = 0)   /*Inhibits write cycles to Flash program/data EEPROM*/
 
 /*WR bit*/
-#define EEPROM_BEGIN_WRITE_ERASE()                      (EECON1bits.WR = 1)    /*Initiates a data EEPROM erase/write cycle or a program memory erase cycle or write cycle*/
+#define EEPROM_BEGIN_WRITE_ERASE()                      (EECON1bits.WR = 1)     /*Initiates a data EEPROM erase/write cycle or a program memory erase cycle or write cycle*/
+
+/*RD bit*/
+#define EEPROM_BEGIN_READ()                             (EECON1bits.RD = 1)     /*Initiates an EEPROM read
 
 /*PIR2 EEIF flag*/
-#define CLEAR_EEIF_FLAG()                               (PIR2bits.EEIF = 0)    /*Clear EEIF Flag*/
+#define CLEAR_EEIF_FLAG()                               (PIR2bits.EEIF = 0)     /*Clear EEIF Flag*/
 
 /*----------------------------Function Prototypes-----------------------------*/
 

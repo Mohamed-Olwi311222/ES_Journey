@@ -58,7 +58,19 @@ Std_ReturnType Data_EEPROM_Read_Byte(uint16 byte_add, uint8 *byte_data)
     }
     else
     {
-
+        /*Set the EEPROM Address: The address from which data is to be read is loaded into the EEADR register*/
+        EEADRH = (uint8)((byte_add >> 8) & 0x03);
+        EEADR = (uint8)(byte_add & 0xFF);
+        /*Configure Access: Ensure that the access is set to EEPROM memory by clearing the EEPGD and CFGS bits*/
+        EEPGD_ACCESS_DATA_EEPROM_MEM();
+        CFGS_ACCESS_DATA_EEPROM();
+        /*Initiate the Read: Set the RD bit in the EECON1 register to start the EEPROM read operation*/
+        EEPROM_BEGIN_READ();
+        /*Wait at least 2 NOP(); Required for latency at high frequencies.*/
+        NOP();
+        NOP();
+        /*Retrieve the Data: After the read operation*/
+        *byte_data = EEDATA;
     }
     return (ret);  
 }
