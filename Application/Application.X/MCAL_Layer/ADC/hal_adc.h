@@ -58,7 +58,13 @@
 /*
  * Get the status of the ADC conversion (GODONE bit)
  */
-#define ADC_CONV_STATUS()                           (ADCON0bits.DONE)                           
+#define ADC_CONV_STATUS()                           (ADCON0bits.DONE)       
+
+/*--------CHS3:CHS0 bits--------*/
+/**
+ * Set the analog input channel (CHS3:CHS0 bits) with _CONFIG @ref adc_channel_select_t
+ */
+#define ADC_SET_ANALOG_CHANNEL(_CONFIG)             (ADCON0bits.CHS = _CONFIG)
 
 /*----------------ADCON1 bits----------------*/
 /*VFG0 and VFG1 bit*/
