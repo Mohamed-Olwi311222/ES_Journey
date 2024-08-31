@@ -56,9 +56,13 @@
  */
 #define START_ADC_CONV()                            (ADCON0bits.GO = ADC_START_CONV)            
 /*
+ * Get the status of the ADC conversion (GODONE bit) and store it in a memory address
+ */
+#define ADC_GET_CONV_STATUS(ADDR)                   (*ADDR = ADCON0bits.DONE)       
+/**
  * Get the status of the ADC conversion (GODONE bit)
  */
-#define ADC_CONV_STATUS(ADDR)                       (*ADDR = ADCON0bits.DONE)       
+#define ADC_CONV_STATUS()                           (ADCON0bits.DONE)
 
 /*--------CHS3:CHS0 bits--------*/
 /**
@@ -71,14 +75,14 @@
 /**
  * Set the +vref t0 AN3 pin and -vref to AN2 pin
  */
-#define ADC_VREF_INTERNAL()                         do{                                      \
+#define ADC_SET_VREF_INTERNAL()                     do{                                      \
                                                         ADCON1bits.VCFG0 = ADC_NEG_VREF_VDD; \
                                                         ADCON1bits.VCFG1 = ADC_POS_VREF_VSS; \
                                                     }while(0);
 /**
  * Set the +vref to VDD pin and -vref to VSS pin
  */
-#define ADC_VREF_EXT()                              do{                                      \
+#define ADC_SET_VREF_EXTERNAL()                     do{                                      \
                                                         ADCON1bits.VCFG0 = ADC_POS_VREF_AN3; \
                                                         ADCON1bits.VCFG1 = ADC_NEG_VREF_AN2; \
                                                     }while(0);
@@ -226,7 +230,7 @@ Std_ReturnType adc_deinit(const adc_config_t *adc_obj);
  * @param adc_obj the adc config used
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType adc_select_channel(const adc_config_t *adc_obj);
+Std_ReturnType adc_select_channel(const adc_config_t *adc_obj, adc_channel_select_t channel);
 /**
  * @brief: Start the adc conversion
  * @param adc_obj the adc config used
