@@ -58,7 +58,7 @@
 /*
  * Get the status of the ADC conversion (GODONE bit)
  */
-#define ADC_CONV_STATUS()                           (ADCON0bits.DONE)       
+#define ADC_CONV_STATUS(ADDR)                       (*ADDR = ADCON0bits.DONE)       
 
 /*--------CHS3:CHS0 bits--------*/
 /**
