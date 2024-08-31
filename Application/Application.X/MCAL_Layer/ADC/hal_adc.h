@@ -247,6 +247,13 @@ Std_ReturnType adc_read_conversion_status(const adc_config_t *adc_obj, adc_conve
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType adc_read_result(const adc_config_t *adc_obj, adc_conversion_result *adc_result);
+/**
+ * @brief: Get the conversion done by the adc from a specific input channel
+ * @param adc_obj the adc config used
+ * @param channel the input channel to read the input from
+ * @param result the adddress to store the result of the adc conversion
+ * @return E_OK if success otherwise E_NOT_OK
+ */
 Std_ReturnType adc_get_conversion(const adc_config_t *adc_obj, adc_channel_select_t channel, adc_conversion_result * result);
 #endif	/* HAL_ADC_H */
 
