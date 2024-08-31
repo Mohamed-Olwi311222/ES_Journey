@@ -113,7 +113,7 @@
 
 typedef uint8 vref_t;                                    /* A typedef for adc vref select */
 typedef uint8 adc_res_justification_t;                   /* A typedef for adc result justification*/
-typedef uint8 adc_conversion_result;                     /* A typedef for adc conversion result */
+typedef uint16 adc_conversion_result;                     /* A typedef for adc conversion result */
 typedef uint8 adc_conversion_status;                     /* A typedef for adc conversion status */
 
 /**
