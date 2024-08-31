@@ -248,7 +248,8 @@ Std_ReturnType adc_read_conversion_status(const adc_config_t *adc_obj, adc_conve
  */
 Std_ReturnType adc_read_result(const adc_config_t *adc_obj, adc_conversion_result *adc_result);
 /**
- * @brief: Get the conversion done by the adc from a specific input channel
+ * @brief: Get the conversion done by the adc on from a specific input channel and wait until the conversion is done
+ *         and read the result to the specified memory address
  * @param adc_obj the adc config used
  * @param channel the input channel to read the input from
  * @param result the adddress to store the result of the adc conversion
