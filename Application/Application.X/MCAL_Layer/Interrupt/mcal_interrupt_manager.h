@@ -53,6 +53,11 @@ void RB6_ISR(uint8 source);
  * @param source the source of the calling from the interrupt manager
  */
 void RB7_ISR(uint8 source);
+/*--------------------------------Internal Interrupts ISRS---------------------*/
+/**
+ * @brief the interrupt service routine of ADC module, will be called if the conversion is done
+ */
+void ADC_ISR(void);
 
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
