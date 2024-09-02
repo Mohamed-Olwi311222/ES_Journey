@@ -196,6 +196,7 @@ typedef enum
 /**
  * struct adc_config_t - struct for adc config
  * @adc_interrupt_handler: The callback to call when an interrupt is raised
+ * @priortiy: The priortiy of the adc conversion interrupt
  * @adc_port_config: The adc port configuration for deciding which ANx is analog
  * @adc_analog_channel: The analog channel used for analog input
  * @conversion_clock: the conversion clock used
@@ -203,7 +204,12 @@ typedef enum
 */
 typedef struct
 {
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER adc_interrupt_handler;            /* ADC interrupt handler */
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+    interrupt_priority_cfg priortiy;                    /* ADC interrupt priority */
+#endif
+#endif
     adc_port_config_select_t adc_port_config;           /* @ref adc_conversion_clock_select_t */
     adc_channel_select_t adc_analog_channel;            /* @ref adc_channel_select_t          */
     adc_conversion_clock_select_t conversion_clock;     /* @ref adc_conversion_clock_select_t */
