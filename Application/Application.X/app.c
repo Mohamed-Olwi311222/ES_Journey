@@ -7,8 +7,13 @@
 #include "app.h"
 #include "MCAL_Layer/ADC/hal_adc.h"
 
+void adc_interrupt_handler(void);
+volatile uint16 adc_flag = 0;
+adc_conversion_result adc_result1 = ZERO_INIT;
+
 adc_config_t adc = {
-  .adc_interrupt_handler = NULL,
+  .adc_interrupt_handler = adc_interrupt_handler,
+  .priortiy = INTERRUPT_HIGH_PRIORITY,
   .aquisition_time = ADC_ACQUISITION_TIME_12_TAD,
   .adc_analog_channel = ADC_CHANNEL_AN0,
   .adc_port_config = ADC_AN0__AN3__ANALOG_FUNCTIONALITY,
@@ -16,32 +21,24 @@ adc_config_t adc = {
   .result_format = ADC_RES_RIGHT_JUSTIFY,
   .voltage_ref = ADC_VREF_INTENAL
 };
-led_t led1 = {
-  .led_status = LED_OFF,
-  .port_name = PORTC_INDEX,
-  .pin = GPIO_PIN0
-};
+
+void adc_interrupt_handler(void)
+{
+    adc_flag++;
+    adc_read_result(&adc, &adc_result1);
+}
 int main(void)
 {
     Std_ReturnType ret = application_init();
-    adc_conversion_result adc_result1 = ZERO_INIT;
-    adc_conversion_result adc_result2 = ZERO_INIT;
-    adc_conversion_result adc_result3 = ZERO_INIT;
-    adc_conversion_result adc_result4 = ZERO_INIT;
 
     if (E_NOT_OK == ret)
     {
         return (-1);
     }
     ret |= adc_init(&adc);
-    ret |= led_initialize(&led1); 
     while(1)
     {
-        ret |= adc_get_conversion(&adc, ADC_CHANNEL_AN0, &adc_result1);
-        ret |= adc_get_conversion(&adc, ADC_CHANNEL_AN1, &adc_result2);
-        ret |= adc_get_conversion(&adc, ADC_CHANNEL_AN2, &adc_result3);
-        ret |= adc_get_conversion(&adc, ADC_CHANNEL_AN3, &adc_result4);
-
+        ret |= adc_get_conversion_interrupt(&adc, ADC_CHANNEL_AN0);
     }
    return (0);
 }
