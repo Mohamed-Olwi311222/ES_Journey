@@ -5,18 +5,22 @@
  * Created on 01 August 2024, 06:51
  */
 #include "mcal_interrupt_manager.h"
+#if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
+#if EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
 static volatile uint8 RB4_Flag = RBx_FLAG_TRUE;          /*A flag to indicates that the ISR_RB4 has been called*/
 static volatile uint8 RB5_Flag = RBx_FLAG_TRUE;          /*A flag to indicates that the ISR_RB5 has been called*/
 static volatile uint8 RB6_Flag = RBx_FLAG_TRUE;          /*A flag to indicates that the ISR_RB6 has been called*/
 static volatile uint8 RB7_Flag = RBx_FLAG_TRUE;          /*A flag to indicates that the ISR_RB7 has been called*/
-        
+#endif
+#endif
+     
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief the interrupt manager for high priority interrupts
  */
 void __interrupt() Interrupt_Manager_High(void)
 {
-    if ((INTERRUPT_ENABLE == INTCON3bits.INT1IE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
+    if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
     {
         ADC_ISR();
     }
@@ -32,7 +36,6 @@ void __interrupt() Interrupt_Manager_High(void)
     }
 #endif
 #endif
-
 }
 /**
  * @brief the interrupt manager for low priority interrupts
@@ -108,7 +111,7 @@ void  __interrupt(low_priority) Interrupt_Manager_Low(void)
 #else
 void __interrupt() Interrupt_Manager(void)
 {
-    if ((INTERRUPT_ENABLE == INTCON3bits.INT1IE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
+    if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
     {
         ADC_ISR();
     }
@@ -188,5 +191,6 @@ void __interrupt() Interrupt_Manager(void)
     }
     #endif
     #endif
+
 }
 #endif
