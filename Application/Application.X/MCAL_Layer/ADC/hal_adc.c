@@ -5,11 +5,20 @@
  * Created on 29 August 2024, 23:42
  */
 #include "hal_adc.h"
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+static INTERRUPT_HANDLER adc_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
+#endif
 /*---------------Static Helper functions declerations---------------------------*/
 static inline Std_ReturnType adc_analog_input_channel_config(const adc_channel_select_t channel);
 static inline Std_ReturnType adc_configure_result_format(const adc_config_t *adc_obj);
 static inline Std_ReturnType adc_configure_vref(const adc_config_t *adc_obj);
 static inline Std_ReturnType adc_port_control_config(const adc_config_t *adc_obj);
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+static Std_ReturnType adc_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler);
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+static Std_ReturnType adc_set_interrupt_priority(const adc_config_t *adc_obj);
+#endif
+#endif
 /*---------------Static Helper functions declerations End-----------------------*/
 
 
@@ -39,7 +48,14 @@ Std_ReturnType adc_init(const adc_config_t *adc_obj)
         /* Configure the A/D port configuration */
         ret |= adc_port_control_config(adc_obj);
         /* Configure the interrupt */
-        
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+        ADC_INTERRUPT_ENABLE();
+        ADC_INTERRUPT_FLAG_BIT_CLEAR();
+        ret |= adc_set_interrupt_handler(adc_obj->adc_interrupt_handler);
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+        ret |= adc_set_interrupt_priority(adc_obj);
+#endif
+#endif
         /* Configure the result format */
         ret |= adc_configure_result_format(adc_obj);
         /* Configure the voltage reference */
@@ -65,7 +81,9 @@ Std_ReturnType adc_deinit(const adc_config_t *adc_obj)
     else
     {
         /* Disable interrupt */
-        
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+        ADC_INTERRUPT_DISABLE();
+#endif
         /* Disable ADC */
         DISABLE_ADC_CONVERSION();
     }
@@ -360,3 +378,49 @@ static inline Std_ReturnType adc_port_control_config(const adc_config_t *adc_obj
     
     return (ret);
 }
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief: A helper function to set the interrupt handler of the adc module conversion interrupt
+ * @param Interrupt_Handler the interrupt handler to call when an interrupt is raised
+ * @return E_OK if success otherwise E_NOT_OK 
+ */
+static Std_ReturnType adc_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler)
+{
+    Std_ReturnType ret = E_OK;
+
+    if (NULL == Interrupt_Handler)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        adc_interrupt_handler = Interrupt_Handler;
+    }
+    return (ret);
+}
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief: A helper function to set the priority of the adc module conversion interrupt
+ * @param adc_obj the adc config used
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static Std_ReturnType adc_set_interrupt_priority(const adc_config_t *adc_obj)
+{
+    Std_ReturnType ret = E_OK;
+    
+    if (INTERRUPT_HIGH_PRIORITY == adc_obj->priortiy)
+    {
+        ADC_HIGH_PRIORITY();
+    }
+    else if (INTERRUPT_LOW_PRIORITY == adc_obj->priortiy)
+    {
+        ADC_LOW_PRIORITY();
+    }
+    else
+    {
+        ret = E_NOT_OK;
+    }
+    return (ret);
+}
+#endif
+#endif
