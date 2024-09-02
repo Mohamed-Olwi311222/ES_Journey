@@ -51,10 +51,16 @@ Std_ReturnType adc_init(const adc_config_t *adc_obj)
 #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         ADC_INTERRUPT_ENABLE();
         ADC_INTERRUPT_FLAG_BIT_CLEAR();
-        ret |= adc_set_interrupt_handler(adc_obj->adc_interrupt_handler);
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_DISABLE
+        INTERRUPT_Global_interrupt_ENABLE();
+        INTERRUPT_Peripheral_interrupt_ENABLE();
+#else
+        INTERRUPT_PRIORITY_levels_ENABLE();
+        INTERRUPT_Global_interrupt_LOW_ENABLE();
+        INTERRUPT_Global_interrupt_HIGH_ENABLE();
         ret |= adc_set_interrupt_priority(adc_obj);
 #endif
+        ret |= adc_set_interrupt_handler(adc_obj->adc_interrupt_handler);
 #endif
         /* Configure the result format */
         ret |= adc_configure_result_format(adc_obj);
@@ -410,7 +416,6 @@ Std_ReturnType adc_get_conversion_interrupt(const adc_config_t *adc_obj,
                                   adc_channel_select_t channel)
 {
     Std_ReturnType ret = E_OK;
-    adc_conversion_status l_result = ADC_IDLE;
 
     if ((NULL == adc_obj))
     {
