@@ -27,7 +27,9 @@ Std_ReturnType Data_EEPROM_Write_Byte(uint16 byte_add, uint8 byte_data)
     CFGS_ACCESS_DATA_EEPROM();
     WREN_EEPROM_ENABLE_WRITE();
     /*Disable interrupts, perform a specific unlock sequence (0x55 and 0xAA written to EECON2), and then start the write by setting the WR bit.*/
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_DISABLE
     INTERRUPT_Global_interrupt_DISABLE();
+#endif
     EECON2 = 0x55;
     EECON2 = 0xAA;
     EEPROM_BEGIN_WRITE_ERASE();
