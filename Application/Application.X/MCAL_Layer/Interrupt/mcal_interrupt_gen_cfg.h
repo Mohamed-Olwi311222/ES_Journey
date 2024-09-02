@@ -7,20 +7,26 @@
 
 #ifndef MCAL_INTERRUPT_GEN_CFG_H
 #define	MCAL_INTERRUPT_GEN_CFG_H
-/*----------------------------Header Files------------------------------------*/
-
 /*----------------------------Macros Declarations-----------------------------*/
+#define INTERRUPT_FEATURE_ENABLE                            1                           /* Interrupt feature enable */
+#define INTERRUPT_FEATURE_DISABLE                           0                           /* Interrupt feature disable */
+#define INTERRUPT_PRIORITY_LEVELS_ENABLE                    INTERRUPT_FEATURE_ENABLE    /* Priority feature enable for preconfig */
 
-#define INTERRUPT_FEATURE_ENABLE                            1                           /*Interrupt feature enable*/
-#define INTERRUPT_FEATURE_DISABLE                           0                           /*Interrupt feature disable*/
-#define INTERRUPT_PRIORITY_LEVELS_ENABLE                    INTERRUPT_FEATURE_DISABLE   /*Priority feature enable for preconfig*/
-#define EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE              INTERRUPT_FEATURE_ENABLE    /*External interrupt enable for preconfig*/
-#define EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE          INTERRUPT_FEATURE_ENABLE    /*On change interrupt enable for preconfig*/
-#define EXTERNAL_INTERRUPT_ENABLE                           INTERRUPT_FEATURE_ENABLE    /*Enable all external interrupts*/
-/*----------------------------Macros Functions Declarations-------------------*/
+/*----------------External Interrupts----------------*/
+#define EXTERNAL_INTERRUPT_ENABLE                           INTERRUPT_FEATURE_DISABLE   /* Enable all external interrupts */
+/*--------INTx--------*/
+#define EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE              INTERRUPT_FEATURE_DISABLE   /* External interrupt enable for preconfig */
+/*--------RBX---------*/
+#define EXTERNAL_INTERRUPT_ONChange_FEATURE_ENABLE          INTERRUPT_FEATURE_DISABLE   /* On change interrupt enable for preconfig */
+/*----------------END External Interrupts------------*/
 
-/*----------------------------DataTypes---------------------------------------*/
+/*----------------Internal Interrupts----------------*/
+/*--------ADC Module--------*/
+#define ADC_INTERRUPT_FEATURE                               INTERRUPT_FEATURE_ENABLE    /* ADC interrupt enable for preconfig */        
+/*----------------END Internal Interrupts------------*/
 
-/*----------------------------Function Prototypes-----------------------------*/
+/*----------------------------END Macros Declarations-------------------------*/
+
+
 #endif	/* MCAL_INTERRUPT_GEN_CFG_H */
 
