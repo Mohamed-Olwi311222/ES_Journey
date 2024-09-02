@@ -398,6 +398,33 @@ static Std_ReturnType adc_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Hand
     }
     return (ret);
 }
+/**
+ * @brief: Get the conversion done by the adc on from a specific input channel and wait until the conversion is done
+ *         and read the result to the specified memory address
+ * @param adc_obj the adc config used
+ * @param channel the input channel to read the input from
+ * @param result the adddress to store the result of the adc conversion
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType adc_get_conversion_interrupt(const adc_config_t *adc_obj, 
+                                  adc_channel_select_t channel)
+{
+    Std_ReturnType ret = E_OK;
+    adc_conversion_status l_result = ADC_IDLE;
+
+    if ((NULL == adc_obj))
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        /* Select the input channel */
+        ret |= adc_select_channel(adc_obj, channel);
+        /* Start the adc conversion */
+        ret |= adc_start_conversion(adc_obj);
+    }
+    return (ret);
+}
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A helper function to set the priority of the adc module conversion interrupt
@@ -423,4 +450,16 @@ static Std_ReturnType adc_set_interrupt_priority(const adc_config_t *adc_obj)
     return (ret);
 }
 #endif
+/**
+ * @brief the interrupt service routine of ADC module, will be called if the conversion is done
+ */
+void ADC_ISR(void)
+{
+    ADC_INTERRUPT_FLAG_BIT_CLEAR();
+    if (NULL != adc_interrupt_handler)
+    {
+        adc_interrupt_handler();
+    }
+}
+
 #endif
