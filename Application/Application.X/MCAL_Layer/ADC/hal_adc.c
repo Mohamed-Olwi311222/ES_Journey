@@ -9,6 +9,7 @@
 static inline Std_ReturnType adc_analog_input_channel_config(const adc_channel_select_t channel);
 static inline Std_ReturnType adc_configure_result_format(const adc_config_t *adc_obj);
 static inline Std_ReturnType adc_configure_vref(const adc_config_t *adc_obj);
+static inline Std_ReturnType adc_port_control_config(const adc_config_t *adc_obj);
 /*---------------Static Helper functions declerations End-----------------------*/
 
 
@@ -35,6 +36,8 @@ Std_ReturnType adc_init(const adc_config_t *adc_obj)
         ADC_SET_ACQUISITION_TIME(adc_obj->aquisition_time);
         /* Configure the default channel */
         ret |= adc_select_channel(adc_obj, adc_obj->adc_analog_channel);
+        /* Configure the A/D port configuration */
+        ret |= adc_port_control_config(adc_obj);
         /* Configure the interrupt */
         
         /* Configure the result format */
@@ -151,7 +154,7 @@ Std_ReturnType adc_read_result(const adc_config_t *adc_obj, adc_conversion_resul
         {
             *adc_result = (adc_conversion_result)(((ADRESH << 8) + ADRESL) >> 6);
         }
-        else if (ADC_RES_LEFT_JUSTIFY == adc_obj->result_format)
+        else if (ADC_RES_RIGHT_JUSTIFY == adc_obj->result_format)
         {
             *adc_result = (adc_conversion_result)((ADRESH << 8) + ADRESL);
         }
@@ -295,5 +298,65 @@ static inline Std_ReturnType adc_configure_vref(const adc_config_t *adc_obj)
     {
         ret = E_NOT_OK;
     }
+    return (ret);
+}
+/**
+ * @brief: A helper function to configure the adc port control bits
+ * @param adc_obj the adc config used
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static inline Std_ReturnType adc_port_control_config(const adc_config_t *adc_obj)
+{
+    Std_ReturnType ret = E_OK;
+    
+    switch(adc_obj->adc_port_config)
+    {
+        case ADC_ALL_DIGITAL_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_ALL_DIGITAL_FUNCTIONALITY);
+            break;
+        case ADC_AN0_ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0_ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN1__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN1__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN2__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN2__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN3__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN3__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN4__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN4__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN5__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN5__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN6__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN6__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN7__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN7__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN8__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN8__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN9__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN9__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN10__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN10__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_AN0__AN11__ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN0__AN11__ANALOG_FUNCTIONALITY);
+            break;
+        case ADC_ALL_ANALOG_FUNCTIONALITY:
+            ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_ALL_ANALOG_FUNCTIONALITY);
+            break;
+        default:
+            ret = E_NOT_OK;
+            break;
+    }
+    
     return (ret);
 }
