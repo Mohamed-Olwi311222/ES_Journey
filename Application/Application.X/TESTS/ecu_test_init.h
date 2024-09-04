@@ -15,6 +15,7 @@
 #include "../ECU_Layer/seven_seg/ecu_seven_seg.h"
 #include "../ECU_Layer/keypad/ecu_keypad.h"
 #include "../ECU_Layer/Char_LCD/ecu_char_lcd.h"
+#include "../MCAL_Layer/ADC/hal_adc.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
