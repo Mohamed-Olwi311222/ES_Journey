@@ -266,6 +266,7 @@ Std_ReturnType adc_read_result(const adc_config_t *adc_obj, adc_conversion_resul
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType adc_get_conversion(const adc_config_t *adc_obj, adc_channel_select_t channel, adc_conversion_result * result);
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: Get the conversion done by the adc on from a specific input channel and wait until the conversion is done
  *         and read the result to the specified memory address
@@ -276,5 +277,7 @@ Std_ReturnType adc_get_conversion(const adc_config_t *adc_obj, adc_channel_selec
  */
 Std_ReturnType adc_get_conversion_interrupt(const adc_config_t *adc_obj, 
                                   adc_channel_select_t channel);
+#endif
+
 #endif	/* HAL_ADC_H */
 
