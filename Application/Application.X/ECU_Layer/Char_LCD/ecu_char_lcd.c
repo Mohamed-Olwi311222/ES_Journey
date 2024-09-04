@@ -570,17 +570,31 @@ static Std_ReturnType lcd_8bit_set_cursor(const char_lcd_8bit_t *lcd, uint8 row,
 Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str)
 {
 	Std_ReturnType  ret = E_OK; 
+    uint8 temp_str[BYTE_STR_SIZE] = {0};
+    uint8 counter = 0;
+    
 	if (NULL == str)
 	{
 	    ret = E_NOT_OK;
 	}
 	else
 	{
-		memset(str, '\0', BYTE_STR_SIZE);
-		if (snprintf((char *)str, BYTE_STR_SIZE, "%u", value) < 0)
+		memset(str, ' ', BYTE_STR_SIZE - 1);
+        str[5] = '\0';
+        /* Store the value given in the temp_str followed by null termination */
+		if (snprintf((char *)temp_str, BYTE_STR_SIZE, "%u", value) < 0)
 		{
 			ret = E_NOT_OK;
 		}
+        /* Repeat until the current char in temp_str is null*/
+        /* So the str given have the value in it followed by space and a null termination */
+        /* Instead of str full of null termination each time a different value is given */
+        /* e.g: value = 1 , str = {1, , ,\0} , but not str = {1 ,\0, \0, \0} */
+        while (temp_str[counter] != '\0')
+        {
+            str[counter] = temp_str[counter];
+            counter++;
+        }
     }
 	return (ret);
 }
@@ -588,17 +602,31 @@ Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str)
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str)
 {
 	Std_ReturnType  ret = E_OK; 
+    uint8 temp_str[SHORT_STR_SIZE] = {0};
+    uint8 counter = 0;
+
 	if (NULL == str)
 	{
 	    ret = E_NOT_OK;
 	}
 	else
 	{
-		memset(str, '\0', SHORT_STR_SIZE);
-		if (snprintf((char *)str, SHORT_STR_SIZE, "%u", value) < 0)
+		memset(str, ' ', SHORT_STR_SIZE - 1);
+        str[5] = '\0';
+        /* Store the value given in the temp_str followed by null termination */
+		if (snprintf((char *)temp_str, SHORT_STR_SIZE, "%u", value) < 0)
 		{
 			ret = E_NOT_OK;
 		}
+        /* Repeat until the current char in temp_str is null*/
+        /* So the str given have the value in it followed by space and a null termination */
+        /* Instead of str full of null termination each time a different value is given */
+        /* e.g: value = 123 , str = {1,2,3, , ,\0} , but not str = {1, 2, 3, \0, \0, \0} */
+        while (temp_str[counter] != '\0')
+        {
+            str[counter] = temp_str[counter];
+            counter++;
+        }
     }
 	return (ret);
 }
