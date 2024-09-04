@@ -176,7 +176,7 @@ Std_ReturnType adc_read_result(const adc_config_t *adc_obj, adc_conversion_resul
     {
         if (ADC_RES_LEFT_JUSTIFY == adc_obj->result_format)
         {
-            *adc_result = (adc_conversion_result)(((ADRESH << 8) + ADRESL) >> 6);
+            *adc_result = (adc_conversion_result)(ADRESH << 8) | (ADRESL);
         }
         else if (ADC_RES_RIGHT_JUSTIFY == adc_obj->result_format)
         {
