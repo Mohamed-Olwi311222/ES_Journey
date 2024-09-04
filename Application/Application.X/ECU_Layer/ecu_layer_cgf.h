@@ -14,10 +14,10 @@
 #define ECU_BUTTON_ENABLED                  ECU_DISABLED
 #define ECU_LED_ENABLED                     ECU_DISABLED
 #define ECU_RELAY_ENABLED                   ECU_DISABLED
-#define ECU_DC_MOTOR_ENABLED                ECU_ENABLED
+#define ECU_DC_MOTOR_ENABLED                ECU_DISABLED
 #define ECU_SEVEN_SEG_ENABLED               ECU_DISABLED
 #define ECU_KEYPAD_ENABLED                  ECU_DISABLED
-#define ECU_CHAR_LCD_ENABLED                ECU_ENABLED
+#define ECU_CHAR_LCD_ENABLED                ECU_DISABLED
 
 #endif	/* ECU_LAYER_CGF_H */
 
