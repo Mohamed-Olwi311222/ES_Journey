@@ -23,6 +23,10 @@
 /*----------------Internal Interrupts----------------*/
 /*--------ADC Module--------*/
 #define ADC_INTERRUPT_FEATURE                               INTERRUPT_FEATURE_ENABLE    /* ADC interrupt enable for preconfig */        
+
+/*--------TIMER0 Module-----*/
+#define TIMER0_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer0 interrupt enable for preconfig */        
+
 /*----------------END Internal Interrupts------------*/
 
 /*----------------------------END Macros Declarations-------------------------*/
