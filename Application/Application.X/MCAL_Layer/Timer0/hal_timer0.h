@@ -105,7 +105,6 @@ typedef enum
     TIMER0_PRESCALER_DIV_BY_256
 } timer0_prescaler_select_t;
 
-typedef uint8 timer0_enable_t;
 typedef uint8 timer0_resolution_t;
 typedef uint8 timer0_clk_src_t;
 typedef uint8 timer0_prescaler_enable_t;
@@ -118,7 +117,6 @@ typedef uint16 timer0_preload_value_t;
  * @timer0_interrupt_priority: the priority of the interrupt
  * @prescaler_value: The value of prescaler if the prescaler assignment bit is set 
  * @prescaler_enable: Enable/Disable prescaler assignment bit
- * @timer0_enable: Enable/Disable timer0 peripheral
  * @resolution_bits: The resolution of the timer0 timer/counter register
  * @clock_src: the source of the clock source (internal or external source)
  * @edge: falling or rising edge if external source is selected
@@ -134,10 +132,10 @@ typedef struct
 #endif
     timer0_prescaler_select_t prescaler_value : 3;
     timer0_prescaler_enable_t prescaler_enable : 1;
-    timer0_enable_t timer0_enable : 1;
     timer0_resolution_t resolution_bits : 1;
     timer0_clk_src_t clock_src : 1;
     timer0_edge_select_t edge : 1;
+    uint8 __RESERVED : 1;
 } timer0_t;
 /*----------------------------Function Prototypes-----------------------------*/
 /**
