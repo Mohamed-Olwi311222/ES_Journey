@@ -158,6 +158,11 @@ Std_ReturnType timer0_write_value(const timer0_t *timer0_obj, const timer0_prelo
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType timer0_read_value(const timer0_t *timer0_obj, timer0_preload_value_t *value);
-
+/**
+ * @brief: Deinitialize the timer0 peripheral object
+ * @param timer0_obj the timer0 object to init
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType timer0_deinit(const timer0_t *timer0_obj);
 #endif	/* HAL_TIMER0_H */
 
