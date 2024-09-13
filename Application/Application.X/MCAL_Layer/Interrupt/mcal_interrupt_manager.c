@@ -20,10 +20,18 @@ static volatile uint8 RB7_Flag = RBx_FLAG_TRUE;          /*A flag to indicates t
  */
 void __interrupt() Interrupt_Manager_High(void)
 {
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
     {
         ADC_ISR();
     }
+#endif
+#if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == INTCONbits.T0IE) && (INTERRUPT_OCCUR == INTCONbits.T0IF))
+    {
+        TIMER0_ISR();
+    }
+#endif
 #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
 #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == INTCONbits.INT0IE) && (INTERRUPT_OCCUR == INTCONbits.INT0IF))
@@ -111,10 +119,18 @@ void  __interrupt(low_priority) Interrupt_Manager_Low(void)
 #else
 void __interrupt() Interrupt_Manager(void)
 {
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
     {
         ADC_ISR();
     }
+#endif
+#if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == INTCONbits.T0IE) && (INTERRUPT_OCCUR == INTCONbits.T0IF))
+    {
+        TIMER0_ISR();
+    }
+#endif
     #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
     #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     /*------------------------INTx External Interrupts------------------------*/
