@@ -88,7 +88,7 @@
 /**
  * Configure TIMER0 prescaler value depending on _VAL @ref timer0_prescaler_select_t
  */
-#define TIMER0_PRESCALER_SELECT_CONFIG(_VAL) (T0CONbits.T0PS = _VAL)  
+#define TIMER0_PRESCALER_SELECT_CONFIG(_VAL) (T0CONbits.T0PS = _VAL)
 /*----------------------------DataTypes---------------------------------------*/
 /**
  * An enum for timer0 to select prescaler value from it
@@ -130,12 +130,12 @@ typedef struct
     interrupt_priority_cfg timer0_interrupt_priority;
 #endif
 #endif
-    timer0_prescaler_select_t prescaler_value : 3;
+    timer0_prescaler_select_t prescaler_value;
     timer0_prescaler_enable_t prescaler_enable : 1;
     timer0_resolution_t resolution_bits : 1;
     timer0_clk_src_t clock_src : 1;
     timer0_edge_select_t edge : 1;
-    uint8 __RESERVED : 1;
+    uint8 __RESERVED : 4;
 } timer0_t;
 /*----------------------------Function Prototypes-----------------------------*/
 /**
@@ -150,7 +150,7 @@ Std_ReturnType timer0_init(const timer0_t *timer0_obj);
  * @param value the value to write to the timer0 counter/timer register
  * @return E_OK if success otherwise E_NOT_OK 
  */
-Std_ReturnType timer0_write_value(const timer0_t *timer0_obj, const timer0_preload_value_t value);
+Std_ReturnType timer0_write_value(const timer0_t *timer0_obj, timer0_preload_value_t value);
 /**
  * @brief: Read and store the value from timer0 counter/timer register into the provided address
  * @param timer0_obj the timer0 object to read from its register
