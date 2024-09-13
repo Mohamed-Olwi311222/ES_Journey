@@ -6,9 +6,13 @@
  */
 #include "hal_timer0.h"
 
+/*---------------Static Data types----------------------------------------------*/
 #if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER timer0_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
+static uint16 preloaded_value = ZERO_INIT;
+/*---------------Static Data types End------------------------------------------*/
+
 /*---------------Static Helper functions declerations---------------------------*/
 static inline Std_ReturnType timer0_configure_clock_src(const timer0_t *timer0_obj);
 static inline Std_ReturnType timer0_configure_ext_src_edge(const timer0_t *timer0_ob);
@@ -45,10 +49,13 @@ Std_ReturnType timer0_init(const timer0_t *timer0_obj)
         /* Configure the Prescaler*/
         if (_TIMER0_PRESCALER_ENABLE == timer0_obj->prescaler_enable)
         {
+            TIMER0_PRESCALER_ENABLE_CONFIG();
             TIMER0_PRESCALER_SELECT_CONFIG(timer0_obj->prescaler_value);
         }
         /* Configure the preloaded value to store it in the timer0 registers*/
         ret |= timer0_write_value(timer0_obj, timer0_obj->timer0_preloaded_value);
+        /* Store a copy of the preloaded value to always write it to the register while handling the overflow*/
+        preloaded_value = timer0_obj->timer0_preloaded_value;
         /* Configure the interrupt if enabled and its priority too*/
 #if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         /* Enable TIMER0 interrupt */
@@ -100,10 +107,10 @@ Std_ReturnType timer0_write_value(const timer0_t *timer0_obj, timer0_preload_val
     {
         /* Increment Value by 2 because the increment is inhibited for the following two instruction cycles*/
         value += 2;
-        /* Write to TMR0L*/
-        TMR0L = (uint8)value;
         /* Write to TMR0H*/
         TMR0H = (uint8)(value >> 8);
+        /* Write to TMR0L*/
+        TMR0L = (uint8)value;
     }
     return (ret);   
 }
@@ -124,7 +131,8 @@ Std_ReturnType timer0_read_value(const timer0_t *timer0_obj, timer0_preload_valu
     }
     else
     {
-        
+        *value = TMR0L;
+        *value += (uint16)(TMR0H << 8);
     }
     return (ret); 
 }
@@ -256,6 +264,10 @@ static inline Std_ReturnType timer0_set_interrupt_priority(const timer0_t *timer
 void TIMER0_ISR(void)
 {
     TIMER0_INTERRUPT_FLAG_BIT_CLEAR();
+    /* Write to TMR0H*/
+    TMR0H = (uint8)(preloaded_value >> 8);
+    /* Write to TMR0L*/
+    TMR0L = (uint8)preloaded_value;
     if (NULL != timer0_interrupt_handler)
     {
         timer0_interrupt_handler();
