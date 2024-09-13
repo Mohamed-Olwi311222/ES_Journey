@@ -85,7 +85,14 @@ Std_ReturnType timer0_deinit(const timer0_t *timer0_obj)
     }
     else
     {
-        
+#if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+        /* Clear interrupt flag*/
+        TIMER0_INTERRUPT_FLAG_BIT_CLEAR();
+        /* Disable TIMER0 interrupt */
+        TIMER0_INTERRUPT_DISABLE();
+#endif
+        /* Disable TIMER0 peripheral*/
+        TIMER0_DISABLE_CONFIG();
     }
     return (ret);     
 }
