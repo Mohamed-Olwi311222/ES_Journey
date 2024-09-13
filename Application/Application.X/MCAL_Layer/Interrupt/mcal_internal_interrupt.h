@@ -13,6 +13,7 @@
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
+/*----------------ADC Interrupts----------------*/
 #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 /**
  * Clears the interrupt enable for the ADC module
@@ -35,6 +36,31 @@
  * ADC LOW priority
  */
 #define ADC_LOW_PRIORITY()                         (IPR1bits.ADIP = 0)
+#endif
+#endif
+/*----------------TIMER0 Interrupt--------------*/
+#if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the TIMER0 module
+ */
+#define TIMER0_INTERRUPT_DISABLE()                     (INTCONbits.T0IE = 0)
+/**
+ * Sets the interrupt enable for the TIMER0 module
+ */
+#define TIMER0_INTERRUPT_ENABLE()                     (INTCONbits.T0IE = 1)
+/**
+ * Clears the interrupt flag for the TIMER0 module
+ */
+#define TIMER0_INTERRUPT_FLAG_BIT_CLEAR()             (INTCONbits.T0IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * TIMER0 HIGH priority
+ */
+#define TIMER0_HIGH_PRIORITY()                        (INTCON2bits.TMR0IP = 1)
+/**
+ * TIMER0 LOW priority
+ */
+#define TIMER0_LOW_PRIORITY()                         (INTCON2bits.TMR0IP = 0)
 #endif
 #endif
 
