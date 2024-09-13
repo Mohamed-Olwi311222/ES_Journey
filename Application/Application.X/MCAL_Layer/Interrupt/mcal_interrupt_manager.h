@@ -59,5 +59,10 @@ void RB7_ISR(uint8 source);
  */
 void ADC_ISR(void);
 
+/**
+ * @brief the interrupt service routine of timer0 module, will be called if the overflow happened
+ */
+void TIMER0_ISR(void);
+
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
