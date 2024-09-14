@@ -57,6 +57,10 @@
           <itemPath>MCAL_Layer/Interrupt/mcal_INTx_external_interrupt.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_RBx_external_interrupt.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="Timer0" displayName="Timer0" projectFiles="true">
+          <itemPath>MCAL_Layer/Timer0/hal_timer0.h</itemPath>
+          <itemPath>MCAL_Layer/Timer0/hal_timer0_cfg.h</itemPath>
+        </logicalFolder>
         <itemPath>MCAL_Layer/mcal_std_types.h</itemPath>
         <itemPath>std_types.h</itemPath>
       </logicalFolder>
@@ -115,6 +119,9 @@
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_INTx_external_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_RBx_external_interrupt.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Timer0" displayName="Timer0" projectFiles="true">
+          <itemPath>MCAL_Layer/Timer0/hal_timer0.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>device_config.c</itemPath>
