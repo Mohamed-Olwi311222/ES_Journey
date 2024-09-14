@@ -8,9 +8,9 @@
 #ifndef HAL_TIMER0_H
 #define	HAL_TIMER0_H
 /*----------------------------Header Files------------------------------------*/
-#include "../mcal_std_types.h"
+#include "../../mcal_std_types.h"
 #include <xc.h>
-#include "../Interrupt/mcal_internal_interrupt.h"
+#include "../../Interrupt/mcal_internal_interrupt.h"
 /*----------------------------Macros Declarations-----------------------------*/
 /*----------------T0CON bits----------------*/
 /*--------TMR0ON bit--------*/
