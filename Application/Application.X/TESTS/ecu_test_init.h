@@ -16,6 +16,7 @@
 #include "../ECU_Layer/keypad/ecu_keypad.h"
 #include "../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 #include "../MCAL_Layer/ADC/hal_adc.h"
+#include "../MCAL_Layer/Timers/Timer0/hal_timer0.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
