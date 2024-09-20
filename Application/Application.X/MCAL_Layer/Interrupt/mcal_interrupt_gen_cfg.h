@@ -25,7 +25,10 @@
 #define ADC_INTERRUPT_FEATURE                               INTERRUPT_FEATURE_DISABLE   /* ADC interrupt enable for preconfig */        
 
 /*--------TIMER0 Module-----*/
-#define TIMER0_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer0 interrupt enable for preconfig */        
+#define TIMER0_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_DISABLE   /* Timer0 interrupt enable for preconfig */        
+
+/*--------TIMER1 Module-----*/
+#define TIMER1_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer1 interrupt enable for preconfig */        
 
 /*----------------END Internal Interrupts------------*/
 
