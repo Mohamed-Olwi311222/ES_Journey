@@ -38,6 +38,7 @@
 #define ADC_LOW_PRIORITY()                         (IPR1bits.ADIP = 0)
 #endif
 #endif
+
 /*----------------TIMER0 Interrupt--------------*/
 #if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 /**
@@ -64,6 +65,31 @@
 #endif
 #endif
 
+/*----------------TIMER1 Interrupt--------------*/
+#if TIMER1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the TIMER1 module
+ */
+#define TIMER1_INTERRUPT_DISABLE()                     (PIE1bits.TMR1IE = 0)
+/**
+ * Sets the interrupt enable for the TIMER1 module
+ */
+#define TIMER1_INTERRUPT_ENABLE()                     (PIE1bits.TMR1IE = 1)
+/**
+ * Clears the interrupt flag for the TIMER1 module
+ */
+#define TIMER1_INTERRUPT_FLAG_BIT_CLEAR()             (PIR1bits.TMR1IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * TIMER1 HIGH priority
+ */
+#define TIMER1_HIGH_PRIORITY()                        (IPR1bits.TMR1IP = 1)
+/**
+ * TIMER1 LOW priority
+ */
+#define TIMER1_LOW_PRIORITY()                         (IPR1bits.TMR1IP = 0)
+#endif
+#endif
 /*----------------------------DataTypes---------------------------------------*/
 
 /*----------------------------Function Prototypes-----------------------------*/
