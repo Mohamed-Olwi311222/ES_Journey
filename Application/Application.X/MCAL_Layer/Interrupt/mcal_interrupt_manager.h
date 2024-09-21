@@ -64,5 +64,9 @@ void ADC_ISR(void);
  */
 void TIMER0_ISR(void);
 
+/**
+ * @brief the interrupt service routine of timer1 module, will be called if the overflow happened
+ */
+void TIMER1_ISR(void);
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
