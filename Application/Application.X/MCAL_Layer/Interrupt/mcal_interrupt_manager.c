@@ -50,6 +50,12 @@ void __interrupt() Interrupt_Manager_High(void)
  */
 void  __interrupt(low_priority) Interrupt_Manager_Low(void)
 {
+#if TIMER1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF))
+    {
+        TIMER1_ISR();
+    }
+#endif
     #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
     #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == INTCON3bits.INT1IE) && (INTERRUPT_OCCUR == INTCON3bits.INT1IF))
