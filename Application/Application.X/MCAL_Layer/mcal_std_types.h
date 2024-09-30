@@ -16,11 +16,11 @@
 /*----------------------------DataTypes---------------------------------------*/
 typedef unsigned char uint8;
 typedef unsigned short uint16;
-/*typedef unsigned int uint32; No uint32 in PIC18f46k20*/
+typedef unsigned long uint32;
 
 typedef char sint8;
 typedef short sint16;
-/*typedef int sint32; No sint32 in PIC18f46k20*/
+typedef long sint32;
 
 typedef uint8 Std_ReturnType;
 
