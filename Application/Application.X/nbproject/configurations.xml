@@ -61,6 +61,9 @@
           <logicalFolder name="Timer0" displayName="Timer0" projectFiles="true">
             <itemPath>MCAL_Layer/Timers/Timer0/hal_timer0.h</itemPath>
           </logicalFolder>
+          <logicalFolder name="Timer1" displayName="Timer1" projectFiles="true">
+            <itemPath>MCAL_Layer/Timers/Timer1/hal_timer1.h</itemPath>
+          </logicalFolder>
         </logicalFolder>
         <itemPath>MCAL_Layer/mcal_std_types.h</itemPath>
         <itemPath>std_types.h</itemPath>
@@ -124,6 +127,9 @@
         <logicalFolder name="Timers" displayName="Timers" projectFiles="true">
           <logicalFolder name="Timer0" displayName="Timer0" projectFiles="true">
             <itemPath>MCAL_Layer/Timers/Timer0/hal_timer0.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Timer1" displayName="Timer1" projectFiles="true">
+            <itemPath>MCAL_Layer/Timers/Timer1/hal_timer1.c</itemPath>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
