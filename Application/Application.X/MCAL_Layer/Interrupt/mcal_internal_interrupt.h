@@ -9,33 +9,30 @@
 #define	MCAL_INTERNAL_INTERRUPT_H
 /*----------------------------Header Files------------------------------------*/
 #include "mcal_interrupt_config.h"
-
-/*----------------------------Macros Declarations-----------------------------*/
-
 /*----------------------------Macros Functions Declarations-------------------*/
 /*----------------ADC Interrupts----------------*/
 #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 /**
  * Clears the interrupt enable for the ADC module
  */
-#define ADC_INTERRUPT_DISABLE()                     (PIE1bits.ADIE = 0)
+#define ADC_INTERRUPT_DISABLE()                       (PIE1bits.ADIE = 0)
 /**
  * Sets the interrupt enable for the ADC module
  */
-#define ADC_INTERRUPT_ENABLE()                      (PIE1bits.ADIE = 1)
+#define ADC_INTERRUPT_ENABLE()                        (PIE1bits.ADIE = 1)
 /**
  * Clears the interrupt flag for the ADC module
  */
-#define ADC_INTERRUPT_FLAG_BIT_CLEAR()             (PIR1bits.ADIF = 0)
+#define ADC_INTERRUPT_FLAG_BIT_CLEAR()                (PIR1bits.ADIF = 0)
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * ADC HIGH priority
  */
-#define ADC_HIGH_PRIORITY()                        (IPR1bits.ADIP = 1)
+#define ADC_HIGH_PRIORITY()                           (IPR1bits.ADIP = 1)
 /**
  * ADC LOW priority
  */
-#define ADC_LOW_PRIORITY()                         (IPR1bits.ADIP = 0)
+#define ADC_LOW_PRIORITY()                            (IPR1bits.ADIP = 0)
 #endif
 #endif
 
@@ -44,7 +41,7 @@
 /**
  * Clears the interrupt enable for the TIMER0 module
  */
-#define TIMER0_INTERRUPT_DISABLE()                     (INTCONbits.T0IE = 0)
+#define TIMER0_INTERRUPT_DISABLE()                    (INTCONbits.T0IE = 0)
 /**
  * Sets the interrupt enable for the TIMER0 module
  */
@@ -70,7 +67,7 @@
 /**
  * Clears the interrupt enable for the TIMER1 module
  */
-#define TIMER1_INTERRUPT_DISABLE()                     (PIE1bits.TMR1IE = 0)
+#define TIMER1_INTERRUPT_DISABLE()                    (PIE1bits.TMR1IE = 0)
 /**
  * Sets the interrupt enable for the TIMER1 module
  */
@@ -90,8 +87,32 @@
 #define TIMER1_LOW_PRIORITY()                         (IPR1bits.TMR1IP = 0)
 #endif
 #endif
-/*----------------------------DataTypes---------------------------------------*/
 
-/*----------------------------Function Prototypes-----------------------------*/
+/*----------------TIMER2 Interrupt--------------*/
+#if TIMER2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the TIMER2 module
+ */
+#define TIMER2_INTERRUPT_DISABLE()                    (PIE1bits.TMR2IE = 0)
+/**
+ * Sets the interrupt enable for the TIMER2 module
+ */
+#define TIMER2_INTERRUPT_ENABLE()                     (PIE1bits.TMR2IE = 1)
+/**
+ * Clears the interrupt flag for the TIMER2 module
+ */
+#define TIMER2_INTERRUPT_FLAG_BIT_CLEAR()             (PIR1bits.TMR2IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * TIMER2 HIGH priority
+ */
+#define TIMER2_HIGH_PRIORITY()                        (IPR1bits.TMR2IP = 1)
+/**
+ * TIMER2 LOW priority
+ */
+#define TIMER2_LOW_PRIORITY()                         (IPR1bits.TMR2IP = 0)
+#endif
+#endif
+
 #endif	/* MCAL_INTERNAL_INTERRUPT_H */
 
