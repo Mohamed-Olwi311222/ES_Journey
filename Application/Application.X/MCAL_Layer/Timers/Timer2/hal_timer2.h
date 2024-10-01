@@ -74,7 +74,7 @@ typedef uint8 timer2_preload_value_t;
 
 /**
  * struct timer2_t - a struct for timer2 peripheral
- * @timer2_preloaded_value: The value to store inside timer2 8-bit PR2 register
+ * @timer2_preloaded_value: The value to store inside timer2 8-bit TMR2 register
  * @timer2_interrupt_handler: A pointer to the interrupt handler of timer2
  * @timer2_interrupt_priority: the priority of the interrupt
  * @postscaler_value: The value of postscaler
@@ -101,20 +101,16 @@ typedef struct
  */
 Std_ReturnType timer2_init(const timer2_t *timer2_obj);
 /**
- * @brief: Write the provided value to timer2 period register
- *         Note: the actual written value will be stored in PR2 as it is has no meaning
- *               to store it in the timer2 TMR2 register
+ * @brief: Write the provided value to timer2 timer register
  * @param timer2_obj the timer2 object to write to its register
- * @param value the value to write to the timer2 period register
+ * @param value the value to write to the timer2 timer register
  * @return E_OK if success otherwise E_NOT_OK 
  */
 Std_ReturnType timer2_write_value(const timer2_t *timer2_obj, timer2_preload_value_t value);
 /**
- * @brief: Read and store the value from timer2 period register into the provided address
- *         Note: the actual readen value will be from PR2 as it is has no meaning
- *               to read the value from  the timer2 TMR2 register
+ * @brief: Read and store the value from timer2 timer register into the provided address
  * @param timer2_obj the timer2 object to read from its register
- * @param value the address to store the value of the timer2 period register
+ * @param value the address to store the value of the timer2 timer register
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType timer2_read_value(const timer2_t *timer2_obj, timer2_preload_value_t *value);
