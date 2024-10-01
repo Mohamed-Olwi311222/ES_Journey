@@ -9,7 +9,9 @@
 #if TIMER2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER timer2_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
-static uint8 preloaded_value = ZERO_INIT;
+static uint8 preloaded_TMR2_value = ZERO_INIT;
+static uint8 preloaded_PR2_value = ZERO_INIT;
+
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
@@ -42,10 +44,14 @@ Std_ReturnType timer2_init(const timer2_t *timer2_obj)
         TIMER2_PRESCALER_SELECT_CONFIG(timer2_obj->prescaler_value);
         /* Configure the Postscaler */
         TIMER2_POSTSCALER_SELECT_CONFIG(timer2_obj->postscaler_value);
-        /* Configure the preloaded value to store it in the timer2 registers */
-        ret |= timer2_write_value(timer2_obj, timer2_obj->timer2_preloaded_value);
-        /* Store a copy of the preloaded value to always write it to the register while handling the overflow */
-        preloaded_value = timer2_obj->timer2_preloaded_value;
+        /* Configure the preloaded value to store it in the timer2 TMR2 register */
+        ret |= timer2_TMR2_write_value(timer2_obj, timer2_obj->TMR2_preloaded_value);
+        /* Store a copy of the preloaded value to always write it to the register while handling ISR */
+        preloaded_TMR2_value = timer2_obj->TMR2_preloaded_value;
+        /* Configure the preloaded value to store it in the timer2 PR2 register */ 
+        ret |= timer2_PR2_write_value(timer2_obj, timer2_obj->PR2_preloaded_value);
+        /* Store a copy of the preloaded value to always write it to the register while handling ISR */
+        preloaded_PR2_value = timer2_obj->PR2_preloaded_value;
         /* Configure the interrupt if enabled and its priority too */
 #if TIMER2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         /* Enable TIMER2 interrupt */
@@ -87,12 +93,12 @@ Std_ReturnType timer2_deinit(const timer2_t *timer2_obj)
     return (ret);     
 }
 /**
- * @brief: Write the provided value to timer2 timer register
- * @param timer2_obj the timer2 object to write to its register
- * @param value the value to write to the timer2 timer register
+ * @brief: Write the provided value to timer2 TMR2 register
+ * @param timer2_obj the timer2 object to write to its TMR2 register
+ * @param value the value to write to the timer2 TMR2 register
  * @return E_OK if success otherwise E_NOT_OK 
  */
-Std_ReturnType timer2_write_value(const timer2_t *timer2_obj, timer2_preload_value_t value)
+Std_ReturnType timer2_TMR2_write_value(const timer2_t *timer2_obj, timer2_TMR2_preload_value_t value)
 {
     Std_ReturnType ret = E_OK;
  
@@ -116,14 +122,13 @@ Std_ReturnType timer2_write_value(const timer2_t *timer2_obj, timer2_preload_val
     }
     return (ret);   
 }
-
 /**
- * @brief: Read and store the value from timer2 timer2 register into the provided address
+ * @brief: Read and store the value from timer2 TMR2 register into the provided address
  * @param timer2_obj the timer2 object to read from its register
- * @param value the address to store the value of the timer2 timer register
+ * @param value the address to store the value of the timer2 TMR2 register
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType timer2_read_value(const timer2_t *timer2_obj, timer2_preload_value_t *value)
+Std_ReturnType timer2_TMR2_read_value(const timer2_t *timer2_obj, timer2_TMR2_preload_value_t *value)
 {
     Std_ReturnType ret = E_OK;
  
@@ -136,6 +141,52 @@ Std_ReturnType timer2_read_value(const timer2_t *timer2_obj, timer2_preload_valu
 
         TIMER2_DISABLE_CONFIG();
         *value = TMR2;
+        TIMER2_ENABLE_CONFIG();
+    }
+    return (ret); 
+}
+/**
+ * @brief: Write the provided value to timer2 PR2 register
+ * @param timer2_obj the timer2 object to write to its PR2 register
+ * @param value the value to write to the timer2 PR2 register
+ * @return E_OK if success otherwise E_NOT_OK 
+ */
+Std_ReturnType timer2_PR2_write_value(const timer2_t *timer2_obj, timer2_PR2_preload_value_t value)
+{
+    Std_ReturnType ret = E_OK;
+ 
+    if (NULL == timer2_obj)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+
+        TIMER2_DISABLE_CONFIG();
+        PR2 = value;
+        TIMER2_ENABLE_CONFIG();
+    }
+    return (ret);    
+}
+/**
+ * @brief: Read and store the value from timer2 PR2 register into the provided address
+ * @param timer2_obj the timer2 object to read from its register
+ * @param value the address to store the value of the timer2 PR2 register
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType timer2_PR2_read_value(const timer2_t *timer2_obj, timer2_PR2_preload_value_t *value)
+{
+    Std_ReturnType ret = E_OK;
+ 
+    if ((NULL == timer2_obj) || (NULL == value))
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+
+        TIMER2_DISABLE_CONFIG();
+        *value = PR2;
         TIMER2_ENABLE_CONFIG();
     }
     return (ret); 
@@ -197,7 +248,9 @@ void TIMER2_ISR(void)
     TIMER2_INTERRUPT_FLAG_BIT_CLEAR();
     TIMER2_DISABLE_CONFIG();
     /* Write to TMR2*/
-    TMR2 = preloaded_value;
+    TMR2 = preloaded_TMR2_value;
+    /* Write to PR2*/
+    PR2 = preloaded_PR2_value;
     TIMER2_ENABLE_CONFIG();
     if (NULL != timer2_interrupt_handler)
     {
