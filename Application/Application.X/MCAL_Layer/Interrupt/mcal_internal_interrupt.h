@@ -114,5 +114,31 @@
 #endif
 #endif
 
+/*----------------TIMER3 Interrupt--------------*/
+#if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the TIMER3 module
+ */
+#define TIMER3_INTERRUPT_DISABLE()                    (PIE2bits.TMR3IE = 0)
+/**
+ * Sets the interrupt enable for the TIMER3 module
+ */
+#define TIMER3_INTERRUPT_ENABLE()                     (PIE2bits.TMR3IE = 1)
+/**
+ * Clears the interrupt flag for the TIMER3 module
+ */
+#define TIMER3_INTERRUPT_FLAG_BIT_CLEAR()             (PIR2bits.TMR3IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * TIMER3 HIGH priority
+ */
+#define TIMER3_HIGH_PRIORITY()                        (IPR2bits.TMR3IP = 1)
+/**
+ * TIMER3 LOW priority
+ */
+#define TIMER3_LOW_PRIORITY()                         (IPR2bits.TMR3IP = 0)
+#endif
+#endif
+
 #endif	/* MCAL_INTERNAL_INTERRUPT_H */
 
