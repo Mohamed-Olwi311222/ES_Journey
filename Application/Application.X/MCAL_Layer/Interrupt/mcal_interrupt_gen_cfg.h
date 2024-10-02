@@ -31,7 +31,10 @@
 #define TIMER1_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_DISABLE   /* Timer1 interrupt enable for preconfig */        
 
 /*--------TIMER2 Module-----*/
-#define TIMER2_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer2 interrupt enable for preconfig */        
+#define TIMER2_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_DISABLE   /* Timer2 interrupt enable for preconfig */        
+
+/*--------TIMER3 Module-----*/
+#define TIMER3_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer3 interrupt enable for preconfig */        
 
 /*----------------END Internal Interrupts------------*/
 
