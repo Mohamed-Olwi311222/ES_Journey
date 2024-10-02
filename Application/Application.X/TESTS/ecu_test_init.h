@@ -17,6 +17,9 @@
 #include "../ECU_Layer/Char_LCD/ecu_char_lcd.h"
 #include "../MCAL_Layer/ADC/hal_adc.h"
 #include "../MCAL_Layer/Timers/Timer0/hal_timer0.h"
+#include "../MCAL_Layer/Timers/Timer1/hal_timer1.h"
+#include "../MCAL_Layer/Timers/Timer2/hal_timer2.h"
+#include "../MCAL_Layer/Timers/Timer3/hal_timer3.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
