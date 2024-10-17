@@ -140,5 +140,30 @@
 #endif
 #endif
 
+/*----------------CCP1 Interrupt----------------*/
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the CCP1 module
+ */
+#define CCP1_INTERRUPT_DISABLE()                        (PIE1bits.CCP1IE = 0)
+/**
+ * Sets the interrupt enable for the CCP1 module
+ */
+#define CCP1_INTERRUPT_ENABLE()                         (PIE1bits.CCP1IE = 1)
+/**
+ * Clears the interrupt flag for the CCP1 module
+ */
+#define CCP1_INTERRUPT_FLAG_BIT_CLEAR()                 (PIR1bits.CCP1IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * CCP1 HIGH priority
+ */
+#define CCP1_HIGH_PRIORITY()                            (IPR1bits.CCP1IP = 1)
+/**
+ * CCP1 LOW priority
+ */
+#define CCP1_LOW_PRIORITY()                             (IPR1bits.CCP1IP = 0)
+#endif
+#endif
 #endif	/* MCAL_INTERNAL_INTERRUPT_H */
 
