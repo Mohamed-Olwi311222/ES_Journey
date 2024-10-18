@@ -92,7 +92,15 @@ Std_ReturnType ccp1_capture_mode_status(uint8 *_capture_status)
     }
     else
     {
-        
+        if (CCP1_CAPTURE_MODE_READY == PIR1bits.CCP1IF)
+        {
+            *_capture_status = CCP1_CAPTURE_MODE_READY;
+            CCP1_INTERRUPT_FLAG_BIT_CLEAR();
+        }
+        else
+        {
+            *_capture_status = CCP1_CAPTURE_MODE_NOT_READY;
+        }
     }
     return (ret);
 }
@@ -104,6 +112,7 @@ Std_ReturnType ccp1_capture_mode_status(uint8 *_capture_status)
 Std_ReturnType ccp1_capture_mode_read_value(uint16 *_capture_value)
 {
     Std_ReturnType ret = E_OK;
+    CCP1_PERIOD_REG_T ccp1_reg = {.ccpr1_low = 0, .ccpr1_high = 0};
     
     if (NULL == _capture_value)
     {
@@ -111,7 +120,9 @@ Std_ReturnType ccp1_capture_mode_read_value(uint16 *_capture_value)
     }
     else
     {
-        
+        ccp1_reg.ccpr1_low = CCPR1L;
+        ccp1_reg.ccpr1_high = CCPR1H;
+        *_capture_value = ccp1_reg.ccpr1_16bit;
     }
     return (ret);
 }
