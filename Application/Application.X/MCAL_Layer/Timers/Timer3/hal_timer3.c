@@ -5,6 +5,7 @@
  * Created on 02 October 2024, 02:52
  */
 #include "hal_timer3.h"
+#if TIMER3_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
 #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER timer3_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
@@ -287,5 +288,6 @@ void TIMER3_ISR(void)
         timer3_interrupt_handler();
     }
 }
+#endif
 #endif
 
