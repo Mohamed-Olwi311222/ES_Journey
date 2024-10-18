@@ -272,9 +272,11 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
     else
     {
         ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
+#if CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT
         /* Set the PR2 Register (period of the PWM) */
         PR2 = (uint8)((_XTAL_FREQ / 
                 (ccp1_obj->ccp1_pwm_frequency * 4 * ccp1_obj->timer2_prescaler_value * ccp1_obj->timer2_postscaler_value)) - 1);
+#endif
     }
     ret |= gpio_pin_initialize(&ccp1_pin);
     
