@@ -5,6 +5,7 @@
  * Created on 16 October 2024, 22:03
  */
 #include "hal_ccp1.h"
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
@@ -271,4 +272,5 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
     
     return (ret);
 }
+#endif
 #endif
