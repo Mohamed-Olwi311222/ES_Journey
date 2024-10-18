@@ -11,11 +11,11 @@
 #include "../mcal_std_types.h"
 #include <xc.h>
 #include "../mcal_layer_cfg.h"
-#include "../../Interrupt/mcal_internal_interrupt.h"
+#include "../Interrupt/mcal_internal_interrupt.h"
 #include "../Timers/Timer1/hal_timer1.h"
 #include "../Timers/Timer2/hal_timer2.h"
 #include "../Timers/Timer3/hal_timer3.h"
-#include "GPIO/hal_gpio.h"
+#include "../GPIO/hal_gpio.h"
 #include "hal_ccp1_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #if CCP1_MODULE_ENABLE == MCAL_ENABLED
@@ -92,6 +92,8 @@ typedef struct
 {
 #if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
     uint32 ccp1_pwm_frequency;
+    timer2_postscaler_select_t timer2_postscaler_value;
+    timer2_prescaler_select_t timer2_prescaler_value;
 #endif
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER ccp1_interrupt_handler;
