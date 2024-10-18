@@ -5,7 +5,20 @@
  * Created on 16 October 2024, 22:03
  */
 #include "hal_ccp1.h"
+/*---------------Static Data types----------------------------------------------*/
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
+#endif
+/*---------------Static Data types End------------------------------------------*/
 
+/*---------------Static Helper functions declerations---------------------------*/
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler);
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj);
+#endif
+#endif
+/*---------------Static Helper functions declerations End-----------------------*/
 /**
  * @brief: Initialize the CCP1 module
  * @param ccp1_obj the CCP1 module object
@@ -21,7 +34,16 @@ Std_ReturnType ccp1_init(const cpp1_t *ccp1_obj)
     }
     else
     {
-        
+        /* Disable CCP1 */
+        CCP1_SET_MODULE_MODE(CCP1_MODULE_DISABLE);
+        /* Enable CCP1 interrupt if interrupt is enable */
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+        CCP1_INTERRUPT_ENABLE();
+        ret |= ccp1_set_interrupt_handler(ccp1_obj->ccp1_interrupt_handler);
+        /* Set the priority of the CCP1 if the priority feature is enable*/
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+        ret |= ccp1_set_interrupt_priority(ccp1_obj);
+#endif
     }
     return (ret);
 }
@@ -40,7 +62,11 @@ Std_ReturnType ccp1_deinit(const cpp1_t *ccp1_obj)
     }
     else
     {
-        
+        CCP1_SET_MODULE_MODE(CCP1_MODULE_DISABLE);
+        /* Disable CCP1 interrupt if interrupt is enable */
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+        CCP1_INTERRUPT_DISABLE();
+#endif 
     }
     return (ret);
 }
@@ -150,4 +176,62 @@ Std_ReturnType ccp1_pwm_stop(void)
     
     return (ret);
 }
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief: A helper function to set the interrupt handler of the ccp1 interrupt
+ * @param Interrupt_Handler the interrupt handler to call when an interrupt is raised
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler)
+{
+    Std_ReturnType ret = E_OK;
+   
+    /* If the interrupt priority is disabled then enable the peripheral interrupt
+    and global interrupts*/
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_DISABLE
+        INTERRUPT_Peripheral_interrupt_ENABLE();
+        INTERRUPT_Global_interrupt_ENABLE();
+#endif
+    if (NULL == Interrupt_Handler)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        ccp1_interrupt_handler = Interrupt_Handler;
+    }
+    return (ret);
+}
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * @brief: A helper function to set the priority of the ccp1 interrupt
+ * @param ccp1_obj the CCP1 module object
+ */
+static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj)
+{
+    INTERRUPT_PRIORITY_levels_ENABLE();
+    INTERRUPT_Global_interrupt_LOW_ENABLE();
+    INTERRUPT_Global_interrupt_HIGH_ENABLE();
+    if (INTERRUPT_HIGH_PRIORITY == ccp1_obj->ccp1_interrupt_priority)
+    {
+        CCP1_HIGH_PRIORITY();
+    }
+    else
+    {
+        CCP1_LOW_PRIORITY();
+    }
+}
+#endif
+/**
+ * @brief the interrupt service routine of CCP1 module
+ */
+void CCP1_ISR(void)
+{
+    CCP1_INTERRUPT_FLAG_BIT_CLEAR();
+    if (NULL != ccp1_interrupt_handler)
+    {
+        ccp1_interrupt_handler();
+    }
+}
+#endif
 #endif
