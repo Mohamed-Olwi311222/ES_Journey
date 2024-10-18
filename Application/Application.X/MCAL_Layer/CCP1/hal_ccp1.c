@@ -45,8 +45,9 @@ Std_ReturnType ccp1_init(const cpp1_t *ccp1_obj)
         ret |= ccp1_set_interrupt_handler(ccp1_obj->ccp1_interrupt_handler);
         /* Set the priority of the CCP1 if the priority feature is enable*/
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
-        ret |= ccp1_set_interrupt_priority(ccp1_obj);
+        ccp1_set_interrupt_priority(ccp1_obj);
 #endif  
+#endif
         /* Select the mode variant and configure ccp1 pin */
         ret |= ccp1_select_mode(ccp1_obj);
     }
@@ -264,9 +265,16 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
     {
         ccp1_pin.direction = GPIO_DIRECTION_INPUT;
     }
+    else if (CCP1_COMPARE_MODE_SELECT == ccp1_obj->ccp1_mode)
+    {
+        ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
+    }
     else
     {
         ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
+        /* Set the PR2 Register (period of the PWM) */
+        PR2 = (uint8)((_XTAL_FREQ / 
+                (ccp1_obj->ccp1_pwm_frequency * 4 * ccp1_obj->timer2_prescaler_value * ccp1_obj->timer2_postscaler_value)) - 1);
     }
     ret |= gpio_pin_initialize(&ccp1_pin);
     
