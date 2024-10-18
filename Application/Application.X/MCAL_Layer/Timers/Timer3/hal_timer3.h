@@ -7,10 +7,12 @@
 
 #ifndef HAL_TIMER3_H
 #define	HAL_TIMER3_H
+#if TIMER3_MODULE_ENABLE == MCAL_ENABLED
 /*----------------------------Header Files------------------------------------*/
 #include "../../mcal_std_types.h"
 #include <xc.h>
 #include "../../Interrupt/mcal_internal_interrupt.h"
+#include "../../mcal_layer_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 /*----------------T3CON bits----------------*/
 /*--------TMR3ON bit--------*/
@@ -25,6 +27,12 @@
 #define _TIMER3_SYNC                         1               /* Timer3 counter Sync with external clock source depending on TMR3CS bit */
 #define _TIMER3_ASYNC                        0               /* Timer3 counter Async with external clock source depending on TMR3CS bit */
 
+/*--------T3CCP bits--------*/
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
+#define _TIMER1_FOR_CCPx_MODULES             0               /* Timer1 is the capture/compare clock source for the CCP modules */
+#define _TIMER1_FOR_CCP1_TIMER3_FOR_CCP2     1               /* Timer3 is the capture/compare clock source for CCP2;Timer1 is the capture/compare clock source for CCP1 */
+#define _TIMER3_FOR_CCPx_MODULES             2               /* Timer3 is the capture/compare clock source for the CCP modules */
+#endif
 /*--------RD16 bit----------*/
 #define _TIMER3_RW_8bit_OP                   0               /* TIMER3 resolution bits as 2 8-bit operations */
 #define _TIMER3_RW_16bit_OP                  1               /* TIMER3 resolution bits as 1 16-bit operation */
@@ -93,6 +101,9 @@ typedef uint8 timer3_resolution_t;
 typedef uint8 timer3_clk_src_t;
 typedef uint8 timer3_ext_clk_sync_t;
 typedef uint8 timer3_rw_mode_t;
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
+typedef uint8 clk_src_for_ccpx_t;
+#endif
 typedef uint16 timer3_preload_value_t;
 /**
  * struct timer3_t - a struct for timer3 peripheral
@@ -103,6 +114,7 @@ typedef uint16 timer3_preload_value_t;
  * @clock_src: the source of the clock source (internal or external source)
  * @ext_clk_sync: A bit to decide to sync or not sync with external clock
  * @rw_mode: A bit to decide to use one 16-bit register to read/write or 2 8-bit registers
+ * @clk_src_for_ccpx: The clock source for the CCPx modules
  */
 typedef struct
 {
@@ -117,7 +129,12 @@ typedef struct
     timer3_clk_src_t clock_src : 1;
     timer3_ext_clk_sync_t ext_clk_sync : 1; 
     timer3_rw_mode_t rw_mode : 1;
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
+    clk_src_for_ccpx_t clk_src_for_ccpx : 3;
+    uint8 __RESERVED : 2;
+#else
     uint8 __RESERVED : 5;
+#endif
 } timer3_t;
 /*----------------------------Function Prototypes-----------------------------*/
 /**
@@ -146,5 +163,6 @@ Std_ReturnType timer3_read_value(const timer3_t *timer3_obj, timer3_preload_valu
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType timer3_deinit(const timer3_t *timer3_obj);
+#endif
 #endif	/* HAL_TIMER3_H */
 
