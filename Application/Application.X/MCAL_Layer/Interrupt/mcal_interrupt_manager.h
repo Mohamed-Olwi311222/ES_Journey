@@ -78,5 +78,10 @@ void TIMER2_ISR(void);
  * @brief the interrupt service routine of timer3 module, will be called if the overflow happened
  */
 void TIMER3_ISR(void);
+
+/**
+ * @brief the interrupt service routine of CCP1 module
+ */
+void CCP1_ISR(void);
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
