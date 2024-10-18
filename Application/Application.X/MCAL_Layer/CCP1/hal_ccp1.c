@@ -9,6 +9,7 @@
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
+static pin_config_t ccp1_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN1, .logic = GPIO_LOW};
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
@@ -18,6 +19,7 @@ static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interr
 static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj);
 #endif
 #endif
+static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj);
 /*---------------Static Helper functions declerations End-----------------------*/
 /**
  * @brief: Initialize the CCP1 module
@@ -43,7 +45,9 @@ Std_ReturnType ccp1_init(const cpp1_t *ccp1_obj)
         /* Set the priority of the CCP1 if the priority feature is enable*/
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
         ret |= ccp1_set_interrupt_priority(ccp1_obj);
-#endif
+#endif  
+        /* Select the mode variant and configure ccp1 pin */
+        ret |= ccp1_select_mode(ccp1_obj);
     }
     return (ret);
 }
@@ -234,4 +238,37 @@ void CCP1_ISR(void)
     }
 }
 #endif
+/**
+ * @brief: Select the mode variant and configure the CCP1 pin in PORTC
+ * @param ccp1_obj the CCP1 module object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
+{
+    Std_ReturnType ret = E_OK;
+    
+    /* Select the ccp1 mode variant */
+    if (ccp1_obj->ccp1_mode_variant <= 12)
+    {
+        CCP1_SET_MODULE_MODE(ccp1_obj->ccp1_mode_variant);
+    }
+    else
+    {
+        /* value cant be more than 12*/
+        ret = E_NOT_OK;
+    }
+    
+    /* Configure the ccp1 pin */
+    if (CCP1_CAPTURE_MODE_SELECT == ccp1_obj->ccp1_mode)
+    {
+        ccp1_pin.direction = GPIO_DIRECTION_INPUT;
+    }
+    else
+    {
+        ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
+    }
+    ret |= gpio_pin_initialize(&ccp1_pin);
+    
+    return (ret);
+}
 #endif
