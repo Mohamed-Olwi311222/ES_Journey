@@ -29,7 +29,6 @@
 
 /* CCP1 Capture Mode */
 #if (CCP1_SELECTED_MODE_CFG == CCP1_CAPTURE_MODE_CFG_SELECT)
-
 #define CCP1_CAPTURE_MODE_1_FALLING_EDGE         (uint8)4              /* Capture mode, every falling edge */
 #define CCP1_CAPTURE_MODE_1_RISING_EDGE          (uint8)5              /* Capture mode, every rising edge */ 
 #define CCP1_CAPTURE_MODE_4TH_RISING_EDGE        (uint8)6              /* Capture mode, every 4th rising edge */
@@ -38,6 +37,7 @@
 #define CCP1_CAPTURE_MODE_READY                  (uint8)1              /* CCP1 Capture Operation is done */
 #define CCP1_CAPTURE_MODE_NOT_READY              (uint8)0              /* CCP1 Capture Operation is not done */
 #endif
+
 /* CCP1 PWM Mode*/
 #if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
 #define CCP1_PWM_MODE                            (uint8)12             /* PWM mode */
@@ -92,8 +92,9 @@ typedef struct
     INTERRUPT_HANDLER ccp1_interrupt_handler;
     interrupt_priority_cfg ccp1_interrupt_priority;
 #endif
-    ccp1_mode_t ccp1_mode;
-    uint8 ccp1_mode_variant;
+    ccp1_mode_t ccp1_mode;         
+    uint8 ccp1_mode_variant : 4;    
+    uint8 RESERVED : 4;
 } cpp1_t;
 /*----------------------------Function Prototypes-----------------------------*/
 /**
