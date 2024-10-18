@@ -16,6 +16,7 @@
 /*----------------------------Macros Declarations-----------------------------*/
 #define CCP1_MODULE_DISABLE                      (uint8)0              /* Capture/Compare/PWM disabled (resets CCPx module) */
 /* CCP1 Compare Mode*/
+#if (CCP1_SELECTED_MODE_CFG == CCP1_COMPARE_MODE_CFG_SELECT)
 #define CCP1_COMPARE_MODE_TOGGLE_ON_MATCH        (uint8)2              /* Compare mode, toggle output on match */
 #define CCP1_COMPARE_MODE_FORCE_HIGH             (uint8)8              /* Compare mode, on compare match, force CCPx pin high */
 #define CCP1_COMPARE_MODE_FORCE_LOW              (uint8)9              /* Compare mode, on compare match, force CCPx pin low */
@@ -24,7 +25,11 @@
 /* CCP1 Compare Mode State */
 #define CCP1_COMPARE_MODE_READY                  (uint8)1              /* CCP1 Compare Operation is done */
 #define CCP1_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP1 Compare Operation is not done */
+#endif
+
 /* CCP1 Capture Mode */
+#if (CCP1_SELECTED_MODE_CFG == CCP1_CAPTURE_MODE_CFG_SELECT)
+
 #define CCP1_CAPTURE_MODE_1_FALLING_EDGE         (uint8)4              /* Capture mode, every falling edge */
 #define CCP1_CAPTURE_MODE_1_RISING_EDGE          (uint8)5              /* Capture mode, every rising edge */ 
 #define CCP1_CAPTURE_MODE_4TH_RISING_EDGE        (uint8)6              /* Capture mode, every 4th rising edge */
@@ -32,8 +37,11 @@
 /* CCP1 Capture Mode State */
 #define CCP1_CAPTURE_MODE_READY                  (uint8)1              /* CCP1 Capture Operation is done */
 #define CCP1_CAPTURE_MODE_NOT_READY              (uint8)0              /* CCP1 Capture Operation is not done */
+#endif
 /* CCP1 PWM Mode*/
+#if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
 #define CCP1_PWM_MODE                            (uint8)12             /* PWM mode */
+#endif
 /*----------------------------Macros Functions Declarations-------------------*/
 /**
  * Set the Mode of CCP1 module mode
@@ -82,7 +90,7 @@ typedef struct
 #endif
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER ccp1_interrupt_handler;
-    interrupt_priority_cfg ccp1_priority;
+    interrupt_priority_cfg ccp1_interrupt_priority;
 #endif
     ccp1_mode_t ccp1_mode;
     uint8 ccp1_mode_variant;
