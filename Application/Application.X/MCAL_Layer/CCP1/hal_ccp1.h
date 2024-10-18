@@ -10,10 +10,15 @@
 /*----------------------------Header Files------------------------------------*/
 #include "../mcal_std_types.h"
 #include <xc.h>
+#include "../mcal_layer_cfg.h"
 #include "../../Interrupt/mcal_internal_interrupt.h"
+#include "../Timers/Timer1/hal_timer1.h"
+#include "../Timers/Timer2/hal_timer2.h"
+#include "../Timers/Timer3/hal_timer3.h"
 #include "GPIO/hal_gpio.h"
 #include "hal_ccp1_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
 #define CCP1_MODULE_DISABLE                      (uint8)0              /* Capture/Compare/PWM disabled (resets CCPx module) */
 /* CCP1 Compare Mode*/
 #if (CCP1_SELECTED_MODE_CFG == CCP1_COMPARE_MODE_CFG_SELECT)
@@ -157,6 +162,7 @@ Std_ReturnType ccp1_pwm_start(void);
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType ccp1_pwm_stop(void);
+#endif
 #endif
 #endif	/* HAL_CCP1_H */
 
