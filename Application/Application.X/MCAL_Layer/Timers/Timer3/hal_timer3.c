@@ -17,6 +17,9 @@ static uint16 preloaded_value = ZERO_INIT;
 static inline void timer3_configure_clock_src(const timer3_t *timer3_obj);
 static inline void timer3_configure_rw_mode(const timer3_t *timer3_obj);
 static inline void timer3_configure_ext_clk_sync(const timer3_t *timer3_obj);
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
+static inline void configure_timers_for_ccpx(const timer3_t *timer3_obj);
+#endif
 #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static inline Std_ReturnType timer3_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler);
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
@@ -52,6 +55,10 @@ Std_ReturnType timer3_init(const timer3_t *timer3_obj)
         ret |= timer3_write_value(timer3_obj, timer3_obj->timer3_preloaded_value);
         /* Store a copy of the preloaded value to always write it to the register while handling the overflow */
         preloaded_value = timer3_obj->timer3_preloaded_value;
+        /* Configure the clock sources for CCPx modules*/
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
+        configure_timers_for_ccpx(timer3_obj);
+#endif
         /* Configure the interrupt if enabled and its priority too */
 #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         /* Enable TIMER3 interrupt */
@@ -215,6 +222,33 @@ static inline void timer3_configure_ext_clk_sync(const timer3_t *timer3_obj)
             break;
     }
 }
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
+/**
+ * @brief: A helper function to configure the timers for CCPx modules
+ * @param timer3_obj the timer3 object
+ */
+static inline void configure_timers_for_ccpx(const timer3_t *timer3_obj)
+{
+        if (_TIMER1_FOR_CCPx_MODULES == timer3_obj->clk_src_for_ccpx)
+        {
+            /* Timer1 for CCPx modules */
+            T3CONbits.T3CCP1 = 0;
+            T3CONbits.T3CCP2 = 0;
+        }
+        else if (_TIMER3_FOR_CCPx_MODULES == timer3_obj->clk_src_for_ccpx)
+        {
+            /* Timer3 for CCPx modules */
+            T3CONbits.T3CCP2 = 1; 
+        }
+        else
+        {
+            /* Timer1 for CCP1 module */
+            /* Timer3 for CCP2 module */
+            T3CONbits.T3CCP1 = 1;
+            T3CONbits.T3CCP2 = 1;
+        }
+}
+#endif
 #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A helper function to set the interrupt handler of the timer3 overflow interrupt
