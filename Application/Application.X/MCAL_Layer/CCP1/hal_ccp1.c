@@ -193,6 +193,8 @@ Std_ReturnType ccp1_pwm_stop(void)
     
     return (ret);
 }
+#endif
+
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A helper function to set the interrupt handler of the ccp1 interrupt
@@ -293,5 +295,4 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
     
     return (ret);
 }
-#endif
 #endif
