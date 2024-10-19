@@ -144,20 +144,32 @@ Std_ReturnType ccp1_compare_mode_status(uint8 *_compare_status)
     }
     else
     {
-        
+        /* Compare mode is done */
+        if (CCP1_COMPARE_MODE_READY == PIR1bits.CCP1IF)
+        {
+            *_compare_status = CCP1_COMPARE_MODE_READY;
+        }
+        else
+        {
+            /* Compare mode is idle */
+             *_compare_status = CCP1_COMPARE_MODE_NOT_READY;
+        }
     }
     return (ret);
 }
 /**
  * @brief: Read the value of the compare mode operation
  * @param _compare_value the address to store the value read from the compare mode operation
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_compare_mode_set_value(uint16 _compare_value)
+void ccp1_compare_mode_set_value(uint16 _compare_value)
 {
-    Std_ReturnType ret = E_OK;
-
-    return (ret);
+    CCP1_PERIOD_REG_T ccp1_reg = {.ccpr1_low = 0, .ccpr1_high = 0};
+    
+    /* Store the parameterized value into the union for easier setting */
+    ccp1_reg.ccpr1_16bit = _compare_value;
+    /* Set the value of the CCPR1 register with the value inside the union */
+    CCPR1H = ccp1_reg.ccpr1_high;
+    CCPR1L = ccp1_reg.ccpr1_low;
 }
 #endif
 
