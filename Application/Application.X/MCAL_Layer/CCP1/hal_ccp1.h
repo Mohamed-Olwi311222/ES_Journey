@@ -142,10 +142,10 @@ Std_ReturnType ccp1_capture_mode_read_value(uint16 *_capture_value);
  */
 Std_ReturnType ccp1_compare_mode_status(uint8 *_compare_status);
 /**
- * @brief: Read the value of the compare mode operation
- * @param _compare_value the address to store the value read from the compare mode operation
+ * @brief: Set the value of the compare mode operation
+ * @param _compare_value the value to store inside CCPR1 for compare mode operation
  */
-void ccp1_compare_mode_set_value(uint16 _compare_value)
+void ccp1_compare_mode_set_value(uint16 _compare_value);
 #endif
 
 #if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
