@@ -12,9 +12,6 @@
 #include <xc.h>
 #include "../mcal_layer_cfg.h"
 #include "../Interrupt/mcal_internal_interrupt.h"
-#include "../Timers/Timer1/hal_timer1.h"
-#include "../Timers/Timer2/hal_timer2.h"
-#include "../Timers/Timer3/hal_timer3.h"
 #include "../GPIO/hal_gpio.h"
 #include "hal_ccp1_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
@@ -79,6 +76,9 @@ typedef union
         uint16 ccpr1_16bit;
     };
 } CCP1_PERIOD_REG_T;
+
+typedef uint8 timer2_postscaler_select_t;
+typedef uint8 timer2_prescaler_select_t;
 
 /**
  * struct cpp1_t - a struct for CCP1 peripheral
@@ -150,19 +150,16 @@ void ccp1_compare_mode_set_value(uint16 _compare_value)
 /**
  * @brief: Set the duty cycle of the PWM mode signal
  * @param _duty the duty cycle to set to the PWM mode signal
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_pwm_set_duty_cycle(const uint8 _duty);
+void ccp1_pwm_set_duty_cycle(const uint8 _duty);
 /**
  * @brief: Start the pwm mode operation
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_pwm_start(void);
+void ccp1_pwm_start(void);
 /**
  * @brief: Stop the pwm mode operation
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_pwm_stop(void);
+void ccp1_pwm_stop(void);
 #endif
 #endif
 #endif	/* HAL_CCP1_H */
