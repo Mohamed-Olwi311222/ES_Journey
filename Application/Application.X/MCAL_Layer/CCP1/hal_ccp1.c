@@ -181,7 +181,7 @@ void ccp1_compare_mode_set_value(uint16 _compare_value)
 void ccp1_pwm_set_duty_cycle(const uint8 _duty)
 {
     /* Duty Cycle equation to store the bits inside CCPR1L:CCP1CON<5:4> */
-    uint16 duty_cycle_value= (uint16)((PR2 + 1) * (_duty / 100));
+    uint16 duty_cycle_value= (uint16)((PR2 + 1) * (_duty / 100.0));
     /* Set the CCPR1L with the 8 bits MSbs */
     CCPR1L = (uint8) (duty_cycle_value >> 2);
     /* Set the CCP1CON<5:4> bits with LSbs */
