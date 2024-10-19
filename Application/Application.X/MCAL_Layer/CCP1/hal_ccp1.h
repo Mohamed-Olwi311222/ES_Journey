@@ -77,12 +77,14 @@ typedef union
     };
 } CCP1_PERIOD_REG_T;
 
-typedef uint8 timer2_postscaler_select_t;
-typedef uint8 timer2_prescaler_select_t;
+typedef uint8 timer2_TMR2_postscaler_select_t;
+typedef uint8 timer2_TMR2_prescaler_select_t;
 
 /**
  * struct cpp1_t - a struct for CCP1 peripheral
  * @ccp1_pwm_frequency: The PWM mode frequency
+ * @timer2_postscaler_value: The postscaler value of the timer2 @ref timer2_postscaler_select_t in timer2.h
+ * @timer2_prescaler_value: The prescaler value of the timer2 @ref timer2_prescaler_select_t in timer2.h
  * @ccp1_interrupt_handler: The interrupt handler of the CCP1 module
  * @ccp1_priority: The priority of the interrupt raised
  * @ccp1_mode: The mode of the CCP1 module to activate
@@ -92,8 +94,8 @@ typedef struct
 {
 #if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
     uint32 ccp1_pwm_frequency;
-    timer2_postscaler_select_t timer2_postscaler_value;
-    timer2_prescaler_select_t timer2_prescaler_value;
+    timer2_TMR2_postscaler_select_t timer2_postscaler_value;
+    timer2_TMR2_prescaler_select_t timer2_prescaler_value;
 #endif
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER ccp1_interrupt_handler;
