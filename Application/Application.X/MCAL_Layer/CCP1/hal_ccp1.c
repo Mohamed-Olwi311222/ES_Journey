@@ -177,33 +177,32 @@ void ccp1_compare_mode_set_value(uint16 _compare_value)
 /**
  * @brief: Set the duty cycle of the PWM mode signal
  * @param _duty the duty cycle to set to the PWM mode signal
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_pwm_set_duty_cycle(const uint8 _duty)
+void ccp1_pwm_set_duty_cycle(const uint8 _duty)
 {
-    Std_ReturnType ret = E_OK;
-    
-    return (ret);
+    /* Duty Cycle equation to store the bits inside CCPR1L:CCP1CON<5:4> */
+    uint16 duty_cycle_value= (uint16)((PR2 + 1) * (_duty / 100));
+    /* Set the CCPR1L with the 8 bits MSbs */
+    CCPR1L = (uint8) (duty_cycle_value >> 2);
+    /* Set the CCP1CON<5:4> bits with LSbs */
+    CCP1CONbits.DC1B0 = (uint8)(READ_BIT(duty_cycle_value, 0));
+    CCP1CONbits.DC1B1 = (uint8)(READ_BIT(duty_cycle_value, 1));
 }
 /**
  * @brief: Start the pwm mode operation
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_pwm_start(void)
+void ccp1_pwm_start(void)
 {
-    Std_ReturnType ret = E_OK;
-    
-    return (ret);
+    /* Start PWM mode */
+    CCP1_SET_MODULE_MODE(CCP1_PWM_MODE);
 }
 /**
  * @brief: Stop the pwm mode operation
- * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_pwm_stop(void)
+void ccp1_pwm_stop(void)
 {
-    Std_ReturnType ret = E_OK;
-    
-    return (ret);
+    /* Stop PWM mode */
+    CCP1_SET_MODULE_MODE(CCP1_MODULE_DISABLE);
 }
 #endif
 
