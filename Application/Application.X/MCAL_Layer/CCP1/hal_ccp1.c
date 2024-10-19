@@ -10,7 +10,7 @@
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
-static pin_config_t ccp1_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN1, .logic = GPIO_LOW};
+static pin_config_t ccp1_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN2, .logic = GPIO_LOW};
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
@@ -298,8 +298,10 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
         ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
 #if CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT
         /* Set the PR2 Register (period of the PWM) */
+        /* The timer2 prescaler and postscaler must be added to one as the enums starts from 0 not 1 */
         PR2 = (uint8)((_XTAL_FREQ / 
-                (ccp1_obj->ccp1_pwm_frequency * 4 * ccp1_obj->timer2_prescaler_value * ccp1_obj->timer2_postscaler_value)) - 1);
+                (ccp1_obj->ccp1_pwm_frequency * 4 
+                * (ccp1_obj->timer2_prescaler_value + 1) * (ccp1_obj->timer2_postscaler_value + 1))) - 1);
 #endif
     }
     ret |= gpio_pin_initialize(&ccp1_pin);
