@@ -158,8 +158,8 @@ Std_ReturnType ccp1_compare_mode_status(uint8 *_compare_status)
     return (ret);
 }
 /**
- * @brief: Read the value of the compare mode operation
- * @param _compare_value the address to store the value read from the compare mode operation
+ * @brief: Set the value of the compare mode operation
+ * @param _compare_value the value to store inside CCPR1 for compare mode operation
  */
 void ccp1_compare_mode_set_value(uint16 _compare_value)
 {
