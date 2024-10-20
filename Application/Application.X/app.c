@@ -6,26 +6,41 @@
  */
 #include "app.h"
 #include "device_config.h"
+#include "MCAL_Layer/CCP1/hal_ccp1.h"
+#include "MCAL_Layer/Timers/Timer2/hal_timer2.h"
 
 int main(void)
 {
-    Std_ReturnType ret = application_init();
-    if (E_NOT_OK == ret)
-    {
-        return (-1);
-    }
-    while(1)
-    {
-        
-    }
-    return (0);
-}
-
-Std_ReturnType application_init(void)
-{
     Std_ReturnType ret = E_OK;
-    ret = ecu_layer_initialize();
+    uint8 pwm_duty_cycle = ZERO_INIT;
+    
+    cpp1_t ccp1_obj = {
+      .ccp1_interrupt_handler = NULL,
+      .ccp1_interrupt_priority = INTERRUPT_LOW_PRIORITY,
+      .ccp1_mode = CCP1_PWM_MODE,
+      .ccp1_mode_variant = CCP1_PWM_MODE,
+      .ccp1_pwm_frequency = 20000,
+      .timer2_postscaler_value = 1,
+      .timer2_prescaler_value = 1
+    };
+    timer2_t timer2_obj = {
+      .PR2_preloaded_value = 99,
+      .TMR2_preloaded_value = 0,
+      .postscaler_value = 1,
+      .prescaler_value = 1
+    };
 
+    ret |= timer2_init(&timer2_obj);
+    ret |= ccp1_init(&ccp1_obj);
+    ccp1_pwm_start();
+
+    while (1)
+    {
+        __delay_ms(5);
+        ccp1_pwm_set_duty_cycle(pwm_duty_cycle++);
+        if (pwm_duty_cycle > 100)
+            pwm_duty_cycle = 0;
+    }
     return (ret);
 }
 
