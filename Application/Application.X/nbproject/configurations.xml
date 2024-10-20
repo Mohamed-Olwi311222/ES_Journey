@@ -77,6 +77,7 @@
         </logicalFolder>
         <itemPath>MCAL_Layer/mcal_std_types.h</itemPath>
         <itemPath>std_types.h</itemPath>
+        <itemPath>MCAL_Layer/mcal_layer_cfg.h</itemPath>
       </logicalFolder>
       <itemPath>compiler.h</itemPath>
       <itemPath>device_config.h</itemPath>
