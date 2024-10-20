@@ -20,6 +20,7 @@
 #include "../MCAL_Layer/Timers/Timer1/hal_timer1.h"
 #include "../MCAL_Layer/Timers/Timer2/hal_timer2.h"
 #include "../MCAL_Layer/Timers/Timer3/hal_timer3.h"
+#include "../MCAL_Layer/CCP1/hal_ccp1.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------------------Macros Functions Declarations-------------------*/
