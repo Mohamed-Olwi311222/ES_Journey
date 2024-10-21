@@ -229,13 +229,13 @@ static inline void timer3_configure_ext_clk_sync(const timer3_t *timer3_obj)
  */
 static inline void configure_timers_for_ccpx(const timer3_t *timer3_obj)
 {
-        if (_TIMER1_FOR_CCPx_MODULES == timer3_obj->clk_src_for_ccpx)
+        if (TIMER1_FOR_CCPx_MODULES == timer3_obj->clk_src_for_ccpx)
         {
             /* Timer1 for CCPx modules */
             T3CONbits.T3CCP1 = 0;
             T3CONbits.T3CCP2 = 0;
         }
-        else if (_TIMER3_FOR_CCPx_MODULES == timer3_obj->clk_src_for_ccpx)
+        else if (TIMER3_FOR_CCPx_MODULES == timer3_obj->clk_src_for_ccpx)
         {
             /* Timer3 for CCPx modules */
             T3CONbits.T3CCP2 = 1; 

@@ -27,12 +27,6 @@
 #define _TIMER3_SYNC                         1               /* Timer3 counter Sync with external clock source depending on TMR3CS bit */
 #define _TIMER3_ASYNC                        0               /* Timer3 counter Async with external clock source depending on TMR3CS bit */
 
-/*--------T3CCP bits--------*/
-#if CCP1_MODULE_ENABLE == MCAL_ENABLED
-#define _TIMER1_FOR_CCPx_MODULES             0               /* Timer1 is the capture/compare clock source for the CCP modules */
-#define _TIMER1_FOR_CCP1_TIMER3_FOR_CCP2     1               /* Timer3 is the capture/compare clock source for CCP2;Timer1 is the capture/compare clock source for CCP1 */
-#define _TIMER3_FOR_CCPx_MODULES             2               /* Timer3 is the capture/compare clock source for the CCP modules */
-#endif
 /*--------RD16 bit----------*/
 #define _TIMER3_RW_8bit_OP                   0               /* TIMER3 resolution bits as 2 8-bit operations */
 #define _TIMER3_RW_16bit_OP                  1               /* TIMER3 resolution bits as 1 16-bit operation */
@@ -96,14 +90,19 @@ typedef enum
     TIMER3_PRESCALER_DIV_BY_4,
     TIMER3_PRESCALER_DIV_BY_8
 } timer3_prescaler_select_t;
-
+/**
+ * An enum for CCPx modules to select Timer3 or Timer1 for Capture/Compare modes
+ */
+typedef enum
+{
+    TIMER1_FOR_CCPx_MODULES,        /* Timer1 is the capture/compare clock source for the CCP modules */
+    TIMER3_FOR_CCP2_TIMER1_FOR_CCP1,/* Timer3 is the capture/compare clock source for CCP2;Timer1 is the capture/compare clock source for CCP1 */
+    TIMER3_FOR_CCPx_MODULES         /* Timer3 is the capture/compare clock source for the CCP modules */
+} clk_src_for_ccpx_t;
 typedef uint8 timer3_resolution_t;
 typedef uint8 timer3_clk_src_t;
 typedef uint8 timer3_ext_clk_sync_t;
 typedef uint8 timer3_rw_mode_t;
-#if CCP1_MODULE_ENABLE == MCAL_ENABLED
-typedef uint8 clk_src_for_ccpx_t;
-#endif
 typedef uint16 timer3_preload_value_t;
 /**
  * struct timer3_t - a struct for timer3 peripheral
@@ -130,11 +129,9 @@ typedef struct
     timer3_ext_clk_sync_t ext_clk_sync : 1; 
     timer3_rw_mode_t rw_mode : 1;
 #if CCP1_MODULE_ENABLE == MCAL_ENABLED
-    clk_src_for_ccpx_t clk_src_for_ccpx : 3;
-    uint8 __RESERVED : 2;
-#else
-    uint8 __RESERVED : 5;
+    clk_src_for_ccpx_t clk_src_for_ccpx ;
 #endif
+    uint8 __RESERVED : 5;
 } timer3_t;
 /*----------------------------Function Prototypes-----------------------------*/
 /**
