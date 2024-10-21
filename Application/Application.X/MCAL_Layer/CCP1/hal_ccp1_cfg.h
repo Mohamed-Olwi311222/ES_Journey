@@ -12,7 +12,7 @@
 #define CCP1_COMPARE_MODE_CFG_SELECT           1                                /* Precompile Config for CCP1 Capture Mode */
 #define CCP1_PWM_MODE_CFG_SELECT               2                                /* Precompile Config for CCP1 PWM Mode */
 
-#define CCP1_SELECTED_MODE_CFG                 (CCP1_CAPTURE_MODE_CFG_SELECT)       /* Select a Precompile Config for CCP1 Mode */
+#define CCP1_SELECTED_MODE_CFG                 (CCP1_COMPARE_MODE_CFG_SELECT)       /* Select a Precompile Config for CCP1 Mode */
 /*----------------------------Macros Functions Declarations-------------------*/
 #endif	/* HAL_CCP1_CFG_H */
 
