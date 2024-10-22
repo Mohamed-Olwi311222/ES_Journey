@@ -39,6 +39,9 @@
 /*--------CCP1 Module-------*/
 #define CCP1_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_DISABLE   /* Timer3 interrupt enable for preconfig */        
 
+/*--------CCP2 Module-------*/
+#define CCP2_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_ENABLE    /* Timer3 interrupt enable for preconfig */        
+
 /*----------------END Internal Interrupts------------*/
 
 /*----------------------------END Macros Declarations-------------------------*/
