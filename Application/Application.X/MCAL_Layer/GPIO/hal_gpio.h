@@ -13,7 +13,7 @@
 #include "../mcal_std_types.h"
 #include "../../device_config.h"
 #include "hal_gpio_cfg.h"
-
+#include "../mcal_layer_cfg.h"
 /*--------------------------Macro Functions-----------------------------------*/
 
 #define BIT_MASK                     (uint8)1

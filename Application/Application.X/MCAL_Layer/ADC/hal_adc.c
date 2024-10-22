@@ -5,6 +5,7 @@
  * Created on 29 August 2024, 23:42
  */
 #include "hal_adc.h"
+#if ADC_MODULE_ENABLE == MCAL_ENABLED
 #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER adc_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
@@ -467,4 +468,5 @@ void ADC_ISR(void)
     }
 }
 
+#endif
 #endif

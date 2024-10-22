@@ -5,7 +5,7 @@
  * Created on 13 August 2024, 07:40
  */
 #include "mcal_eeprom.h"
-
+#if EEPROM_MODULE_ENABLE == MCAL_ENABLED
 /**
  * @brief Write a byte to a specific address in the EEPROM
  * @param byte_add the address to save the data into
@@ -76,3 +76,4 @@ Std_ReturnType Data_EEPROM_Read_Byte(uint16 byte_add, uint8 *byte_data)
     }
     return (ret);  
 }
+#endif

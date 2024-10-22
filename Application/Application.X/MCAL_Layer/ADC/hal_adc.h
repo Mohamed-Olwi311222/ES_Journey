@@ -13,6 +13,7 @@
 #include "../Interrupt/mcal_internal_interrupt.h"
 #include "../mcal_std_types.h"
 #include "xc.h"
+#include "../mcal_layer_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 
 /*----------------ADCON0 bits----------------*/

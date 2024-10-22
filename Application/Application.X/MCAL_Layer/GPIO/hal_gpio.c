@@ -1,5 +1,5 @@
 #include "hal_gpio.h"
-
+#if GPIO_MODULE_ENABLE == MCAL_ENABLED
 /*Reference to the Data Latch Register (Read and Write to Data Latch)*/
 static volatile uint8 *lat_registers[] = {&LATA, &LATB, &LATC, &LATD, &LATE};
 /*Reference to the Data Direction Control Registers*/
@@ -263,4 +263,5 @@ Std_ReturnType gpio_port_toggle_logic(const port_index_t port)
     }
     return (ret);
 }
+#endif
 #endif
