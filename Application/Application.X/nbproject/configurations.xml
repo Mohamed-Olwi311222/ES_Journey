@@ -41,9 +41,11 @@
           <itemPath>MCAL_Layer/ADC/hal_adc.h</itemPath>
           <itemPath>MCAL_Layer/ADC/hal_adc_cfg.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="CCP1" displayName="CCP1" projectFiles="true">
-          <itemPath>MCAL_Layer/CCP1/hal_ccp1.h</itemPath>
-          <itemPath>MCAL_Layer/CCP1/hal_ccp1_cfg.h</itemPath>
+        <logicalFolder name="CCPx" displayName="CCPx" projectFiles="true">
+          <logicalFolder name="CCP1" displayName="CCP1" projectFiles="true">
+            <itemPath>MCAL_Layer/CCPx/CCP1/hal_ccp1.h</itemPath>
+            <itemPath>MCAL_Layer/CCPx/CCP1/hal_ccp1_cfg.h</itemPath>
+          </logicalFolder>
         </logicalFolder>
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom.h</itemPath>
@@ -123,8 +125,10 @@
         <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
           <itemPath>MCAL_Layer/ADC/hal_adc.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="CCP1" displayName="CCP1" projectFiles="true">
-          <itemPath>MCAL_Layer/CCP1/hal_ccp1.c</itemPath>
+        <logicalFolder name="CCPx" displayName="CCPx" projectFiles="true">
+          <logicalFolder name="CCP1" displayName="CCP1" projectFiles="true">
+            <itemPath>MCAL_Layer/CCPx/CCP1/hal_ccp1.c</itemPath>
+          </logicalFolder>
         </logicalFolder>
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom.c</itemPath>
