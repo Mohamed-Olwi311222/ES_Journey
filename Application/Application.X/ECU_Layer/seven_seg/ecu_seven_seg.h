@@ -10,6 +10,7 @@
 /*----------------------------Header Files------------------------------------*/
 #include "ecu_seven_seg_cfg.h"
 #include "../../MCAL_Layer/GPIO/hal_gpio.h"
+#include "../ecu_layer_cgf.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #define SEGMENT_PIN0    0
 #define SEGMENT_PIN1    1

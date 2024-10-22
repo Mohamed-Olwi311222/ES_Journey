@@ -5,7 +5,7 @@
  * Created on 31 May 2024, 10:47
  */
 #include "ecu_seven_seg.h"
-
+#if ECU_SEVEN_SEG_ENABLED == ECU_ENABLED
 /**
  * @brief initialize the connected seven segments
  * @param seg a pointer to segment_t datatype @ref segment_t
@@ -61,3 +61,4 @@ Std_ReturnType seven_segment_write_number(const segment_t *seg, uint8 number)
     }
     return (ret);
 }
+#endif
