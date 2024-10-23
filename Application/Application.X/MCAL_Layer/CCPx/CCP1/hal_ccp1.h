@@ -8,25 +8,25 @@
 #ifndef HAL_CCP1_H
 #define	HAL_CCP1_H
 /*----------------------------Header Files------------------------------------*/
-#include "../mcal_std_types.h"
+#include "../../mcal_std_types.h"
 #include <xc.h>
-#include "../mcal_layer_cfg.h"
-#include "../Interrupt/mcal_internal_interrupt.h"
-#include "../GPIO/hal_gpio.h"
+#include "../../mcal_layer_cfg.h"
+#include "../../Interrupt/mcal_internal_interrupt.h"
+#include "../../GPIO/hal_gpio.h"
 #include "hal_ccp1_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #if CCP1_MODULE_ENABLE == MCAL_ENABLED
-#define CCP1_MODULE_DISABLE                      (uint8)0              /* Capture/Compare/PWM disabled (resets CCPx module) */
-/* CCP1 Compare Mode*/
-#if (CCP1_SELECTED_MODE_CFG == CCP1_COMPARE_MODE_CFG_SELECT)
-#define CCP1_COMPARE_MODE_TOGGLE_ON_MATCH        (uint8)2              /* Compare mode, toggle output on match */
-#define CCP1_COMPARE_MODE_FORCE_HIGH             (uint8)8              /* Compare mode, on compare match, force CCPx pin high */
-#define CCP1_COMPARE_MODE_FORCE_LOW              (uint8)9              /* Compare mode, on compare match, force CCPx pin low */
-#define CCP1_COMPARE_MODE_REFLECTS_IO            (uint8)10             /* Compare mode, generate software interrupt on compare match, CCPx pin reflects I/O state */
-#define CCP1_COMPARE_MODE_SPECIAL_EVENT          (uint8)11             /* Compare mode, trigger special event; reset timer; CCPx match starts A/D conversion */
-/* CCP1 Compare Mode State */
-#define CCP1_COMPARE_MODE_READY                  (uint8)1              /* CCP1 Compare Operation is done */
-#define CCP1_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP1 Compare Operation is not done */
+#define CCP_MODULE_DISABLE                      (uint8)0              /* Capture/Compare/PWM disabled (resets CCPx module) */
+/* CCPx Compare Mode*/
+#if (CCP_SELECTED_MODE_CFG == CCP_COMPARE_MODE_CFG_SELECT)
+#define CCP_COMPARE_MODE_TOGGLE_ON_MATCH        (uint8)2              /* Compare mode, toggle output on match */
+#define CCP_COMPARE_MODE_FORCE_HIGH             (uint8)8              /* Compare mode, on compare match, force CCPx pin high */
+#define CCP_COMPARE_MODE_FORCE_LOW              (uint8)9              /* Compare mode, on compare match, force CCPx pin low */
+#define CCP_COMPARE_MODE_REFLECTS_IO            (uint8)10             /* Compare mode, generate software interrupt on compare match, CCPx pin reflects I/O state */
+#define CCP_COMPARE_MODE_SPECIAL_EVENT          (uint8)11             /* Compare mode, trigger special event; reset timer; CCPx match starts A/D conversion */
+/* CCP Compare Mode State */
+#define CCP_COMPARE_MODE_READY                  (uint8)1              /* CCP1 Compare Operation is done */
+#define CCP_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP1 Compare Operation is not done */
 #endif
 
 /* CCP1 Capture Mode */
