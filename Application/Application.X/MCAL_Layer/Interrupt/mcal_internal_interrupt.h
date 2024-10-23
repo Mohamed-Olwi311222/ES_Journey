@@ -165,5 +165,32 @@
 #define CCP1_LOW_PRIORITY()                             (IPR1bits.CCP1IP = 0)
 #endif
 #endif
+
+/*----------------CCP2 Interrupt----------------*/
+#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the CCP2 module
+ */
+#define CCP2_INTERRUPT_DISABLE()                        (PIE2bits.CCP2IE = 0)
+/**
+ * Sets the interrupt enable for the CCP2 module
+ */
+#define CCP2_INTERRUPT_ENABLE()                         (PIE2bits.CCP2IE = 1)
+/**
+ * Clears the interrupt flag for the CCP2 module
+ */
+#define CCP2_INTERRUPT_FLAG_BIT_CLEAR()                 (PIR2bits.CCP2IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * CCP2 HIGH priority
+ */
+#define CCP2_HIGH_PRIORITY()                            (IPR2bits.CCP2IP = 1)
+/**
+ * CCP2 LOW priority
+ */
+#define CCP2_LOW_PRIORITY()                             (IPR2bits.CCP2IP = 0)
+#endif
+#endif
+
 #endif	/* MCAL_INTERNAL_INTERRUPT_H */
 
