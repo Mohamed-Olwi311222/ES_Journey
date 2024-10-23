@@ -7,11 +7,11 @@
 #ifndef HAL_CCP2_H
 #define	HAL_CCP2_H
 /*----------------------------Header Files------------------------------------*/
-#include "../mcal_std_types.h"
+#include "../../mcal_std_types.h"
 #include <xc.h>
-#include "../mcal_layer_cfg.h"
-#include "../Interrupt/mcal_internal_interrupt.h"
-#include "../GPIO/hal_gpio.h"
+#include "../../mcal_layer_cfg.h"
+#include "../../Interrupt/mcal_internal_interrupt.h"
+#include "../../GPIO/hal_gpio.h"
 #include "hal_ccp2_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 #if CCP2_MODULE_ENABLE == MCAL_ENABLED
