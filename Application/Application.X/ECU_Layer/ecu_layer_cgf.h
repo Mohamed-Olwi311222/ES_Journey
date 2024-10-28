@@ -17,7 +17,7 @@
 #define ECU_DC_MOTOR_ENABLED                ECU_DISABLED
 #define ECU_SEVEN_SEG_ENABLED               ECU_DISABLED
 #define ECU_KEYPAD_ENABLED                  ECU_DISABLED
-#define ECU_CHAR_LCD_ENABLED                ECU_DISABLED
+#define ECU_CHAR_LCD_ENABLED                ECU_ENABLED
 #define ECU_SEVEN_SEG_ENABLED               ECU_DISABLED
 
 #endif	/* ECU_LAYER_CGF_H */
