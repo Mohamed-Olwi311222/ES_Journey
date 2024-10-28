@@ -2,15 +2,15 @@
  * File:   hal_ccp2.c
  * Author: Mohamed olwi
  *
- * Created on 22 October 2024, 21:36
+ * Created on 16 October 2024, 22:03
  */
-#if CCP2_MODULE_ENABLE == MCAL_ENABLED
 #include "hal_ccp2.h"
+#if CCP2_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
 #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp2_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
-static pin_config_t ccp2_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN2, .logic = GPIO_LOW};
+static pin_config_t ccp2_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN1, .logic = GPIO_LOW};
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
@@ -76,7 +76,6 @@ Std_ReturnType ccp2_deinit(const cpp2_t *ccp2_obj)
     }
     return (ret);
 }
-
 #if (CCP2_SELECTED_MODE_CFG == CCP2_CAPTURE_MODE_CFG_SELECT)
 /**
  * @brief: See the status of the capture mode operation
@@ -93,7 +92,7 @@ Std_ReturnType ccp2_capture_mode_status(uint8 *_capture_status)
     }
     else
     {
-        if (CCP2_CAPTURE_MODE_READY == PIR1bits.CCP2IF)
+        if (CCP2_CAPTURE_MODE_READY == PIR1bits.CCP1IF)
         {
             *_capture_status = CCP2_CAPTURE_MODE_READY;
             CCP2_INTERRUPT_FLAG_BIT_CLEAR();
@@ -123,7 +122,7 @@ Std_ReturnType ccp2_capture_mode_read_value(uint16 *_capture_value)
     {
         ccp2_reg.ccpr2_low = CCPR2L;
         ccp2_reg.ccpr2_high = CCPR2H;
-        *_capture_value = ccp2_reg.ccpr1_16bit;
+        *_capture_value = ccp2_reg.ccpr2_16bit;
     }
     return (ret);
 }
@@ -168,7 +167,7 @@ void ccp2_compare_mode_set_value(uint16 _compare_value)
     
     /* Store the parameterized value into the union for easier setting */
     ccp2_reg.ccpr2_16bit = _compare_value;
-    /* Set the value of the CCPR1 register with the value inside the union */
+    /* Set the value of the CCPR2 register with the value inside the union */
     CCPR2H = ccp2_reg.ccpr2_high;
     CCPR2L = ccp2_reg.ccpr2_low;
 }
@@ -181,10 +180,10 @@ void ccp2_compare_mode_set_value(uint16 _compare_value)
  */
 void ccp2_pwm_set_duty_cycle(const uint8 _duty)
 {
-    /* Duty Cycle equation to store the bits inside CCPR1L:CCP2CON<5:4> */
+    /* Duty Cycle equation to store the bits inside CCPR2L:CCP2CON<5:4> */
     uint16 duty_cycle_value= (uint16)((PR2 + 1) * (_duty / 100.0) * 4);
     /* Set the CCPR1L with the 8 bits MSbs */
-    CCPR1L = (uint8) (duty_cycle_value >> 2);
+    CCPR2L = (uint8) (duty_cycle_value >> 2);
     /* Set the CCP2CON<5:4> bits with LSbs */
     CCP2CONbits.DC2B0 = (uint8)(READ_BIT(duty_cycle_value, 0));
     CCP2CONbits.DC2B1 = (uint8)(READ_BIT(duty_cycle_value, 1));

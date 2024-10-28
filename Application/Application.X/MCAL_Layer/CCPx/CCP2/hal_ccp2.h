@@ -2,8 +2,9 @@
  * File:   hal_ccp2.h
  * Author: Mohamed olwi
  *
- * Created on 22 October 2024, 21:36
+ * Created on 16 October 2024, 22:03
  */
+
 #ifndef HAL_CCP2_H
 #define	HAL_CCP2_H
 /*----------------------------Header Files------------------------------------*/
@@ -24,8 +25,8 @@
 #define CCP2_COMPARE_MODE_REFLECTS_IO            (uint8)10             /* Compare mode, generate software interrupt on compare match, CCPx pin reflects I/O state */
 #define CCP2_COMPARE_MODE_SPECIAL_EVENT          (uint8)11             /* Compare mode, trigger special event; reset timer; CCPx match starts A/D conversion */
 /* CCP2 Compare Mode State */
-#define CCP2_COMPARE_MODE_READY                  (uint8)1              /* CCP2 Compare Operation is done */
-#define CCP2_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP2 Compare Operation is not done */
+#define CCP2_COMPARE_MODE_READY                  (uint8)1              /* CCP1 Compare Operation is done */
+#define CCP2_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP1 Compare Operation is not done */
 #endif
 
 /* CCP2 Capture Mode */

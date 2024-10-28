@@ -1,26 +1,28 @@
 /* 
- * File:   hal_ccp1.c
+ * File:   hal_ccp2.c
  * Author: Mohamed olwi
  *
- * Created on 16 October 2024, 22:03
+ * Created on 22 October 2024, 21:36
  */
+#if CCP2_MODULE_ENABLE == MCAL_ENABLED
 #include "hal_ccp1.h"
-#if CCP1_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
-#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
 static pin_config_t ccp1_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN2, .logic = GPIO_LOW};
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
-#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler);
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj);
 #endif
 #endif
 static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj);
+static Std_ReturnType ccp1_set_enhanced_pwm_pins(uint8 pwm_output_config);
+
 /*---------------Static Helper functions declerations End-----------------------*/
 /**
  * @brief: Initialize the CCP1 module
@@ -76,6 +78,7 @@ Std_ReturnType ccp1_deinit(const cpp1_t *ccp1_obj)
     }
     return (ret);
 }
+
 #if (CCP1_SELECTED_MODE_CFG == CCP1_CAPTURE_MODE_CFG_SELECT)
 /**
  * @brief: See the status of the capture mode operation
@@ -159,11 +162,11 @@ Std_ReturnType ccp1_compare_mode_status(uint8 *_compare_status)
 }
 /**
  * @brief: Set the value of the compare mode operation
- * @param _compare_value the value to store inside CCPR1 for compare mode operation
+ * @param _compare_value the value to store inside CCPR2 for compare mode operation
  */
 void ccp1_compare_mode_set_value(uint16 _compare_value)
 {
-    CCP1_PERIOD_REG_T ccp1_reg = {.ccpr1_low = 0, .ccpr1_high = 0};
+    CCP2_PERIOD_REG_T ccp1_reg = {.ccpr1_low = 0, .ccpr1_high = 0};
     
     /* Store the parameterized value into the union for easier setting */
     ccp1_reg.ccpr1_16bit = _compare_value;
@@ -189,12 +192,45 @@ void ccp1_pwm_set_duty_cycle(const uint8 _duty)
     CCP1CONbits.DC1B1 = (uint8)(READ_BIT(duty_cycle_value, 1));
 }
 /**
- * @brief: Start the pwm mode operation
+ * @brief: Set the output configurations of the CCP1 Enhanced PWM mode
+ * @param pwm_output_config the output configuration to use
+ * @return E_OK if success otherwise E_NOT_OK
  */
-void ccp1_pwm_start(void)
+Std_ReturnType ccp1_set_pwm_output_config(uint8 pwm_output_config)
 {
-    /* Start PWM mode */
-    CCP1_SET_MODULE_MODE(CCP1_PWM_MODE);
+    Std_ReturnType ret = E_OK;
+    ret = ccp1_set_enhanced_pwm_pins(pwm_output_config);
+    if (E_OK == ret)
+    {    /* Set the output of the enhanced pwm mode */
+        CCP1_ENHANCED_PWM_CONFIG(pwm_output_config);
+    }
+    else
+    {
+        /* Nothing */
+    }
+    return (ret);
+}
+static Std_ReturnType ccp1_set_enhanced_pwm_pins(uint8 pwm_output_config)
+{
+    Std_ReturnType ret = E_OK;
+    
+    switch (pwm_output_config)
+    {
+        case CCP1_PWM_MODE_P1ABCD_ALL_HIGH:
+            break;
+        default:
+            ret = E_NOT_OK;
+    }
+    return (ret);
+}
+/**
+ * @brief: Start the pwm mode operation
+ * @param ccp1_pwm_variant the pwm mode variant to use
+ */
+void ccp1_pwm_start(ccp1_pwm_variant_t ccp1_pwm_variant)
+{
+    /* Start Enhanced PWM mode */
+    CCP1_SET_MODULE_MODE(ccp1_pwm_variant);
 }
 /**
  * @brief: Stop the pwm mode operation
@@ -235,7 +271,7 @@ static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interr
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A helper function to set the priority of the ccp1 interrupt
- * @param ccp1_obj the CCP1 module object
+ * @param ccp1_obj the CCP2 module object
  */
 static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj)
 {
