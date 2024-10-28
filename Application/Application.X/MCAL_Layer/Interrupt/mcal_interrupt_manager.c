@@ -56,6 +56,12 @@ void  __interrupt(low_priority) Interrupt_Manager_Low(void)
         CCP1_ISR();
     }
 #endif
+#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE2bits.CCP2IE) && (INTERRUPT_OCCUR == PIR2bits.CCP2IF))
+    {
+        CCP2_ISR();
+    }
+#endif
 #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF))
     {

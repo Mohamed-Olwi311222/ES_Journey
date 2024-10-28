@@ -83,5 +83,11 @@ void TIMER3_ISR(void);
  * @brief the interrupt service routine of CCP1 module
  */
 void CCP1_ISR(void);
+
+/**
+ * @brief the interrupt service routine of CCP2 module
+ */
+void CCP2_ISR(void);
+
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
