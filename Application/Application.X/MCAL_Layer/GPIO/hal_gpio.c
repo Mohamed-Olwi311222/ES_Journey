@@ -24,6 +24,8 @@ Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config_t)
     else
     {
         ret = gpio_pin_direction_initialize(_pin_config_t);
+        /* Write logic to pin (acitve-low or active-high) */
+        ret |= gpio_pin_write_logic(_pin_config_t, _pin_config_t->logic);
     }
     return (ret);
 }
