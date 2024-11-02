@@ -16,6 +16,17 @@
 /*----------------------------Macros Declarations-----------------------------*/
 #if CCP1_MODULE_ENABLE == MCAL_ENABLED
 
+/*----------------P1x pins------------------*/
+#if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
+#define P1x_MAX_LEN                              (uint8)4              /* Max lenght of P1x array with pwm pins*/
+
+#else
+#define P1x_MAX_LEN                              (uint8)1              /* Max lenght of P1x array without pwm pins*/
+#endif
+#define P1A_PIN                                  (uint8)0              /* P1A pin index for CCP1 pins */
+#define P1B_PIN                                  (uint8)1              /* P1B pin index for CCP1 pins */               
+#define P1C_PIN                                  (uint8)2              /* P1C pin index for CCP1 pins */  
+#define P1D_PIN                                  (uint8)3              /* P1D pin index for CCP1 pins */  
 /*----------------CCP2M bits----------------*/
 #define CCP1_MODULE_DISABLE                      (uint8)0              /* Capture/Compare/PWM disabled (resets CCPx module) */
 /* CCP2 Compare Mode*/
@@ -102,13 +113,13 @@ typedef union
 
 typedef uint8 timer2_TMR2_postscaler_select_t;
 typedef uint8 timer2_TMR2_prescaler_select_t;
-
+typedef uint8 ccp1_pwm_output_t;
 /**
  * struct cpp1_t - a struct for CCP1 peripheral
  * @ccp1_pwm_frequency: The PWM mode frequency
  * @timer2_postscaler_value: The postscaler value of the timer2 @ref timer2_postscaler_select_t in timer2.h
  * @timer2_prescaler_value: The prescaler value of the timer2 @ref timer2_prescaler_select_t in timer2.h
- * @ccp1_pwm_variant: The variant of the PWM to use
+ * @ccp1_pwm_output_config: The Enhanced PWM Output Configuration 
  * @ccp1_interrupt_handler: The interrupt handler of the CCP1 module
  * @ccp1_interrupt_priority: The priority of the interrupt raised
  * @ccp1_mode: The mode of the CCP2 module to activate
@@ -120,7 +131,7 @@ typedef struct
     uint32 ccp1_pwm_frequency;
     timer2_TMR2_postscaler_select_t timer2_postscaler_value;
     timer2_TMR2_prescaler_select_t timer2_prescaler_value;
-    ccp1_pwm_variant_t ccp1_pwm_variant;
+    ccp1_pwm_output_t ccp1_pwm_output_config; 
 #endif
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER ccp1_interrupt_handler;
@@ -181,10 +192,11 @@ void ccp1_compare_mode_set_value(uint16 _compare_value);
 void ccp1_pwm_set_duty_cycle(const uint8 _duty);
 /**
  * @brief: Set the output configurations of the CCP1 Enhanced PWM mode
- * @param pwm_output_config the output configuration to use
+ * @param pwm_output_mode_config the output mode configuration to use
+ * @param ccp1_pwm_output_config the pwm output pins mode to configure
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_set_pwm_output_config(uint8 pwm_output_config);
+Std_ReturnType ccp1_set_pwm_output_config(uint8 pwm_output_mode_config, uint8 ccp1_pwm_output_config);
 /**
  * @brief: Start the pwm mode operation
  * @param ccp1_pwm_variant the pwm mode variant to use

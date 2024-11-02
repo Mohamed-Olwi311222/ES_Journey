@@ -7,21 +7,23 @@
 #if CCP2_MODULE_ENABLE == MCAL_ENABLED
 #include "hal_ccp1.h"
 /*---------------Static Data types----------------------------------------------*/
-#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
-static pin_config_t ccp1_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN2, .logic = GPIO_LOW};
+// Declaration of the array at the global level
+static pin_config_t P1x_pins[P1x_MAX_LEN];
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
-#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interrupt_Handler);
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj);
 #endif
 #endif
 static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj);
-static Std_ReturnType ccp1_set_enhanced_pwm_pins(uint8 pwm_output_config);
+static inline Std_ReturnType ccp1_set_enhanced_pwm_output(uint8 pwm_output_config);
+static inline void initialize_P1x_pins(void);
 
 /*---------------Static Helper functions declerations End-----------------------*/
 /**
@@ -41,6 +43,8 @@ Std_ReturnType ccp1_init(const cpp1_t *ccp1_obj)
     {
         /* Disable CCP1 */
         CCP1_SET_MODULE_MODE(CCP1_MODULE_DISABLE);
+        /* Initialize the P1x pins with the correct pin, port and direction */
+        initialize_P1x_pins();
         /* Enable CCP1 interrupt if interrupt is enable */
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         CCP1_INTERRUPT_ENABLE();
@@ -193,33 +197,77 @@ void ccp1_pwm_set_duty_cycle(const uint8 _duty)
 }
 /**
  * @brief: Set the output configurations of the CCP1 Enhanced PWM mode
- * @param pwm_output_config the output configuration to use
+ * @param pwm_output_mode_config the output mode configuration to use
+ * @param ccp1_pwm_output_config the pwm output pins mode to configure
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType ccp1_set_pwm_output_config(uint8 pwm_output_config)
+Std_ReturnType ccp1_set_pwm_output_config(uint8 pwm_output_mode_config, uint8 ccp1_pwm_output_config)
 {
     Std_ReturnType ret = E_OK;
-    ret = ccp1_set_enhanced_pwm_pins(pwm_output_config);
+    ret = ccp1_set_enhanced_pwm_output(pwm_output_mode_config);
     if (E_OK == ret)
     {    /* Set the output of the enhanced pwm mode */
-        CCP1_ENHANCED_PWM_CONFIG(pwm_output_config);
+        CCP1_ENHANCED_PWM_CONFIG(ccp1_pwm_output_config);
     }
     else
     {
-        /* Nothing */
+        ret = E_NOT_OK;
     }
     return (ret);
 }
-static Std_ReturnType ccp1_set_enhanced_pwm_pins(uint8 pwm_output_config)
+
+/**
+ * @breif: Configure the CCP1 PWM output config
+ * @param pwm_output_config the needed pwm output config
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+static inline Std_ReturnType ccp1_set_enhanced_pwm_output(uint8 pwm_output_pins_config)
 {
     Std_ReturnType ret = E_OK;
     
-    switch (pwm_output_config)
+    switch (pwm_output_pins_config)
     {
         case CCP1_PWM_MODE_P1ABCD_ALL_HIGH:
+            /* P1A, P1B, P1C and P1D are all active high */
+            CCP1CONbits.CCP1M = CCP1_PWM_MODE_P1ABCD_ALL_HIGH;
+            P1x_pins[P1A_PIN].logic = GPIO_HIGH;
+            P1x_pins[P1C_PIN].logic = GPIO_HIGH;
+            P1x_pins[P1B_PIN].logic = GPIO_HIGH;
+            P1x_pins[P1D_PIN].logic = GPIO_HIGH;
+            break;
+        case CCP1_PWM_MODE_P1AC_HIGH_P1BD_LOW:
+            /* P1A and P1C are acive high, P1B and P1D are active low */
+            CCP1CONbits.CCP1M = CCP1_PWM_MODE_P1AC_HIGH_P1BD_LOW;
+            P1x_pins[P1A_PIN].logic = GPIO_HIGH;
+            P1x_pins[P1C_PIN].logic = GPIO_HIGH;
+            P1x_pins[P1B_PIN].logic = GPIO_LOW;
+            P1x_pins[P1D_PIN].logic = GPIO_LOW;
+            break;
+        case CCP1_PWM_MODE_P1AC_LOW_P1BD_HIGH:
+            /* P1A and P1C are acive low, P1B and P1D are active high */
+            CCP1CONbits.CCP1M = CCP1_PWM_MODE_P1AC_LOW_P1BD_HIGH;
+            P1x_pins[P1A_PIN].logic = GPIO_LOW;
+            P1x_pins[P1C_PIN].logic = GPIO_LOW;
+            P1x_pins[P1B_PIN].logic = GPIO_HIGH;
+            P1x_pins[P1D_PIN].logic = GPIO_HIGH;
+            break;
+        case CCP1_PWM_MODE_P1ABCD_ALL_LOW:
+            /* P1A, P1B, P1C and P1D are all active low */
+            CCP1CONbits.CCP1M = CCP1_PWM_MODE_P1ABCD_ALL_LOW;
+            P1x_pins[P1A_PIN].logic = GPIO_LOW;
+            P1x_pins[P1C_PIN].logic = GPIO_LOW;
+            P1x_pins[P1B_PIN].logic = GPIO_LOW;
+            P1x_pins[P1D_PIN].logic = GPIO_LOW;
             break;
         default:
             ret = E_NOT_OK;
+    }
+    if (E_OK == ret)
+    {
+        ret |= gpio_pin_direction_initialize(&P1x_pins[P1A_PIN]);
+        ret |= gpio_pin_direction_initialize(&P1x_pins[P1C_PIN]);
+        ret |= gpio_pin_direction_initialize(&P1x_pins[P1B_PIN]);
+        ret |= gpio_pin_direction_initialize(&P1x_pins[P1D_PIN]);
     }
     return (ret);
 }
@@ -310,7 +358,7 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
     Std_ReturnType ret = E_OK;
     
     /* Select the ccp1 mode variant */
-    if (ccp1_obj->ccp1_mode_variant <= 12)
+    if (ccp1_obj->ccp1_mode_variant <= 15)
     {
         CCP1_SET_MODULE_MODE(ccp1_obj->ccp1_mode_variant);
     }
@@ -323,25 +371,51 @@ static inline Std_ReturnType ccp1_select_mode(const cpp1_t *ccp1_obj)
     /* Configure the ccp1 pin */
     if (CCP1_CAPTURE_MODE_SELECT == ccp1_obj->ccp1_mode)
     {
-        ccp1_pin.direction = GPIO_DIRECTION_INPUT;
+        P1x_pins[P1A_PIN].direction = 1;
+        ret |= gpio_pin_direction_initialize(&P1x_pins[P1A_PIN]);
     }
     else if (CCP1_COMPARE_MODE_SELECT == ccp1_obj->ccp1_mode)
     {
-        ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
+        P1x_pins[P1A_PIN].direction = GPIO_DIRECTION_OUTPUT;
+        ret |= gpio_pin_direction_initialize(&P1x_pins[P1A_PIN]);
     }
     else
     {
-        ccp1_pin.direction = GPIO_DIRECTION_OUTPUT;
+        P1x_pins[P1A_PIN].direction = GPIO_DIRECTION_OUTPUT;
 #if CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT
         /* Set the PR2 Register (period of the PWM) */
         /* The timer2 prescaler and postscaler must be added to one as the enums starts from 0 not 1 */
         PR2 = (uint8)((_XTAL_FREQ / 
                 (ccp1_obj->ccp1_pwm_frequency * 4 
                 * (ccp1_obj->timer2_prescaler_value + 1) * (ccp1_obj->timer2_postscaler_value + 1))) - 1);
+        ret |= ccp1_set_pwm_output_config(ccp1_obj->ccp1_mode_variant, ccp1_obj->ccp1_pwm_output_config);
+
 #endif
     }
-    ret |= gpio_pin_initialize(&ccp1_pin);
-    
     return (ret);
+}
+/**
+ * @brief initialize the P1x pins
+ */
+static inline void initialize_P1x_pins(void)
+{
+    /* P1A pin */
+    P1x_pins[P1A_PIN].port = PORTC_INDEX;
+    P1x_pins[P1A_PIN].pin = GPIO_PIN2;
+    /* PWM pins*/
+    #if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
+    /* P1B pin */
+    P1x_pins[P1B_PIN].port = PORTD_INDEX;
+    P1x_pins[P1B_PIN].pin = GPIO_PIN5;
+    P1x_pins[P1B_PIN].direction = GPIO_DIRECTION_OUTPUT;
+    /* P1C pin */
+    P1x_pins[P1C_PIN].port = PORTD_INDEX;
+    P1x_pins[P1C_PIN].pin = GPIO_PIN6;
+    P1x_pins[P1C_PIN].direction = GPIO_DIRECTION_OUTPUT;
+    /* P1D pin */
+    P1x_pins[P1D_PIN].port = PORTD_INDEX;
+    P1x_pins[P1D_PIN].pin = GPIO_PIN7;
+    P1x_pins[P1D_PIN].direction = GPIO_DIRECTION_OUTPUT;
+    #endif
 }
 #endif
