@@ -37,10 +37,10 @@
 #define TIMER3_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer3 interrupt enable for preconfig */        
 
 /*--------CCP1 Module-------*/
-#define CCP1_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_DISABLE   /* CCP1 interrupt enable for preconfig */        
+#define CCP1_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_ENABLE   /* CCP1 interrupt enable for preconfig */        
 
 /*--------CCP2 Module-------*/
-#define CCP2_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_ENABLE    /* CCP2 interrupt enable for preconfig */        
+#define CCP2_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_DISABLE    /* CCP2 interrupt enable for preconfig */        
 
 /*----------------END Internal Interrupts------------*/
 
