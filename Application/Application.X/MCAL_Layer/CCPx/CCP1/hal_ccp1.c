@@ -166,11 +166,11 @@ Std_ReturnType ccp1_compare_mode_status(uint8 *_compare_status)
 }
 /**
  * @brief: Set the value of the compare mode operation
- * @param _compare_value the value to store inside CCPR2 for compare mode operation
+ * @param _compare_value the value to store inside CCPR1 for compare mode operation
  */
 void ccp1_compare_mode_set_value(uint16 _compare_value)
 {
-    CCP2_PERIOD_REG_T ccp1_reg = {.ccpr1_low = 0, .ccpr1_high = 0};
+    CCP1_PERIOD_REG_T ccp1_reg = {.ccpr1_low = 0, .ccpr1_high = 0};
     
     /* Store the parameterized value into the union for easier setting */
     ccp1_reg.ccpr1_16bit = _compare_value;
