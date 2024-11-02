@@ -60,7 +60,7 @@ timer3_t timer3_obj = {
   .clock_src = _TIMER3_INT_SRC,
   .clk_src_for_ccpx = TIMER3_FOR_CCPx_MODULES,
 };
-int ccp1_capture_test(void)
+int ccp2_capture_test(void)
 {
     Std_ReturnType ret = E_OK;
     
