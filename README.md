@@ -60,7 +60,7 @@ Refer to the `"Application/Application.X/TESTS"` directory for sample code demon
 
 void main(void) {
     // Initialize Timer0
-    timer0_init();
+    timer0_init(&timer0_obj);
     
     // Initialize ADC
     adc_init(&adc_obj);
