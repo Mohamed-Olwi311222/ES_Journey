@@ -54,6 +54,9 @@
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="EUSART" displayName="EUSART" projectFiles="true">
+          <itemPath>MCAL_Layer/EUSART/hal_eusart.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL_Layer/GPIO/hal_gpio.h</itemPath>
           <itemPath>MCAL_Layer/GPIO/hal_gpio_cfg.h</itemPath>
@@ -139,6 +142,9 @@
         </logicalFolder>
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="EUSART" displayName="EUSART" projectFiles="true">
+          <itemPath>MCAL_Layer/EUSART/hal_eusart.c</itemPath>
         </logicalFolder>
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL_Layer/GPIO/hal_gpio.c</itemPath>
