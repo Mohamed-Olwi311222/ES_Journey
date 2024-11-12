@@ -178,7 +178,7 @@
 /**
  * A macro function for disabling continues receive in Async mode
  */
-#define EUSART_ASYNC_CONTINUES_RECEIVE_ENABLE_CONFIG()       (RCSTA1bits.CREN = _EUSART_ASYNC_RECEIVE_DISABLE)
+#define EUSART_ASYNC_CONTINUES_RECEIVE_DISABLE_CONFIG()      (RCSTA1bits.CREN = _EUSART_ASYNC_RECEIVE_DISABLE)
 /*===SYNC===*/
 /**
  * A macro function for enabling continues receive in Sync mode
@@ -187,7 +187,7 @@
 /**
  * A macro function for disabling continues receive in Sync mode
  */
-#define EUSART_SYNC_CONTINUES_RECEIVE_ENABLE_CONFIG()        (RCSTA1bits.CREN = _EUSART_SYNC_RECEIVE_DISABLE)
+#define EUSART_SYNC_CONTINUES_RECEIVE_DISABLE_CONFIG()       (RCSTA1bits.CREN = _EUSART_SYNC_RECEIVE_DISABLE)
 /*----------ADDEN Bit----------*/
 /*===ASYNC===*/
 /**
@@ -290,6 +290,10 @@
  */
 #define EUSART_ASYNC_DISABLE_BAUD_RATE_MEASUREMENT_CONFIG()  (BAUDCONbits.ABDEN = _EUSART_ASYNC_AUTO_BAUD_MEASUREMENT_DISABLE)
 /*----------------------------DataTypes---------------------------------------*/
+typedef struct
+{
+    
+} eusart_t;
 /*----------------------------Function Prototypes-----------------------------*/
 
 #endif	/* HAL_EUSART_H */
