@@ -65,8 +65,34 @@
 #define _EUSART_OVERRUN_ERROR_EXIST                          1 /* Overrun error (can be cleared by clearing bit, CREN) */
 #define _EUSART_OVERRUN_ERROR_DOESNT_EXIST                   0 /* No overrun error */
 /*==================BAUDCON REG================*/
-/*----------ADOVF Bit----------*/
-
+/*----------ABDOVF Bit---------*/
+#define _EUSART_BRG_ROLLOVER_OCCUR                           1 /* A BRG rollover has occurred during Auto-Baud Rate Detect mode (must be cleared in software) */
+#define _EUSART_BRG_ROLLOVER_DIDNT_OCCUR                     0 /* No BRG rollover has occurred */
+/*----------RCIDL Bit----------*/
+#define _EUSART_RECEIVE_OPERATION_IDLE                       1 /* Receive operation is Idle */
+#define _EUSART_RECEIVE_OPERATION_NOT_IDLE                   0 /* Receive operation is active */
+/*----------RXDTP Bit----------*/
+/*===ASYNC===*/
+#define _EUSART_ASYNC_DATA_INVERTED                          1 /* RX data is inverted */
+#define _EUSART_ASYNC_DATA_NOT_INVERTED                      0 /* RX data is not inverted */
+/*----------TXCKP Bit----------*/
+/*===ASYNC===*/
+#define _EUSART_ASYNC_TX_IDLE_STATE_LOW_LEVEL                1 /* Idle state for transmit (TX) is a low level */
+#define _EUSART_ASYNC_TX_IDLE_STATE_HIGH_LEVEL               0 /* Idle state for transmit (TX) is a high level */
+/*===SYNC===*/
+#define _EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL                1 /* Idle state for clock (CK) is a high level */
+#define _EUSART_SYNC_CLK_IDLE_STATE_HIGH_LEVEL               0 /* Idle state for clock (CK) is a low level */
+/*----------BRG16 Bit----------*/
+#define _EUSART_16_BIT_BAUD_RATE_GENERATOR                   1 /* 16-bit Baud Rate Generator – SPBRGH and SPBRG */
+#define _EUSART_8_BIT_BAUD_RATE_GENERATOR                    0 /* 8-bit Baud Rate Generator – SPBRG only (Compatible mode), SPBRGH value ignored */
+/*----------WUE Bit-----------*/
+/*===ASYNC===*/
+#define _EUSART_ASYNC_WAKE_UP_ENABLE                         1 /* EUSART will continue to sample the RX pin – interrupt generated on falling edge; bit cleared in hardware on following rising edge */
+#define _EUSART_ASYNC_WAKE_UP_DISABLE                        0 /* RX pin not monitored or rising edge detected */
+/*----------ABDEN Bit---------*/
+/*===ASYNC===*/
+#define _EUSART_ASYNC_AUTO_BAUD_MEASUREMENT_ENABLE           1 /* Enable baud rate measurement on the next character. Requires reception of a Sync field (55h); cleared in hardware upon completion */
+#define _EUSART_ASYNC_AUTO_BAUD_MEASUREMENT_DISABLE          0 /* Baud rate measurement disabled or completed */
 /*----------------------------Macros Functions Declarations-------------------*/
 /*==================TXSTA REG==================*/
 /*----------CSRC Bit-----------*/
@@ -192,7 +218,78 @@
  */
 #define EUSART_CLEAR_RX9D_BIT_CONFIG()                       (RCSTAbits.RX9D = 0)
 /*==================BAUDCON REG================*/
-/*----------ADOVF Bit----------*/
+/*----------ABDOVF Bit---------*/
+/**
+ * A macro function for reading Auto-Baud Acquisition Rollover Status bit
+ */
+#define EUSART_READ_BRG_ROLLOVER_STATUS_CONFIG(__VAR)        (__VAR = BAUDCONbits.ABDOVF)
+/**
+ * A macro function for clearing Auto-Baud Acquisition Rollover Status bit
+ */
+#define EUSART_CLEAR_BRG_ROLLOVER_STATUS_CONFIG()           (BAUDCONbits.ABDOVF = _EUSART_BRG_ROLLOVER_DIDNT_OCCUR)
+/*----------RCIDL Bit----------*/
+/**
+ * A macro function for reading Receive Operation Idle Status bit
+ */
+#define EUSART_READ_RECEIVE_OPERATION_STATUS_CONFIG(__VAR)   (__VAR = BAUDCONbits.RCIDL)
+/*----------RXDTP Bit----------*/
+/*===ASYNC===*/
+/**
+ * A macro function for selecting Async mode data polarity to be inverted 
+ */
+#define EUSART_ASYNC_RECEIVED_DATA_INVERTED_CONFIG()         (BAUDCONbits.RXDTP = _EUSART_ASYNC_DATA_INVERTED)
+/**
+ * A macro function for selecting Async mode data polarity to be not inverted 
+ */
+#define EUSART_ASYNC_RECEIVED_DATA_NOT_INVERTED_CONFIG()     (BAUDCONbits.RXDTP = _EUSART_ASYNC_DATA_NOT_INVERTED)
+/*----------TXCKP Bit----------*/
+/*===ASYNC===*/
+/**
+ * A macro function for selecting clock and data polarity idle state for TX is high level 
+ */
+#define EUSART_ASYNC_TX_IDLE_STATE_HIGH_LEVEL_CONFIG()        (BAUDCONbits.TXCKP = _EUSART_ASYNC_TX_IDLE_STATE_HIGH_LEVEL)
+/**
+ * A macro function for selecting clock and data polarity idle state for TX is low level 
+ */
+#define EUSART_ASYNC_TX_IDLE_STATE_LOW_LEVEL_CONFIG()          (BAUDCONbits.TXCKP = _EUSART_ASYNC_TX_IDLE_STATE_LOW_LEVEL)
+/*===SYNC===*/
+/**
+ * A macro function for selecting clock and data polarity idle state for CLK is high level
+ */
+#define EUSART_SYNC_CLK_IDLE_STATE_HIGH_LEVEL_CONFIG()       (BAUDCONbits.TXCKP = _EUSART_SYNC_CLK_IDLE_STATE_HIGH_LEVEL)
+/**
+ * A macro function for selecting clock and data polarity idle state for CLK is low level
+ */
+#define EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL_CONFIG()        (BAUDCONbits.TXCKP = _EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL)
+/*----------BRG16 Bit----------*/
+/**
+ * A macro function for selecting 16 bit baud rate generator
+ */
+#define EUSART_SELECT_16_BIT_BRG_CONFIG()                    (BAUDCONbits.BRG = _EUSART_16_BIT_BAUD_RATE_GENERATOR)
+/**
+ * A macro function for selecting 8 bit baud rate generator
+ */
+#define EUSART_SELECT_8_BIT_BRG_CONFIG()                     (BAUDCONbits.BRG = _EUSART_8_BIT_BAUD_RATE_GENERATOR)
+/*----------WUE Bit------------*/
+/**
+ * A macro function for Async mode for continue sampling RX pin
+ */
+#define EUSART_ASYNC_CONTINUE_SAMPLE_RX_CONFIG()             (BAUDCONbits.WUE = _EUSART_ASYNC_WAKE_UP_ENABLE)
+/**
+ * A macro function for Async mode for discontinue sampling RX pin
+ */
+#define EUSART_ASYNC_DISCONTINUE_SAMPLE_RX_CONFIG()          (BAUDCONbits.WUE = _EUSART_ASYNC_WAKE_UP_DISABLE)
+/*----------ABDEN Bit----------*/
+/*===ASYNC===*/
+/**
+ * A macro function for Async mode for enabling baud rate measurement on next character
+ */
+#define EUSART_ASYNC_ENABLE_BAUD_RATE_MEASUREMENT_CONFIG()   (BAUDCONbits.ABDEN = _EUSART_ASYNC_AUTO_BAUD_MEASUREMENT_ENABLE)
+/**
+ * A macro function for Async mode for disabling baud rate measurement on next character
+ */
+#define EUSART_ASYNC_DISABLE_BAUD_RATE_MEASUREMENT_CONFIG()  (BAUDCONbits.ABDEN = _EUSART_ASYNC_AUTO_BAUD_MEASUREMENT_DISABLE)
+/*----------------------------DataTypes---------------------------------------*/
 /*----------------------------Function Prototypes-----------------------------*/
 
 #endif	/* HAL_EUSART_H */
