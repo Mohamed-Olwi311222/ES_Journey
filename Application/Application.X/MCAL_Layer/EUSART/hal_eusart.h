@@ -14,7 +14,7 @@
 #include "../mcal_layer_cfg.h"
 #include "hal_eusart_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
-#if EUSART_ACTIVE_MODE == EUSART_SYNC_MODE                   /* EUSART SYNC MODE ONLY */
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE                   /* EUSART SYNC MODE ONLY */
 /*==================TXSTA REG==================*/
 /*----------CSRC Bit----------*/
 #define _EUSART_SYNC_MASTER_MODE                             1 /* Synchronous Master Mode */
@@ -32,7 +32,7 @@
 #define _EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL                1 /* Idle state for clock (CK) is a high level */
 #define _EUSART_SYNC_CLK_IDLE_STATE_HIGH_LEVEL               0 /* Idle state for clock (CK) is a low level */
 #endif
-#if EUSART_ACTIVE_MODE == EUSART_ASYNC_MODE                /* EUSART ASYNC MODE ONLY */
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE                /* EUSART ASYNC MODE ONLY */
 /*==================TXSTA REG==================*/
 /*----------SYNC Bit-----------*/
 #define _EUSART_ASYNC_MODE                                   0 /* EUSART ASync Mode */
@@ -88,7 +88,7 @@
 #define _EUSART_16_BIT_BAUD_RATE_GENERATOR                   1 /* 16-bit Baud Rate Generator – SPBRGH and SPBRG */
 #define _EUSART_8_BIT_BAUD_RATE_GENERATOR                    0 /* 8-bit Baud Rate Generator – SPBRG only (Compatible mode), SPBRGH value ignored */
 /*----------------------------Macros Functions Declarations-------------------*/
-#if EUSART_ACTIVE_MODE == EUSART_SYNC_MODE                   /* EUSART SYNC MODE ONLY */
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE                   /* EUSART SYNC MODE ONLY */
 /*==================TXSTA REG==================*/
 /*----------CSRC Bit-----------*/
 /**
@@ -125,7 +125,7 @@
  */
 #define EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL_CONFIG()        (BAUDCONbits.TXCKP = _EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL)
 #endif
-#if EUSART_ACTIVE_MODE == EUSART_ASYNC_MODE                /* EUSART ASYNC MODE ONLY */
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE                /* EUSART ASYNC MODE ONLY */
 /*==================TXSTA REG==================*/
 /*----------BRGH Bit-----------*/
 /**
@@ -277,11 +277,102 @@
  */
 #define EUSART_ASYNC_DISCONTINUE_SAMPLE_RX_CONFIG()          (BAUDCONbits.WUE = _EUSART_ASYNC_WAKE_UP_DISABLE)
 /*----------------------------DataTypes---------------------------------------*/
+/**
+ * @brief: An enum for selecting Baudrate generation configs
+ */
+typedef enum
+{
+    BAUDRATE_ASYNC_8_BIT_LOW_SPEED,
+    BAUDRATE_ASYNC_8_BIT_HIGH_SPEED,
+    BAUDRATE_ASYNC_16_BIT_LOW_SPEED,
+    BAUDRATE_ASYNC_16_BIT_HIGH_SPEED,
+    BAUDRATE_SYNC_8_BIT,
+    BAUDRATE_SYNC_16_BIT
+} eusart_baudrate_gen_t;
+/**
+ * struct eusart_TX_config_t - A Struct for transmit configuration
+ * @eusart_TX_interrupt: The interrupt handler for transmit mode
+ * @eusart_TX_interrupt_priority: The priority of the interrupt of transmit mode
+ * @eusart_TX_enable: Enable or disable the EUSART transmission
+ * @eusart_9_bit_transmit_enable: Enable or disable the EUSART 9bit transmission
+ * @eusart_TX_interrupt_enable: Enable or disable the interrupt of EUSART transmission mode
+ */
 typedef struct
 {
-    
+#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_ENABLE
+    INTERRUPT_HANDLER eusart_TX_interrupt;
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+    interrupt_priority_cfg eusart_TX_interrupt_priority;
+#endif
+#endif
+    uint8 eusart_TX_enable : 1;
+    uint8 eusart_9_bit_transmit_enable : 1;
+    uint8 eusart_TX_interrupt_enable : 1;
+    uint8 RESERVED : 5;
+} eusart_TX_config_t;
+
+/**
+ * struct eusart_RX_config_t - A Struct for receive configuration
+ * @eusart_RX_interrupt: The interrupt handler for receive mode
+ * @eusart_RX_interrupt_priority: The priority of the interrupt of receive mode
+ * @eusart_RX_enable: Enable or disable the EUSART receive
+ * @eusart_9_bit_receive_enable: Enable or disable the EUSART 9bit receive
+ * @eusart_RX_interrupt_enable: Enable or disable the interrupt of EUSART receive mode
+ */
+typedef struct
+{
+#if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_ENABLE
+    INTERRUPT_HANDLER eusart_RX_interrupt;
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+    interrupt_priority_cfg eusart_RX_interrupt_priority;
+#endif
+#endif
+    uint8 eusart_RX_enable : 1;
+    uint8 eusart_9_bit_receive_enable : 1;
+    uint8 eusart_RX_interrupt_enable : 1;
+    uint8 RESERVED : 5;
+} eusart_RX_config_t;
+/**
+ * struct eusart_interrupts_t - A Struct for EUSART errors interrupts configuration
+ * @eusart_frame_error_interrupt: The interrupt handler of framing error
+ * @eusart_overrun_error_interrupt: The interrupt handler of overrun error
+ * @eusart_frame_error_interrupt_priority: The priority of the interrupt from framing error
+ * @eusart_overrun_error_interrupt_priority: The priority of the interrupt from overrun error
+ */
+typedef struct
+{
+    INTERRUPT_HANDLER eusart_frame_error_interrupt;
+    INTERRUPT_HANDLER eusart_overrun_error_interrupt;
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+    interrupt_priority_cfg eusart_frame_error_interrupt_priority;
+    interrupt_priority_cfg eusart_overrun_error_interrupt_priority;  
+#endif
+} eusart_errors_interrupts_t;
+/**
+ * struct eusart_t - A Struct for EUSART peripheral
+ * @eusart_baudrate: The baudrate needed
+ * @eusart_errors_interrupts_t: The interrupts handlers of eusart module errors
+ * @eusart_rx_config: The receive mode of the EUSART
+ * @eusart_tx_config: The transmit mode of the EUSART
+ * @eusart_baudrate_config: The baudrate speed and desired baudrate resolution
+ */
+typedef struct
+{
+    uint32 eusart_baudrate;
+#if EUSART_ERROR_INTERRUPTS_FEATURE == INTERRUPT_FEATURE_ENABLE
+    eusart_errors_interrupts_t eusart_errors_interrupts;
+#endif
+    eusart_RX_config_t eusart_rx_config;
+    eusart_TX_config_t eusart_tx_config; 
+    eusart_baudrate_gen_t eusart_baudrate_config;
 } eusart_t;
 /*----------------------------Function Prototypes-----------------------------*/
+/**
+ * @brief: Initialize the EUSART module
+ * @param eusart_obj the eusart module object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType eusart_init(const eusart_t *const eusart_obj);
 
 #endif	/* HAL_EUSART_H */
 
