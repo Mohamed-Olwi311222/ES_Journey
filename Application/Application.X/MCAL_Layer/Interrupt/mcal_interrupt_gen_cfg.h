@@ -31,17 +31,21 @@
 #define TIMER1_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_DISABLE   /* Timer1 interrupt enable for preconfig */        
 
 /*--------TIMER2 Module-----*/
-#define TIMER2_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE   /* Timer2 interrupt enable for preconfig */        
+#define TIMER2_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_DISABLE   /* Timer2 interrupt enable for preconfig */        
 
 /*--------TIMER3 Module-----*/
-#define TIMER3_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_ENABLE    /* Timer3 interrupt enable for preconfig */        
+#define TIMER3_INTERRUPT_FEATURE                            INTERRUPT_FEATURE_DISABLE    /* Timer3 interrupt enable for preconfig */        
 
 /*--------CCP1 Module-------*/
-#define CCP1_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_ENABLE   /* CCP1 interrupt enable for preconfig */        
+#define CCP1_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_DISABLE   /* CCP1 interrupt enable for preconfig */        
 
 /*--------CCP2 Module-------*/
 #define CCP2_INTERRUPT_FEATURE                              INTERRUPT_FEATURE_DISABLE    /* CCP2 interrupt enable for preconfig */        
 
+/*--------EUSART Module-----*/ 
+#define EUSART_RECEIVE_INTERRUPT_FEATURE                    INTERRUPT_FEATURE_ENABLE     /* EUSART Receive mode interrupt enable for preconfig */        
+#define EUSART_TRANSMIT_INTERRUPT_FEATURE                   INTERRUPT_FEATURE_ENABLE     /* EUSART Transmit mode interrupt enable for preconfig */        
+#define EUSART_ERROR_INTERRUPTS_FEATURE                     INTERRUPT_FEATURE_ENABLE     /* EUSART Errors interrupts enable for preconfig */   
 /*----------------END Internal Interrupts------------*/
 
 /*----------------------------END Macros Declarations-------------------------*/
