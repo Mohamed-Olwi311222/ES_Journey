@@ -191,6 +191,57 @@
 #define CCP2_LOW_PRIORITY()                             (IPR2bits.CCP2IP = 0)
 #endif
 #endif
+/*----------------EUSART Interrupt--------------*/
+/*---Transmit Mode---*/
+#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the EUSART transmit mode
+ */
+#define EUSART_TRANSMIT_INTERRUPT_DISABLE()             (PIE1bits.TX1IE = 0)
+/**
+ * Sets the interrupt enable for the EUSART transmit mode
+ */
+#define EUSART_TRANSMIT_INTERRUPT_ENABLE()              (PIE1bits.TX1IE = 1)
+/**
+ * Clears the interrupt flag for the EUSART transmit mode
+ */
+#define EUSART_TRANSMIT_INTERRUPT_FLAG_BIT_CLEAR()      (PIR1bits.TX1IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * EUSART transmit mode HIGH priority
+ */
+#define EUSART_TRANSMIT_HIGH_PRIORITY()                 (IPR1bits.TX1IP = 1)
+/**
+ * EUSART transmit mode LOW priority
+ */
+#define EUSART_TRANSMIT_LOW_PRIORITY()                  (IPR1bits.TX1IP = 0)
+#endif
+#endif
 
+/*---Receive Mode----*/
+#if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/**
+ * Clears the interrupt enable for the EUSART receive mode
+ */
+#define EUSART_RECEIVE_INTERRUPT_DISABLE()              (PIE1bits.RC1IE = 0)
+/**
+ * Sets the interrupt enable for the EUSART receive mode
+ */
+#define EUSART_RECEIVE_INTERRUPT_ENABLE()               (PIE1bits.RC1IE = 1)
+/**
+ * Clears the interrupt flag for the EUSART receive mode
+ */
+#define EUSART_RECEIVE_INTERRUPT_FLAG_BIT_CLEAR()       (PIR1bits.RC1IF = 0)
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
+/**
+ * EUSART receive mode HIGH priority
+ */
+#define EUSART_RECEIVE_HIGH_PRIORITY()                  (IPR1bits.RC1IP = 1)
+/**
+ * EUSART receive mode LOW priority
+ */
+#define EUSART_RECEIVE_LOW_PRIORITY()                   (IPR1bits.RC1IP = 0)
+#endif
+#endif
 #endif	/* MCAL_INTERNAL_INTERRUPT_H */
 
