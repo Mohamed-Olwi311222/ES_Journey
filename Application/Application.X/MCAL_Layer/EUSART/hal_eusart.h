@@ -343,11 +343,17 @@ typedef struct
  */
 typedef struct
 {
+#if EUSART_FERR_INTERRUPT_FEATURE  == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER eusart_frame_error_interrupt;
-    INTERRUPT_HANDLER eusart_overrun_error_interrupt;
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
     interrupt_priority_cfg eusart_frame_error_interrupt_priority;
+#endif
+#endif
+#if EUSART_FERR_INTERRUPT_FEATURE  == INTERRUPT_FEATURE_ENABLE
+    INTERRUPT_HANDLER eusart_overrun_error_interrupt;
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
     interrupt_priority_cfg eusart_overrun_error_interrupt_priority;  
+#endif
 #endif
 } eusart_errors_interrupts_t;
 /**
