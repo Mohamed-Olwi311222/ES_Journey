@@ -6,6 +6,7 @@
  */
 #if CCP2_MODULE_ENABLE == MCAL_ENABLED
 #include "hal_ccp1.h"
+#if CCP1_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER ccp1_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
@@ -418,4 +419,5 @@ static inline void initialize_P1x_pins(void)
     P1x_pins[P1D_PIN].direction = GPIO_DIRECTION_OUTPUT;
     #endif
 }
+#endif
 #endif
