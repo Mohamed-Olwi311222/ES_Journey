@@ -179,13 +179,13 @@
 #define EUSART_TRANSMISSION_SIZE_CONFIG(__SIZE)              (TXSTAbits.TX9 = __SIZE)
 /*----------TXEN Bit-----------*/
 /**
- * A macro function for enabling EUSART
+ * A macro function for enabling EUSART transmit mode
  */
-#define EUSART_ENABLE_CONFIG()                               (TXSTAbits.TXEN = EUSART_TRANSMIT_ENABLE)
+#define EUSART_TRANSMIT_ENABLE_CONFIG()                      (TXSTAbits.TXEN = EUSART_TRANSMIT_ENABLE)
 /**
- * A macro function for disabling EUSART
+ * A macro function for disabling EUSART transmit mode
  */
-#define EUSART_DISABLE_CONFIG()                              (TXSTAbits.TXEN = EUSART_TRANSMIT_DISABLE)
+#define EUSART_TRANSMIT_DISABLE_CONFIG()                     (TXSTAbits.TXEN = EUSART_TRANSMIT_DISABLE)
 /*----------SYNC Bit-----------*/
 /**
  * A macro function for Selecting EUSART mode
@@ -262,11 +262,11 @@
 /**
  * A macro function for selecting 16 bit baud rate generator
  */
-#define EUSART_SELECT_16_BIT_BRG_CONFIG()                    (BAUDCONbits.BRG = _EUSART_16_BIT_BAUD_RATE_GENERATOR)
+#define EUSART_SELECT_16_BIT_BRG_CONFIG()                    (BAUDCONbits.BRG16 = _EUSART_16_BIT_BAUD_RATE_GENERATOR)
 /**
  * A macro function for selecting 8 bit baud rate generator
  */
-#define EUSART_SELECT_8_BIT_BRG_CONFIG()                     (BAUDCONbits.BRG = _EUSART_8_BIT_BAUD_RATE_GENERATOR)
+#define EUSART_SELECT_8_BIT_BRG_CONFIG()                     (BAUDCONbits.BRG16 = _EUSART_8_BIT_BAUD_RATE_GENERATOR)
 /*----------WUE Bit------------*/
 /**
  * A macro function for Async mode for continue sampling RX pin
@@ -286,8 +286,10 @@ typedef enum
     BAUDRATE_ASYNC_8_BIT_HIGH_SPEED,
     BAUDRATE_ASYNC_16_BIT_LOW_SPEED,
     BAUDRATE_ASYNC_16_BIT_HIGH_SPEED,
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
     BAUDRATE_SYNC_8_BIT,
     BAUDRATE_SYNC_16_BIT
+#endif
 } eusart_baudrate_gen_t;
 /**
  * struct eusart_TX_config_t - A Struct for transmit configuration
@@ -350,18 +352,18 @@ typedef struct
 } eusart_errors_interrupts_t;
 /**
  * struct eusart_t - A Struct for EUSART peripheral
- * @eusart_baudrate: The baudrate needed
  * @eusart_errors_interrupts_t: The interrupts handlers of eusart module errors
+ * @eusart_baudrate: The baudrate needed
  * @eusart_rx_config: The receive mode of the EUSART
  * @eusart_tx_config: The transmit mode of the EUSART
  * @eusart_baudrate_config: The baudrate speed and desired baudrate resolution
  */
 typedef struct
 {
-    uint32 eusart_baudrate;
 #if EUSART_ERROR_INTERRUPTS_FEATURE == INTERRUPT_FEATURE_ENABLE
     eusart_errors_interrupts_t eusart_errors_interrupts;
 #endif
+    uint16 eusart_baudrate;
     eusart_RX_config_t eusart_rx_config;
     eusart_TX_config_t eusart_tx_config; 
     eusart_baudrate_gen_t eusart_baudrate_config;
