@@ -46,6 +46,8 @@
 #define EUSART_RECEIVE_INTERRUPT_FEATURE                    INTERRUPT_FEATURE_ENABLE     /* EUSART Receive mode interrupt enable for preconfig */        
 #define EUSART_TRANSMIT_INTERRUPT_FEATURE                   INTERRUPT_FEATURE_ENABLE     /* EUSART Transmit mode interrupt enable for preconfig */        
 #define EUSART_ERROR_INTERRUPTS_FEATURE                     INTERRUPT_FEATURE_ENABLE     /* EUSART Errors interrupts enable for preconfig */   
+#define EUSART_FERR_INTERRUPT_FEATURE                       INTERRUPT_FEATURE_ENABLE     /* EUSART Framing error interrupt enable for preconfig */
+#define EUSART_OERR_INTERRUPT_FEATURE                       INTERRUPT_FEATURE_ENABLE     /* EUSART Overrun error interrupt enable for preconfig */
 /*----------------END Internal Interrupts------------*/
 
 /*----------------------------END Macros Declarations-------------------------*/
