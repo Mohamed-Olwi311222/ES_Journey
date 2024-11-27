@@ -291,7 +291,7 @@ void EUSART_RX_ISR(void)
  * @note: Will block CPU instruction until TXREG is empty
  * @param data the 8-bit data or 9-bit data to transmit
  */
-void inline eusart_write_byte(uint16 data)
+void inline eusart_write_byte(const uint16 data)
 {
     /* Block CPU instructions until TXREG is empty */
     while (_EUSART_TSR_FULL == TXSTAbits.TRMT);
@@ -316,26 +316,28 @@ void inline eusart_write_byte(uint16 data)
  * @param The address to store the read 8-bit data or 9-bit data
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType inline eusart_read_byte(uint16 *data)
+Std_ReturnType inline eusart_read_byte(uint16 *const data)
 {
     Std_ReturnType ret = E_OK;
-    
-    /* Check of data is received */
-    if (1 == PIR1bits.RC1IF)
+    if (NULL != data)
     {
-        /* Data is received */
-        /* READ the 9th bit before reading RCREG to avoid overwriting */
-         if (_EUSART_9_BIT_RECEIVE == RCSTAbits.RX9)
-         {
-             *data = (uint16)(RCSTAbits.RX9D << 8);
-         }
-        /* Set the data to RCREG */
-        *data= RCREG;
-    }
-    else
-    {
-        /* No data is received */
-        ret = E_NOT_OK;
+        /* Check of data is received */
+        if (1 == PIR1bits.RC1IF)
+        {
+            /* Data is received */
+            /* READ the 9th bit before reading RCREG to avoid overwriting */
+             if (_EUSART_9_BIT_RECEIVE == RCSTAbits.RX9)
+             {
+                 *data = (uint16)(RCSTAbits.RX9D << 8);
+             }
+            /* Set the data to RCREG */
+            *data= RCREG;
+        }
+        else
+        {
+            /* No data is received */
+            ret = E_NOT_OK;
+        }
     }
 
     return (ret);
@@ -345,7 +347,7 @@ Std_ReturnType inline eusart_read_byte(uint16 *data)
  * @note: Will block CPU instruction until TXREG is empty
  * @param The address to store the read 8-bit data or 9-bit data
  */
-void inline eusart_read_byte_blocking(uint16 *data)
+void inline eusart_read_byte_blocking(uint16 *const data)
 {
     /* Wait till data is received */
     while(!PIR1bits.RC1IF)

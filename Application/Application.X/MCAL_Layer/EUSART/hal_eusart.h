@@ -387,14 +387,14 @@ Std_ReturnType eusart_init(const eusart_t *const eusart_obj);
  * @brief: Write data to transmit it using eusart
  * @param data the 8-bit data or 9-bit data to transmit
  */
-void inline eusart_write_byte(uint16 data);
+void inline eusart_write_byte(const uint16 data);
 #else
 /**
  * @brief: Write data to transmit it using eusart
  * @note: Will not block CPU Instruction
  * @param data the 8-bit data or 9-bit data to transmit
  */
-void inline eusart_write_byte(uint16 data);
+void inline eusart_write_byte(const uint16 data);
 #endif
 
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
@@ -403,13 +403,13 @@ void inline eusart_write_byte(uint16 data);
  * @param The address to store the read 8-bit data or 9-bit data
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType inline eusart_read_byte(uint16 *data);
+Std_ReturnType inline eusart_read_byte(uint16 *const data);
 /**
  * @brief: Read data from eusart
  * @note: Will block CPU instruction until TXREG is empty
  * @param The address to store the read 8-bit data or 9-bit data
  */
-void inline eusart_read_byte_blocking(uint16 *data);
+void inline eusart_read_byte_blocking(uint16 *const data);
 #else
 
 #endif
