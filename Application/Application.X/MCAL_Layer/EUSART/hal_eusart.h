@@ -185,11 +185,11 @@
 /**
  * A macro function for enabling EUSART transmit mode
  */
-#define EUSART_TRANSMIT_ENABLE_CONFIG()                      (TXSTAbits.TXEN = EUSART_TRANSMIT_ENABLE)
+#define EUSART_TRANSMIT_ENABLE_CONFIG()                      (TXSTAbits.TXEN = _EUSART_TRANSMIT_ENABLE)
 /**
  * A macro function for disabling EUSART transmit mode
  */
-#define EUSART_TRANSMIT_DISABLE_CONFIG()                     (TXSTAbits.TXEN = EUSART_TRANSMIT_DISABLE)
+#define EUSART_TRANSMIT_DISABLE_CONFIG()                     (TXSTAbits.TXEN = _EUSART_TRANSMIT_DISABLE)
 /*----------SYNC Bit-----------*/
 /**
  * A macro function for Selecting EUSART mode
