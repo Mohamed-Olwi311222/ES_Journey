@@ -125,7 +125,7 @@
  */
 #define EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL_CONFIG()        (BAUDCONbits.TXCKP = _EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL)
 #endif
-#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE                /* EUSART ASYNC MODE ONLY */
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE                  /* EUSART ASYNC MODE ONLY */
 /*==================TXSTA REG==================*/
 /*----------BRGH Bit-----------*/
 /**
@@ -174,9 +174,13 @@
 /*==================TXSTA REG==================*/
 /*----------TX9 Bit------------*/
 /**
- * A macro function for configuring the size of EUSART transmission
+ * A macro function for selecting 9 bits size of EUSART transmission
  */
-#define EUSART_TRANSMISSION_SIZE_CONFIG(__SIZE)              (TXSTAbits.TX9 = __SIZE)
+#define EUSART_TRANSMISSION_9_BIT_CONFIG()                   (TXSTAbits.TX9 = _EUSART_9_BIT_TRANSMISSION)
+/**
+ * A macro function for selecting 8 bits size of EUSART transmission
+ */
+#define EUSART_TRANSMISSION_8_BIT_CONFIG()                   (TXSTAbits.TX9 = _EUSART_8_BIT_TRANSMISSION)
 /*----------TXEN Bit-----------*/
 /**
  * A macro function for enabling EUSART transmit mode
@@ -297,7 +301,6 @@ typedef enum
  * @eusart_TX_interrupt_priority: The priority of the interrupt of transmit mode
  * @eusart_TX_enable: Enable or disable the EUSART transmission
  * @eusart_9_bit_transmit_enable: Enable or disable the EUSART 9bit transmission
- * @eusart_TX_interrupt_enable: Enable or disable the interrupt of EUSART transmission mode
  */
 typedef struct
 {
@@ -309,8 +312,7 @@ typedef struct
 #endif
     uint8 eusart_TX_enable : 1;
     uint8 eusart_9_bit_transmit_enable : 1;
-    uint8 eusart_TX_interrupt_enable : 1;
-    uint8 RESERVED : 5;
+    uint8 RESERVED : 6;
 } eusart_TX_config_t;
 
 /**
@@ -319,7 +321,6 @@ typedef struct
  * @eusart_RX_interrupt_priority: The priority of the interrupt of receive mode
  * @eusart_RX_enable: Enable or disable the EUSART receive
  * @eusart_9_bit_receive_enable: Enable or disable the EUSART 9bit receive
- * @eusart_RX_interrupt_enable: Enable or disable the interrupt of EUSART receive mode
  */
 typedef struct
 {
@@ -331,8 +332,7 @@ typedef struct
 #endif
     uint8 eusart_RX_enable : 1;
     uint8 eusart_9_bit_receive_enable : 1;
-    uint8 eusart_RX_interrupt_enable : 1;
-    uint8 RESERVED : 5;
+    uint8 RESERVED : 6;
 } eusart_RX_config_t;
 /**
  * struct eusart_interrupts_t - A Struct for EUSART errors interrupts configuration
