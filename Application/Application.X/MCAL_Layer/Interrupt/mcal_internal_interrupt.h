@@ -202,10 +202,6 @@
  * Sets the interrupt enable for the EUSART transmit mode
  */
 #define EUSART_TRANSMIT_INTERRUPT_ENABLE()              (PIE1bits.TX1IE = 1)
-/**
- * Clears the interrupt flag for the EUSART transmit mode
- */
-#define EUSART_TRANSMIT_INTERRUPT_FLAG_BIT_CLEAR()      (PIR1bits.TX1IF = 0)
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * EUSART transmit mode HIGH priority

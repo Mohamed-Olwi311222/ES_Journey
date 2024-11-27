@@ -382,5 +382,11 @@ typedef struct
  */
 Std_ReturnType eusart_init(const eusart_t *const eusart_obj);
 
+/**
+ * @brief: Write data to transmit it using eusart
+ * @note: Will block CPU instruction until TXREG is empty
+ * @param data the 8-bit data or 9-bit data to transmit
+ */
+void inline eusart_write_byte(uint16 data);
 #endif	/* HAL_EUSART_H */
 

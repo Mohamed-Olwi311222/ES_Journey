@@ -192,7 +192,7 @@ static inline Std_ReturnType eusart_async_tx_interrupt_config(const eusart_t *co
  */
 void EUSART_TX_ISR(void)
 {
-    EUSART_TRANSMIT_INTERRUPT_FLAG_BIT_CLEAR();
+    /* The TXIF flag cant be cleared by software*/
     if (NULL != eusart_tx_interrupt_handler)
     {
         eusart_tx_interrupt_handler();
@@ -277,11 +277,32 @@ static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *co
  */
 void EUSART_RX_ISR(void)
 {
-    EUSART_TRANSMIT_INTERRUPT_FLAG_BIT_CLEAR();
+    EUSART_RECEIVE_INTERRUPT_FLAG_BIT_CLEAR();
     if (NULL != eusart_rx_interrupt_handler)
     {
         eusart_rx_interrupt_handler();
     }
 }
 #endif  
+
+/**
+ * @brief: Write data to transmit it using eusart
+ * @note: Will block CPU instruction until TXREG is empty
+ * @param data the 8-bit data or 9-bit data to transmit
+ */
+void inline eusart_write_byte(uint16 data)
+{
+    /* Block CPU instructions until TXREG is empty */
+    while (_EUSART_TSR_FULL == TXSTAbits.TRMT);
+    /* Store the value to write */
+    TXREG = (uint8)(data);
+    /* Store the 9th bit if enabled */
+    if (_EUSART_9_BIT_TRANSMISSION == TXSTAbits.TX9)
+    {
+        if (1 == READ_BIT(data, 9))
+            EUSART_SET_TX9D_BIT_CONFIG();
+        else
+            EUSART_CLEAR_TX9D_BIT_CONFIG();
+    }
+}
 
