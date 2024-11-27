@@ -89,5 +89,14 @@ void CCP1_ISR(void);
  */
 void CCP2_ISR(void);
 
+/**
+ * @brief the interrupt service routine of EUSART Transmit mode
+ */
+void EUSART_TX_ISR(void);
+
+/**
+ * @brief the interrupt service routine of EUSART Receive mode
+ */
+void EUSART_RX_ISR(void);
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
