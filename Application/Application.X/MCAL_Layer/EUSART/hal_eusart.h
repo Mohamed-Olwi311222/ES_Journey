@@ -200,7 +200,7 @@
  * A macro function for reading the status of the TSR register
  */
 #define EUSART_TSR_GET_STATUS_CONFIG(__VAR)                  (__VAR = TXSTAbits.TRMT)
-/*----------TX9 Bit------------*/
+/*----------TX9D Bit------------*/
 /**
  * A macro function for Setting the TX9D bit (Can be address/data bit or a parity bit)
  */
