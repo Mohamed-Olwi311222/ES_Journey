@@ -324,7 +324,7 @@ typedef struct
  */
 typedef struct
 {
-#if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_ENABLE
+#if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     INTERRUPT_HANDLER eusart_RX_interrupt;
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
     interrupt_priority_cfg eusart_RX_interrupt_priority;
@@ -382,11 +382,37 @@ typedef struct
  */
 Std_ReturnType eusart_init(const eusart_t *const eusart_obj);
 
+#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
 /**
  * @brief: Write data to transmit it using eusart
  * @note: Will block CPU instruction until TXREG is empty
  * @param data the 8-bit data or 9-bit data to transmit
  */
 void inline eusart_write_byte(uint16 data);
+#else
+/**
+ * @brief: Write data to transmit it using eusart
+ * @note: Will not block CPU Instruction
+ * @param data the 8-bit data or 9-bit data to transmit
+ */
+void inline eusart_write_byte(uint16 data);
+#endif
+
+#if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
+/**
+ * @brief: Read data from eusart
+ * @param The address to store the read 8-bit data or 9-bit data
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType inline eusart_read_byte(uint16 *data);
+/**
+ * @brief: Read data from eusart
+ * @note: Will block CPU instruction until TXREG is empty
+ * @param The address to store the read 8-bit data or 9-bit data
+ */
+void inline eusart_read_byte_blocking(uint16 *data);
+#else
+
+#endif
 #endif	/* HAL_EUSART_H */
 
