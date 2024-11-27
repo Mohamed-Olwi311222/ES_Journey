@@ -204,11 +204,11 @@
 /**
  * A macro function for Setting the TX9D bit (Can be address/data bit or a parity bit)
  */
-#define EUSART_SET_TX9_BIT_CONFIG()                          (TXSTAbits.TX9D = 1)
+#define EUSART_SET_TX9D_BIT_CONFIG()                         (TXSTAbits.TX9D = 1)
 /**
  * A macro function for Clearing the TX9D bit (Can be address/data bit or a parity bit)
  */
-#define EUSART_CLEAR_TX9_BIT_CONFIG()                        (TXSTAbits.TX9D = 0)
+#define EUSART_CLEAR_TX9D_BIT_CONFIG()                       (TXSTAbits.TX9D = 0)
 /*==================RCSTA REG==================*/
 /*----------SPEN Bit-----------*/
 /**
