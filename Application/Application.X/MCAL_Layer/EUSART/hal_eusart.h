@@ -202,13 +202,13 @@
 #define EUSART_TSR_GET_STATUS_CONFIG(__VAR)                  (__VAR = TXSTAbits.TRMT)
 /*----------TX9 Bit------------*/
 /**
- * A macro function for Setting the TX9 bit (Can be address/data bit or a parity bit)
+ * A macro function for Setting the TX9D bit (Can be address/data bit or a parity bit)
  */
-#define EUSART_SET_TX9_BIT_CONFIG()                          (TXSTAbits.TX9 = 1)
+#define EUSART_SET_TX9_BIT_CONFIG()                          (TXSTAbits.TX9D = 1)
 /**
- * A macro function for Clearing the TX9 bit (Can be address/data bit or a parity bit)
+ * A macro function for Clearing the TX9D bit (Can be address/data bit or a parity bit)
  */
-#define EUSART_CLEAR_TX9_BIT_CONFIG()                        (TXSTAbits.TX9 = 0)
+#define EUSART_CLEAR_TX9_BIT_CONFIG()                        (TXSTAbits.TX9D = 0)
 /*==================RCSTA REG==================*/
 /*----------SPEN Bit-----------*/
 /**
