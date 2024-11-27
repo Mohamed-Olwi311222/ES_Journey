@@ -50,6 +50,18 @@ void __interrupt() Interrupt_Manager_High(void)
  */
 void  __interrupt(low_priority) Interrupt_Manager_Low(void)
 {
+#if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.RC1IE) && (INTERRUPT_OCCUR == PIR1bits.RC1IF))
+    {
+        EUSART_RX_ISR();
+    }
+#endif
+#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if ((INTERRUPT_ENABLE == PIE1bits.TX1IE) && (INTERRUPT_OCCUR == PIR1bits.TX1IF))
+    {
+        EUSART_TX_ISR();
+    }
+#endif
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == PIE1bits.CCP1IE) && (INTERRUPT_OCCUR == PIR1bits.CCP1IF))
     {
@@ -80,7 +92,7 @@ void  __interrupt(low_priority) Interrupt_Manager_Low(void)
         TIMER1_ISR();
     }
 #endif
-    #if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
+#if EXTERNAL_INTERRUPT_ENABLE == INTERRUPT_FEATURE_ENABLE
     #if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE == INTERRUPT_FEATURE_ENABLE
     if ((INTERRUPT_ENABLE == INTCON3bits.INT1IE) && (INTERRUPT_OCCUR == INTCON3bits.INT1IF))
     {
