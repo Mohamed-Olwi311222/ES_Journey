@@ -1,10 +1,9 @@
 /* 
- * File:   hal_ccp2.c
+ * File:   hal_ccp1.c
  * Author: Mohamed olwi
  *
  * Created on 22 October 2024, 21:36
  */
-#if CCP2_MODULE_ENABLE == MCAL_ENABLED
 #include "hal_ccp1.h"
 #if CCP1_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
@@ -320,7 +319,7 @@ static inline Std_ReturnType ccp1_set_interrupt_handler(INTERRUPT_HANDLER Interr
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 /**
  * @brief: A helper function to set the priority of the ccp1 interrupt
- * @param ccp1_obj the CCP2 module object
+ * @param ccp1_obj the CCP1 module object
  */
 static inline void ccp1_set_interrupt_priority(const cpp1_t *ccp1_obj)
 {
@@ -419,5 +418,4 @@ static inline void initialize_P1x_pins(void)
     P1x_pins[P1D_PIN].direction = GPIO_DIRECTION_OUTPUT;
     #endif
 }
-#endif
 #endif

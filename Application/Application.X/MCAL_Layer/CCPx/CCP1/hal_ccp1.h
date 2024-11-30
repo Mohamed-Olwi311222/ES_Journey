@@ -27,9 +27,9 @@
 #define P1B_PIN                                  (uint8)1              /* P1B pin index for CCP1 pins */               
 #define P1C_PIN                                  (uint8)2              /* P1C pin index for CCP1 pins */  
 #define P1D_PIN                                  (uint8)3              /* P1D pin index for CCP1 pins */  
-/*----------------CCP2M bits----------------*/
+/*----------------CCP1M bits----------------*/
 #define CCP1_MODULE_DISABLE                      (uint8)0              /* Capture/Compare/PWM disabled (resets CCPx module) */
-/* CCP2 Compare Mode*/
+/* CCP1 Compare Mode*/
 #if (CCP1_SELECTED_MODE_CFG == CCP1_COMPARE_MODE_CFG_SELECT)
 #define CCP1_COMPARE_MODE_TOGGLE_ON_MATCH        (uint8)2              /* Compare mode, toggle output on match */
 #define CCP1_COMPARE_MODE_FORCE_HIGH             (uint8)8              /* Compare mode, on compare match, force CCPx pin high */
@@ -37,8 +37,8 @@
 #define CCP1_COMPARE_MODE_REFLECTS_IO            (uint8)10             /* Compare mode, generate software interrupt on compare match, CCPx pin reflects I/O state */
 #define CCP1_COMPARE_MODE_SPECIAL_EVENT          (uint8)11             /* Compare mode, trigger special event; reset timer; CCPx match starts A/D conversion */
 /* CCP1 Compare Mode State */
-#define CCP1_COMPARE_MODE_READY                  (uint8)1              /* CCP2 Compare Operation is done */
-#define CCP1_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP2 Compare Operation is not done */
+#define CCP1_COMPARE_MODE_READY                  (uint8)1              /* CCP1 Compare Operation is done */
+#define CCP1_COMPARE_MODE_NOT_READY              (uint8)0              /* CCP1 Compare Operation is not done */
 #endif
 
 /* CCP1 Capture Mode */
@@ -48,8 +48,8 @@
 #define CCP1_CAPTURE_MODE_4TH_RISING_EDGE        (uint8)6              /* Capture mode, every 4th rising edge */
 #define CCP1_CAPTURE_MODE_16TH_RISING_EDGE       (uint8)7              /* Capture mode, every 16th rising edge */
 /* CCP1 Capture Mode State */
-#define CCP1_CAPTURE_MODE_READY                  (uint8)1              /* CCP2 Capture Operation is done */
-#define CCP1_CAPTURE_MODE_NOT_READY              (uint8)0              /* CCP2 Capture Operation is not done */
+#define CCP1_CAPTURE_MODE_READY                  (uint8)1              /* CCP1 Capture Operation is done */
+#define CCP1_CAPTURE_MODE_NOT_READY              (uint8)0              /* CCP1 Capture Operation is not done */
 #endif
 
 /* CCP1 PWM Mode*/
@@ -61,7 +61,7 @@
 #endif
 /*----------------------------Macros Functions Declarations-------------------*/
 /**
- * Set the Mode of CCP2 module mode
+ * Set the Mode of CCP1 module mode
  */
 #define CCP1_SET_MODULE_MODE(__MODE)             (CCP1CONbits.CCP1M = __MODE)
 #if (CCP1_SELECTED_MODE_CFG == CCP1_PWM_MODE_CFG_SELECT)
@@ -122,7 +122,7 @@ typedef uint8 ccp1_pwm_output_t;
  * @ccp1_pwm_output_config: The Enhanced PWM Output Configuration 
  * @ccp1_interrupt_handler: The interrupt handler of the CCP1 module
  * @ccp1_interrupt_priority: The priority of the interrupt raised
- * @ccp1_mode: The mode of the CCP2 module to activate
+ * @ccp1_mode: The mode of the CCP1 module to activate
  * @ccp1_mode_variant: The variant of the mode selected of the CCP1 module
  */
 typedef struct
@@ -144,7 +144,7 @@ typedef struct
 /*----------------------------Function Prototypes-----------------------------*/
 /**
  * @brief: Initialize the CCP1 module
- * @param ccp2_obj the CCP1 module object
+ * @param ccp1_obj the CCP1 module object
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType ccp1_init(const cpp1_t *ccp1_obj);
