@@ -381,22 +381,12 @@ typedef struct
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType eusart_init(const eusart_t *const eusart_obj);
-
-#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
 /**
  * @brief: Write data to transmit it using eusart
+ * @note: Will block CPU instruction until TSR is empty
  * @param data the 8-bit data or 9-bit data to transmit
  */
 void inline eusart_write_byte(const uint16 data);
-#else
-/**
- * @brief: Write data to transmit it using eusart
- * @note: Will not block CPU Instruction
- * @param data the 8-bit data or 9-bit data to transmit
- */
-void inline eusart_write_byte(const uint16 data);
-#endif
-
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
 /**
  * @brief: Read data from eusart
@@ -411,7 +401,13 @@ Std_ReturnType inline eusart_read_byte(uint16 *const data);
  */
 void inline eusart_read_byte_blocking(uint16 *const data);
 #else
-
+/**
+ * @brief: Read data from eusart
+ * @param The address to store the read 8-bit data or 9-bit data
+ * @note If ferr happened or a receive interrupt(RCIF), must use this SW interface to clear the flags
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType inline eusart_read_byte(uint16 *const data);
 #endif
 #endif	/* HAL_EUSART_H */
 

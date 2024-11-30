@@ -6,20 +6,34 @@
  */
 #include "hal_eusart.h"
 /*---------------Static Data types----------------------------------------------*/
+/*---TX Interrupt Handler---*/
 #if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 static INTERRUPT_HANDLER eusart_tx_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
 #endif
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+/*---RX Interrupt Handler---*/
 static INTERRUPT_HANDLER eusart_rx_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
+/*---OERR Interrupt Handler-*/
+#if EUSART_OERR_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+static INTERRUPT_HANDLER eusart_oerr_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
+#endif
+/*---FERR Interrupt Handler-*/
+#if EUSART_FERR_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+static INTERRUPT_HANDLER eusart_ferr_interrupt_handler = NULL; /* A pointer to the callback function when an interrupt is raised */
+#endif
 #endif
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
+/*---Baudrate Helper function---*/
 static void eusart_baudrate_select(const eusart_t *const eusart_obj);
+/*---Transmit Helper functions--*/
 static Std_ReturnType eusart_async_tx_init(const eusart_t *const eusart_obj);
 static inline Std_ReturnType eusart_async_tx_interrupt_config(const eusart_t *const eusart_obj);
+/*---Receive Helper functions---*/
 static Std_ReturnType eusart_async_rx_init(const eusart_t *const eusart_obj);
 static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *const eusart_obj);
+Std_ReturnType inline set_rx_interrupt_handlers(const eusart_t *const eusart_obj);
 /*---------------Static Helper functions declerations End-----------------------*/
 
 /**
@@ -193,6 +207,7 @@ static inline Std_ReturnType eusart_async_tx_interrupt_config(const eusart_t *co
 void EUSART_TX_ISR(void)
 {
     /* The TXIF flag cant be cleared by software*/
+    EUSART_TRANSMIT_INTERRUPT_DISABLE();
     if (NULL != eusart_tx_interrupt_handler)
     {
         eusart_tx_interrupt_handler();
@@ -228,7 +243,7 @@ static Std_ReturnType eusart_async_rx_init(const eusart_t *const eusart_obj)
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_ENABLE
 /**
  * @brief A helper function to configure the interrupt for receive mode
- * @param eusart_obj the eusart module object
+ * @param eusart_obj The eusart module object used 
  * @return E_OK if success otherwise E_NOT_OK
  */
 static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *const eusart_obj)
@@ -262,6 +277,19 @@ static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *co
     /* Enable the receive mode interrupt */
     EUSART_RECEIVE_INTERRUPT_ENABLE();
     /* Set the interrupt handler of the EUSART Receive mode */
+    ret = set_rx_interrupt_handlers(eusart_obj);
+    return (ret);
+}
+/**
+ * @brief Set the interrupt handlers of the RX mode
+ * @param eusart_obj the eusart module object used
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType inline set_rx_interrupt_handlers(const eusart_t *const eusart_obj)
+{
+    Std_ReturnType ret = E_OK;
+    
+    /* RX interrupt handler */
     if (eusart_obj->eusart_rx_config.eusart_RX_interrupt)
     {
         eusart_rx_interrupt_handler = eusart_obj->eusart_rx_config.eusart_RX_interrupt;
@@ -269,6 +297,16 @@ static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *co
     else
     {
         ret = E_NOT_OK;
+    }  
+    /* Framing error interrupt handler */
+    if (eusart_obj->eusart_errors_interrupts.eusart_frame_error_interrupt)
+    {
+      eusart_ferr_interrupt_handler = eusart_obj->eusart_errors_interrupts.eusart_frame_error_interrupt;
+    }
+    /* Overrun error interrupt handler */
+    if (eusart_obj->eusart_errors_interrupts.eusart_overrun_error_interrupt)
+    {
+      eusart_oerr_interrupt_handler = eusart_obj->eusart_errors_interrupts.eusart_overrun_error_interrupt;
     }
     return (ret);
 }
@@ -277,24 +315,41 @@ static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *co
  */
 void EUSART_RX_ISR(void)
 {
-    EUSART_RECEIVE_INTERRUPT_FLAG_BIT_CLEAR();
-    if (NULL != eusart_rx_interrupt_handler)
+    /* RCIF is Cleared when RCREG register is read from */
+    if (eusart_rx_interrupt_handler)
     {
         eusart_rx_interrupt_handler();
+    }
+    /* Framing error interrupt */
+    if (eusart_ferr_interrupt_handler)
+    {
+        /* The interrupt handler must read RCREG to clear FERR flag */
+        eusart_ferr_interrupt_handler();
+    }
+    /* Overrun error interrupt */
+    if (eusart_oerr_interrupt_handler)
+    {
+        /* Reset the receive logic to clear the flag */
+        EUSART_ASYNC_CONTINUES_RECEIVE_DISABLE_CONFIG();
+        EUSART_ASYNC_CONTINUES_RECEIVE_ENABLE_CONFIG();
+        eusart_oerr_interrupt_handler();
     }
 }
 #endif  
 
-#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
 /**
  * @brief: Write data to transmit it using eusart
- * @note: Will block CPU instruction until TXREG is empty
+ * @note: Will block CPU instruction until TSR is empty
  * @param data the 8-bit data or 9-bit data to transmit
  */
 void inline eusart_write_byte(const uint16 data)
 {
-    /* Block CPU instructions until TXREG is empty */
+    /* Block CPU instructions until TSR is empty */
     while (_EUSART_TSR_FULL == TXSTAbits.TRMT);
+    /* Enable TX interrupt if interrupt feature is enabled */
+#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    EUSART_TRANSMIT_INTERRUPT_ENABLE();
+#endif
     /* Store the value to write */
     TXREG = (uint8)(data);
     /* Store the 9th bit if enabled */
@@ -306,9 +361,6 @@ void inline eusart_write_byte(const uint16 data)
             EUSART_CLEAR_TX9D_BIT_CONFIG();
     }
 }
-#else
-
-#endif
 
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
 /**
@@ -362,6 +414,36 @@ void inline eusart_read_byte_blocking(uint16 *const data)
     *data= RCREG;
 }
 #else
-
+/**
+ * @brief: Read data from eusart
+ * @param The address to store the read 8-bit data or 9-bit data
+ * @note If ferr happened or a receive interrupt(RCIF), must use this SW interface to clear the flags
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType inline eusart_read_byte(uint16 *const data)
+{
+    Std_ReturnType ret = E_OK;
+    if (NULL != data)
+    {
+        /* Check of data is received */
+        if (1 == PIR1bits.RC1IF)
+        {
+            /* Data is received */
+            /* READ the 9th bit before reading RCREG to avoid overwriting */
+             if (_EUSART_9_BIT_RECEIVE == RCSTAbits.RX9)
+             {
+                 *data = (uint16)(RCSTAbits.RX9D << 8);
+             }
+            /* Set the data to RCREG */
+            *data= RCREG;
+        }
+        else
+        {
+            /* No data is received */
+            ret = E_NOT_OK;
+        }
+    }
+    return (ret);
+}  
 #endif
 
