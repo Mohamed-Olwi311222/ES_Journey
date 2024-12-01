@@ -28,11 +28,11 @@ static INTERRUPT_HANDLER eusart_ferr_interrupt_handler = NULL; /* A pointer to t
 /*---Baudrate Helper function---*/
 static void eusart_baudrate_select(const eusart_t *const eusart_obj);
 /*---Transmit Helper functions--*/
-static Std_ReturnType eusart_async_tx_init(const eusart_t *const eusart_obj);
-static inline Std_ReturnType eusart_async_tx_interrupt_config(const eusart_t *const eusart_obj);
+static Std_ReturnType eusart_tx_init(const eusart_t *const eusart_obj);
+static inline Std_ReturnType eusart_tx_interrupt_config(const eusart_t *const eusart_obj);
 /*---Receive Helper functions---*/
-static Std_ReturnType eusart_async_rx_init(const eusart_t *const eusart_obj);
-static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *const eusart_obj);
+static Std_ReturnType eusart_rx_init(const eusart_t *const eusart_obj);
+static inline Std_ReturnType eusart_rx_interrupt_config(const eusart_t *const eusart_obj);
 Std_ReturnType inline set_rx_interrupt_handlers(const eusart_t *const eusart_obj);
 /*---------------Static Helper functions declerations End-----------------------*/
 
@@ -53,15 +53,22 @@ Std_ReturnType eusart_init(const eusart_t *const eusart_obj)
     {
         /* EUSART disable Module */
         EUSART_SERIAL_PORT_DISABLE_CONFIG();
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
+        /* Enable Sync Mode */
+        EUSART_SELECT_MODE_CONFIG(_EUSART_SYNC_MODE);
+#endif
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE
+        /* Enable Async Mode */
+        EUSART_SELECT_MODE_CONFIG(_EUSART_ASYNC_MODE);
+#endif
         /* Select Baudrate */
         eusart_baudrate_select(eusart_obj);
         /* Configure RC6 and RC7 to be input */
         TRISCbits.RC6 = 1;
         TRISCbits.RC7 = 1;
         /* Initialize the Transmit mode */
-        ret |= eusart_async_tx_init(eusart_obj);
+        ret |= eusart_tx_init(eusart_obj);
         /* Initialize the Receive mode */
-        ret |= eusart_async_rx_init(eusart_obj);
         /* EUSART enable Module */
         EUSART_SERIAL_PORT_ENABLE_CONFIG();
     }
@@ -77,51 +84,50 @@ static void eusart_baudrate_select(const eusart_t *const eusart_obj)
     /* Configure Baudrate speed */
     switch (eusart_obj->eusart_baudrate_config)
     {
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE
+
         case BAUDRATE_ASYNC_8_BIT_LOW_SPEED:
             /* ASYNC Mode, Low speed and 8 bit resolution */
-            EUSART_SELECT_MODE_CONFIG(_EUSART_ASYNC_MODE);
             EUSART_ASYNC_SELECT_SPEED_CONFIG(_EUSART_ASYNC_LOW_SPEED);
             EUSART_SELECT_8_BIT_BRG_CONFIG();
             baudrate_val_temp = (uint16)(((_XTAL_FREQ / eusart_obj->eusart_baudrate) / 64) - 1);
             break;
         case BAUDRATE_ASYNC_8_BIT_HIGH_SPEED:
             /* ASYNC Mode, High speed and 8 bit resolution */
-            EUSART_SELECT_MODE_CONFIG(_EUSART_ASYNC_MODE);
             EUSART_ASYNC_SELECT_SPEED_CONFIG(_EUSART_ASYNC_HIGH_SPEED);
             EUSART_SELECT_8_BIT_BRG_CONFIG();
             baudrate_val_temp = (uint16)(((_XTAL_FREQ / eusart_obj->eusart_baudrate) / 16) - 1);
             break;
         case BAUDRATE_ASYNC_16_BIT_LOW_SPEED:
             /* ASYNC Mode, Low speed and 16 bit resolution */
-            EUSART_SELECT_MODE_CONFIG(_EUSART_ASYNC_MODE);
             EUSART_ASYNC_SELECT_SPEED_CONFIG(_EUSART_ASYNC_LOW_SPEED);
             EUSART_SELECT_16_BIT_BRG_CONFIG();
             baudrate_val_temp = (uint16)(((_XTAL_FREQ / eusart_obj->eusart_baudrate) / 16) - 1);
             break;
         case BAUDRATE_ASYNC_16_BIT_HIGH_SPEED:
             /* ASYNC Mode, High speed and 16 bit resolution */
-            EUSART_SELECT_MODE_CONFIG(_EUSART_ASYNC_MODE);
             EUSART_ASYNC_SELECT_SPEED_CONFIG(_EUSART_ASYNC_HIGH_SPEED);
             EUSART_SELECT_16_BIT_BRG_CONFIG();
             baudrate_val_temp = (uint16)((_XTAL_FREQ / eusart_obj->eusart_baudrate) / 4) - 1;
             break;
+#endif
 #if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
         case BAUDRATE_SYNC_16_BIT:
             /* SYNC Mode, High speed and 16 bit resolution */
-            EUSART_SELECT_MODE_CONFIG(_EUSART_);
             EUSART_SELECT_16_BIT_BRG_CONFIG();
             baudrate_val_temp = (uint16)(((_XTAL_FREQ / eusart_obj->eusart_baudrate) / 4) - 1);
             break;
         case BAUDRATE_SYNC_8_BIT:
             /* SYNC Mode, High speed and 8 bit resolution */
-            EUSART_SELECT_MODE_CONFIG(_EUSART_SYNC_MODE);
             EUSART_SELECT_8_BIT_BRG_CONFIG();
             baudrate_val_temp = (uint16)(((_XTAL_FREQ / eusart_obj->eusart_baudrate) / 4) - 1);
             break;
 #endif
     }
-    /* Select the Speed of the Baudrate */
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE
+    /* Select the Speed of the Baudrate in async */
     EUSART_ASYNC_SELECT_SPEED_CONFIG(eusart_obj->eusart_baudrate_config);
+#endif
     /* Store the Baudrate in the SPBRGH:SPBRG registers */
     SPBRG = (uint8)((baudrate_val_temp));
     SPBRGH = (uint8)(baudrate_val_temp >> 8);
@@ -131,15 +137,19 @@ static void eusart_baudrate_select(const eusart_t *const eusart_obj)
  * @param eusart_obj The eusart module object used 
  * @return E_OK if success otherwise E_NOT_OK
  */
-static Std_ReturnType eusart_async_tx_init(const eusart_t *const eusart_obj)
+static Std_ReturnType eusart_tx_init(const eusart_t *const eusart_obj)
 {
     Std_ReturnType ret = E_OK;
     
     /* Enable transmit mode */
     EUSART_TRANSMIT_ENABLE_CONFIG();
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
+    /* Configure the sync mode clock source (master or slave mode) */
+    EUSART_SYNC_CLK_SRC_CONFIG(eusart_obj->eusart_tx_config.sync_clk_src);
+#endif
     /* Configure the interrupt and its priority if enabled */
 #if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_ENABLE
-    ret = eusart_async_tx_interrupt_config(eusart_obj);
+    ret = eusart_tx_interrupt_config(eusart_obj);
 #endif
     /* Configure the TX9 bit for enabling/disabling ninth bit*/
     if (_EUSART_9_BIT_TRANSMISSION == eusart_obj->eusart_tx_config.eusart_9_bit_transmit_enable)
@@ -158,7 +168,7 @@ static Std_ReturnType eusart_async_tx_init(const eusart_t *const eusart_obj)
  * @param eusart_obj the eusart module object
  * @return E_OK if success otherwise E_NOT_OK
  */
-static inline Std_ReturnType eusart_async_tx_interrupt_config(const eusart_t *const eusart_obj)
+static inline Std_ReturnType eusart_tx_interrupt_config(const eusart_t *const eusart_obj)
 {
     Std_ReturnType ret = E_OK;
     
@@ -219,15 +229,37 @@ void EUSART_TX_ISR(void)
  * @param eusart_obj The eusart module object used 
  * @return E_OK if success otherwise E_NOT_OK
  */
-static Std_ReturnType eusart_async_rx_init(const eusart_t *const eusart_obj)
+static Std_ReturnType eusart_rx_init(const eusart_t *const eusart_obj)
 {
     Std_ReturnType ret = E_OK;
     
-    /* Enable the receive mode */
-    EUSART_ASYNC_CONTINUES_RECEIVE_ENABLE_CONFIG();
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
+    /* EUSART Sync mode Single reception config (only if master mode is on) */
+    if (_EUSART_SYNC_MASTER_MODE == eusart_obj->eusart_tx_config.sync_clk_src 
+            && _EUSART_SYNC_MASTER_SINGLE_RECEIVE_ENABLE == eusart_obj->eusart_rx_config.sync_single_reception_mode)
+    {
+        EUSART_SYNC_MASTER_SINGLE_RECEIVE_ENABLE_CONFIG();
+    }
+    else
+    {
+        EUSART_SYNC_MASTER_SINGLE_RECEIVE_DISABLE_CONFIG();
+    }
+    /* EUSART Sync mode continuous reception config (will override single reception config) */
+    if (_EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE == eusart_obj->eusart_rx_config.sync_cont_reception_mode)
+    {
+        EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG();
+    }
+    else
+    {
+        EUSART_SYNC_CONTINUOUS_RECEIVE_DISABLE_CONFIG();
+    }
+#else
+        /* Enable the receive mode in async mode*/
+    EUSART_ASYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG();
+#endif
     /* Configure the interrupt and its priority if enabled */
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_ENABLE
-    ret = eusart_async_rx_interrupt_config(eusart_obj);
+    ret = eusart_rx_interrupt_config(eusart_obj);
 #endif  
     /* Configure the RX9 bit for enabling/disabling ninth bit*/
     if (_EUSART_9_BIT_RECEIVE == eusart_obj->eusart_rx_config.eusart_9_bit_receive_enable)
@@ -246,7 +278,7 @@ static Std_ReturnType eusart_async_rx_init(const eusart_t *const eusart_obj)
  * @param eusart_obj The eusart module object used 
  * @return E_OK if success otherwise E_NOT_OK
  */
-static inline Std_ReturnType eusart_async_rx_interrupt_config(const eusart_t *const eusart_obj)
+static inline Std_ReturnType eusart_rx_interrupt_config(const eusart_t *const eusart_obj)
 {
     Std_ReturnType ret = E_OK;
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
@@ -330,8 +362,13 @@ void EUSART_RX_ISR(void)
     if (eusart_oerr_interrupt_handler)
     {
         /* Reset the receive logic to clear the flag */
-        EUSART_ASYNC_CONTINUES_RECEIVE_DISABLE_CONFIG();
-        EUSART_ASYNC_CONTINUES_RECEIVE_ENABLE_CONFIG();
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
+        EUSART_SYNC_CONTINUOUS_RECEIVE_DISABLE_CONFIG();
+        EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG();
+#else
+        EUSART_ASYNC_CONTINUOUS_RECEIVE_DISABLE_CONFIG();
+        EUSART_ASYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG();
+#endif
         eusart_oerr_interrupt_handler();
     }
 }

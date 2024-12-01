@@ -26,8 +26,8 @@
 #define _EUSART_SYNC_MASTER_SINGLE_RECEIVE_ENABLE            1 /* EUSART Sync mode single receive enable */
 #define _EUSART_SYNC_MASTER_SINGLE_RECEIVE_DISABLE           0 /* EUSART Sync mode single receive disable */
 /*----------CREN Bit-----------*/
-#define _EUSART_SYNC_CONTINUES_RECEIVE_ENABLE                1 /* EUSART Sync Enables continuous receive until enable bit */
-#define _EUSART_SYNC_CONTINUES_RECEIVE_DISABLE               0 /* EUSART Sync Disables continuous receive */
+#define _EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE               1 /* EUSART Sync Enables continuous receive until enable bit */
+#define _EUSART_SYNC_CONTINUOUS_RECEIVE_DISABLE              0 /* EUSART Sync Disables continuous receive */
 /*==================BAUDCON REG================*/
 #define _EUSART_SYNC_CLK_IDLE_STATE_LOW_LEVEL                1 /* Idle state for clock (CK) is a high level */
 #define _EUSART_SYNC_CLK_IDLE_STATE_HIGH_LEVEL               0 /* Idle state for clock (CK) is a low level */
@@ -107,13 +107,13 @@
 #define EUSART_SYNC_MASTER_SINGLE_RECEIVE_DISABLE_CONFIG()   (RCSTAbits.SREN = _EUSART_SYNC_MASTER_SINGLE_RECEIVE_DISABLE)
 /*----------CREN Bit-----------*/
 /**
- * A macro function for enabling continues receive in Sync mode
+ * A macro function for enabling continuous receive in Sync mode
  */
-#define EUSART_SYNC_CONTINUES_RECEIVE_ENABLE_CONFIG()        (RCSTA1bits.CREN = _EUSART_SYNC_RECEIVE_ENABLE)
+#define EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG()       (RCSTA1bits.CREN = _EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE)
 /**
- * A macro function for disabling continues receive in Sync mode
+ * A macro function for disabling continuous receive in Sync mode
  */
-#define EUSART_SYNC_CONTINUES_RECEIVE_DISABLE_CONFIG()       (RCSTA1bits.CREN = _EUSART_SYNC_RECEIVE_DISABLE)
+#define EUSART_SYNC_CONTINUOUS_RECEIVE_DISABLE_CONFIG()      (RCSTA1bits.CREN = _EUSART_SYNC_CONTINUOUS_RECEIVE_DISABLE)
 /*==================BAUDCON REG================*/
 /*----------RCIDL Bit----------*/
 /**
@@ -135,13 +135,13 @@
 /*==================RCSTA REG==================*/
 /*----------CREN Bit-----------*/
 /**
- * A macro function for enabling continues receive in Async mode
+ * A macro function for enabling continuous receive in Async mode
  */
-#define EUSART_ASYNC_CONTINUES_RECEIVE_ENABLE_CONFIG()       (RCSTA1bits.CREN = _EUSART_ASYNC_RECEIVE_ENABLE)
+#define EUSART_ASYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG()       (RCSTA1bits.CREN = _EUSART_ASYNC_RECEIVE_ENABLE)
 /**
- * A macro function for disabling continues receive in Async mode
+ * A macro function for disabling continuous receive in Async mode
  */
-#define EUSART_ASYNC_CONTINUES_RECEIVE_DISABLE_CONFIG()      (RCSTA1bits.CREN = _EUSART_ASYNC_RECEIVE_DISABLE)
+#define EUSART_ASYNC_CONTINUOUS_RECEIVE_DISABLE_CONFIG()      (RCSTA1bits.CREN = _EUSART_ASYNC_RECEIVE_DISABLE)
 /*----------ADDEN Bit----------*/
 /**
  * A macro function for enabling address detection in Async mode
@@ -286,10 +286,12 @@
  */
 typedef enum
 {
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE
     BAUDRATE_ASYNC_8_BIT_LOW_SPEED,
     BAUDRATE_ASYNC_8_BIT_HIGH_SPEED,
     BAUDRATE_ASYNC_16_BIT_LOW_SPEED,
     BAUDRATE_ASYNC_16_BIT_HIGH_SPEED,
+#endif
 #if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
     BAUDRATE_SYNC_8_BIT,
     BAUDRATE_SYNC_16_BIT
@@ -301,6 +303,7 @@ typedef enum
  * @eusart_TX_interrupt_priority: The priority of the interrupt of transmit mode
  * @eusart_TX_enable: Enable or disable the EUSART transmission
  * @eusart_9_bit_transmit_enable: Enable or disable the EUSART 9bit transmission
+ * @sync_clk_src: Sync Mode Clock source (Master or Slave mode)
  */
 typedef struct
 {
@@ -312,7 +315,12 @@ typedef struct
 #endif
     uint8 eusart_TX_enable : 1;
     uint8 eusart_9_bit_transmit_enable : 1;
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
+    uint8 sync_clk_src : 1;
+    uint8 RESERVED : 5;
+#else
     uint8 RESERVED : 6;
+#endif
 } eusart_TX_config_t;
 
 /**
@@ -321,6 +329,8 @@ typedef struct
  * @eusart_RX_interrupt_priority: The priority of the interrupt of receive mode
  * @eusart_RX_enable: Enable or disable the EUSART receive
  * @eusart_9_bit_receive_enable: Enable or disable the EUSART 9bit receive
+ * @sync_cont_reception_mode: Enable or disable Continuous Receive Sync mode (overrides single receive mode)
+ * @sync_single_reception_mode: Enable or disable Single Receive Sync mode
  */
 typedef struct
 {
@@ -332,7 +342,13 @@ typedef struct
 #endif
     uint8 eusart_RX_enable : 1;
     uint8 eusart_9_bit_receive_enable : 1;
+#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
+    uint8 sync_cont_reception_mode : 1;
+    uint8 sync_single_reception_mode : 1;
+    uint8 RESERVED : 4;
+#else
     uint8 RESERVED : 6;
+#endif
 } eusart_RX_config_t;
 /**
  * struct eusart_interrupts_t - A Struct for EUSART errors interrupts configuration
@@ -368,7 +384,7 @@ typedef struct
 {
 #if EUSART_ERROR_INTERRUPTS_FEATURE == INTERRUPT_FEATURE_ENABLE
     eusart_errors_interrupts_t eusart_errors_interrupts;
-#endif
+#endif 
     uint16 eusart_baudrate;
     eusart_RX_config_t eusart_rx_config;
     eusart_TX_config_t eusart_tx_config; 
