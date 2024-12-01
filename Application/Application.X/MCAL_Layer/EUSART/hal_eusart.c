@@ -379,7 +379,7 @@ void EUSART_RX_ISR(void)
  * @note: Will block CPU instruction until TSR is empty
  * @param data the 8-bit data or 9-bit data to transmit
  */
-void inline eusart_write_byte(const uint16 data)
+void inline eusart_write_data(const uint16 data)
 {
     /* Block CPU instructions until TSR is empty */
     while (_EUSART_TSR_FULL == TXSTAbits.TRMT);
@@ -405,7 +405,7 @@ void inline eusart_write_byte(const uint16 data)
  * @param The address to store the read 8-bit data or 9-bit data
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType inline eusart_read_byte(uint16 *const data)
+Std_ReturnType inline eusart_read_data(uint16 *const data)
 {
     Std_ReturnType ret = E_OK;
     if (NULL != data)
@@ -436,7 +436,7 @@ Std_ReturnType inline eusart_read_byte(uint16 *const data)
  * @note: Will block CPU instruction until TXREG is empty
  * @param The address to store the read 8-bit data or 9-bit data
  */
-void inline eusart_read_byte_blocking(uint16 *const data)
+void inline eusart_read_data_blocking(uint16 *const data)
 {
     /* Wait till data is received */
     while(!PIR1bits.RC1IF)
@@ -457,7 +457,7 @@ void inline eusart_read_byte_blocking(uint16 *const data)
  * @note If ferr happened or a receive interrupt(RCIF), must use this SW interface to clear the flags
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType inline eusart_read_byte(uint16 *const data)
+Std_ReturnType inline eusart_read_data(uint16 *const data)
 {
     Std_ReturnType ret = E_OK;
     if (NULL != data)

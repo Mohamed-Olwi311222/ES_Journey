@@ -402,20 +402,20 @@ Std_ReturnType eusart_init(const eusart_t *const eusart_obj);
  * @note: Will block CPU instruction until TSR is empty
  * @param data the 8-bit data or 9-bit data to transmit
  */
-void inline eusart_write_byte(const uint16 data);
+void inline eusart_write_data(const uint16 data);
 #if EUSART_RECEIVE_INTERRUPT_FEATURE == INTERRUPT_FEATURE_DISABLE
 /**
  * @brief: Read data from eusart
  * @param The address to store the read 8-bit data or 9-bit data
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType inline eusart_read_byte(uint16 *const data);
+Std_ReturnType inline eusart_read_data(uint16 *const data);
 /**
  * @brief: Read data from eusart
  * @note: Will block CPU instruction until TXREG is empty
  * @param The address to store the read 8-bit data or 9-bit data
  */
-void inline eusart_read_byte_blocking(uint16 *const data);
+void inline eusart_read_data_blocking(uint16 *const data);
 #else
 /**
  * @brief: Read data from eusart
@@ -423,7 +423,7 @@ void inline eusart_read_byte_blocking(uint16 *const data);
  * @note If ferr happened or a receive interrupt(RCIF), must use this SW interface to clear the flags
  * @return E_OK if success otherwise E_NOT_OK
  */
-Std_ReturnType inline eusart_read_byte(uint16 *const data);
+Std_ReturnType inline eusart_read_data(uint16 *const data);
 #endif
 #endif	/* HAL_EUSART_H */
 
