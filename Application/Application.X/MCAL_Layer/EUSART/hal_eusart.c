@@ -236,7 +236,7 @@ static Std_ReturnType eusart_rx_init(const eusart_t *const eusart_obj)
 #if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
     /* EUSART Sync mode Single reception config (only if master mode is on) */
     if (_EUSART_SYNC_MASTER_MODE == eusart_obj->eusart_tx_config.sync_clk_src 
-            && _EUSART_SYNC_MASTER_SINGLE_RECEIVE_ENABLE == eusart_obj->eusart_rx_config.sync_single_reception_mode)
+            && _EUSART_SYNC_MASTER_SINGLE_RECEIVE_ENABLE == eusart_obj->eusart_rx_config.eusart_sync_single_reception_mode)
     {
         EUSART_SYNC_MASTER_SINGLE_RECEIVE_ENABLE_CONFIG();
     }
@@ -245,7 +245,7 @@ static Std_ReturnType eusart_rx_init(const eusart_t *const eusart_obj)
         EUSART_SYNC_MASTER_SINGLE_RECEIVE_DISABLE_CONFIG();
     }
     /* EUSART Sync mode continuous reception config (will override single reception config) */
-    if (_EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE == eusart_obj->eusart_rx_config.sync_cont_reception_mode)
+    if (_EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE == eusart_obj->eusart_rx_config.eusart_sync_cont_reception_mode)
     {
         EUSART_SYNC_CONTINUOUS_RECEIVE_ENABLE_CONFIG();
     }

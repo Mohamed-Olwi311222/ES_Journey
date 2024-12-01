@@ -40,7 +40,7 @@
 #define _EUSART_ASYNC_HIGH_SPEED                             1 /* EUSART Async mode high speed*/
 #define _EUSART_ASYNC_LOW_SPEED                              0 /* EUSART Async mode low speed*/
 /*==================RCSTA REG==================*/
-/*----------RX9 Bit------------*/
+/*----------CREN Bit-----------*/
 #define _EUSART_ASYNC_RECEIVE_ENABLE                         1 /* EUSART ASync Enables receiver */
 #define _EUSART_ASYNC_RECEIVE_DISABLE                        0 /* EUSART ASync Disables receiver */
 /*----------ADEN Bit-----------*/
@@ -327,10 +327,10 @@ typedef struct
  * struct eusart_RX_config_t - A Struct for receive configuration
  * @eusart_RX_interrupt: The interrupt handler for receive mode
  * @eusart_RX_interrupt_priority: The priority of the interrupt of receive mode
- * @eusart_RX_enable: Enable or disable the EUSART receive
+ * @eusart_RX_enable: Enable or disable the EUSART async receive
  * @eusart_9_bit_receive_enable: Enable or disable the EUSART 9bit receive
- * @sync_cont_reception_mode: Enable or disable Continuous Receive Sync mode (overrides single receive mode)
- * @sync_single_reception_mode: Enable or disable Single Receive Sync mode
+ * @eusart_sync_cont_reception_mode: Enable or disable Continuous Receive Sync mode (overrides single receive mode)
+ * @eusart_sync_single_reception_mode: Enable or disable Single Receive Sync mode
  */
 typedef struct
 {
@@ -340,14 +340,14 @@ typedef struct
     interrupt_priority_cfg eusart_RX_interrupt_priority;
 #endif
 #endif
-    uint8 eusart_RX_enable : 1;
     uint8 eusart_9_bit_receive_enable : 1;
-#if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
-    uint8 sync_cont_reception_mode : 1;
-    uint8 sync_single_reception_mode : 1;
-    uint8 RESERVED : 4;
-#else
+#if EUSART_ASYNC_MODE == EUSART_ACTIVE_MODE
+    uint8 eusart_async_RX_enable : 1;
     uint8 RESERVED : 6;
+#else
+    uint8 eusart_sync_cont_reception_mode : 1;
+    uint8 eusart_sync_single_reception_mode : 1;
+    uint8 RESERVED : 4;
 #endif
 } eusart_RX_config_t;
 /**
