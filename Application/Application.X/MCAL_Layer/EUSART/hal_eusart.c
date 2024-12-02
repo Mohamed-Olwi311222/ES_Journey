@@ -69,6 +69,7 @@ Std_ReturnType eusart_init(const eusart_t *const eusart_obj)
         /* Initialize the Transmit mode */
         ret |= eusart_tx_init(eusart_obj);
         /* Initialize the Receive mode */
+        ret |= eusart_rx_init(eusart_obj);
         /* EUSART enable Module */
         EUSART_SERIAL_PORT_ENABLE_CONFIG();
     }
@@ -141,25 +142,29 @@ static Std_ReturnType eusart_tx_init(const eusart_t *const eusart_obj)
 {
     Std_ReturnType ret = E_OK;
     
-    /* Enable transmit mode */
-    EUSART_TRANSMIT_ENABLE_CONFIG();
+    if (_EUSART_TRANSMIT_ENABLE == eusart_obj->eusart_tx_config.eusart_TX_enable)
+    {
+        /* Enable transmit mode */
+        EUSART_TRANSMIT_ENABLE_CONFIG();
+        /* Configure the interrupt and its priority if enabled */
+#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_ENABLE
+        ret = eusart_tx_interrupt_config(eusart_obj);
+#endif
+        /* Configure the TX9 bit for enabling/disabling ninth bit*/
+        if (_EUSART_9_BIT_TRANSMISSION == eusart_obj->eusart_tx_config.eusart_9_bit_transmit_enable)
+            EUSART_TRANSMISSION_9_BIT_CONFIG();
+        else
+            EUSART_TRANSMISSION_8_BIT_CONFIG();
+    }
+    else
+    {
+        /* Disable transmit mode */
+        EUSART_TRANSMIT_DISABLE_CONFIG();
+    }
 #if EUSART_SYNC_MODE == EUSART_ACTIVE_MODE
     /* Configure the sync mode clock source (master or slave mode) */
     EUSART_SYNC_CLK_SRC_CONFIG(eusart_obj->eusart_tx_config.sync_clk_src);
 #endif
-    /* Configure the interrupt and its priority if enabled */
-#if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_ENABLE
-    ret = eusart_tx_interrupt_config(eusart_obj);
-#endif
-    /* Configure the TX9 bit for enabling/disabling ninth bit*/
-    if (_EUSART_9_BIT_TRANSMISSION == eusart_obj->eusart_tx_config.eusart_9_bit_transmit_enable)
-    {
-        EUSART_TRANSMISSION_9_BIT_CONFIG();
-    }
-    else
-    {
-        EUSART_TRANSMISSION_8_BIT_CONFIG();
-    }
     return (ret);
 }
 #if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_ENABLE
