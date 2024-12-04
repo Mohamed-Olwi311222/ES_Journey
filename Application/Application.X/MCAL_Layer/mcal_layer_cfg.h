@@ -19,6 +19,6 @@
 #define TIMER3_MODULE_ENABLE         MCAL_DISABLED                              /* Precompile Config for TIMER3 Module to enable/disable it */
 #define ADC_MODULE_ENABLE            MCAL_DISABLED                              /* Precompile Config for ADC Module to enable/disable it */
 #define EEPROM_MODULE_ENABLE         MCAL_DISABLED                              /* Precompile Config for EEPROM Module to enable/disable it */
-#define EUSART_MODULE_ENABLE         MCAL_ENABLED                               /* Precompile Config for EUSART Module to enable/disable it */
+#define EUSART_MODULE_ENABLE         MCAL_DISABLED                              /* Precompile Config for EUSART Module to enable/disable it */
 #endif	/* MCAL_LAYER_CFG_H */
 
