@@ -5,6 +5,7 @@
  * Created on 08 November 2024, 11:34
  */
 #include "hal_eusart.h"
+#if EUSART_MODULE_ENABLE == MCAL_ENABLED
 /*---------------Static Data types----------------------------------------------*/
 /*---TX Interrupt Handler---*/
 #if EUSART_TRANSMIT_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
@@ -487,5 +488,6 @@ Std_ReturnType inline eusart_read_data(uint16 *const data)
     }
     return (ret);
 }  
+#endif
 #endif
 
