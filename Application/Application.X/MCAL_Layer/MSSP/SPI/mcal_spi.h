@@ -8,11 +8,11 @@
 #ifndef MCAL_SPI_H
 #define	MCAL_SPI_H
 /*----------------------------Header Files------------------------------------*/
-#include "../mcal_std_types.h"
-#include "../GPIO/hal_gpio.h"
+#include "../../mcal_std_types.h"
+#include "../../GPIO/hal_gpio.h"
 #include <xc.h>
-#include "../Interrupt/mcal_internal_interrupt.h"
-#include "../mcal_layer_cfg.h"
+#include "../../Interrupt/mcal_internal_interrupt.h"
+#include "../../mcal_layer_cfg.h"
 /*----------------------------Macros Declarations-----------------------------*/
 /*==================SSPSTAT REG================*/
 /*----------SMP Bit-----------*/
