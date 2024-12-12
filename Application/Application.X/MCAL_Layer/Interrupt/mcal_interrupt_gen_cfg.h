@@ -48,6 +48,9 @@
 #define EUSART_ERROR_INTERRUPTS_FEATURE                     INTERRUPT_FEATURE_DISABLE     /* EUSART Errors interrupts enable for preconfig */   
 #define EUSART_FERR_INTERRUPT_FEATURE                       INTERRUPT_FEATURE_DISABLE     /* EUSART Framing error interrupt enable for preconfig */
 #define EUSART_OERR_INTERRUPT_FEATURE                       INTERRUPT_FEATURE_DISABLE     /* EUSART Overrun error interrupt enable for preconfig */
+
+/*--------SPI Module--------*/ 
+#define SPI_INTERRUPT_FEATURE                               INTERRUPT_FEATURE_DISABLE     /* SPI Interrupt on receive/transmit enable for preconfig */
 /*----------------END Internal Interrupts------------*/
 
 /*----------------------------END Macros Declarations-------------------------*/
