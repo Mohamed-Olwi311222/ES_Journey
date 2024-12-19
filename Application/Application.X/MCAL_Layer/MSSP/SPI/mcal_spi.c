@@ -7,12 +7,7 @@
 #include "mcal_spi.h"
 
 /*---------------Static Data types----------------------------------------------*/
-/* SCK (Serial Clock) pin, the direction will be changed depending on the SPI mode selected */
-static  pin_config_t SCK_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN3};
-/* SS (Slave Select) pin */
-static const pin_config_t SS_pin = {.direction = GPIO_DIRECTION_INPUT, .port = PORTA_INDEX, .pin = GPIO_PIN5};
-/* SDO (Serial Data Out) pin */
-static const pin_config_t SDO_pin = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN5};
+
 /*---------------Static Data types End------------------------------------------*/
 
 /*---------------Static Helper functions declerations---------------------------*/
@@ -28,6 +23,10 @@ static inline void spi_master_mode_init(const spi_t *const spi_obj);
 Std_ReturnType spi_init(const spi_t *const spi_obj)
 {
     Std_ReturnType ret = E_OK;
+    /* SS (Slave Select) pin */
+    static const pin_config_t SS_pin = {.direction = GPIO_DIRECTION_INPUT, .port = PORTA_INDEX, .pin = GPIO_PIN5};
+    /* SDO (Serial Data Out) pin */
+    static const pin_config_t SDO_pin = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN5};
     
     if (NULL == spi_obj)
     {
@@ -67,10 +66,9 @@ Std_ReturnType spi_init(const spi_t *const spi_obj)
         {
             spi_master_mode_init(spi_obj);
         }
-        /* Configure SDO, SS and SCK pins */
-        if (gpio_pin_direction_initialize(&SDO_pin) != E_OK) ret = E_NOT_OK;
-        if (gpio_pin_direction_initialize(&SS_pin) != E_OK) ret = E_NOT_OK;
-        if (gpio_pin_direction_initialize(&SCK_pin) != E_OK) ret = E_NOT_OK;
+        /* Configure SDO and SS */
+        if (E_OK != gpio_pin_direction_initialize(&SDO_pin)) ret = E_NOT_OK;
+        if (E_OK != gpio_pin_direction_initialize(&SS_pin))  ret = E_NOT_OK;
         /* Enable SPI */
         SPI_SERIAL_PORT_ENABLE_CONFIG();
     }
@@ -82,14 +80,21 @@ Std_ReturnType spi_init(const spi_t *const spi_obj)
  */
 static inline void spi_slave_mode_init(const spi_t *const spi_obj)
 {
+    /* SCK (Serial Clock) pin */
+    static const pin_config_t SCK_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN3, .direction = GPIO_DIRECTION_INPUT};
+    /* SS pin control enabled */
+    static const pin_config_t SS_pin = {.port = PORTA_INDEX, .pin = GPIO_PIN5, .direction = GPIO_DIRECTION_INPUT};
+
     /* Configure Slave mode Sample time */
     /* SMP must be cleared when SPI is used in Slave mode(sample at middle) */
     SPI_SAMPLE_INPUT_MIDDLE_CONFIG();
-    /* Configure SCK pin if SS is enabled*/
+    /* Configure SCK pin */
+    /* SCK (Slave mode) must have TRISC<3> bit set (input) */
+    gpio_pin_direction_initialize(&SCK_pin);
+    /* Configure SS pin if it is enabled */
     if (SPI_SLAVE_MODE_SS_ENABLED == spi_obj->spi_mode)
     {
-        /* SCK (Slave mode) must have TRISC<3> bit set (input) */
-        SCK_pin.direction = GPIO_DIRECTION_INPUT;
+        gpio_pin_direction_initialize(&SS_pin);
     }
 }
 /**
@@ -98,6 +103,8 @@ static inline void spi_slave_mode_init(const spi_t *const spi_obj)
  */
 static inline void spi_master_mode_init(const spi_t *const spi_obj)
 {
+    /* SCK (Serial Clock) pin */
+    static const pin_config_t SCK_pin = {.port = PORTC_INDEX, .pin = GPIO_PIN3, .direction = GPIO_DIRECTION_OUTPUT};
     /* Configure Master mode Sample time */
     if (_SPI_SAMPLE_INPUT_MIDDLE == spi_obj->data_input_sampe_phase)
     {
@@ -111,5 +118,5 @@ static inline void spi_master_mode_init(const spi_t *const spi_obj)
     }
     /* Configure SCK pin */
     /* SCK (Master mode) must have TRISC<3> bit cleared */
-    SCK_pin.direction = GPIO_DIRECTION_OUTPUT;
+    gpio_pin_direction_initialize(&SCK_pin);
 }
