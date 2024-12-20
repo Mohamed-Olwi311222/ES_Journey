@@ -120,3 +120,23 @@ static inline void spi_master_mode_init(const spi_t *const spi_obj)
     /* SCK (Master mode) must have TRISC<3> bit cleared */
     gpio_pin_direction_initialize(&SCK_pin);
 }
+/**
+ * @brief: Deinitialize the SPI module
+ * @param spi_obj the SPI module object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType spi_deinit(const spi_t *const spi_obj)
+{
+    Std_ReturnType ret = E_OK;
+    
+    if (NULL == spi_obj)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        /* Disable SPI Module */
+        SPI_SERIAL_PORT_DISABLE_CONFIG();
+    } 
+    return (ret);
+}

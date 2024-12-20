@@ -139,5 +139,11 @@ typedef struct
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType spi_init(const spi_t *const spi_obj);
+/**
+ * @brief: Deinitialize the SPI module
+ * @param spi_obj the SPI module object
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType spi_deinit(const spi_t *const spi_obj);
 #endif	/* MCAL_SPI_H */
 
