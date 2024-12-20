@@ -104,10 +104,10 @@ typedef enum
 
 typedef struct
 {
-    uint8 port : 3;             /*@ref use port_index_t */
-    uint8 pin  : 3;             /*@ref use pin_index_t  */
-    uint8 direction : 1;        /*@ref use direction_t  */
-    uint8 logic : 1;            /*@ref use logic_t      */
+    port_index_t port;             /*@ref use port_index_t */
+    pin_index_t pin;               /*@ref use pin_index_t  */
+    direction_t direction;         /*@ref use direction_t  */
+    logic_t logic;                 /*@ref use logic_t      */
 }pin_config_t;
 
 /*----------------------------Function Prototypes-----------------------------*/
