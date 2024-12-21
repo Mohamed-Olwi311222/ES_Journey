@@ -23,8 +23,6 @@ static inline void spi_master_mode_init(const spi_t *const spi_obj);
 Std_ReturnType spi_init(const spi_t *const spi_obj)
 {
     Std_ReturnType ret = E_OK;
-    /* SS (Slave Select) pin */
-    static const pin_config_t SS_pin = {.direction = GPIO_DIRECTION_INPUT, .port = PORTA_INDEX, .pin = GPIO_PIN5};
     /* SDO (Serial Data Out) pin */
     static const pin_config_t SDO_pin = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN5};
     
@@ -66,9 +64,8 @@ Std_ReturnType spi_init(const spi_t *const spi_obj)
         {
             spi_master_mode_init(spi_obj);
         }
-        /* Configure SDO and SS */
+        /* Configure SDO pin */
         if (E_OK != gpio_pin_direction_initialize(&SDO_pin)) ret = E_NOT_OK;
-        if (E_OK != gpio_pin_direction_initialize(&SS_pin))  ret = E_NOT_OK;
         /* Enable SPI */
         SPI_SERIAL_PORT_ENABLE_CONFIG();
     }
@@ -139,4 +136,47 @@ Std_ReturnType spi_deinit(const spi_t *const spi_obj)
         SPI_SERIAL_PORT_DISABLE_CONFIG();
     } 
     return (ret);
+}
+/**
+ * @brief: Send Data using Master Mode SPI Module
+ * @note: It use Polling mechanism to send the data(Polling BF flag)
+ * @param spi_obj the SPI module object
+ * @param slave_ss_pin the slave select pin to send data to its Slave SPI Module
+ * @param data the data to send
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType spi_master_send_data(const spi_t *const spi_obj, 
+                                    const pin_config_t *const slave_ss_pin,
+                                     const uint8 data)
+{
+    Std_ReturnType ret = E_OK;
+    
+    /* Only Master Mode */
+    if (NULL == spi_obj || 
+        NULL == slave_ss_pin || 
+        SPI_SLAVE_MODE_SS_ENABLED == spi_obj->spi_mode ||
+        SPI_SLAVE_MODE_SS_DISABLED == spi_obj->spi_mode)
+    {
+        ret = E_NOT_OK;
+    }
+    else
+    {
+        /* Select the Slave SPI to send to it */
+        ret |= gpio_pin_write_logic(slave_ss_pin, GPIO_LOW);
+        /* Write To the SSPBUF register to send data */
+        SSPBUF = data;
+        /* Poll the BF Bit to wait until any read/write operation is done */
+        while (_SPI_RECEIVE_BUFFER_FULL == SSPSTATbits.BF);
+        /* Check the Write Collision Status */
+        if (_SPI_WRITE_COLLISION == SSPCON1bits.WCOL)
+        {
+            /* Collision is detected */
+            ret = E_NOT_OK;
+            /* Clear the WCOL bit to continue SPI operations */
+            SSPCON1bits.WCOL = _SPI_WRITE_NO_COLLISION;
+        }
+        /* Deselect the chosen Slave SPI */
+        ret |= gpio_pin_write_logic(slave_ss_pin, GPIO_HIGH);
+    } 
+    return (ret);   
 }

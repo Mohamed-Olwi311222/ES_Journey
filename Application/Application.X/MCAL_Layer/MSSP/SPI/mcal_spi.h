@@ -145,5 +145,16 @@ Std_ReturnType spi_init(const spi_t *const spi_obj);
  * @return E_OK if success otherwise E_NOT_OK
  */
 Std_ReturnType spi_deinit(const spi_t *const spi_obj);
+
+/**
+ * @brief: Send Data using Master Mode SPI Module
+ * @param spi_obj the SPI module object
+ * @param slave_ss_pin the slave select pin to send data to its Slave SPI Module
+ * @param data the data to send
+ * @return E_OK if success otherwise E_NOT_OK
+ */
+Std_ReturnType spi_master_send_data(const spi_t *const spi_obj, 
+                                    const pin_config_t *const slave_ss_pin,
+                                     const uint8 data);
 #endif	/* MCAL_SPI_H */
 
